@@ -14,5 +14,7 @@ public interface StringQuery {
 	String CHECK_VALIDATION = 
 			"SELECT password FROM member WHERE id = ?";
 	String UPDATE_MEMBER =
-			"UPDATE member set id=?, password=?, name=?, acc_plan=?, theme=? where id=?";
+			"UPDATE member password=?, name=?, acc_plan=?, theme=? where id=?";
+	String GET_MEMBER_INFO =
+			"SELECT * FROM member where id=?";
 }

@@ -16,7 +16,6 @@ import sql.StringQuery;
 import vo.member.Member;
 
 
-
 public class MemberDAO {
 	// ---------------------------- Sigleton  ----------------------------- //
 	private static MemberDAO dao = new MemberDAO();
@@ -120,70 +119,74 @@ public class MemberDAO {
 		return rs.next();
 	}
 	
-	public boolean checkPasswordValidation(String password, Connection conn) throws SQLException, RecordNotFoundException{
+	public boolean checkPasswordValidation(String id, String password, Connection conn) throws SQLException, RecordNotFoundException{
 		PreparedStatement ps = 
 				conn.prepareStatement(StringQuery.CHECK_VALIDATION);
-		ps.setString(1, password);
+		ps.setString(1, id);
 		ResultSet rs = ps.executeQuery();
-		if(rs.next()) {
 		
+		if(rs.next() ) {
+			if(password.equals(rs.getString("password") )) {
+				// When input and internal password matching
+				return true;
+			} else return false; // Password NOT matching
 		}else {
-			throw new RecordNotFoundException("INCORRECT PASSWORD!");
+			// input id does not exist in DB
+			throw new RecordNotFoundException("[MemberDAO]@checkPasswordValidation : No Such User Found !");
 		}
-		return rs.next();
 	}
-	// ---------------------------------- for Update ---------------------------------- //
-
+	// ---------------------------------- for UPDATE ---------------------------------- //
 	public Member updateMember(Member member) throws SQLException, DuplicateIdException {
-
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 				
-	try {
-		if(!doesExist(member.getId(), conn)) {
-			conn = connection();
-			ps = conn.prepareStatement(StringQuery.UPDATE_MEMBER);
-			ps.setString(1, member.getId());
-			ps.setString(2, member.getPassword());
-			ps.setString(3, member.getName());
-			ps.setInt(4, member.getAccountPlan());
-			ps.setInt(5, member.getTheme());
-			
-			int result = ps.executeUpdate();
-			System.out.println(result + "update OK!");
-		}else {
-			throw new DuplicateIdException("Already Existing ID!");
+		try {
+			if(!doesExist(member.getId(), conn)) {
+				conn = connection();
+				ps = conn.prepareStatement(StringQuery.UPDATE_MEMBER);
+				ps.setString(1, member.getPassword());
+				ps.setString(2, member.getName());
+				ps.setInt(3, member.getAccountPlan());
+				ps.setInt(4, member.getTheme());
+				ps.setString(5, member.getId());
+				
+				int result = ps.executeUpdate();
+				System.out.println("[MemberDAO]@updateMember : updating member done");
+			}else {
+				throw new DuplicateIdException("Already Existing ID!");
+			}
 		}
-		}finally {
-			System.out.println("[MemberDAO]@updateMember : updating member done");
+		finally {
 			closeAll(ps, conn, rs);
 		}
 		return member;
 	}
 	
 	// ---------------------------------- for Login ---------------------------------- //
-	
 	public Member login(String id, String password) throws SQLException{
 		Member member = null;
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		conn = connection();
-		
 		try {
-		
+			conn = connection();
+			if(checkPasswordValidation(id, password, conn)) {
+				ps = conn.prepareStatement(StringQuery.GET_MEMBER_INFO);
+				ps.setString(1, id);
+				rs = ps.executeQuery();
+				if(rs.next()) {
+					member = new Member(id, null, rs.getString("name"), rs.getInt("acc_plan"), rs.getInt("theme"));
+				}
+			}
+		}catch(RecordNotFoundException e){
 			
 		}finally {
-			
+			closeAll(ps, conn, rs);
 		}
 		
-		
-		return null;
+		return member;
 	}
-	
-	
-	
-	
+
 }
