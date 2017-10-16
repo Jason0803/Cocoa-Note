@@ -12,7 +12,6 @@ import javax.sql.DataSource;
 
 import jdbc.exception.DuplicateIdException;
 import jdbc.exception.RecordNotFoundException;
-import model.MemberVO;
 import sql.StringQuery;
 import vo.member.Member;
 
@@ -52,12 +51,22 @@ public class MemberDAO {
 	}
 	// ---------------------------------- for close ----------------------------------//
 	public void closeAll(PreparedStatement ps, Connection conn) throws SQLException {
-		ps.close();
-		conn.close();
+		if(ps!=null && conn !=null){
+			ps.close();
+			conn.close();
+		} else {
+			System.out.println("ERROR ! Exception caught on [MemberDAO]@closeAll(ps,conn)");
+			return;
+		}
 	}
 	public void closeAll(PreparedStatement ps, Connection conn, ResultSet rs) throws SQLException {
-		rs.close();
-		closeAll(ps, conn);
+		if( ps!=null && conn != null && rs != null) {
+			rs.close();
+			closeAll(ps, conn);
+		} else {
+			System.out.println("ERROR ! Exception caught on [MemberDAO]@closeAll(ps,conn,rs)");
+			return;	
+		}
 	}
 	
 	// ---------------------------------- for INSERT ---------------------------------- //
