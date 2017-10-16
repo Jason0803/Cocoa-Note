@@ -119,6 +119,23 @@ public class MemberDAO {
 
 		return rs.next();
 	}
+	
+	public boolean checkPasswordValidation(String id, String password, Connection conn) throws SQLException, RecordNotFoundException{
+		PreparedStatement ps = 
+				conn.prepareStatement(StringQuery.CHECK_VALIDATION);
+		ps.setString(1, id);
+		ResultSet rs = ps.executeQuery();
+		
+		if(rs.next() ) {
+			if(password.equals(rs.getString("password") )) {
+				// When input and internal password matching
+				return true;
+			} else return false; // Password NOT matching
+		}else {
+			// input id does not exist in DB
+			throw new RecordNotFoundException("[MemberDAO]@checkPasswordValidation : No Such User Found !");
+		}
+	}
 	// ---------------------------------- for Update ---------------------------------- //
 
 	public Member updateMember(Member member) throws SQLException, DuplicateIdException {
