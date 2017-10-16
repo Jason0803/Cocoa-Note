@@ -3,15 +3,12 @@
 - Schedule Management Web Application
 > Contributors
 
-
-- [Louie Tan](https://github.com/louietyj)
-
-- 인호
-- 호진
-- 기쁨
+- [인호](https://github.com/InhoAndrewJung)
+- [호진](https://github.com/Neozuni)
+- [기쁨](https://github.com/owneul-k)
 - [수영](https://github.com/jason0803)
 - 민영
-- 승준
+- [승준](https://github.com/chocemp)
 
 # Role
 
