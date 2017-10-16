@@ -8,7 +8,7 @@
 <title>Welcome to cocoaNOTE</title>
 </head>
 <body>
-<form action="DispatcherServlet">
+<form action="DispatcherServlet" method="post">
 Log in<br />
 <input type="text" name="id" placeholder="아이디(email)" required="required"/><br />
 <input type="password" name="password" placeholder="password" required="required" /><br />

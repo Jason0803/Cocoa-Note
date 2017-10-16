@@ -16,7 +16,7 @@ public class LoginController implements Controller {
 	public ModelAndView handle(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
-		int month = Calendar.MONTH + 1;
+		int month = Calendar.getInstance().get(Calendar.MONTH) + 1;
 		String path = "cal.jsp?month="+month;
 		Member vo = MemberDAO.getInstance().login(id, password);
 		HttpSession session = request.getSession();

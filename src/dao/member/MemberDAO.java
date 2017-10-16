@@ -177,7 +177,7 @@ public class MemberDAO {
 			conn = connection();
 			if(checkPasswordValidation(id, password, conn)) {
 				ps = conn.prepareStatement(StringQuery.GET_MEMBER_INFO);
-				ps.setString(1, member.getId());
+				ps.setString(1, id);
 				rs = ps.executeQuery();
 				if(rs.next()) {
 					member = new Member(id, null, rs.getString("name"), rs.getInt("acc_plan"), rs.getInt("theme"));
