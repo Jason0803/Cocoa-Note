@@ -1,4 +1,4 @@
-package vo;
+package vo_member;
 
 public class Member {
 	private String id;
