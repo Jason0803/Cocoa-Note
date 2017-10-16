@@ -68,15 +68,14 @@ public class MemberDAO {
 		try {
 			conn = connection();
 				
-			if( !doesExist(member.getName(), conn) ){
+			if( !doesExist(member.getId(), conn) ){
 				conn = connection();
 				System.out.println("connection");
 						
 				ps = conn.prepareStatement(StringQuery.REGISTER_MEMBER);
 				//System.out.println("ps");
-				ps.setString(1, member.getName());
-				// ps.setInt(2, member.getUserClass());
-				ps.setString(3, member.getPassword());
+				ps.setString(1, member.getId());
+				ps.setString(2, member.getPassword());
 						
 				int row = ps.executeUpdate();
 				System.out.println("Sucess ? :" + row);
