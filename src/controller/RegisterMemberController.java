@@ -17,7 +17,7 @@ public class RegisterMemberController implements Controller {
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
-		int month = Calendar.MONTH + 1;
+		int month = Calendar.getInstance().get(Calendar.MONTH) + 1;
 		String path = "cal.jsp?month="+month;
 		Member vo = MemberDAO.getInstance().registerMember(new Member(id, password, name, 1, 1));
 		HttpSession session = request.getSession();
