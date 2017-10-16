@@ -8,11 +8,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import sql.StringQuery;
-import vo.diary.Diary;
-import vo.diary.Memo;
-import vo.diary.Note;
-import vo.diary.Schedule;
+import vo_diary.Diary;
+import vo_diary.Memo;
+import vo_diary.Note;
+import vo_diary.Schedule;
+import vo_member.Member;
 
 public class CocoaNoteDao {
 	private static CocoaNoteDao dao = new CocoaNoteDao();
