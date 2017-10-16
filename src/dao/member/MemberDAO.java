@@ -136,7 +136,7 @@ public class MemberDAO {
 		}
 	}
 	// ---------------------------------- for UPDATE ---------------------------------- //
-	public Member updateMember(Member member) throws SQLException, DuplicateIdException {
+	public Member updateMember(Member member, String password) throws SQLException, DuplicateIdException {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -146,7 +146,7 @@ public class MemberDAO {
 			if(checkPasswordValidation(member.getId(), member.getPassword(), conn)) {
 				// #00035 : Check validation (password)
 				ps = conn.prepareStatement(StringQuery.UPDATE_MEMBER);
-				ps.setString(1, member.getPassword());
+				ps.setString(1, password);
 				ps.setString(2, member.getName());
 				ps.setInt(3, member.getAccountPlan());
 				ps.setInt(4, member.getTheme());
