@@ -1,4 +1,4 @@
-package vo_diary;
+package vo.diary;
 
 public class Diary {
 	private int no;
