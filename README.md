@@ -1,6 +1,6 @@
 # KOSchedule
-- Role
-> Reader : 인호
+> Role
+- Reader : 인호
 > Schedule
 - 호진
 > Design
