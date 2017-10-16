@@ -7,4 +7,8 @@ public interface StringQuery {
 	 * 다이어리 번호 부여방법 : INSERT 구문 사용시 no 컬럼에 seq_diary_no.NEXTVAL 기입
 	 * - K
 	 */
+	String REGISTER_MEMBER =
+			"INSERT INTO student VALUES(?,?,?,?,?)";
+	String ISEXIST_MEMBER =
+			"SELECT id FROM student WHERE id = ?";
 }

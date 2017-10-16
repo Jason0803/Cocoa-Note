@@ -12,13 +12,15 @@ import javax.sql.DataSource;
 
 import jdbc.exception.DuplicateIdException;
 import jdbc.exception.RecordNotFoundException;
+import model.MemberVO;
+import sql.StringQuery;
 import vo.member.Member;
 
 
 
 public class MemberDAO {
 	// ---------------------------- Sigleton  ----------------------------- //
-	public static MemberDAO dao = new MemberDAO();
+	private static MemberDAO dao = new MemberDAO();
 	private DataSource ds;
 	
 	private MemberDAO() {
@@ -59,22 +61,21 @@ public class MemberDAO {
 	}
 	
 	// ---------------------------------- for INSERT ---------------------------------- //
-	public void addMember(Member member) throws SQLException, DuplicateIdException {
+	public void registerMember(Member member) throws SQLException, DuplicateIdException {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		
 		try {
 			conn = connection();
 				
-			if( !doesExist(member.getName(), conn) ){
+			if( !doesExist(member.getId(), conn) ){
 				conn = connection();
 				System.out.println("connection");
 						
-				ps = conn.prepareStatement("INSERT INTO student VALUES(?,?,?)");
+				ps = conn.prepareStatement(StringQuery.REGISTER_MEMBER);
 				//System.out.println("ps");
-				ps.setString(1, member.getName());
-				// ps.setInt(2, member.getUserClass());
-				ps.setString(3, member.getPassword());
+				ps.setString(1, member.getId());
+				ps.setString(2, member.getPassword());
 						
 				int row = ps.executeUpdate();
 				System.out.println("Sucess ? :" + row);
@@ -95,7 +96,7 @@ public class MemberDAO {
 	// ---------------------------------- for Search ---------------------------------- //
 	public boolean doesExist(String id, Connection conn) throws SQLException {
 		PreparedStatement ps = 
-				conn.prepareStatement("SELECT sid FROM student WHERE sid = ?");
+				conn.prepareStatement(StringQuery.ISEXIST_MEMBER);
 		ps.setString(1, id);
 		ResultSet rs = ps.executeQuery();
 
@@ -133,4 +134,29 @@ public class MemberDAO {
 		} 
 		return result;
 	}
+	
+	// ---------------------------------- for Login ---------------------------------- //
+	
+	public Member login(String id, String password) throws SQLException{
+		Member member = null;
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		conn = connection();
+		
+		try {
+		
+			
+		}finally {
+			
+		}
+		
+		
+		
+	}
+	
+	
+	
+	
 }
