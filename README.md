@@ -2,10 +2,14 @@
 > Overview
 - Schedule Management Web Application
 > Contributors
+
+
+- [Louie Tan](https://github.com/louietyj)
+
 - 인호
 - 호진
 - 기쁨
-- 수영
+- [수영](https://github.com/jason0803)
 - 민영
 - 승준
 
