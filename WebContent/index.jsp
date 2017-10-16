@@ -33,7 +33,7 @@ Sign up<br />
 <input type="text" name="name" placeholder="이름" required="required" /><br />
 <input type="submit" value="가입"/>
 <input type="hidden" name="command" value="register" /><br />
-이미 회원이신가요? <a href="login.html">Login</a>
+이미 회원이신가요? <a href="login.jsp">Login</a>
 </form>
 </body>
 </html>
