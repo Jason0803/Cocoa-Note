@@ -51,12 +51,22 @@ public class MemberDAO {
 	}
 	// ---------------------------------- for close ----------------------------------//
 	public void closeAll(PreparedStatement ps, Connection conn) throws SQLException {
-		ps.close();
-		conn.close();
+		if(ps!=null && conn !=null){
+			ps.close();
+			conn.close();
+		} else {
+			System.out.println("ERROR ! Exception caught on [MemberDAO]@closeAll(ps,conn)");
+			return;
+		}
 	}
 	public void closeAll(PreparedStatement ps, Connection conn, ResultSet rs) throws SQLException {
-		rs.close();
-		closeAll(ps, conn);
+		if( ps!=null && conn != null && rs != null) {
+			rs.close();
+			closeAll(ps, conn);
+		} else {
+			System.out.println("ERROR ! Exception caught on [MemberDAO]@closeAll(ps,conn,rs)");
+			return;	
+		}
 	}
 	
 	// ---------------------------------- for INSERT ---------------------------------- //
@@ -81,13 +91,13 @@ public class MemberDAO {
 				ps.setInt(4, member.getAccountPlan());
 				ps.setInt(5, member.getTheme());
 				
-				int row = ps.executeUpdate();
-				System.out.println("[MemberDAO]@registerMember : Sucess ? :" + row);
+				ps.executeUpdate();
+				
+				System.out.println("[MemberDAO]@registerMember : Adding member done");
 			} else  {
 				throw new DuplicateIdException("Already Existing ID !");
 			}
 		} finally {
-			System.out.println("[MemberDAO]@registerMember : Adding member done");
 			try{
 				closeAll(ps, conn);
 			} catch(SQLException e) {

@@ -1,5 +1,7 @@
 package controller;
 
+import dao.member.MemberDAO;
+
 public class HandlerMapping {
 	private static HandlerMapping handler = new HandlerMapping();
 	private HandlerMapping() {}
@@ -9,7 +11,8 @@ public class HandlerMapping {
 	
 	public Controller handleRequest(String command) {
 		Controller controller = null;
-		if(command.equals("write")) {
+		if(command.equals("register")) {
+			controller = new RegisterMemberController();
 		}
 		return controller;
 	}
