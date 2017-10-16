@@ -23,16 +23,16 @@
 - 민영
 
 # To-Do's
-# Design
+> Design
 - UI
 - Layout
 
-# DB Model
+> DB Model
 - Server setting
 - Table Creation
 - 
 
-# Development
+> Development
 - 회원가입
 - 로그인
 - 로그아웃
