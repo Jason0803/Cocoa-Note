@@ -12,7 +12,6 @@ import javax.sql.DataSource;
 
 import jdbc.exception.DuplicateIdException;
 import jdbc.exception.RecordNotFoundException;
-import model.MemberVO;
 import sql.StringQuery;
 import vo.member.Member;
 
@@ -112,15 +111,15 @@ public class MemberDAO {
 	}
 	// ---------------------------------- for Update ---------------------------------- //
 
-	public Member updateMember(Member member) throws SQLException {
+	public Member updateMember(Member member) throws SQLException, DuplicateIdException {
 
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		
-		conn = connection();
-		
-		try {
+				
+	try {
+		if(!doesExist(member.getId(), conn)) {
+			conn = connection();
 			ps = conn.prepareStatement(StringQuery.UPDATE_MEMBER);
 			ps.setString(1, member.getId());
 			ps.setString(2, member.getPassword());
@@ -130,7 +129,9 @@ public class MemberDAO {
 			
 			int result = ps.executeUpdate();
 			System.out.println(result + "update OK!");
-			
+		}else {
+			throw new DuplicateIdException("Already Existing ID!");
+		}
 		}finally {
 			System.out.println("[MemberDAO]@updateMember : updating member done");
 			closeAll(ps, conn, rs);
@@ -156,7 +157,7 @@ public class MemberDAO {
 		}
 		
 		
-		
+		return null;
 	}
 	
 	
