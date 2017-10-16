@@ -10,7 +10,7 @@
 - 승준
 
 # Role
-- Reader : 인호
+> Reader : 인호
 > Schedule
 - 호진
 > Design
