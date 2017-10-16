@@ -16,12 +16,13 @@ public class UpdateMemberController implements Controller {
 	public ModelAndView handle(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
+		String newPassword = request.getParameter("new_password");
 		String name = request.getParameter("name");
 		int accountPlan = 1;
 		int theme = 1;
 		int month = Calendar.getInstance().get(Calendar.MONTH) + 1;
 		String path = "cal.jsp?month="+month;
-		Member vo = MemberDAO.getInstance().updateMember(new Member(id, password, name, accountPlan, theme));
+		Member vo = MemberDAO.getInstance().updateMember(new Member(id, password, name, accountPlan, theme), newPassword);
 		if(vo==null) path = "updateMember.jsp";
 		else {
 			HttpSession session = request.getSession();

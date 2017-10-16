@@ -3,10 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>cocoa calender</title>
 </head>
 <body>
-<a href="updateMember.jsp">회원정보 수정테스트</a>
+<a href="updateMember.jsp">회원정보수정</a>
 </body>
 </html>
