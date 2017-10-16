@@ -22,8 +22,11 @@ public class UpdateMemberController implements Controller {
 		int month = Calendar.getInstance().get(Calendar.MONTH) + 1;
 		String path = "cal.jsp?month="+month;
 		Member vo = MemberDAO.getInstance().updateMember(new Member(id, password, name, accountPlan, theme));
-		HttpSession session = request.getSession();
-		session.setAttribute("memberVO", vo);
+		if(vo==null) path = "updateMember.jsp";
+		else {
+			HttpSession session = request.getSession();
+			session.setAttribute("memberVO", vo);
+		}
 		return new ModelAndView(path, true);
 	}
 

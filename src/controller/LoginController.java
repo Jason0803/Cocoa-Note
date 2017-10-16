@@ -19,9 +19,11 @@ public class LoginController implements Controller {
 		int month = Calendar.getInstance().get(Calendar.MONTH) + 1;
 		String path = "cal.jsp?month="+month;
 		Member vo = MemberDAO.getInstance().login(id, password);
-		HttpSession session = request.getSession();
-		session.setAttribute("memberVO", vo);
 		if(vo==null) path = "login.jsp?login=false";
+		else {
+			HttpSession session = request.getSession();
+			session.setAttribute("memberVO", vo);
+		}
 		return new ModelAndView(path, true);
 	}
 
