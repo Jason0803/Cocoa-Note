@@ -22,11 +22,16 @@ function window.onload(){
 <title>회원정보 수정</title>
 </head>
 <body>
-<form action="DispatcherServlet">
+<form action="DispatcherServlet" method="post">
 회원정보 수정<br />
 아이디 : <input type="text" name="id" readonly="readonly" value="${memberVO.id}" /><br />
 현재 비밀번호 : <input type="password" name="password" required="required" /><br />
+<<<<<<< HEAD
 변경할 비밀번호 : <input type="password" name="password" /><br />
+=======
+변경할 비밀번호 : <input type="password" name="new_password" /><br />
+이름 : <input type="text" name="name" required="required" value="${memberVO.name}"/><br />
+>>>>>>> K-BRANCH
 테마 : <input type="radio" name="theme" id=cocoaTheme value="cocoa">코코아
 		<input type="radio" name="theme" id=peachTheme value="peach">피치<br/>
 <input type="submit" value="회원정보 수정"/>
