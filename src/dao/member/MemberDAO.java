@@ -111,12 +111,9 @@ public class MemberDAO {
 		return rs.next();
 	}
 	// ---------------------------------- for Update ---------------------------------- //
-<<<<<<< HEAD
+
 	public Member updateMember(Member member) throws SQLException {
-=======
-	public boolean updateUser(Member member) throws RecordNotFoundException {
-		boolean result = false;
->>>>>>> 44eb071a9a13bb07222d98f3ab7fb612ce4ff3e5
+
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -135,9 +132,10 @@ public class MemberDAO {
 			System.out.println(result + "update OK!");
 			
 		}finally {
+			System.out.println("[MemberDAO]@updateMember : updating member done");
 			closeAll(ps, conn, rs);
 		}
-		
+		return member;
 	}
 	
 	// ---------------------------------- for Login ---------------------------------- //
