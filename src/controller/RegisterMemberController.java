@@ -1,7 +1,10 @@
 package controller;
 
+import java.util.Calendar;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import controller.util.ModelAndView;
 import dao.member.MemberDAO;
@@ -14,10 +17,12 @@ public class RegisterMemberController implements Controller {
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
-		String path = "cal.jsp";
+		int month = Calendar.MONTH + 1;
+		String path = "cal.jsp?month="+month;
 		Member vo = MemberDAO.getInstance().registerMember(new Member(id, password, name, 1, 1));
-		if(vo==null) path
-		return new ModelAndView(path, isRedirect);
+		HttpSession session = request.getSession();
+		session.setAttribute("memberVO", vo);
+		return new ModelAndView(path, true);
 	}
 
 }

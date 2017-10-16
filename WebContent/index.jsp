@@ -5,14 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<c:if test="${memberVO!=null}">
 <script type="text/javascript">
-<c:if test="${memberVO}!=null">
 	location.href = "cal.jsp";
+</script>
 </c:if>
+<script type="text/javascript">
 
 function registerCheck() {
-	
 	var regFrm = document.registerFrm;
 	if(regFrm.password.value==regFrm.password_chk.value){
 		return true;
