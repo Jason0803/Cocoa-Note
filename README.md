@@ -1,7 +1,18 @@
 # KOSchedule
 
 - To-Do's
+# Design
+- UI
+- Layout
+
+# DB Model
+- Server setting
+- Table Creation
+- 
+
 # Development
-# 1. 회원가입
-# 2. 로그인
-# 3. 로그아웃
+- 회원가입
+- 로그인
+- 로그아웃
+
+
