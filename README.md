@@ -7,7 +7,7 @@
 - [호진](https://github.com/Neozuni)
 - [기쁨](https://github.com/owneul-k)
 - [수영](https://github.com/jason0803)
-- 민영
+- [민영](https://github.com/qazwsx2800)
 - [승준](https://github.com/chocemp)
 
 # Role
