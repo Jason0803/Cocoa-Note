@@ -143,7 +143,8 @@ public class MemberDAO {
 				
 		try {
 			conn = connection();
-			if(!doesExist(member.getId(), conn)) {
+			if(checkPasswordValidation(member.getId(), member.getPassword(), conn)) {
+				// #00035 : Check validation (password)
 				ps = conn.prepareStatement(StringQuery.UPDATE_MEMBER);
 				ps.setString(1, member.getPassword());
 				ps.setString(2, member.getName());
@@ -152,14 +153,19 @@ public class MemberDAO {
 				ps.setString(5, member.getId());
 				
 				int result = ps.executeUpdate();
+				
 				System.out.println("[MemberDAO]@updateMember : updating member done");
 			}else {
-				throw new DuplicateIdException("Already Existing ID!");
+				System.out.println("Incorrect Password !");
+				return null;
 			}
+		} catch (RecordNotFoundException e) {
+			e.printStackTrace();
 		}
 		finally {
 			closeAll(ps, conn, rs);
 		}
+		
 		return member;
 	}
 	
