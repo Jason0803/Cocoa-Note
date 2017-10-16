@@ -91,13 +91,13 @@ public class MemberDAO {
 				ps.setInt(4, member.getAccountPlan());
 				ps.setInt(5, member.getTheme());
 				
-				int row = ps.executeUpdate();
-				System.out.println("[MemberDAO]@registerMember : Sucess ? :" + row);
+				ps.executeUpdate();
+				
+				System.out.println("[MemberDAO]@registerMember : Adding member done");
 			} else  {
 				throw new DuplicateIdException("Already Existing ID !");
 			}
 		} finally {
-			System.out.println("[MemberDAO]@registerMember : Adding member done");
 			try{
 				closeAll(ps, conn);
 			} catch(SQLException e) {

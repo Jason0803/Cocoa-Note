@@ -10,7 +10,7 @@ public interface StringQuery {
 	String REGISTER_MEMBER =
 			"INSERT INTO member VALUES(?,?,?,?,?)";
 	String ISEXIST_MEMBER =
-			"SELECT id FROM student WHERE id = ?";
+			"SELECT id FROM member WHERE id = ?";
 	String UPDATE_MEMBER =
 			"UPDATE member set id=?, password=?, name=?, acc_plan=?, theme=? where id=?";
 }
