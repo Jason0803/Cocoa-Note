@@ -12,7 +12,7 @@ public class Member {
 		super();
 	}
 
-	// 2017.10.16 sychoi : 생성자는 추후추가 될 예
+	// #00007 : (sychoi) : 생성자는 추후가 될 예정
 	public Member(String id, String password, String name, int accountPlan, int theme) {
 		super();
 		this.id = id;
