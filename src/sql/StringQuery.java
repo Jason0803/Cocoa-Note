@@ -8,7 +8,7 @@ public interface StringQuery {
 	 * - K
 	 */
 	String REGISTER_MEMBER =
-			"INSERT INTO student VALUES(?,?,?,?,?)";
+			"INSERT INTO member VALUES(?,?,?,?,?)";
 	String ISEXIST_MEMBER =
 			"SELECT id FROM student WHERE id = ?";
 }

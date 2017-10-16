@@ -61,9 +61,10 @@ public class MemberDAO {
 	}
 	
 	// ---------------------------------- for INSERT ---------------------------------- //
-	public void registerMember(Member member) throws SQLException, DuplicateIdException {
+	public Member registerMember(Member member) throws SQLException, DuplicateIdException {
 		Connection conn = null;
 		PreparedStatement ps = null;
+		Member returnMember = member;
 		
 		try {
 			conn = connection();
@@ -73,24 +74,31 @@ public class MemberDAO {
 				System.out.println("connection");
 						
 				ps = conn.prepareStatement(StringQuery.REGISTER_MEMBER);
-				//System.out.println("ps");
+				System.out.println("[MemberDAO]@registerMember Executed !");
+				
 				ps.setString(1, member.getId());
 				ps.setString(2, member.getPassword());
-						
+				ps.setString(3, member.getName());
+				ps.setInt(4, member.getAccountPlan());
+				ps.setInt(5, member.getTheme());
+				
 				int row = ps.executeUpdate();
-				System.out.println("Sucess ? :" + row);
+				System.out.println("[MemberDAO]@registerMember : Sucess ? :" + row);
 			} else  {
 				throw new DuplicateIdException("Already Existing ID !");
 			}
 		} finally {
-					
-			System.out.println("Adding student done");
+			System.out.println("[MemberDAO]@registerMember : Adding member done");
 			try{
 				closeAll(ps, conn);
 			} catch(SQLException e) {
+				System.out.println("[MemberDAO]@registerMember : SQLException Catched !");
 				e.printStackTrace();
 			}
-		}		
+		}
+		returnMember.setPassword(null);
+		
+		return returnMember;
 	}
 			
 	// ---------------------------------- for Search ---------------------------------- //
@@ -103,7 +111,7 @@ public class MemberDAO {
 		return rs.next();
 	}
 	// ---------------------------------- for Update ---------------------------------- //
-	public boolean updateUser(Student student) throws RecordNotFoundException {
+	public boolean updateUser(Member member) throws RecordNotFoundException {
 		boolean result = false;
 		Connection conn = null;
 		
