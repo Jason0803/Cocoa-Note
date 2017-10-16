@@ -12,7 +12,7 @@
 - 승준
 - 민영
 
-- To-Do's
+# To-Do's
 # Design
 - UI
 - Layout
