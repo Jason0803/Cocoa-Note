@@ -103,36 +103,28 @@ public class MemberDAO {
 		return rs.next();
 	}
 	// ---------------------------------- for Update ---------------------------------- //
-	public boolean updateUser(Student student) throws RecordNotFoundException {
-		boolean result = false;
+	public Member updateMember(Member member) throws SQLException {
 		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
 		
 		conn = connection();
-		try {
-			if(doesExist(student.getName(), conn)) {
-				PreparedStatement ps = 
-						conn.prepareStatement("UPDATE student"
-								+ " SET sid = ?, classno = ?, password = ?"
-								+ " WHERE sid = ?");
 		
-				ps.setString(1, student.getName());
-				ps.setInt(2, student.getUserClass());
-				ps.setString(3, student.getPassword());
-				ps.setString(4, student.getName());
-					
-				ps.executeUpdate();
-				System.out.println("[DAO - UPDATE] User Information Updated !!");
-				result = true;
-				closeAll(ps, conn);
-				System.out.println("[DAO - UPDATE] PS & RS Successfully closed !");
-				return result;
-			} else throw new RecordNotFoundException("[DAO - UPDATE] WARNING : No Such User Found !");
-		} catch (SQLException e) {
-			System.out.println("[DAO - UPDATE] WARNING : SQLException !");
-			e.printStackTrace();
-
-		} 
-		return result;
+		try {
+			ps = conn.prepareStatement(StringQuery.UPDATE_MEMBER);
+			ps.setString(1, member.getId());
+			ps.setString(2, member.getPassword());
+			ps.setString(3, member.getName());
+			ps.setInt(4, member.getAccountPlan());
+			ps.setInt(5, member.getTheme());
+			
+			int result = ps.executeUpdate();
+			System.out.println(result + "update OK!");
+			
+		}finally {
+			closeAll(ps, conn, rs);
+		}
+		
 	}
 	
 	// ---------------------------------- for Login ---------------------------------- //
