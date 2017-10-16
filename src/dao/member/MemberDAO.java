@@ -142,8 +142,8 @@ public class MemberDAO {
 		ResultSet rs = null;
 				
 		try {
+			conn = connection();
 			if(!doesExist(member.getId(), conn)) {
-				conn = connection();
 				ps = conn.prepareStatement(StringQuery.UPDATE_MEMBER);
 				ps.setString(1, member.getPassword());
 				ps.setString(2, member.getName());
