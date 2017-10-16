@@ -1,5 +1,7 @@
 package model;
 
+// #00011 : import change required
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
