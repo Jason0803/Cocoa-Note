@@ -1,4 +1,4 @@
-package model;
+package dao.diary;
 
 // #00011 : import change required
 
@@ -8,16 +8,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import vo_diary.Diary;
-import vo_diary.Memo;
-import vo_diary.Note;
-import vo_diary.Schedule;
-import vo_member.Member;
+import util.DataSourceManager;
+import vo.day.Day;
+import vo.diary.Diary;
+import vo.diary.Memo;
+import vo.diary.Note;
+import vo.diary.Schedule;
+import vo.member.Member;
 
-public class CocoaNoteDao {
-	private static CocoaNoteDao dao = new CocoaNoteDao();
-	private CocoaNoteDao() {}
-	public static CocoaNoteDao getInstance() {
+public class DiaryDAO {
+	private static DiaryDAO dao = new DiaryDAO();
+	private DiaryDAO() {}
+	public static DiaryDAO getInstance() {
 		return dao;
 	}
 	
@@ -39,29 +41,8 @@ public class CocoaNoteDao {
 	
 	//---------------Biz Logic -------------------
 	
-
-	public boolean idDuplicateCheck(String id) {
-		/*
-		 * ID 중복체크 로직. ID String 값으로 member 테이블의 id 컬럼을 체크 - K
-		 */
-		
-	}
-	
-	public Member registerMember(Member vo) {
-		/*
-		 * 중복체크후 member테이블에 신규회원 정보를 추가하고 해당 vo를 리턴 - K
-		 */
-		
-	}
-	
-	public Member login(String id, String password) {
-		/*
-		 * 로그인 성공시 해당 vo를 리턴, 일치하는 정보 없을시 null vo 리턴 - K
-		 */
-		
-	}
-	
 	public ArrayList<Day> getMonthlyDiary(String id, int month){
+		return null;
 		/*
 		 * month를 받아 해당 월에 대한 Day 객체 배열을 반환. front 담당자와 조율 - K
 		 */
@@ -69,6 +50,7 @@ public class CocoaNoteDao {
 	}
 	
 	public Day getDailyDiary(String id, int day) {
+		return null;
 		/*
 		 * 특정 날짜에 해당하는 모든 다이어리를 반환(캘린더에서 날짜 클릭시 호출되는 로직) - K
 		 */
@@ -76,6 +58,7 @@ public class CocoaNoteDao {
 	}
 	
 	public ArrayList<Diary> getAllDiary(String id){
+		return null;
 		/*
 		 * 특정 회원에 대한 모든 다이어리를 반환. (note list에서 활용) - K
 		 */
@@ -83,6 +66,7 @@ public class CocoaNoteDao {
 	}
 	
 	public Diary getDiaryByNo(int DiaryNo) {
+		return null;
 		/*
 		 * 노트 번호로 다이어리 객체를 반환 - K
 		 */
@@ -90,44 +74,24 @@ public class CocoaNoteDao {
 	}
 	
 	public int writeDiary(Memo memo) {
+		return 0;
 		/*
 		 * Memo 데이터 추가 후 메모 no 반환(오버로딩) - K
+		 * Note & Schedule
 		 */
 		
 	}
-	
-	public int writeDiary(Note note) {
-		/*
-		 * Note 데이터 추가 후 노트 no 반환(오버로딩) - K
-		 */
-		
-	}
-	
-	public int writeDiary(Schedule schedule) {
-		/*
-		 * Schedule 데이터 추가 후 스케줄 no 반환(오버로딩) - K
-		 */
-		
-	}
-	
+
 	public int updateDiary(Memo memo) {
-		
-		
-	}
-	
-	public int updateDiary(Note note) {
-		
+		return 0;
+		/*
+		 * Note & Schedule
+		 */
 		
 	}
-	
-	public int updateDiary(Schedule schedule) {
-		
-		
-	}
-	
+
 	public void deleteDiary(int DiaryNo) {
-		
-		
+
 	}
 	
 }
