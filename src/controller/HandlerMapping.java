@@ -15,6 +15,8 @@ public class HandlerMapping {
 			controller = new RegisterMemberController();
 		} else if(command.equals("login")) {
 			controller = new LoginController();
+		} else if(command.equals("updateMember")) {
+			controller = new UpdateMemberController();
 		}
 		return controller;
 	}
