@@ -174,23 +174,24 @@ public class MemberDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		
-		
 		try {
 			conn = connection();
-			ps = conn.prepareStatement(StringQuery.LOGIN_MEMBER);
-			ps.setString(1, member.getId());
-		
-			rs = ps.executeQuery();
-			if(rs.next()) {
-				rs.getString("password")
+			if(checkPasswordValidation(id, password, conn)) {
+				ps = conn.prepareStatement(StringQuery.GET_MEMBER_INFO);
+				ps.setString(1, member.getId());
+				rs = ps.executeQuery();
+				if(rs.next()) {
+					member = new Member(id, null, rs.getString("name"), rs.getInt("acc_plan"), rs.getInt("theme"));
+				}
 			}
-		}finally {
+		}catch(RecordNotFoundException e){
 			
+		}finally {
+			closeAll(ps, conn, rs);
 		}
 		
 		
-		return null;
+		return member;
 	}
 	
 	
