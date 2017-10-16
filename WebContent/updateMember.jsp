@@ -3,12 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-<script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
 <script>
-
 function window.onload(){
 	if('${selected}'== $("#cocoaTheme").attr("value")){
 		$("#cocoaTheme").prop("checked", true);
