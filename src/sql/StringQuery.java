@@ -11,4 +11,6 @@ public interface StringQuery {
 			"INSERT INTO member VALUES(?,?,?,?,?)";
 	String ISEXIST_MEMBER =
 			"SELECT id FROM student WHERE id = ?";
+	String UPDATE_MEMBER =
+			"UPDATE member set id=?, password=?, name=?, acc_plan=?, theme=? where id=?";
 }
