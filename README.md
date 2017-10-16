@@ -1,4 +1,4 @@
-# KOSchedule
+# Cocoa Note
 > Overview
 - Schedule Management Web Application
 > Contributors
