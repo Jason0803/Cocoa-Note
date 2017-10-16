@@ -170,11 +170,17 @@ public class MemberDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		conn = connection();
+		
 		
 		try {
+			conn = connection();
+			ps = conn.prepareStatement(StringQuery.LOGIN_MEMBER);
+			ps.setString(1, member.getId());
 		
-			
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				rs.getString("password")
+			}
 		}finally {
 			
 		}
