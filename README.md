@@ -10,9 +10,16 @@
 - 승준
 
 # Role
-> Reader : 인호
-> Schedule
+
+> Reader
+- 인호
+
+> Schedule Manager
 - 호진
+
+> GitHub Manager
+- 수영
+
 > Design
 - 기쁨 (Master)
 - 인호 (Manager)
