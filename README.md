@@ -1,4 +1,14 @@
 # KOSchedule
+> Overview
+- Schedule Management Web Application
+> Contributors
+- 인호
+- 호진
+- 기쁨
+- 수영
+- 민영
+- 승준
+
 > Role
 - Reader : 인호
 > Schedule
