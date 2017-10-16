@@ -119,6 +119,19 @@ public class MemberDAO {
 
 		return rs.next();
 	}
+	
+	public boolean checkPasswordValidation(String password, Connection conn) throws SQLException, RecordNotFoundException{
+		PreparedStatement ps = 
+				conn.prepareStatement(StringQuery.CHECK_VALIDATION);
+		ps.setString(1, password);
+		ResultSet rs = ps.executeQuery();
+		if(rs.next()) {
+		
+		}else {
+			throw new RecordNotFoundException("INCORRECT PASSWORD!");
+		}
+		return rs.next();
+	}
 	// ---------------------------------- for Update ---------------------------------- //
 
 	public Member updateMember(Member member) throws SQLException, DuplicateIdException {
