@@ -1,13 +1,17 @@
 package vo.diary;
 
 public class Diary {
-	private int no;
-	private String id; // (Member.id)
+	protected int no;
+	protected String id; // (Member.id)
 	
 	public Diary() {
 		super();
 	}
 
+	public Diary(String id) {
+		this.id = id;
+	}
+	
 	public Diary(int no, String id) {
 		super();
 		this.no = no;
@@ -34,6 +38,4 @@ public class Diary {
 	public String toString() {
 		return "Diary [no=" + no + ", id=" + id + "]";
 	}
-	
-	
 }
