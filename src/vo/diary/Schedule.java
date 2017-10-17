@@ -6,6 +6,8 @@ import java.util.Date;
 import util.CocoaDate;
 
 public class Schedule extends Diary {
+	private int schedule_no;
+	private String id;
 	private String title;
 	private String content;
 	private String[] groupMemberID;
@@ -15,13 +17,30 @@ public class Schedule extends Diary {
 	public Schedule() {
 		super();
 	}
-	public Schedule(String title, String content, String[] groupMemberID, CocoaDate startDate, CocoaDate endDate) {
+	public Schedule(int schedule_no, String title, String content, String[] groupMemberID, CocoaDate startDate, CocoaDate endDate) {
 		super();
+		this.schedule_no = schedule_no;
 		this.title = title;
 		this.content = content;
 		this.groupMemberID = groupMemberID;
 		this.startDate = startDate;
 		this.endDate = endDate;
+	}
+	
+	public Schedule(String id, String title, String content, String[] groupMemberID, CocoaDate startDate,
+			CocoaDate endDate) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.content = content;
+		this.groupMemberID = groupMemberID;
+		this.startDate = startDate;
+		this.endDate = endDate;
+	}
+	public Schedule(int schedule_no, String id) {
+		super();
+		this.schedule_no = schedule_no;
+		this.id = id;
 	}
 	public String getTitle() {
 		return title;

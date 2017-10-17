@@ -6,18 +6,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Vector;
 
 import sql.StringQuery;
 import util.CocoaDate;
 import util.DataSourceManager;
-import vo.day.Day;
-import vo.diary.Diary;
 import vo.diary.Memo;
 import vo.diary.Note;
 import vo.diary.Schedule;
-import vo.member.Member;
 
 public class DiaryDAO {
 	private static DiaryDAO dao = new DiaryDAO();
@@ -82,6 +78,7 @@ public class DiaryDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		Vector<Schedule> sc = null;
+		String[] temp_str = {};
 		
 		try {
 			conn = getConnection();
@@ -90,13 +87,16 @@ public class DiaryDAO {
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				
+				sc.add(new Schedule(rs.getInt("schedule_no"), rs.getString("id"), rs.getString("title"), temp_str,
+						new CocoaDate(rs.getDate("start_date")), new CocoaDate(rs.getDate("end_date"))));
 			}
 			
 		}catch(Exception e) {
+			System.out.println("ERROR : [DiaryDAO]@getAllSchedule : SQLException Caught !");
 			e.printStackTrace();
 		}finally {
 			closeAll(rs, ps, conn);
+			System.out.println("[DiaryDAO]@getAllSchedule : Arrived finally clause");
 		}
 		return null;
 	}
