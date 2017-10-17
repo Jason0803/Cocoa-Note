@@ -6,18 +6,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Vector;
 
 import sql.StringQuery;
 import util.CocoaDate;
 import util.DataSourceManager;
-import vo.day.Day;
-import vo.diary.Diary;
 import vo.diary.Memo;
 import vo.diary.Note;
 import vo.diary.Schedule;
-import vo.member.Member;
 
 public class DiaryDAO {
 	private static DiaryDAO dao = new DiaryDAO();
@@ -43,6 +39,7 @@ public class DiaryDAO {
 	
 	
 	// ------------------------------ Logics ------------------------------ //
+<<<<<<< HEAD
 	// ------------------------------ [TEMP TEST] ------------------------------ //
 	public void printMemoDate(String id) throws SQLException {
 		Connection conn = null;
@@ -59,6 +56,9 @@ public class DiaryDAO {
 			
 		}
 	}
+=======
+
+>>>>>>> master
 	// ------------------------------ getAllMemo ------------------------------ //
 	public Vector<Memo> getAllMemo(String id) throws SQLException {
 		Connection conn = null;
@@ -72,7 +72,10 @@ public class DiaryDAO {
 			ps = conn.prepareStatement(StringQuery.GET_ALL_MEMO);
 			rs = ps.executeQuery();
 			
+<<<<<<< HEAD
 			// #00053 : getAllMemo
+=======
+>>>>>>> master
 			while(rs.next()) {
 				Memo m = new Memo(rs.getInt("note_no"), 
 						rs.getString("id"),
@@ -93,10 +96,55 @@ public class DiaryDAO {
 		return v;
 	}
 	// ------------------------------ getAllSchedule ------------------------------ //
-	public Vector<Schedule> getAllSchedule(String id) {
+	public Vector<Schedule> getAllSchedule(String id) throws SQLException {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Vector<Schedule> sc = null;
+		String[] temp_str = {};
+		
+		try {
+			conn = getConnection();
+			sc = new Vector<Schedule>();
+			ps= conn.prepareStatement(StringQuery.GET_ALL_SCHEDULE);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				sc.add(new Schedule(rs.getInt("schedule_no"), rs.getString("id"), rs.getString("title"), temp_str,
+						new CocoaDate(rs.getDate("start_date")), new CocoaDate(rs.getDate("end_date"))));
+			}
+			
+		}catch(Exception e) {
+			System.out.println("ERROR : [DiaryDAO]@getAllSchedule : SQLException Caught !");
+			e.printStackTrace();
+		}finally {
+			closeAll(rs, ps, conn);
+			System.out.println("[DiaryDAO]@getAllSchedule : Arrived finally clause");
+		}
 		return null;
 	}
-	public Vector<Note> getAllNote(String id) {
+	// ------------------------------ getAllNote ------------------------------ //
+	public Vector<Note> getAllNote(String id) throws SQLException {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Vector<Note> n = null;
+		
+		try {
+			conn = getConnection();
+			n = new Vector<Note>();
+			ps= conn.prepareStatement(StringQuery.GET_ALL_NOTE);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeAll(rs, ps, conn);
+		}
 		return null;
 	}
 }
