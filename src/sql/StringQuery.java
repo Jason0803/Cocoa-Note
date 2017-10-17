@@ -22,8 +22,10 @@ public interface StringQuery {
 	// ----------------------------------- DiaryDAO -------------------------------------- //
 	String GET_ALL_MEMO = 
 			"SELECT * FROM memo WHERE id = ?";
+	
 	String GET_ALL_SCHEDULE =
 			"SELECT * FROM schedule WHERE id = ?";
 	String GET_ALL_NOTE =
 			"SELECT * FROM note WHERE id = ?";
+	
 }
