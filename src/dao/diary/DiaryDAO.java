@@ -99,7 +99,7 @@ public class DiaryDAO {
 			closeAll(rs, ps, conn);
 			System.out.println("[DiaryDAO]@getAllSchedule : Arrived finally clause");
 		}
-		return null;
+		return sc;
 	}
 	// ------------------------------ getAllNote ------------------------------ //
 	public Vector<Note> getAllNote(String id) throws SQLException {
