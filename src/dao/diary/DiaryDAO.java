@@ -151,6 +151,7 @@ public class DiaryDAO {
 			ps = conn.prepareStatement(StringQuery.SEARCH_NOTE_BY_KEYWORD);
 			ps.setString(1, id);
 			ps.setString(2, keyword);
+			ps.setString(3, keyword);
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
@@ -185,7 +186,6 @@ public class DiaryDAO {
 			ps = conn.prepareStatement(StringQuery.SEARCH_MEMO_BY_KEYWORD);
 			ps.setString(1, id);
 			ps.setString(2, keyword);
-			ps.setString(3, keyword);
 			
 			rs=ps.executeQuery();
 			
