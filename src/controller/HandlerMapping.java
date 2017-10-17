@@ -19,6 +19,8 @@ public class HandlerMapping {
 			controller = new UpdateMemberController();
 		} else if(command.equals("writeMemo")) {
 			controller = new WriteMemoController();
+		} else if(command.equals("memoList")) {
+			controller = new ListMemoController();
 		}
 		return controller;
 	}
