@@ -31,6 +31,7 @@ public interface StringQuery {
 			"SELECT * FROM note WHERE id = ? AND (title LIKE '%?%' OR content LIKE '%?%')";
 	String SEARCH_MEMO_BY_KEYWORD =
 			"SELECT * FROM memo WHERE id=? AND content LIKE '%?%'";
-	
+	String SEARCH_SCHEDULE_BY_KEYWORD = 
+	         "SELECT * FROM HR.SCHEDULE WHERE id=? AND (TITLE like %?% OR CONTENT like '%?%')";
 
 }

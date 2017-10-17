@@ -154,7 +154,7 @@ public class DiaryDAO {
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				if(rs.getString("title").equalsIgnoreCase(keyword) || rs.getString("content").equalsIgnoreCase(keyword)) {
+				if(rs.getString("title").toLowerCase().contains((keyword.toLowerCase())) || rs.getString("content").toLowerCase().contains(keyword.toLowerCase())) {
 					if(!result.containsKey(rs.getInt("note_no")) ){			
 						Note n = new Note(rs.getInt("note_no"),
 											rs.getString("id"),
@@ -162,7 +162,7 @@ public class DiaryDAO {
 											rs.getString("content"),
 											new CocoaDate(new Date(rs.getTimestamp("curr_date").getTime())),
 											rs.getString("title"));
-						result.put(rs.getInt("note_no"), n) ;
+						result.put(rs.getInt("note_no"), n);
 					}
 				}
 			}
@@ -171,7 +171,6 @@ public class DiaryDAO {
 		}
 		return result;
 	}
-
 	// ------------------------------------------------ searchMemo ------------------------------------------------ //
 	public Map<Integer,Memo> searchMemoByKeyword(String id, String keyword) throws SQLException{
 
@@ -186,10 +185,12 @@ public class DiaryDAO {
 			ps = conn.prepareStatement(StringQuery.SEARCH_MEMO_BY_KEYWORD);
 			ps.setString(1, id);
 			ps.setString(2, keyword);
+			ps.setString(3, keyword);
+			
 			rs=ps.executeQuery();
 			
 			while(rs.next()) {
-				if(rs.getString("content").equalsIgnoreCase(keyword)) {
+				if(rs.getString("content").toLowerCase().contains(keyword.toLowerCase())) {
 					if(!memo.containsKey(rs.getInt("memo_no"))){
 					Memo m = new Memo(rs.getInt("memo_no"),
 											id,
@@ -207,6 +208,44 @@ public class DiaryDAO {
 		
 		return memo;
 	}
+	// ------------------------------------------------ searchSchedule ------------------------------------------------ //
+	public Map<Integer,Schedule> searchScheduleByKeyword(String id, String keyword) throws SQLException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Map<Integer,Schedule> sc = null;
+        String[] temp_str = {};
+        
+        try {
+           conn = getConnection();
+           sc = new HashMap<Integer, Schedule>();
+           ps= conn.prepareStatement(StringQuery.SEARCH_SCHEDULE_BY_KEYWORD );
+           ps.setString(1, id);
+           ps.setString(2, keyword);
+           ps.setString(3, keyword);
+           rs = ps.executeQuery();
+           
+           while(rs.next()) {
+              if(rs.getString("title").equalsIgnoreCase(keyword) || rs.getString("content").equalsIgnoreCase(keyword)) {
+          if(!sc.containsKey(rs.getInt("schedule_no"))){
+             Schedule s = new Schedule(rs.getInt("schedule_no"),
+                   rs.getString("id"),                      // id
+                       rs.getString("title"),                      // title
+                       rs.getString("content"),                  // content
+                       temp_str,                              // group
+                       new CocoaDate(rs.getDate("start_date")),      // startDate
+                       new CocoaDate(rs.getDate("end_date")));      // endDate
+             sc.put(rs.getInt("schedule_no"), s);
+          }}}
+           
+        }catch(Exception e) {
+           e.printStackTrace();
+        }finally {
+           closeAll(rs, ps, conn);
+         }
+        return sc;
+     }
+	
 	// ------------------------------------------------ writeDiary ------------------------------------------------ //
 	public Memo writeDiary(Memo memo) {
 		
