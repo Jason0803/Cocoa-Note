@@ -12,6 +12,9 @@ function writeMemo(){
 	var openNewWindow = window.open("about:blank");
 	openNewWindow.location.href="search_and_memo_result.jsp?command=writeMemo&content="+document.searchAndMemoFrm.line.value;
 }
+function search(){
+	location.href="DispatcherServlet?command=search&keyword="+document.searchAndMemoFrm.line.value;
+}
 </script>
 <form action="#" method="post" name="searchAndMemoFrm">
 <input type="text" name="line"/>

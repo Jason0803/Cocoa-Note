@@ -185,7 +185,7 @@ public class DiaryDAO {
 		try {
 			conn = getConnection();
 			memo = new HashMap<Integer,Memo>();
-			conn.prepareStatement(StringQuery.SEARCH_MEMO);
+			ps = conn.prepareStatement(StringQuery.SEARCH_MEMO);
 			ps.setString(1, id);
 			ps.setString(2, keyword);
 			rs=ps.executeQuery();

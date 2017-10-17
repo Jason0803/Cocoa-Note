@@ -8,21 +8,21 @@
 </head>
 <body>
 <div>
-	${keyword} : Note 검색결과<br/>
+	"${param.keyword}" : Note 검색결과<br/>
 	<c:forEach var="note" items="${notes}">
 		${note}<br />
 	</c:forEach>
 </div>
 
 <div>
-	${keyword} : Schedule 검색결과<br/>
+	"${param.keyword}" : Schedule 검색결과<br/>
 	<c:forEach var="schedule" items="${schedules}">
 		${schedule}<br />
 	</c:forEach>
 </div>
 
 <div>
-	${keyword} : Memo 검색결과<br/>
+	"${param.keyword}" : Memo 검색결과<br/>
 	<c:forEach var="memo" items="${memos}">
 		${memo}<br />
 	</c:forEach>
