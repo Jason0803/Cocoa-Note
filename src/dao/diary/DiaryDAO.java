@@ -50,6 +50,7 @@ public class DiaryDAO {
 			conn = getConnection();
 			v = new Vector<Memo>();
 			ps = conn.prepareStatement(StringQuery.GET_ALL_MEMO);
+			ps.setString(1, id);
 			rs = ps.executeQuery();
 
 			while(rs.next()) {
@@ -83,6 +84,7 @@ public class DiaryDAO {
 			conn = getConnection();
 			sc = new Vector<Schedule>();
 			ps= conn.prepareStatement(StringQuery.GET_ALL_SCHEDULE);
+			ps.setString(1, id);
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
