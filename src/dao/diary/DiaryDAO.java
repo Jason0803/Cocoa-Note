@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Vector;
 
 import util.DataSourceManager;
 import vo.day.Day;
@@ -39,59 +40,15 @@ public class DiaryDAO {
 	}//
 	
 	
-	//---------------Biz Logic -------------------
-	
-	public ArrayList<Day> getMonthlyDiary(String id, int month){
+	// ------------------------------ Logics ------------------------------ //
+	public Vector<Memo> getAllMemo(String id) {
 		return null;
-		/*
-		 * month를 받아 해당 월에 대한 Day 객체 배열을 반환. front 담당자와 조율 - K
-		 */
 		
 	}
-	
-	public Day getDailyDiary(String id, int day) {
+	public Vector<Schedule> getAllSchedule(String id) {
 		return null;
-		/*
-		 * 특정 날짜에 해당하는 모든 다이어리를 반환(캘린더에서 날짜 클릭시 호출되는 로직) - K
-		 */
-		
 	}
-	
-	public ArrayList<Diary> getAllDiary(String id){
+	public Vector<Note> getAllNote(String id) {
 		return null;
-		/*
-		 * 특정 회원에 대한 모든 다이어리를 반환. (note list에서 활용) - K
-		 */
-		
 	}
-	
-	public Diary getDiaryByNo(int DiaryNo) {
-		return null;
-		/*
-		 * 노트 번호로 다이어리 객체를 반환 - K
-		 */
-		
-	}
-	
-	public int writeDiary(Memo memo) {
-		return 0;
-		/*
-		 * Memo 데이터 추가 후 메모 no 반환(오버로딩) - K
-		 * Note & Schedule
-		 */
-		
-	}
-
-	public int updateDiary(Memo memo) {
-		return 0;
-		/*
-		 * Note & Schedule
-		 */
-		
-	}
-
-	public void deleteDiary(int DiaryNo) {
-
-	}
-	
 }
