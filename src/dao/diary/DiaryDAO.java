@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import sql.StringQuery;
 import util.DataSourceManager;
 import vo.day.Day;
 import vo.diary.Diary;
@@ -41,10 +42,33 @@ public class DiaryDAO {
 	
 	
 	// ------------------------------ Logics ------------------------------ //
-	public Vector<Memo> getAllMemo(String id) {
+	
+	// ------------------------------ getAllMemo ------------------------------ //
+	public Vector<Memo> getAllMemo(String id) throws SQLException {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Vector<Memo> v = null;
+		
+		try {
+			conn = getConnection();
+			v = new Vector<Memo>();
+			ps = conn.prepareStatement(StringQuery.GET_ALL_MEMO);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeAll(rs,ps,conn);
+		}
+		
 		return null;
 		
 	}
+	// ------------------------------ getAllSchedule ------------------------------ //
 	public Vector<Schedule> getAllSchedule(String id) {
 		return null;
 	}

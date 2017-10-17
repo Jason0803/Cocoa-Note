@@ -7,6 +7,8 @@ public interface StringQuery {
 	 * 다이어리 번호 부여방법 : INSERT 구문 사용시 no 컬럼에 seq_diary_no.NEXTVAL 기입
 	 * - K
 	 */
+	
+	// ----------------------------------- MemberDAO -------------------------------------- //
 	String REGISTER_MEMBER =
 			"INSERT INTO member VALUES(?,?,?,?,?)";
 	String ISEXIST_MEMBER =
@@ -17,4 +19,11 @@ public interface StringQuery {
 			"UPDATE member SET password=?, name=?, acc_plan=?, theme=? where id=?";
 	String GET_MEMBER_INFO =
 			"SELECT * FROM member where id=?";
+	// ----------------------------------- DiaryDAO -------------------------------------- //
+	String GET_ALL_MEMO = 
+			"SELECT * FROM memo WHERE id = ?";
+	String GET_ALL_SCHEDULE =
+			"SELECT * FROM schedule WHERE id = ?";
+	String GET_ALL_NOTE =
+			"SELECT * FROM note WHERE id = ?";
 }
