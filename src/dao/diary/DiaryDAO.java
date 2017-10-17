@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Vector;
 
 import sql.StringQuery;
@@ -54,7 +56,6 @@ public class DiaryDAO {
 			ps.setString(1, id);
 			rs = ps.executeQuery();
 			
-
 			while(rs.next()) {
 				Note m = new Note(rs.getInt("note_no"), 			// no
 						rs.getString("id"),							// id
@@ -138,4 +139,40 @@ public class DiaryDAO {
 		}
 		return m;
 	}
+	// ------------------------------ 		searchNote ------------------------------ //
+	public Set<Note> searchNoteByKeyword(String id, String keyword) {
+		Connection conn = null;
+		Set<Note> result = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try { 
+			conn = getConnection();
+			result = new HashSet<Note>();
+			ps = conn.prepareStatement(StringQuery.SEARCH_NOTE_BY_KEYWORD);
+			ps.setString(1, id);
+			ps.setString(2, keyword);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				if(rs.getString("title").equalsIgnoreCase(keyword) || rs.getString("content").equalsIgnoreCase(keyword)) {
+					if(!result.contains(rs.getInt("note_no")) ){			
+						Note n = new Note(rs.getInt("note_no"),
+											rs.getString("id"),
+											new CocoaDate(new Date(rs.getTimestamp("wrt_date").getTime())),
+											rs.getString("content"),
+											new CocoaDate(new Date(rs.getTimestamp("curr_date").getTime())),
+											rs.getString("title"));
+						result.add(n);
+					}	
+				}
+			}
+		} catch (SQLException e) {
+			
+		}
+		return result;
+	}
+	// ------------------------------ 		searchMemo ------------------------------ //
+	// ------------------------------ 	searchSchedule ------------------------------ //
+	
 }

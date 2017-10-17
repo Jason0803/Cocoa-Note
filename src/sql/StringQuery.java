@@ -26,5 +26,7 @@ public interface StringQuery {
 			"SELECT * FROM schedule WHERE id = ?";
 	String GET_ALL_NOTE =
 			"SELECT * FROM note WHERE id = ?";
+	String SEARCH_NOTE_BY_KEYWORD = 
+			"SELECT * FROM note WHERE id = ? AND (title LIKE %?% OR content LIKE %?%)";
 	
 }
