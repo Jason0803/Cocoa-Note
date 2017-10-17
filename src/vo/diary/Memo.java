@@ -6,8 +6,10 @@ import util.CocoaDate;
 
 public class Memo extends Diary {
 	private int memo_no;
-	private CocoaDate writeDate;
 	private String member_id; // foriegn key
+	private CocoaDate writeDate;
+	private CocoaDate currDate;
+	private String title;	
 	private String content;
 	
 	public Memo() {
@@ -21,7 +23,7 @@ public class Memo extends Diary {
 		this.member_id = member_id;
 		this.writeDate = writeDate;
 	}
-
+	
 	public Memo(int memo_no, CocoaDate writeDate, String member_id, String content) {
 		super();
 		this.memo_no = memo_no;
@@ -29,10 +31,23 @@ public class Memo extends Diary {
 		this.member_id = member_id;
 		this.content = content;
 	}
+	
+	// #00052 : Memo Constructor UPDATE 2
+
+	public Memo(int memo_no, String member_id, CocoaDate writeDate, CocoaDate currDate, String title, String content) {
+		super();
+		this.memo_no = memo_no;
+		this.member_id = member_id;
+		this.writeDate = writeDate;
+		this.currDate = currDate;
+		this.title = title;
+		this.content = content;
+	}
 
 	public String getContent() {
 		return content;
 	}
+
 
 	public void setContent(String content) {
 		this.content = content;
