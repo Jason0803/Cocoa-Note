@@ -7,6 +7,7 @@
 <title>cocoa calender</title>
 </head>
 <body>
+${memberVO }
 <a href="updateMember.jsp">회원정보수정</a>
 </body>
 </html>
