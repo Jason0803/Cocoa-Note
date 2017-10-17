@@ -183,7 +183,7 @@ public class DiaryDAO {
 		try {
 			conn = getConnection();
 			memo = new HashMap<Integer,Memo>();
-			ps = conn.prepareStatement(StringQuery.SEARCH_MEMO);
+			ps = conn.prepareStatement(StringQuery.SEARCH_MEMO_BY_KEYWORD);
 			ps.setString(1, id);
 			ps.setString(2, keyword);
 			rs=ps.executeQuery();
@@ -207,5 +207,85 @@ public class DiaryDAO {
 		
 		return memo;
 	}
-	// ------------------------------------------------ searchNote ------------------------------------------------ //
+	// ------------------------------------------------ writeDiary ------------------------------------------------ //
+	public Memo writeDiary(Memo memo) {
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		return null;
+	}
+	// ------------------------------------------------ writeDiary ------------------------------------------------ //
+	public Note writeDiary(Note note) {
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		return null;
+	}
+	// ------------------------------------------------ writeDiary ------------------------------------------------ //
+	public Schedule writeDiary(Schedule schedule) {
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		return null;
+	}
 }

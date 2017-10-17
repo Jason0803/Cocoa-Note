@@ -28,8 +28,9 @@ public interface StringQuery {
 			"SELECT * FROM note WHERE id = ?";
 
 	String SEARCH_NOTE_BY_KEYWORD = 
-			"SELECT * FROM note WHERE id = ? AND (title LIKE %?% OR content LIKE %?%)";
-	String SEARCH_MEMO =
-			"SELECT * FROM memo WHERE id=? AND content LIKE %?%";
+			"SELECT * FROM note WHERE id = ? AND (title LIKE '%?%' OR content LIKE '%?%')";
+	String SEARCH_MEMO_BY_KEYWORD =
+			"SELECT * FROM memo WHERE id=? AND content LIKE '%?%'";
+	
 
 }
