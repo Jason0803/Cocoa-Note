@@ -19,6 +19,7 @@ public interface StringQuery {
 			"UPDATE member SET password=?, name=?, acc_plan=?, theme=? where id=?";
 	String GET_MEMBER_INFO =
 			"SELECT * FROM member where id=?";
+	
 	// ----------------------------------- DiaryDAO -------------------------------------- //
 	String GET_ALL_MEMO = 
 			"SELECT * FROM memo WHERE id = ?";
@@ -32,6 +33,6 @@ public interface StringQuery {
 	String SEARCH_MEMO_BY_KEYWORD =
 			"SELECT * FROM memo WHERE id=? AND content LIKE '%?%'";
 	String SEARCH_SCHEDULE_BY_KEYWORD = 
-	         "SELECT * FROM HR.SCHEDULE WHERE id=? AND (TITLE like %?% OR CONTENT like '%?%')";
+	         "SELECT * FROM SCHEDULE WHERE id=? AND (TITLE like '%?%' OR CONTENT like '%?%')";
 
 }
