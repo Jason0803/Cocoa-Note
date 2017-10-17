@@ -18,5 +18,6 @@ function writeMemo(){
 <input type="button" value="검색" onclick="search()"/>
 <input type="button" value="메모" onclick="writeMemo()"/>
 </form>
+<a href="DispatcherServlet?command=memoList">메모전체보기</a>
 </body>
 </html>
