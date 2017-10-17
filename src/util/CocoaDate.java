@@ -112,6 +112,4 @@ public class CocoaDate {
 	public int getEndDay() {
 		return lastDate;
 	}
-	
-	
 }

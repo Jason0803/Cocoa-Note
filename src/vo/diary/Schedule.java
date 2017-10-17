@@ -3,17 +3,19 @@ package vo.diary;
 import java.util.Arrays;
 import java.util.Date;
 
+import util.CocoaDate;
+
 public class Schedule extends Diary {
 	private String title;
 	private String content;
 	private String[] groupMemberID;
-	private Date startDate;
-	private Date endDate;
+	private CocoaDate startDate;
+	private CocoaDate endDate;
 	
 	public Schedule() {
 		super();
 	}
-	public Schedule(String title, String content, String[] groupMemberID, Date startDate, Date endDate) {
+	public Schedule(String title, String content, String[] groupMemberID, CocoaDate startDate, CocoaDate endDate) {
 		super();
 		this.title = title;
 		this.content = content;
@@ -39,16 +41,16 @@ public class Schedule extends Diary {
 	public void setGroupMemberID(String[] groupMemberID) {
 		this.groupMemberID = groupMemberID;
 	}
-	public Date getStartDate() {
+	public CocoaDate getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(Date startDate) {
+	public void setStartDate(CocoaDate startDate) {
 		this.startDate = startDate;
 	}
-	public Date getEndDate() {
+	public CocoaDate getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(Date endDate) {
+	public void setEndDate(CocoaDate endDate) {
 		this.endDate = endDate;
 	}
 	@Override

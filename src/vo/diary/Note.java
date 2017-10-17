@@ -2,15 +2,17 @@ package vo.diary;
 
 import java.util.Date;
 
+import util.CocoaDate;
+
 public class Note extends Memo {
 	private String title;
-	private Date currentDate;
+	private CocoaDate currentDate;
 	
 	public Note() {
 		super();
 	}
 
-	public Note(String title, Date currentDate) {
+	public Note(String title, CocoaDate currentDate) {
 		super();
 		this.title = title;
 		this.currentDate = currentDate;
@@ -24,11 +26,11 @@ public class Note extends Memo {
 		this.title = title;
 	}
 
-	public Date getCurrentDate() {
+	public CocoaDate getCurrentDate() {
 		return currentDate;
 	}
 
-	public void setCurrentDate(Date currentDate) {
+	public void setCurrentDate(CocoaDate currentDate) {
 		this.currentDate = currentDate;
 	}
 

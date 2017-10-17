@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Vector;
 
+import util.CocoaDate;
 import vo.diary.*;
 
 public class Day {
-	private Date date;
+	private CocoaDate date;
 	private Vector<Note> notes;
 	private Vector<Schedule> schedules;
 	private Vector<Memo> memos;
@@ -16,16 +17,16 @@ public class Day {
 		super();
 	}
 
-	public Day(Date date) {
+	public Day(CocoaDate date) {
 		super();
 		this.date = date;
 	}
 
-	public Date getDate() {
+	public CocoaDate getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(CocoaDate date) {
 		this.date = date;
 	}
 

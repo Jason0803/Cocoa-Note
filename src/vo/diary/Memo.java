@@ -2,15 +2,17 @@ package vo.diary;
 
 import java.util.Date;
 
+import util.CocoaDate;
+
 public class Memo extends Diary {
 	private String content;
-	private Date writeDate;
+	private CocoaDate writeDate;
 	
 	public Memo() {
 		super();
 	}
 
-	public Memo(String content, Date writeDate) {
+	public Memo(String content, CocoaDate writeDate) {
 		super();
 		this.content = content;
 		this.writeDate = writeDate;
@@ -24,11 +26,11 @@ public class Memo extends Diary {
 		this.content = content;
 	}
 
-	public Date getWriteDate() {
+	public CocoaDate getWriteDate() {
 		return writeDate;
 	}
 
-	public void setWriteDate(Date writeDate) {
+	public void setWriteDate(CocoaDate writeDate) {
 		this.writeDate = writeDate;
 	}
 
