@@ -29,10 +29,10 @@ public interface StringQuery {
 			"SELECT * FROM note WHERE id = ?";
 
 	String SEARCH_NOTE_BY_KEYWORD = 
-			"SELECT * FROM note WHERE id = ? AND (title LIKE ‘%’||?||‘%’ OR content LIKE ‘%’||?||‘%’)";
+			"SELECT * FROM note WHERE id = ? AND (title LIKE '%'||?||'%' OR content LIKE '%'||?||'%')";
 	String SEARCH_MEMO_BY_KEYWORD =
-			"SELECT * FROM memo WHERE id=? AND content LIKE ‘%’||?||‘%’";
+			"SELECT * FROM memo WHERE id=? AND content LIKE '%'||?||'%'";
 	String SEARCH_SCHEDULE_BY_KEYWORD = 
-	         "SELECT * FROM SCHEDULE WHERE id=? AND (TITLE like ‘%’||?||‘%’ OR CONTENT like ‘%’||?||‘%’)";
+	         "SELECT * FROM SCHEDULE WHERE id=? AND (TITLE like '%'||?||'%' OR CONTENT like '%'||?||'%')";
 
 }
