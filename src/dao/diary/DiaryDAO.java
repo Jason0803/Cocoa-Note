@@ -116,7 +116,7 @@ public class DiaryDAO {
 			
 			while(rs.next()) {
 				
-			}
+			}	
 			
 		}catch(Exception e) {
 			e.printStackTrace();
