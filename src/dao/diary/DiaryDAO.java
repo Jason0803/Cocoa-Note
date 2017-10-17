@@ -8,13 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashMap;
-<<<<<<< HEAD
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
-=======
-import java.util.Map;
->>>>>>> origin/MemoDAOT_T
 import java.util.Vector;
 
 import sql.StringQuery;
@@ -181,12 +175,8 @@ public class DiaryDAO {
 	}
 
 	// ------------------------------ searchMemo ------------------------------ //
-<<<<<<< HEAD
-	public Set<Memo> searchMemoByKeyword(String id, String keyword) throws SQLException{
-=======
-	
 	public Map<Integer,Memo> searchMemoByKeyword(String id, String keyword) throws SQLException{
->>>>>>> origin/MemoDAOT_T
+
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
