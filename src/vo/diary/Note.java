@@ -8,6 +8,22 @@ public class Note extends Memo {
 	private CocoaDate currentDate;
 	private String title;
 	
+	public CocoaDate getCurrentDate() {
+		return currentDate;
+	}
+
+	public void setCurrentDate(CocoaDate currentDate) {
+		this.currentDate = currentDate;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	public Note() {
 		super();
 	}
