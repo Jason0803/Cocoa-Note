@@ -17,7 +17,7 @@ import util.DataSourceManager;
 import vo.diary.Memo;
 import vo.diary.Note;
 import vo.diary.Schedule;
-
+// ------------------------------------------------ Singleton ------------------------------------------------ //
 public class DiaryDAO {
 	private static DiaryDAO dao = new DiaryDAO();
 	private DiaryDAO() {}
@@ -40,9 +40,7 @@ public class DiaryDAO {
 		}
 	}//
 	
-	
-	// ------------------------------ Logics ------------------------------ //
-	// ------------------------------ getAllNote ------------------------------ //
+	// ------------------------------------------------ getAllNote ------------------------------------------------ //
 	public Vector<Note> getAllNote(String id) throws SQLException {
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -77,7 +75,7 @@ public class DiaryDAO {
 		
 		return n;
 	}
-	// ------------------------------ getAllSchedule ------------------------------ //
+	// ------------------------------------------------ getAllSchedule ------------------------------------------------ //
 	public Vector<Schedule> getAllSchedule(String id) throws SQLException {
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -111,7 +109,7 @@ public class DiaryDAO {
 		}
 		return sc;
 	}
-	// ------------------------------ getAllMemo ------------------------------ //
+	// ------------------------------------------------ getAllMemo ------------------------------------------------ //
 	public Vector<Memo> getAllMemo(String id) throws SQLException {
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -140,7 +138,7 @@ public class DiaryDAO {
 		return m;
 	}
 
-	// ------------------------------ 		searchNote ------------------------------ //
+	// ------------------------------------------------ searchNote ------------------------------------------------ //
 	public Map<Integer,Note> searchNoteByKeyword(String id, String keyword) {
 		Connection conn = null;
 		Map<Integer,Note> result = null;
@@ -164,7 +162,7 @@ public class DiaryDAO {
 											rs.getString("content"),
 											new CocoaDate(new Date(rs.getTimestamp("curr_date").getTime())),
 											rs.getString("title"));
-						result.put(new Integer(rs.getInt("note_no")), n) ;
+						result.put(rs.getInt("note_no"), n) ;
 					}
 				}
 			}
@@ -174,7 +172,7 @@ public class DiaryDAO {
 		return result;
 	}
 
-	// ------------------------------ searchMemo ------------------------------ //
+	// ------------------------------------------------ searchMemo ------------------------------------------------ //
 	public Map<Integer,Memo> searchMemoByKeyword(String id, String keyword) throws SQLException{
 
 		Connection conn = null;
@@ -197,7 +195,7 @@ public class DiaryDAO {
 											id,
 											new CocoaDate(new Date(rs.getTimestamp("wrt_date").getTime())),
 											rs.getString("content"));
-						memo.put(new Integer(rs.getInt("memo_no")), m);
+						memo.put(rs.getInt("memo_no"), m);
 					}
 				}
 			}
@@ -209,5 +207,5 @@ public class DiaryDAO {
 		
 		return memo;
 	}
-	
+	// ------------------------------------------------ searchNote ------------------------------------------------ //
 }
