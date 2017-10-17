@@ -21,11 +21,11 @@
 > GitHub Manager
 - 수영
 
-> Design
+> Front-End
 - 기쁨 (Master)
 - 인호 (Manager)
 
-> Development
+> Back-End
 - 수영 (Master)
 - 승준
 - 민영
