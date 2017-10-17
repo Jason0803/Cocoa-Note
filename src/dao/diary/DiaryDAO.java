@@ -39,7 +39,6 @@ public class DiaryDAO {
 	
 	
 	// ------------------------------ Logics ------------------------------ //
-
 	// ------------------------------ getAllMemo ------------------------------ //
 	public Vector<Memo> getAllMemo(String id) throws SQLException {
 		Connection conn = null;
@@ -52,7 +51,7 @@ public class DiaryDAO {
 			v = new Vector<Memo>();
 			ps = conn.prepareStatement(StringQuery.GET_ALL_MEMO);
 			rs = ps.executeQuery();
-			
+
 			while(rs.next()) {
 				Memo m = new Memo(rs.getInt("note_no"), 
 						rs.getString("id"),
