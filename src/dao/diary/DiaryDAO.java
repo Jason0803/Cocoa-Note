@@ -69,10 +69,51 @@ public class DiaryDAO {
 		
 	}
 	// ------------------------------ getAllSchedule ------------------------------ //
-	public Vector<Schedule> getAllSchedule(String id) {
+	public Vector<Schedule> getAllSchedule(String id) throws SQLException {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Vector<Schedule> sc = null;
+		
+		try {
+			conn = getConnection();
+			sc = new Vector<Schedule>();
+			ps= conn.prepareStatement(StringQuery.GET_ALL_SCHEDULE);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeAll(rs, ps, conn);
+		}
 		return null;
 	}
-	public Vector<Note> getAllNote(String id) {
+	// ------------------------------ getAllNote ------------------------------ //
+	public Vector<Note> getAllNote(String id) throws SQLException {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Vector<Note> n = null;
+		
+		try {
+			conn = getConnection();
+			n = new Vector<Note>();
+			ps= conn.prepareStatement(StringQuery.GET_ALL_NOTE);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeAll(rs, ps, conn);
+		}
 		return null;
 	}
 }
