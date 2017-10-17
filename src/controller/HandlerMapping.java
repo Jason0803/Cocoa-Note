@@ -25,6 +25,8 @@ public class HandlerMapping {
 			controller = new CalendarController();
 		} else if(command.equals("search")) {
 			controller = new SearchController();
+		} else if(command.equals("writeNote")) {
+			controller = new WriteNoteController();
 		}
 		return controller;
 	}

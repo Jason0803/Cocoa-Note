@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <c:if test="${memberVO!=null}">
 <script type="text/javascript">
-	location.href = "cal.jsp";
+	location.href = "DispatcherServlet?command=cal";
 </script>
 </c:if>
 <script type="text/javascript">

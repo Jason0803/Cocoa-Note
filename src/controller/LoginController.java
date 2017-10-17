@@ -18,7 +18,7 @@ public class LoginController implements Controller {
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 		CocoaDate today = new CocoaDate();
-		String path = "cal.jsp?year="+today.getYear()+"month="+today.getMonth();
+		String path = "DispatcherServlet?command=cal&year="+today.getYear()+"&month="+today.getMonth();
 		Member vo = MemberDAO.getInstance().login(id, password);
 		if(vo==null) path = "login.jsp?login=false";
 		else {
