@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.Vector;
 
 import sql.StringQuery;
@@ -120,10 +121,14 @@ public class DiaryDAO {
 			conn = getConnection();
 			m = new Vector<Memo>();
 			ps= conn.prepareStatement(StringQuery.GET_ALL_MEMO);
+			ps.setString(1, id);
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				
+				m.add(new Memo(rs.getInt("memo_no"), 
+						id, 
+						new CocoaDate(new Date(rs.getTimestamp("wrt_date").getTime())), 
+						rs.getString("content")));
 			}	
 			
 		}catch(Exception e) {
