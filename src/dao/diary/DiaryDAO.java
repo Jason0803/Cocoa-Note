@@ -92,9 +92,11 @@ public class DiaryDAO {
 			}
 			
 		}catch(Exception e) {
+			System.out.println("ERROR : [DiaryDAO]@getAllSchedule : SQLException Caught !");
 			e.printStackTrace();
 		}finally {
 			closeAll(rs, ps, conn);
+			System.out.println("[DiaryDAO]@getAllSchedule : Arrived finally clause");
 		}
 		return null;
 	}
