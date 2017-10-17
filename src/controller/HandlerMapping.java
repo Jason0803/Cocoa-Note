@@ -17,6 +17,8 @@ public class HandlerMapping {
 			controller = new LoginController();
 		} else if(command.equals("updateMember")) {
 			controller = new UpdateMemberController();
+		} else if(command.equals("writeMemo")) {
+			controller = new WriteMemoController();
 		}
 		return controller;
 	}
