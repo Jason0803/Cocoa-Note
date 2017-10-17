@@ -1,5 +1,6 @@
 package util;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -59,17 +60,7 @@ public class CocoaDate {
 	
 	// #00047 : Constructor for DATE type --> CocoaDate
 	public CocoaDate(Date date) {
-		this.year = date.getYear();
-		this.month = date.getMonth();
-		this.date = date.getDate();
-		this.hour = date.getHours();
-		this.minute = date.getMinutes();
-		
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(date);
-		// cal.set(date.getYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes());
-		setDefault(date.getYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes());
-		setRenewCal(cal);
+		this(new SimpleDateFormat("YYYYMddHHmm").format(date));
 	}
 	
 	private void setDefault(int year, int month, int date, int hour, int minute) {
@@ -134,4 +125,12 @@ public class CocoaDate {
 	public int getEndDay() {
 		return lastDate;
 	}
+
+	@Override
+	public String toString() {
+		return year + "/" + month + "/" + date + ", " + hour + ":"
+				+ minute;
+	}
+	
+	
 }
