@@ -42,21 +42,7 @@ public class DiaryDAO {
 	
 	
 	// ------------------------------ Logics ------------------------------ //
-	public void printMemoDate(String id) throws SQLException {
-		Connection conn = null;
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		
-		try {
-			conn = getConnection();
-			ps = conn.prepareStatement("SELECT wrt_date FROM memo WHERE id = ?");
-			//ps.setString(parameterIndex, x);
-		} catch(SQLException e) {
-			
-		} finally {
-			
-		}
-	}
+	
 	// ------------------------------ getAllMemo ------------------------------ //
 	public Vector<Memo> getAllMemo(String id) throws SQLException {
 		Connection conn = null;
@@ -69,7 +55,6 @@ public class DiaryDAO {
 			v = new Vector<Memo>();
 			ps = conn.prepareStatement(StringQuery.GET_ALL_MEMO);
 			rs = ps.executeQuery();
-			
 			
 			while(rs.next()) {
 				
