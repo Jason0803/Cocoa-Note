@@ -1,6 +1,7 @@
 package util;
 
 import java.util.Calendar;
+import java.util.Date;
 
 /*
  * Date 관리용 커스텀 클래스.
@@ -47,6 +48,21 @@ public class CocoaDate {
 		Calendar cal = Calendar.getInstance();
 		cal.set(year, month, date, hour, minute);
 		setDefault(year, month, date, hour, minute);
+		setRenewCal(cal);
+	}
+	
+	// #00047 : Constructor for DATE type --> CocoaDate
+	public CocoaDate(Date date) {
+		this.year = date.getYear();
+		this.month = date.getMonth();
+		this.date = date.getDate();
+		this.hour = date.getHours();
+		this.minute = date.getMinutes();
+		
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		// cal.set(date.getYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes());
+		setDefault(date.getYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes());
 		setRenewCal(cal);
 	}
 	
