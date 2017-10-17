@@ -8,7 +8,7 @@
 </head>
 <body>
 <c:forEach var="memo" items="${memos}">
-	<div class="memo">${memo.content}</div>
+	<div class="memo">${memo.content}, ${memo.writeDate}</div>
 </c:forEach>
 </body>
 </html>
