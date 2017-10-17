@@ -25,6 +25,12 @@ public class CocoaDate {
 	private Calendar originCal;
 	private Calendar renewCal;
 	
+	public CocoaDate() { //인자값 없이 CocoaDate 생성시 현재시간으로 생성
+		Calendar cal = Calendar.getInstance();
+		setDefault(cal.get(cal.YEAR), cal.get(cal.MONTH)+1, cal.get(cal.DATE), cal.get(cal.HOUR), cal.get(cal.MINUTE));
+		setRenewCal(cal);
+	}
+	
 	public CocoaDate(Calendar cal) {
 		setDefault(cal.get(cal.YEAR), cal.get(cal.MONTH)+1, cal.get(cal.DATE), cal.get(cal.HOUR), cal.get(cal.MINUTE));
 		setRenewCal(cal);

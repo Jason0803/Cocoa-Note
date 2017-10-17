@@ -39,7 +39,7 @@ public class DiaryDAO {
 	
 	
 	// ------------------------------ Logics ------------------------------ //
-	
+
 	// ------------------------------ getAllMemo ------------------------------ //
 	public Vector<Memo> getAllMemo(String id) throws SQLException {
 		Connection conn = null;
@@ -54,16 +54,23 @@ public class DiaryDAO {
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				
+				Memo m = new Memo(rs.getInt("note_no"), 
+						rs.getString("id"),
+						new CocoaDate(rs.getDate("wrt_date")), 
+						new CocoaDate(rs.getDate("curr_date")),
+						rs.getString("title"), 
+						rs.getString("content"));
+				v.add(m);
 			}
 		} catch(SQLException e) {
+			System.out.println("ERROR : [DiaryDAO]@getAllMemo : SQLException Caught !");
 			e.printStackTrace();
 		} finally {
+			System.out.println("[DiaryDAO]@getAllMemo : Arrived finally clause");
 			closeAll(rs,ps,conn);
 		}
 		
-		return null;
-		
+		return v;
 	}
 	// ------------------------------ getAllSchedule ------------------------------ //
 	public Vector<Schedule> getAllSchedule(String id) throws SQLException {
