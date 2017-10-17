@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 import sql.StringQuery;
+import util.CocoaDate;
 import util.DataSourceManager;
 import vo.day.Day;
 import vo.diary.Diary;
@@ -42,6 +43,7 @@ public class DiaryDAO {
 	
 	
 	// ------------------------------ Logics ------------------------------ //
+	// ------------------------------ [TEMP TEST] ------------------------------ //
 	public void printMemoDate(String id) throws SQLException {
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -70,18 +72,25 @@ public class DiaryDAO {
 			ps = conn.prepareStatement(StringQuery.GET_ALL_MEMO);
 			rs = ps.executeQuery();
 			
-			
+			// #00053 : getAllMemo
 			while(rs.next()) {
-				
+				Memo m = new Memo(rs.getInt("note_no"), 
+						rs.getString("id"),
+						new CocoaDate(rs.getDate("wrt_date")), 
+						new CocoaDate(rs.getDate("curr_date")),
+						rs.getString("title"), 
+						rs.getString("content"));
+				v.add(m);
 			}
 		} catch(SQLException e) {
+			System.out.println("ERROR : [DiaryDAO]@getAllMemo : SQLException Caught !");
 			e.printStackTrace();
 		} finally {
+			System.out.println("[DiaryDAO]@getAllMemo : Arrived finally clause");
 			closeAll(rs,ps,conn);
 		}
 		
-		return null;
-		
+		return v;
 	}
 	// ------------------------------ getAllSchedule ------------------------------ //
 	public Vector<Schedule> getAllSchedule(String id) {
