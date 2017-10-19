@@ -24,10 +24,8 @@ public class CalendarViewController implements Controller {
 		
 		Day day = DiaryDAO.getInstance().getDay(id, year, month, date);
 		
-		System.out.println(year);
-		CocoaDate cocoa = new CocoaDate(year, month, 1);
-		
-		request.setAttribute("day", day);
+		// #00089 : Issue #10002 : Cal_view.jsp 완료 !
+		request.setAttribute("dayInfo", day);
 		return new ModelAndView("cal_view.jsp");
 	}
 

@@ -455,7 +455,7 @@ public class DiaryDAO {
 		
 		try {
 			conn = getConnection();
-			ps = conn.prepareStatement(StringQuery.WRITE_NOTE);
+			ps = conn.prepareStatement(StringQuery.GET_NOTE_BY_NO);
 			ps.setInt(1, no);
 			rs = ps.executeQuery();
 			
@@ -561,6 +561,7 @@ public class DiaryDAO {
 	public Day getDay(String id, int year, int month, int date) throws SQLException {
 		Connection conn = null;
 		PreparedStatement ps = null;
+		CocoaDate searchDate = null;
 		Day day = null;
 		Vector<Note> notes;
 		Vector<Schedule> schedules;
@@ -570,14 +571,28 @@ public class DiaryDAO {
 			
 			// 1. Find all Diary Items for the member.
 			day = new Day();
+			searchDate = new CocoaDate(year, month, date);
 			notes = getAllNote(id);
 			schedules = getAllSchedule(id);
 			
 			if( notes == null && schedules == null) {
 				System.out.println("[DiaryDAO]@getDay : No Notes Found for Member id : " + id);
 			} else {
-				day.setNotes(notes);
-				day.setSchedules(schedules);
+				// in case member has either notes or schedules
+				for(Note note : notes) {
+					if(searchDate.getYear() == note.getWriteDate().getYear() && 
+							searchDate.getMonth() == note.getWriteDate().getMonth() && 
+							searchDate.getDate() == note.getWriteDate().getDate()) {
+						
+						day.getNotes().add(note);						
+					}
+				}
+				for(Schedule schedule : schedules) {
+					if(searchDate.getYear() >= schedule.getStartDate().getYear() && searchDate.getYear() <= schedule.getEndDate().getYear())
+						if(searchDate.getMonth() >= schedule.getStartDate().getMonth() && searchDate.getMonth() <= schedule.getEndDate().getMonth())
+							if(searchDate.getDate() >= schedule.getStartDate().getDate() && searchDate.getDate() <= schedule.getEndDate().getDate())
+								day.getSchedules().add(schedule);
+				}
 			}
 			
 		} catch(SQLException e) {
@@ -586,6 +601,6 @@ public class DiaryDAO {
 			conn.close();
 		}
 		
-		return null;
+		return day;
 	}
 }
