@@ -47,4 +47,23 @@ public interface StringQuery {
 			 "SELECT * FROM schedule WHERE id=? AND to_char(start_date, 'YYYYMMDD')=?";
 
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	String UPDATE_NOTE = 
+			"UPATE note SET title = ?, content = ? WHERE note_no = ?";
+	
+	String UPDATE_SCHEDULE = 
+			"UPDATE schedule SET title = ?, content = ?, start_date = to_date(?, 'YYYYMMDDHH24MI'), end_date = to_date(?,'YYYYMMDDHH24MI') WHERE schedule_no = ?";
+			
+	
+	
 }

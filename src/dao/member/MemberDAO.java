@@ -94,7 +94,7 @@ public class MemberDAO {
 				
 				System.out.println("[MemberDAO]@registerMember : Adding member done");
 			} else  {
-				throw new DuplicateIdException("Already Existing ID !");
+				throw new DuplicateIdException("[MemberDAO]@registerMember : Already Existing ID !");
 			}
 		} finally {
 			try{

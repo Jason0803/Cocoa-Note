@@ -14,6 +14,7 @@ import java.util.Map;
 import java.util.Vector;
 
 import javafx.scene.chart.PieChart.Data;
+import jdbc.exception.RecordNotFoundException;
 import sql.StringQuery;
 import util.CocoaDate;
 import util.DataSourceManager;
@@ -420,14 +421,80 @@ public class DiaryDAO {
 		return null;
 	}
 	// ------------------------------------------------ updateNote ------------------------------------------------ //
-	public Note updateNote(int no, String title, String content) {
+	public Note updateNote(int no, String title, String content) throws SQLException, RecordNotFoundException {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		Note note = null;
 		
-		return null;
+		try {
+			conn = getConnection();
+			
+			// 1. Search Note by No.
+			note = getNoteByNo(no);
+			if(note == null) throw new RecordNotFoundException("[DiaryDAO]@updateNote : No Such Note Found !");
+			else System.out.println("[DiaryDAO]@updateNote : Found note with no : " + no);
+			
+			// 2. Excute query (sql.StringQuery.UPDATE_NOTE)
+			ps = conn.prepareStatement(StringQuery.UPDATE_NOTE);
+			ps.setString(1, "title");
+			ps.setString(2, "content");
+			ps.setInt(3, no);
+			
+			ps.executeUpdate();
+			System.out.println("[DiaryDAO]@updateNote : Update Complete for Note no : " + no);
+			
+			
+			// To return note instance
+			note.setTitle(title);
+			note.setContent(content);
+				
+		} catch(SQLException e) {
+			System.out.println("[DiaryDAO]@updateNote : Update Failed for Note.no : " + no);
+			System.out.println("[DiaryDAO]@updateNote : SQLException !");
+			e.printStackTrace();
+		} finally {
+			closeAll(ps, conn);
+		}
+		return note;
 	}
 	// ------------------------------------------------ updateSchedule ------------------------------------------------ //
-	public Schedule updateSchedule(int no, String title, String content, CocoaDate start_date, CocoaDate end_date) {
+	public Schedule updateSchedule(int no, String title, String content, CocoaDate start_date, CocoaDate end_date) throws SQLException, RecordNotFoundException {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		Schedule schedule = null;
 		
-		return null;
+		try{
+			conn = getConnection();
+			
+			// 1. Find Schedule by No.
+			schedule = getScheduleByNo(no);
+			if(schedule == null) throw new RecordNotFoundException("[DiaryDAO]@updateSchedule : No Such Schedule Found with no : " + no);
+			else System.out.println("[DiaryDAO]@updateSchedule : Found schedule with no : " + no);
+			
+			// 2. Execute query (sql.StringQuery.UPDATE_SCHEDULE)
+			ps = conn.prepareStatement(StringQuery.UPDATE_SCHEDULE);
+			ps.setString(1, title);
+			ps.setString(2, content);
+			ps.setString(3, start_date.getDateQuery());
+			ps.setString(4, end_date.getDateQuery());
+			ps.setInt(5, no);
+			
+			ps.executeUpdate();
+			System.out.println("[DiaryDAO]@updateSchedule : Update Complete for Schedule.no : " + no);
+			
+			schedule.setTitle(title);
+			schedule.setContent(content);
+			schedule.setStartDate(start_date);
+			schedule.setEndDate(end_date);
+			
+		} catch(SQLException e) {
+			System.out.println("[DiaryDAO]@updateSchedule : Update Failed for Schedule.no : " + no);
+			System.out.println("[DiaryDAO]@updateSchedule : SQLException !");
+			e.printStackTrace();
+		}
+		
+		
+		return schedule;
 	}
 	
 }
