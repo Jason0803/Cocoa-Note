@@ -1,5 +1,5 @@
 > CalendarViewController.java
-> command = "calView"
+- command = "calView"
 
 > Fields
 - String id : Session memberVO
