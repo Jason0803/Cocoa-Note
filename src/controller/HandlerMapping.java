@@ -20,7 +20,7 @@ public class HandlerMapping {
 		} else if(command.equals("writeMemo")) {
 			controller = new WriteMemoController();
 		} else if(command.equals("memoList")) {
-			controller = new ListMemoController();
+			controller = new MemoListController();
 		} else if(command.equals("cal")) {
 			controller = new CalendarController();
 		} else if(command.equals("search")) {

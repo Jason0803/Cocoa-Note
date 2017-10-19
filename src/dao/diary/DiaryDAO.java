@@ -314,7 +314,8 @@ public class DiaryDAO {
            currNo = getCurrDiaryNo();
            rnote.setNo(currNo);
         }catch(Exception e) {
-           e.printStackTrace();
+        	System.out.println("[DiaryDAO]@writeDiary(Note note) : ");
+        	e.printStackTrace();
         }finally {
            closeAll(rs, ps, conn);
          }

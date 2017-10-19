@@ -10,7 +10,7 @@ import dao.diary.DiaryDAO;
 import vo.diary.Memo;
 import vo.member.Member;
 
-public class ListMemoController implements Controller {
+public class MemoListController implements Controller {
 
 	@Override
 	public ModelAndView handle(HttpServletRequest request, HttpServletResponse response) throws Exception {
