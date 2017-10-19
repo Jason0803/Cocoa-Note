@@ -48,7 +48,8 @@ public interface StringQuery {
 	String GET_NOTE_BY_NO = 
 			"SELECT * FROM note WHERE note_no=?";
 
-	
+	String GET_SCHEDULE_BY_NO =
+			"SELECT * FROM Schedule WHERE Schedule_no=?"; 
 	
 	
 	
