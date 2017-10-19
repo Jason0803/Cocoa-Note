@@ -5,16 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-div {
-	border: 1px solid black;
-	width:15%;
-}
-</style>
 </head>
 <body>
-<c:forEach var="memo" items="${memos}">
-	<div class="memo">${memo.content}<br /> ${memo.writeDate}</div>
-</c:forEach>
+<form action="DispatcherServlet" method="post">
+<input type="text" name="title" />
+<textarea rows="10" cols="50" name="content"></textarea>
+<input type="submit" value="작성"/>
+<input type="hidden" name="command" value="writeNote" />
+</form>
 </body>
 </html>

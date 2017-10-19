@@ -71,6 +71,20 @@ public class CocoaDate {
 		this.minute = minute;
 	} // CocoaDate 객체 필드에 연월일분초를 할당하는 내부메소드
 	
+	public String getDateQuery() {
+		String query = "";
+		String tempMonth = ""+this.month;
+		String tempDate = ""+this.date;
+		String tempHour = ""+this.hour;
+		String tempMinute = ""+this.minute;
+		if(this.month<10) tempMonth = "0"+this.month;
+		if(this.date<10) tempDate = "0"+this.date;
+		if(this.hour<10) tempHour = "0"+this.hour;
+		if(this.minute<10) tempMinute = "0"+this.minute;
+		query = year+tempMonth+tempDate+tempHour+tempMinute;
+		return query;
+	}
+	
 	public Calendar getOriginCal() {
 		return originCal;
 	}
@@ -98,8 +112,24 @@ public class CocoaDate {
 		this.month = month;
 	}
 
-	public void setDay(int day) {
+	public void setDate(int day) {
 		this.date = day;
+	}
+
+	public int getHour() {
+		return hour;
+	}
+
+	public void setHour(int hour) {
+		this.hour = hour;
+	}
+
+	public int getMinute() {
+		return minute;
+	}
+
+	public void setMinute(int minute) {
+		this.minute = minute;
 	}
 
 	public void setStartDay(int startDay) {
@@ -116,14 +146,27 @@ public class CocoaDate {
 	public int getMonth() {
 		return month;
 	}
-	public int getDay() {
+	public int getDate() {
 		return date;
+	}
+	
+	public String getDateDD() {
+		if(date<10) return "0"+date;
+		else return date+"";
 	}
 	public int getStartDay() {
 		return startDay;
 	}
 	public int getEndDay() {
 		return lastDate;
+	}
+
+	public int getLastDate() {
+		return lastDate;
+	}
+
+	public void setLastDate(int lastDate) {
+		this.lastDate = lastDate;
 	}
 
 	@Override

@@ -6,14 +6,18 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 
+import javafx.scene.chart.PieChart.Data;
 import sql.StringQuery;
 import util.CocoaDate;
 import util.DataSourceManager;
+import vo.day.Day;
 import vo.diary.Memo;
 import vo.diary.Note;
 import vo.diary.Schedule;
@@ -186,7 +190,10 @@ public class DiaryDAO {
 			ps = conn.prepareStatement(StringQuery.SEARCH_MEMO_BY_KEYWORD);
 			ps.setString(1, id);
 			ps.setString(2, keyword);
+<<<<<<< HEAD
 			
+=======
+>>>>>>> origin/K2-Branch
 			rs=ps.executeQuery();
 			
 			while(rs.next()) {
@@ -233,8 +240,8 @@ public class DiaryDAO {
                        rs.getString("title"),                      // title
                        rs.getString("content"),                  // content
                        temp_str,                              // group
-                       new CocoaDate(rs.getDate("start_date")),      // startDate
-                       new CocoaDate(rs.getDate("end_date")));      // endDate
+                       new CocoaDate(new Date(rs.getTimestamp("start_date").getTime())),      // startDate
+                       new CocoaDate(new Date(rs.getTimestamp("end_date").getTime())));      // endDate
              sc.put(rs.getInt("schedule_no"), s);
           }}}
            
@@ -247,58 +254,74 @@ public class DiaryDAO {
      }
 	
 	// ------------------------------------------------ writeDiary ------------------------------------------------ //
-	public Memo writeDiary(Memo memo) {
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		return null;
+	public int getCurrDiaryNo() throws SQLException {
+		Connection conn = null;
+        PreparedStatement ps = null;
+		ResultSet rs = null;
+        int currNo = 0;
+        try {
+            conn = getConnection();
+            ps= conn.prepareStatement(StringQuery.GET_CURR_DIARYNO);
+            rs = ps.executeQuery();
+            if(rs.next()) currNo = rs.getInt(1);
+         }catch(Exception e) {
+            e.printStackTrace();
+         }finally {
+             closeAll(rs, ps, conn);
+         }
+         return currNo;
 	}
+	
+	public Memo writeDiary(Memo memo) throws SQLException {
+		Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Memo rmemo = memo;
+        int currNo = 0;
+        try {
+           conn = getConnection();
+           ps= conn.prepareStatement(StringQuery.WRITE_MEMO);
+           ps.setString(1, memo.getId());
+           ps.setString(2, memo.getContent());
+           ps.setString(3, memo.getWriteDate().getDateQuery());
+           ps.executeUpdate();
+           
+           currNo = getCurrDiaryNo();
+           rmemo.setNo(currNo);
+        }catch(Exception e) {
+           e.printStackTrace();
+        }finally {
+           closeAll(rs, ps, conn);
+         }
+        return rmemo;
+     }
+		
 	// ------------------------------------------------ writeDiary ------------------------------------------------ //
-	public Note writeDiary(Note note) {
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		return null;
+	public Note writeDiary(Note note) throws SQLException {
+		Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Note rnote = note;
+        int currNo = 0;
+        try {
+           conn = getConnection();
+           ps= conn.prepareStatement(StringQuery.WRITE_NOTE);
+           //note_no, id, title, content, wrt_date, curr_date
+           ps.setString(1, note.getId());
+           ps.setString(2, note.getTitle());
+           ps.setString(3, note.getContent());
+           ps.setString(4, note.getWriteDate().getDateQuery());
+           ps.setString(5, note.getWriteDate().getDateQuery());
+           ps.executeUpdate();
+           
+           currNo = getCurrDiaryNo();
+           rnote.setNo(currNo);
+        }catch(Exception e) {
+           e.printStackTrace();
+        }finally {
+           closeAll(rs, ps, conn);
+         }
+        return rnote;
 	}
 	// ------------------------------------------------ writeDiary ------------------------------------------------ //
 	public Schedule writeDiary(Schedule schedule) {
@@ -326,5 +349,54 @@ public class DiaryDAO {
 		
 		
 		return null;
+	}
+	
+	public ArrayList<Day> getMonthlyDiary(String id, CocoaDate date) throws SQLException{
+		Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        ArrayList<Day> monthlyDiary = new ArrayList<>();
+        Day day = new Day();
+        String lookingDate = "";
+        try {
+           conn = getConnection();
+           for(int j=1;j<date.getStartDay();j++) monthlyDiary.add(new Day());
+           for(int i=date.getRenewCal().get(Calendar.DATE);i<=date.getLastDate();i++) {
+        	   lookingDate = date.getDateQuery().substring(0, 6);
+        	   day = new Day(new CocoaDate(date.getYear(), date.getMonth(), i));
+        	   ps= conn.prepareStatement(StringQuery.GET_DAILY_NOTE_BY_ID);
+        	   if(i<10) lookingDate = lookingDate+"0"+i;
+        	   else lookingDate = lookingDate+i+"";
+        	   ps.setString(1, id);
+        	   ps.setString(2, lookingDate);
+        	   System.out.println("find for note : " + lookingDate);
+        	   rs = ps.executeQuery();
+        	   while(rs.next())
+        		   day.getNotes().add(new Note(rs.getInt("note_no"),
+        				                       id, date, 
+        				                       rs.getString("content"), 
+        				                       new CocoaDate(new Date(rs.getTimestamp("curr_date").getTime())),
+        				                       rs.getString("title")));
+        	   ps= conn.prepareStatement(StringQuery.GET_DAILY_SCHEDULE_BY_ID);
+        	   ps.setString(1, id);
+        	   ps.setString(2, lookingDate);
+
+        	   System.out.println("find for schedule : " + lookingDate);
+        	   rs = ps.executeQuery();
+        	   while(rs.next())
+        		   day.getSchedules().add(new Schedule(rs.getInt("schedule_no"), 
+        				   							   id, rs.getString("title"), 
+        				   							   rs.getString("content"), 
+        				   							   new String[] {}, 
+        				   							   date, 
+        				   						  	   new CocoaDate(new Date(rs.getTimestamp("curr_date").getTime()))));
+        	   monthlyDiary.add(day);
+           }
+        }catch(Exception e) {
+           e.printStackTrace();
+        }finally {
+           closeAll(rs, ps, conn);
+        }
+		return monthlyDiary;
 	}
 }

@@ -34,5 +34,19 @@ public interface StringQuery {
 			"SELECT * FROM memo WHERE id=? AND content LIKE '%'||?||'%'";
 	String SEARCH_SCHEDULE_BY_KEYWORD = 
 	         "SELECT * FROM SCHEDULE WHERE id=? AND (TITLE like '%'||?||'%' OR CONTENT like '%'||?||'%')";
+<<<<<<< HEAD
+=======
+	String GET_CURR_DIARYNO =
+			 "SELECT seq_diary_no.currVal FROM dual";
+	String WRITE_MEMO = 
+			 "INSERT INTO memo (memo_no, id, content, wrt_date) VALUES(seq_diary_no.nextVal, ?, ?, to_date(?, 'YYYYMMDDHHMI'))";
+	String WRITE_NOTE = 
+			 "INSERT INTO note (note_no, id, title, content, wrt_date, curr_date) VALUES(seq_diary_no.nextVal, ?, ?, ?, to_date(?, 'YYYYMMDDHHMI'), to_date(?, 'YYYYMMDDHHMI'))";
+	String GET_DAILY_NOTE_BY_ID = 
+			 "SELECT * FROM note WHERE id=? AND to_char(wrt_date, 'YYYYMMDD')=?";
+	String GET_DAILY_SCHEDULE_BY_ID = 
+			 "SELECT * FROM schedule WHERE id=? AND to_char(start_date, 'YYYYMMDD')=?";
+
+>>>>>>> origin/K2-Branch
 
 }

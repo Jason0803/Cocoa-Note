@@ -15,10 +15,16 @@ public class Day {
 	
 	public Day() {
 		super();
+		this.notes = new Vector<>();
+		this.schedules = new Vector<>();
+		this.memos = new Vector<>();
 	}
 
 	public Day(CocoaDate date) {
 		super();
+		this.notes = new Vector<>();
+		this.schedules = new Vector<>();
+		this.memos = new Vector<>();
 		this.date = date;
 	}
 
