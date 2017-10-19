@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 
+import controller.util.IntegerRange;
 import javafx.scene.chart.PieChart.Data;
 import jdbc.exception.RecordNotFoundException;
 import sql.StringQuery;
@@ -568,7 +569,7 @@ public class DiaryDAO {
 		
 		try {
 			conn = getConnection();
-			
+		
 			// 1. Find all Diary Items for the member.
 			day = new Day();
 			searchDate = new CocoaDate(year, month, date);
@@ -587,10 +588,11 @@ public class DiaryDAO {
 						day.getNotes().add(note);						
 					}
 				}
+				
 				for(Schedule schedule : schedules) {
-					if(searchDate.getYear() >= schedule.getStartDate().getYear() && searchDate.getYear() <= schedule.getEndDate().getYear())
-						if(searchDate.getMonth() >= schedule.getStartDate().getMonth() && searchDate.getMonth() <= schedule.getEndDate().getMonth())
-							if(searchDate.getDate() >= schedule.getStartDate().getDate() && searchDate.getDate() <= schedule.getEndDate().getDate())
+					if(IntegerRange.betweenInclusive(searchDate.getYear(), schedule.getStartDate().getYear(), schedule.getEndDate().getYear()))
+						if(IntegerRange.betweenInclusive(searchDate.getMonth(), schedule.getStartDate().getMonth(), schedule.getEndDate().getMonth()))
+							if(IntegerRange.betweenInclusive(searchDate.getDate(), schedule.getStartDate().getDate(), schedule.getEndDate().getDate()))
 								day.getSchedules().add(schedule);
 				}
 			}
