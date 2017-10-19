@@ -45,7 +45,8 @@ public interface StringQuery {
 			 "SELECT * FROM note WHERE id=? AND to_char(wrt_date, 'YYYYMMDD')=?";
 	String GET_DAILY_SCHEDULE_BY_ID = 
 			 "SELECT * FROM schedule WHERE id=? AND to_char(start_date, 'YYYYMMDD')=?";
-
+	String GET_NOTE_BY_NO = 
+			"SELECT * FROM note WHERE no=?";
 
 	
 	

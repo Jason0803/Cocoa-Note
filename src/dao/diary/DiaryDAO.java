@@ -410,15 +410,74 @@ public class DiaryDAO {
 		return null;
 	}
 	// ------------------------------------------------ getNoteList ------------------------------------------------ //
-	public Vector<Note> getNoteList(String id) {
+	public Vector<Note> getNoteList(String id) throws SQLException {
 		
-		return null;
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Vector<Note> n = null;
+		
+		try {
+			conn = getConnection();
+			n = new Vector<Note>();
+			ps = conn.prepareStatement(StringQuery.GET_NOTE_LIST);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Note m = new Note(rs.getInt("note_no"), 			// no
+						rs.getString("id"),							// id
+						new CocoaDate(rs.getDate("wrt_date")), 		// writeDate
+						rs.getString("content"),					// content
+						new CocoaDate(rs.getDate("curr_date")),		// currentDate
+						rs.getString("title"));						// title
+				
+				n.add(m);
+			}
+
+		} catch(SQLException e) {
+			System.out.println("ERROR : [DiaryDAO]@getNoteList : SQLException Caught !");
+			e.printStackTrace();
+		} finally {
+			System.out.println("[DiaryDAO]@getNoteList : Arrived finally clause");
+			closeAll(rs,ps,conn);
+		}
+		
+		return n;
 	}
 	
 	// ------------------------------------------------ getNoteByNo ------------------------------------------------ //
-	public Note getNoteByNo(int no) {
+	public Note getNoteByNo(int no) throws SQLException {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Note note = new Note();
 		
-		return null;
+		try {
+			conn = getConnection();
+			ps = conn.prepareStatement(StringQuery.WRITE_NOTE);
+			ps.setInt(1, no);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				note = new Note(rs.getInt("note_no"), 			// no
+						rs.getString("id"),							// id
+						new CocoaDate(rs.getDate("wrt_date")), 		// writeDate
+						rs.getString("content"),					// content
+						new CocoaDate(rs.getDate("curr_date")),		// currentDate
+						rs.getString("title"));						// title
+				
+			}
+
+		} catch(SQLException e) {
+			System.out.println("ERROR : [DiaryDAO]@getNoteByNo : SQLException Caught !");
+			e.printStackTrace();
+		} finally {
+			System.out.println("[DiaryDAO]@getNoteByNo : Arrived finally clause");
+			closeAll(rs,ps,conn);
+		}
+		
+		return note;
 	}
 	// ------------------------------------------------ updateNote ------------------------------------------------ //
 	public Note updateNote(int no, String title, String content) throws SQLException, RecordNotFoundException {
