@@ -1,4 +1,4 @@
-# [Cocoa Note] (https://jason0803.github.io/Cocoa-Note/)
+# [Cocoa Note](https://jason0803.github.io/Cocoa-Note/)
 > Overview
 - Schedule Management Web Application
 > Contributors
