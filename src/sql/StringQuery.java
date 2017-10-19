@@ -34,8 +34,7 @@ public interface StringQuery {
 			"SELECT * FROM memo WHERE id=? AND content LIKE '%'||?||'%'";
 	String SEARCH_SCHEDULE_BY_KEYWORD = 
 	         "SELECT * FROM SCHEDULE WHERE id=? AND (TITLE like '%'||?||'%' OR CONTENT like '%'||?||'%')";
-<<<<<<< HEAD
-=======
+
 	String GET_CURR_DIARYNO =
 			 "SELECT seq_diary_no.currVal FROM dual";
 	String WRITE_MEMO = 
@@ -47,6 +46,5 @@ public interface StringQuery {
 	String GET_DAILY_SCHEDULE_BY_ID = 
 			 "SELECT * FROM schedule WHERE id=? AND to_char(start_date, 'YYYYMMDD')=?";
 
->>>>>>> origin/K2-Branch
 
 }

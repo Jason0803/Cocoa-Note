@@ -190,10 +190,7 @@ public class DiaryDAO {
 			ps = conn.prepareStatement(StringQuery.SEARCH_MEMO_BY_KEYWORD);
 			ps.setString(1, id);
 			ps.setString(2, keyword);
-<<<<<<< HEAD
-			
-=======
->>>>>>> origin/K2-Branch
+
 			rs=ps.executeQuery();
 			
 			while(rs.next()) {
