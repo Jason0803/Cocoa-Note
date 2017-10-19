@@ -571,8 +571,8 @@ public class DiaryDAO {
 			conn = getConnection();
 		
 			// 1. Find all Diary Items for the member.
-			day = new Day();
 			searchDate = new CocoaDate(year, month, date);
+			day = new Day(searchDate);
 			notes = getAllNote(id);
 			schedules = getAllSchedule(id);
 			
