@@ -36,7 +36,7 @@ public interface StringQuery {
 	         "SELECT * FROM SCHEDULE WHERE id=? AND (TITLE like '%'||?||'%' OR CONTENT like '%'||?||'%')";
 
 	String GET_CURR_DIARYNO =
-			 "SELECT seq_diary_no.currVal FROM dual";
+			 "SELECT last_number FROM user_sequences WHERE sequence_name='SEQ_DIARY_NO'";
 	String WRITE_MEMO = 
 			 "INSERT INTO memo (memo_no, id, content, wrt_date) VALUES(seq_diary_no.nextVal, ?, ?, to_date(?, 'YYYYMMDDHHMI'))";
 	String WRITE_NOTE = 
