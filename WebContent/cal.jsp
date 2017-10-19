@@ -11,11 +11,31 @@
 		<c:if test="${today!=null}">
 			var year = ${today.year};
 			var month = ${today.month};
-			var path = "DispatcherServlet?command=cal&year="+year"+&month="+month;
+			var path = "DispatcherServlet?command=cal&year="+year+"&month="+month;
 		</c:if>
 		location.href=path;
 	</script>
 </c:if>
+<script type="text/javascript">
+	function prevMonth() {
+		var year = ${param.year};
+		var month = ${param.month};
+		if(month==1){
+			year -= 1;
+			month = 12;
+		} else month -= 1;
+		location.href="DispatcherServlet?command=cal&year="+year+"&month="+month;
+	}
+	function nextMonth() {
+		var year = ${param.year};
+		var month = ${param.month};
+		if(month==12){
+			year += 1;
+			month = 1;
+		} else month +=1;
+		location.href="DispatcherServlet?command=cal&year="+year+"&month="+month;
+	}
+</script>
 <style type="text/css">
 table {
 	width:70%;
@@ -39,7 +59,14 @@ td {
 </style>
 </head>
 <body>
-${param.year}년 ${param.month}월<br />
+<a href="DispatcherServlet?command=cal&year=${today.year}&month=${today.month}">캘린더</a><br />
+<a href="DispatcherServlet?command=noteList">노트 리스트</a><br />
+<a href="DispatcherServlet?command=memoList">메모 리스트</a><br />
+
+<br /><br />
+<a href="javascript:prevMonth()">◀</a>
+${param.year}년 ${param.month}월
+<a href="javascript:nextMonth()">▶</a><br />
 <table>
 <thead>
 	<tr>
@@ -55,11 +82,11 @@ ${param.year}년 ${param.month}월<br />
 <tbody>
 <tr>
 <c:forEach var="day" items="${monthlyDiary}" varStatus="column">
-	<td>
-		<span class="date">${day.date.date}</span><br/>
-		<c:forEach var="note" items="${day.notes}">
-			<span class="span-note">${note.title}</span>
-		</c:forEach>
+	<td id="date_${day.date.date}">
+			<span class="date">${day.date.date}</span><br/>
+			<c:forEach var="note" items="${day.notes}">
+				<span class="span-note">${note.title}</span>
+			</c:forEach>
 	</td>
 	<c:if test="${column.count%7==0}">
 	</tr>
