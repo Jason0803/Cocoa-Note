@@ -16,7 +16,8 @@ import java.util.Date;
  */
 
 public class CocoaDate {
-	private int year;
+	// Field 설명 추가 필요
+	private int year;								
 	private int month;
 	private int date;
 	private int startDay;

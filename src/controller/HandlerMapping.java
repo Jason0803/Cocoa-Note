@@ -11,6 +11,63 @@ public class HandlerMapping {
 	
 	public Controller handleRequest(String command) {
 		Controller controller = null;
+		
+		switch(command) {
+			case "login" : {
+				controller = new RegisterMemberController();
+				break;
+			}
+			case "updateMember" : {
+				controller = new LoginController();
+				break;
+			}
+			case "writeMemo" : {
+				controller = new WriteMemoController();
+				break;
+			}
+			case "memoList" : {
+				controller = new MemoListController();
+				break;
+			}
+			case "cal" : {
+				controller = new CalendarController();
+				break;
+			}
+			case "serach" : {
+				controller = new SearchController();
+				break;
+			}
+			case "writeNote" : {
+				controller = new WriteNoteController();
+				break;
+			}
+			// #00082 : HandlerMapping or 6 New ..Controllers
+			case "noteList" : {
+				controller = new NoteListController();
+				break;
+			}
+			case "noteView" : {
+				controller = new NoteViewController();
+				break;
+			}
+			case "scheduleView" : {
+				controller = new ScheduleViewController();
+				break;
+			}
+			case "deleteDiary" : {
+				controller = new DeleteDiaryController();
+				break;
+			}
+			case "updateNote" : { 
+				controller = new UpdateNoteController();
+				break;
+			}
+			case "updateSchedule" : {
+				controller = new UpdateScheduleController();
+				break;
+			}
+		}
+		/*
 		if(command.equals("register")) {
 			controller = new RegisterMemberController();
 		} else if(command.equals("login")) {
@@ -20,7 +77,7 @@ public class HandlerMapping {
 		} else if(command.equals("writeMemo")) {
 			controller = new WriteMemoController();
 		} else if(command.equals("memoList")) {
-			controller = new ListMemoController();
+			controller = new MemoListController();
 		} else if(command.equals("cal")) {
 			controller = new CalendarController();
 		} else if(command.equals("search")) {
@@ -28,6 +85,7 @@ public class HandlerMapping {
 		} else if(command.equals("writeNote")) {
 			controller = new WriteNoteController();
 		}
+		*/
 		return controller;
 	}
 }

@@ -185,9 +185,9 @@ public class MemberDAO {
 				if(rs.next()) {
 					member = new Member(id, null, rs.getString("name"), rs.getInt("acc_plan"), rs.getInt("theme"));
 				}
-			}
+			} 
 		}catch(RecordNotFoundException e){
-			
+			return null;
 		}finally {
 			closeAll(ps, conn, rs);
 		}
