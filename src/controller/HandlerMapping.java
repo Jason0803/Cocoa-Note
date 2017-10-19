@@ -43,26 +43,36 @@ public class HandlerMapping {
 			}
 			// #00082 : HandlerMapping or 6 New ..Controllers
 			case "noteList" : {
+				// 전체 노트 가져오는 것
 				controller = new NoteListController();
 				break;
 			}
 			case "noteView" : {
+				// 특정 no 를 받아서, 그 넘버 해당하는 노트를 리턴
 				controller = new NoteViewController();
 				break;
 			}
 			case "scheduleView" : {
+				// 특정 no 를 받아서, 그 넘버 해당하는 스케쥴 리턴
 				controller = new ScheduleViewController();
 				break;
 			}
 			case "deleteDiary" : {
+				// 그 넘버 해당하는 것 지움
 				controller = new DeleteDiaryController();
 				break;
 			}
 			case "updateNote" : { 
+				//노트 내용을 수정 
+				// no 는 해당 노트를찾기 위한 것이
+				// title / content 수정 함
 				controller = new UpdateNoteController();
 				break;
 			}
 			case "updateSchedule" : {
+				//노트 내용을 수정 
+				// no 는 해당 노트를찾기 위한 것이
+				// title / content / 시작날짜 / 끝날짜 수정 함
 				controller = new UpdateScheduleController();
 				break;
 			}
