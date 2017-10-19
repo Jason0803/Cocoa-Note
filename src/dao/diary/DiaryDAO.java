@@ -400,12 +400,63 @@ public class DiaryDAO {
 		return monthlyDiary;
 	}
 	// ------------------------------------------------ getScheduleByNo ------------------------------------------------ //
-	public Schedule getScheduleByNo(int no) {
-		
-		return null;
+	public Schedule getScheduleByNo(int no) throws SQLException {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Schedule sc = null;
+		String[] temp_str = {};
+	
+		try {
+			conn = getConnection();
+			ps = conn.prepareStatement(StringQuery.GET_SCHEDULE_BY_NO);
+			ps.setInt(1, no);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+					sc = new Schedule(rs.getInt("schedule_no"),
+							rs.getString("id"),
+							rs.getString("title"),
+							rs.getString("content"),
+							temp_str,
+							new CocoaDate(new Date(rs.getTimestamp("start_date").getTime())),
+							new CocoaDate(new Date(rs.getTimestamp("end_date").getTime())));
+			}	
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeAll(rs, ps, conn);
+		}
+		return sc;
 	}
+	
 	// ------------------------------------------------ deleteDiary ------------------------------------------------ //
-	public Diary deleteDiary(int no){ 
+	
+	// 보류 !! TBD
+	public Diary deleteDiary(int no) throws SQLException{ 
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = getConnection();
+			ps = conn.prepareStatement(StringQuery.DELETE_DIARY_BY_NO);
+			ps.setInt(1, no);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				
+				
+			}
+			
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			closeAll(rs, ps, conn);
+		}
+		
 		
 		return null;
 	}

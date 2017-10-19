@@ -2,3 +2,6 @@
 doc/Module View.pdf
 doc/Module View.pdf
 *.pdf
+*.java
+*.java
+src/util/DataSourceManager.java

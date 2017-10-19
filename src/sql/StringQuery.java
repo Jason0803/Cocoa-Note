@@ -47,7 +47,8 @@ public interface StringQuery {
 			 "SELECT * FROM schedule WHERE id=? AND to_char(start_date, 'YYYYMMDD')=?";
 
 
-	
+	String GET_SCHEDULE_BY_NO =
+			"SELECT * FROM Schedule WHERE Schedule_no=?"; 
 	
 	
 	
