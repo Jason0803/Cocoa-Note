@@ -14,11 +14,11 @@ public class HandlerMapping {
 		
 		switch(command) {
 			case "login" : {
-				controller = new RegisterMemberController();
+				controller = new LoginController();
 				break;
 			}
 			case "updateMember" : {
-				controller = new LoginController();
+				controller = new UpdateMemberController();
 				break;
 			}
 			case "writeMemo" : {

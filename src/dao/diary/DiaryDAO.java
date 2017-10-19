@@ -18,6 +18,7 @@ import sql.StringQuery;
 import util.CocoaDate;
 import util.DataSourceManager;
 import vo.day.Day;
+import vo.diary.Diary;
 import vo.diary.Memo;
 import vo.diary.Note;
 import vo.diary.Schedule;
@@ -397,4 +398,36 @@ public class DiaryDAO {
         }
 		return monthlyDiary;
 	}
+	// ------------------------------------------------ getScheduleByNo ------------------------------------------------ //
+	public Schedule getScheduleByNo(int no) {
+		
+		return null;
+	}
+	// ------------------------------------------------ deleteDiary ------------------------------------------------ //
+	public Diary deleteDiary(int no){ 
+		
+		return null;
+	}
+	// ------------------------------------------------ getNoteList ------------------------------------------------ //
+	public Vector<Note> getNoteList(String id) {
+		
+		return null;
+	}
+	
+	// ------------------------------------------------ getNoteByNo ------------------------------------------------ //
+	public Note getNoteByNo(int no) {
+		
+		return null;
+	}
+	// ------------------------------------------------ updateNote ------------------------------------------------ //
+	public Note updateNote(int no, String title, String content) {
+		
+		return null;
+	}
+	// ------------------------------------------------ updateSchedule ------------------------------------------------ //
+	public Schedule updateSchedule(int no, String title, String content, CocoaDate start_date, CocoaDate end_date) {
+		
+		return null;
+	}
+	
 }
