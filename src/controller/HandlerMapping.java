@@ -66,6 +66,10 @@ public class HandlerMapping {
 				controller = new UpdateScheduleController();
 				break;
 			}
+			case "calView" : {
+				controller = new CalendarViewController();
+				break;
+			}
 		}
 		/*
 		if(command.equals("register")) {

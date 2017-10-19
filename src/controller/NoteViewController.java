@@ -18,7 +18,7 @@ public class NoteViewController implements Controller {
 	public ModelAndView handle(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		Member mvo = (Member)request.getSession().getAttribute("memberVO");
-		Note note=DiaryDAO.getInstance().getNoteByNo(request.getParameter("diaryNo"));
+		Note note=DiaryDAO.getInstance().getNoteByNo(Integer.parseInt(request.getParameter("diaryNo")));
 		request.setAttribute("note", note);
 		return new ModelAndView("note_view.jsp");
 	}

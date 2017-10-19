@@ -420,7 +420,7 @@ public class DiaryDAO {
 		try {
 			conn = getConnection();
 			n = new Vector<Note>();
-			ps = conn.prepareStatement(StringQuery.GET_NOTE_LIST);
+			ps = conn.prepareStatement(StringQuery.GET_ALL_NOTE);
 			ps.setString(1, id);
 			rs = ps.executeQuery();
 			
@@ -550,10 +550,42 @@ public class DiaryDAO {
 			System.out.println("[DiaryDAO]@updateSchedule : Update Failed for Schedule.no : " + no);
 			System.out.println("[DiaryDAO]@updateSchedule : SQLException !");
 			e.printStackTrace();
+		} finally {
+			closeAll(ps, conn);
 		}
 		
 		
 		return schedule;
 	}
-	
+	// ------------------------------------------------ getDay  ------------------------------------------------ //
+	public Day getDay(String id, int year, int month, int date) throws SQLException {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		Day day = null;
+		Vector<Note> notes;
+		Vector<Schedule> schedules;
+		
+		try {
+			conn = getConnection();
+			
+			// 1. Find all Diary Items for the member.
+			day = new Day();
+			notes = getAllNote(id);
+			schedules = getAllSchedule(id);
+			
+			if( notes == null && schedules == null) {
+				System.out.println("[DiaryDAO]@getDay : No Notes Found for Member id : " + id);
+			} else {
+				day.setNotes(notes);
+				day.setSchedules(schedules);
+			}
+			
+		} catch(SQLException e) {
+			System.out.println("[DiaryDAO]@getDay : SQLException !");
+		} finally {
+			conn.close();
+		}
+		
+		return null;
+	}
 }
