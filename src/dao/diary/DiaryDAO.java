@@ -13,12 +13,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 
-import controller.util.IntegerRange;
 import javafx.scene.chart.PieChart.Data;
 import jdbc.exception.RecordNotFoundException;
 import sql.StringQuery;
 import util.CocoaDate;
 import util.DataSourceManager;
+import util.IntegerRange;
 import vo.day.Day;
 import vo.diary.Diary;
 import vo.diary.Memo;
@@ -432,7 +432,7 @@ public class DiaryDAO {
 	}
 	
 	// ------------------------------------------------ deleteDiary ------------------------------------------------ //
-	
+	// #10004 : [Major] deleteDiary(int no) 구현방법 회의 (#9)
 	// 보류 !! TBD
 	public Diary deleteDiary(int no) throws SQLException{ 
 		Connection conn = null;
@@ -441,7 +441,7 @@ public class DiaryDAO {
 		
 		try {
 			conn = getConnection();
-			ps = conn.prepareStatement(StringQuery.DELETE_DIARY_BY_NO);
+					//	ps = conn.prepareStatement(StringQuery.DELETE_DIARY_BY_NO);
 			ps.setInt(1, no);
 			rs = ps.executeQuery();
 			
