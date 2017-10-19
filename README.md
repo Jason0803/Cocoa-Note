@@ -24,10 +24,11 @@
 > Front-End
 - 기쁨 (Master)
 - 인호 (Manager)
+- 승준
 
 > Back-End
 - 수영 (Master)
-- 승준
+- 호진
 - 민영
 
 # To-Do's
@@ -38,9 +39,7 @@
 > DB Model
 - Server setting
 - Table Creation
-- 
 
 > Development
-- 회원가입
-- 로그인
-- 로그아웃
+- DiaryDAO@deleteDiary(int no)
+- Log-Out (Session)
