@@ -446,13 +446,37 @@ public class DiaryDAO {
 	}
 	
 	// ------------------------------------------------ getNoteByNo ------------------------------------------------ //
-	public Note getNoteByNo(int no) {
+	public Note getNoteByNo(int no) throws SQLException {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		Note note = new Note();
 		
-		return null;
+		try {
+			conn = getConnection();
+			ps = conn.prepareStatement(StringQuery.WRITE_NOTE);
+			ps.setInt(1, no);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				note = new Note(rs.getInt("note_no"), 			// no
+						rs.getString("id"),							// id
+						new CocoaDate(rs.getDate("wrt_date")), 		// writeDate
+						rs.getString("content"),					// content
+						new CocoaDate(rs.getDate("curr_date")),		// currentDate
+						rs.getString("title"));						// title
+				
+			}
+
+		} catch(SQLException e) {
+			System.out.println("ERROR : [DiaryDAO]@getNoteByNo : SQLException Caught !");
+			e.printStackTrace();
+		} finally {
+			System.out.println("[DiaryDAO]@getNoteByNo : Arrived finally clause");
+			closeAll(rs,ps,conn);
+		}
+		
+		return note;
 	}
 	// ------------------------------------------------ updateNote ------------------------------------------------ //
 	public Note updateNote(int no, String title, String content) {
