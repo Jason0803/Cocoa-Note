@@ -17,7 +17,7 @@ public class WriteMemoController implements Controller {
 		String id = vo.getId();
 		String content = request.getParameter("content");
 		DiaryDAO.getInstance().writeDiary(new Memo(0, id, new CocoaDate(), content));
-		return new ModelAndView("search_and_memo_result.jsp?close=true", true);
+		return new ModelAndView("write_memo_result.jsp?close=true", true);
 	}
 
 }

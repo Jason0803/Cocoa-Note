@@ -28,19 +28,19 @@ public class CocoaDate {
 	
 	public CocoaDate() { //인자값 없이 CocoaDate 생성시 현재시간으로 생성
 		Calendar cal = Calendar.getInstance();
-		setDefault(cal.get(cal.YEAR), cal.get(cal.MONTH)+1, cal.get(cal.DATE), cal.get(cal.HOUR), cal.get(cal.MINUTE));
+		setDefault(cal.get(cal.YEAR), cal.get(cal.MONTH)+1, cal.get(cal.DATE), cal.get(cal.HOUR_OF_DAY), cal.get(cal.MINUTE));
 		setRenewCal(cal);
 	}
 	
 	public CocoaDate(Calendar cal) {
-		setDefault(cal.get(cal.YEAR), cal.get(cal.MONTH)+1, cal.get(cal.DATE), cal.get(cal.HOUR), cal.get(cal.MINUTE));
+		setDefault(cal.get(cal.YEAR), cal.get(cal.MONTH)+1, cal.get(cal.DATE), cal.get(cal.HOUR_OF_DAY), cal.get(cal.MINUTE));
 		setRenewCal(cal);
 	}
 	
 	public CocoaDate(int year, int month, int date) {
 		Calendar cal = Calendar.getInstance();
 		cal.set(year, month-1, date);
-		setDefault(cal.get(cal.YEAR), cal.get(cal.MONTH)+1, cal.get(cal.DATE), cal.get(cal.HOUR), cal.get(cal.MINUTE));
+		setDefault(cal.get(cal.YEAR), cal.get(cal.MONTH)+1, cal.get(cal.DATE), cal.get(cal.HOUR_OF_DAY), cal.get(cal.MINUTE));
 		setRenewCal(cal);
 	}
 	
@@ -77,10 +77,11 @@ public class CocoaDate {
 		String tempDate = ""+this.date;
 		String tempHour = ""+this.hour;
 		String tempMinute = ""+this.minute;
-		if(this.month<10) tempMonth = "0"+this.month;
-		if(this.date<10) tempDate = "0"+this.date;
-		if(this.hour<10) tempHour = "0"+this.hour;
-		if(this.minute<10) tempMinute = "0"+this.minute;
+		System.out.println("CocoaDate getDateQuery : "+year+"\t"+tempMonth+"\t"+tempDate+"\t"+tempHour+"\t"+tempMinute);
+		if(this.month<10) tempMonth = "0"+tempMonth;
+		if(this.date<10) tempDate = "0"+tempDate;
+		if(this.hour<10) tempHour = "0"+tempHour;
+		if(this.minute<10) tempMinute = "0"+tempMinute;
 		query = year+tempMonth+tempDate+tempHour+tempMinute;
 		return query;
 	}
