@@ -26,15 +26,19 @@ public class NoteViewController implements Controller {
 		Member mvo = (Member)request.getSession().getAttribute("memberVO");
 		String id = mvo.getId();
 		boolean isCurr = Boolean.parseBoolean(request.getParameter("isCurr"));
-		Vector<Note> notes=DiaryDAO.getInstance().getNoteList(request.getParameter("diaryNo"));
+		Vector<Note> notes=DiaryDAO.getInstance().getAllNote(id);
 		Note note=null;
 		
 		request.setAttribute("notes", notes);
-		if(isCurr==true) {
+		if(isCurr) {
 			int no=DiaryDAO.getInstance().getCurrDiaryNo();
 			note=DiaryDAO.getInstance().getNoteByNo(no);
-		}else {
+		}else if(!isCurr) {
 			note=DiaryDAO.getInstance().getNoteByNo(Integer.parseInt(request.getParameter("diaryNo")));
+		} else {
+			// Type Exception
+			System.out.println("[NoteViewController] : NULL for 'isCurr' entered !");
+			System.out.println(" - Current value for isCurr : " + isCurr);
 		}
 		request.setAttribute("note", note);
 		

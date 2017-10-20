@@ -22,11 +22,11 @@ public interface StringQuery {
 	
 	// ------------------------------------------------------- DiaryDAO ------------------------------------------------------- //
 	String GET_ALL_MEMO = 
-			"SELECT * FROM memo WHERE id = ?";
+			"SELECT * FROM memo WHERE id = ? ORDER BY wrt_date DESC";
 	String GET_ALL_SCHEDULE =
-			"SELECT * FROM schedule WHERE id = ?";
+			"SELECT * FROM schedule WHERE id = ? ORDER BY wrt_date DESC";
 	String GET_ALL_NOTE =
-			"SELECT * FROM note WHERE id = ?";
+			"SELECT * FROM note WHERE id = ? ORDER BY wrt_date DESC";
 
 	String SEARCH_NOTE_BY_KEYWORD = 
 			"SELECT * FROM note WHERE id = ? AND (title LIKE '%'||?||'%' OR content LIKE '%'||?||'%')";
@@ -51,7 +51,7 @@ public interface StringQuery {
 	String GET_SCHEDULE_BY_NO =
 			"SELECT * FROM Schedule WHERE Schedule_no=?"; 
 	String UPDATE_NOTE = 
-			"UPATE note SET title = ?, content = ? WHERE note_no = ?";
+			"UPDATE note SET title = ?, content = ?, curr_date = sysdate WHERE note_no = ?";
 	String UPDATE_SCHEDULE = 
 			"UPDATE schedule SET title = ?, content = ?, start_date = to_date(?, 'YYYYMMDDHH24MI'), end_date = to_date(?,'YYYYMMDDHH24MI') WHERE schedule_no = ?";
 
@@ -67,9 +67,5 @@ public interface StringQuery {
 	String DELETE_NOTE_BY_NO =
 			"DELETE * FROM note WHERE note_no=?";
 
-	
-	
-	
-	
 	
 }

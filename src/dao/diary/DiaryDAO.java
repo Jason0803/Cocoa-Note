@@ -270,7 +270,7 @@ public class DiaryDAO {
          }finally {
              closeAll(rs, ps, conn);
          }
-         return currNo;
+         return currNo-1;
 	}
 	
 	public Memo writeDiary(Memo memo) throws SQLException {
@@ -390,8 +390,8 @@ public class DiaryDAO {
         				   							   id, rs.getString("title"), 
         				   							   rs.getString("content"), 
         				   							   new String[] {}, 
-        				   							   date, 
-        				   						  	   new CocoaDate(new Date(rs.getTimestamp("curr_date").getTime()))));
+        				   							   new CocoaDate(new Date(rs.getTimestamp("start_date").getTime())), 
+        				   						  	   new CocoaDate(new Date(rs.getTimestamp("end_date").getTime()))));
         	   monthlyDiary.add(day);
            }
         }catch(Exception e) {
@@ -563,8 +563,8 @@ public class DiaryDAO {
 			
 			// 2. Excute query (sql.StringQuery.UPDATE_NOTE)
 			ps = conn.prepareStatement(StringQuery.UPDATE_NOTE);
-			ps.setString(1, "title");
-			ps.setString(2, "content");
+			ps.setString(1, title);
+			ps.setString(2, content);
 			ps.setInt(3, no);
 			
 			ps.executeUpdate();

@@ -38,7 +38,7 @@ public class HandlerMapping {
 				controller = new CalendarController();
 				break;
 			}
-			case "serach" : {
+			case "search" : {
 				controller = new SearchController();
 				break;
 			}
