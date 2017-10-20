@@ -6,6 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Welcome to cocoaNOTE</title>
+<c:if test="${memberVO!=null}">
+<script type="text/javascript">
+	location.href = "DispatcherServlet?command=cal&year=${today.year}&month=${today.month}";
+</script>
+</c:if>
 </head>
 <body>
 <form action="DispatcherServlet" method="post">

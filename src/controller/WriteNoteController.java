@@ -18,8 +18,11 @@ public class WriteNoteController implements Controller {
 		String id = vo.getId();
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
-		DiaryDAO.getInstance().writeDiary(new Note(0, id, new CocoaDate(), content, new CocoaDate(), title));
-		return new ModelAndView("", true);
+		Note note = new Note(0, id, new CocoaDate(), content, new CocoaDate(), title);
+		DiaryDAO.getInstance().writeDiary(note);
+		
+		// #10006 NoteView 플로우 관련 #12
+		return new ModelAndView("DispatcherServlet?command=noteView&diaryNo=" + note.getNo());
 	}
 
 }
