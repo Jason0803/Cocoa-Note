@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+${note.title} <br/>
+작성 : ${note.writeDate.year}-${note.writeDate.month}-${note.writeDate.date} / 최종수정 : ${note.currentDate.year}-${note.currentDate.month}-${note.currentDate.date}<br />
+${note.content}
 </body>
 </html>
