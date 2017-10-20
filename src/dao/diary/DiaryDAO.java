@@ -18,6 +18,7 @@ import jdbc.exception.RecordNotFoundException;
 import sql.StringQuery;
 import util.CocoaDate;
 import util.DataSourceManager;
+import util.IntegerRange;
 import vo.day.Day;
 import vo.diary.Diary;
 import vo.diary.Memo;
@@ -431,7 +432,7 @@ public class DiaryDAO {
 	}
 	
 	// ------------------------------------------------ deleteDiary ------------------------------------------------ //
-	
+	// #10004 : [Major] deleteDiary(int no) 구현방법 회의 (#9)
 	// 보류 !! TBD
 	public Diary deleteDiary(int no) throws SQLException{ 
 		Connection conn = null;
@@ -440,7 +441,7 @@ public class DiaryDAO {
 		
 		try {
 			conn = getConnection();
-			ps = conn.prepareStatement(StringQuery.DELETE_DIARY_BY_NO);
+					//	ps = conn.prepareStatement(StringQuery.DELETE_DIARY_BY_NO);
 			ps.setInt(1, no);
 			rs = ps.executeQuery();
 			
@@ -461,15 +462,74 @@ public class DiaryDAO {
 		return null;
 	}
 	// ------------------------------------------------ getNoteList ------------------------------------------------ //
-	public Vector<Note> getNoteList(String id) {
+	public Vector<Note> getNoteList(String id) throws SQLException {
 		
-		return null;
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Vector<Note> n = null;
+		
+		try {
+			conn = getConnection();
+			n = new Vector<Note>();
+			ps = conn.prepareStatement(StringQuery.GET_ALL_NOTE);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				Note m = new Note(rs.getInt("note_no"), 			// no
+						rs.getString("id"),							// id
+						new CocoaDate(rs.getDate("wrt_date")), 		// writeDate
+						rs.getString("content"),					// content
+						new CocoaDate(rs.getDate("curr_date")),		// currentDate
+						rs.getString("title"));						// title
+				
+				n.add(m);
+			}
+
+		} catch(SQLException e) {
+			System.out.println("ERROR : [DiaryDAO]@getNoteList : SQLException Caught !");
+			e.printStackTrace();
+		} finally {
+			System.out.println("[DiaryDAO]@getNoteList : Arrived finally clause");
+			closeAll(rs,ps,conn);
+		}
+		
+		return n;
 	}
 	
 	// ------------------------------------------------ getNoteByNo ------------------------------------------------ //
-	public Note getNoteByNo(int no) {
+	public Note getNoteByNo(int no) throws SQLException {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Note note = new Note();
 		
-		return null;
+		try {
+			conn = getConnection();
+			ps = conn.prepareStatement(StringQuery.GET_NOTE_BY_NO);
+			ps.setInt(1, no);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				note = new Note(rs.getInt("note_no"), 			// no
+						rs.getString("id"),							// id
+						new CocoaDate(rs.getDate("wrt_date")), 		// writeDate
+						rs.getString("content"),					// content
+						new CocoaDate(rs.getDate("curr_date")),		// currentDate
+						rs.getString("title"));						// title
+				
+			}
+
+		} catch(SQLException e) {
+			System.out.println("ERROR : [DiaryDAO]@getNoteByNo : SQLException Caught !");
+			e.printStackTrace();
+		} finally {
+			System.out.println("[DiaryDAO]@getNoteByNo : Arrived finally clause");
+			closeAll(rs,ps,conn);
+		}
+		
+		return note;
 	}
 	// ------------------------------------------------ updateNote ------------------------------------------------ //
 	public Note updateNote(int no, String title, String content) throws SQLException, RecordNotFoundException {
@@ -542,10 +602,58 @@ public class DiaryDAO {
 			System.out.println("[DiaryDAO]@updateSchedule : Update Failed for Schedule.no : " + no);
 			System.out.println("[DiaryDAO]@updateSchedule : SQLException !");
 			e.printStackTrace();
+		} finally {
+			closeAll(ps, conn);
 		}
 		
 		
 		return schedule;
 	}
-	
+	// ------------------------------------------------ getDay  ------------------------------------------------ //
+	public Day getDay(String id, int year, int month, int date) throws SQLException {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		CocoaDate searchDate = null;
+		Day day = null;
+		Vector<Note> notes;
+		Vector<Schedule> schedules;
+		
+		try {
+			conn = getConnection();
+		
+			// 1. Find all Diary Items for the member.
+			searchDate = new CocoaDate(year, month, date);
+			day = new Day(searchDate);
+			notes = getAllNote(id);
+			schedules = getAllSchedule(id);
+			
+			if( notes == null && schedules == null) {
+				System.out.println("[DiaryDAO]@getDay : No Notes Found for Member id : " + id);
+			} else {
+				// in case member has either notes or schedules
+				for(Note note : notes) {
+					if(searchDate.getYear() == note.getWriteDate().getYear() && 
+							searchDate.getMonth() == note.getWriteDate().getMonth() && 
+							searchDate.getDate() == note.getWriteDate().getDate()) {
+						
+						day.getNotes().add(note);						
+					}
+				}
+				
+				for(Schedule schedule : schedules) {
+					if(IntegerRange.betweenInclusive(searchDate.getYear(), schedule.getStartDate().getYear(), schedule.getEndDate().getYear()))
+						if(IntegerRange.betweenInclusive(searchDate.getMonth(), schedule.getStartDate().getMonth(), schedule.getEndDate().getMonth()))
+							if(IntegerRange.betweenInclusive(searchDate.getDate(), schedule.getStartDate().getDate(), schedule.getEndDate().getDate()))
+								day.getSchedules().add(schedule);
+				}
+			}
+			
+		} catch(SQLException e) {
+			System.out.println("[DiaryDAO]@getDay : SQLException !");
+		} finally {
+			conn.close();
+		}
+		
+		return day;
+	}
 }

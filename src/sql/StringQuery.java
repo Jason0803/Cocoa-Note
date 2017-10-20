@@ -20,7 +20,7 @@ public interface StringQuery {
 	String GET_MEMBER_INFO =
 			"SELECT * FROM member where id=?";
 	
-	// ----------------------------------- DiaryDAO -------------------------------------- //
+	// ------------------------------------------------------- DiaryDAO ------------------------------------------------------- //
 	String GET_ALL_MEMO = 
 			"SELECT * FROM memo WHERE id = ?";
 	String GET_ALL_SCHEDULE =
@@ -40,31 +40,19 @@ public interface StringQuery {
 	String WRITE_MEMO = 
 			 "INSERT INTO memo (memo_no, id, content, wrt_date) VALUES(seq_diary_no.nextVal, ?, ?, to_date(?, 'YYYYMMDDHH24MI'))";
 	String WRITE_NOTE = 
-			 "INSERT INTO note (note_no, id, title, content, wrt_date, curr_date) VALUES(seq_diary_no.nextVal, ?, ?, ?, to_date(?, 'YYYYMMDDHH24MI'), to_date(?, 'YYYYMMDDHH24MI'))";
+			 "INSERT INTO note (note_no, id, title, content, wrt_date, curr_date) "
+			 + "VALUES(seq_diary_no.nextVal, ?, ?, ?, to_date(?, 'YYYYMMDDHH24MI'), to_date(?, 'YYYYMMDDHH24MI'))";
 	String GET_DAILY_NOTE_BY_ID = 
 			 "SELECT * FROM note WHERE id=? AND to_char(wrt_date, 'YYYYMMDD')=?";
 	String GET_DAILY_SCHEDULE_BY_ID = 
 			 "SELECT * FROM schedule WHERE id=? AND to_char(start_date, 'YYYYMMDD')=?";
-
-
+	String GET_NOTE_BY_NO = 
+			"SELECT * FROM note WHERE note_no=?";
 	String GET_SCHEDULE_BY_NO =
 			"SELECT * FROM Schedule WHERE Schedule_no=?"; 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	String UPDATE_NOTE = 
 			"UPATE note SET title = ?, content = ? WHERE note_no = ?";
-	
 	String UPDATE_SCHEDULE = 
 			"UPDATE schedule SET title = ?, content = ?, start_date = to_date(?, 'YYYYMMDDHH24MI'), end_date = to_date(?,'YYYYMMDDHH24MI') WHERE schedule_no = ?";
-			
-	
-	
+
 }

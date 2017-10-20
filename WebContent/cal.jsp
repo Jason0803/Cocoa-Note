@@ -56,6 +56,16 @@ td {
 .span-note {
 	display:inline-block;
 }
+
+.sam {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 50px;
+	background-color: silver;
+	text-align:center;
+
+}
 </style>
 </head>
 <body>
@@ -63,7 +73,7 @@ td {
 <a href="DispatcherServlet?command=noteList">노트 리스트</a><br />
 <a href="DispatcherServlet?command=memoList">메모 리스트</a><br />
 
-<br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 <a href="javascript:prevMonth()">◀</a>
 ${param.year}년 ${param.month}월
 <a href="javascript:nextMonth()">▶</a><br />
@@ -83,9 +93,9 @@ ${param.year}년 ${param.month}월
 <tr>
 <c:forEach var="day" items="${monthlyDiary}" varStatus="column">
 	<td id="date_${day.date.date}">
-			<span class="date">${day.date.date}</span><br/>
+			<a href="DispatcherServlet?command=calView&year=${param.year}&month=${param.month}&date=${day.date.date}"><span class="date">${day.date.date}</span></a><br/>
 			<c:forEach var="note" items="${day.notes}">
-				<span class="span-note">${note.title}</span>
+				<a href="DispatcherServlet?command=noteView&diaryNo=${note.no}"><span class="span-note">${note.title}</span></a><br />
 			</c:forEach>
 	</td>
 	<c:if test="${column.count%7==0}">
@@ -98,5 +108,6 @@ ${param.year}년 ${param.month}월
 </table>
 <a href="updateMember.jsp">회원정보수정</a>
 <a href="write_note.jsp">글쓰기테스트</a>
+<div class="sam"><jsp:include page="search_and_memo.jsp"></jsp:include></div>
 </body>
 </html>
