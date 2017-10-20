@@ -433,27 +433,42 @@ public class DiaryDAO {
 	
 	// ------------------------------------------------ deleteDiary ------------------------------------------------ //
 	// #10004 : [Major] deleteDiary(int no) 구현방법 회의 (#9)
-	// 보류 !! TBD
+	// 
+
 	public Diary deleteDiary(int no) throws SQLException{ 
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
+		int queryResult;
 		
 		try {
 			conn = getConnection();
-					//	ps = conn.prepareStatement(StringQuery.DELETE_DIARY_BY_NO);
-			ps.setInt(1, no);
-			rs = ps.executeQuery();
+			ps = conn.prepareStatement(StringQuery.DELETE_SCHEDULE_BY_NO);
+			queryResult = ps.executeUpdate();
 			
-			if(rs.next()) {
+			if(queryResult == 0) { 
+				// !Schedule
+				ps = conn.prepareStatement(StringQuery.DELETE_MEMO_BY_NO);
 				
+				if(queryResult==0){
+					// !Memo
+					ps = conn.prepareStatement(StringQuery.DELETE_NOTE_BY_NO);
+					if(queryResult==0){
+						System.out.println(no+"삭제하려는 글이 없습니다.");
+					} 
+				}	 
+			} else {
+				// queryResult == 1 --> Schedule
+				System.out.println("스케줄 번호 : "+no+" 이 삭제 되었습니다.");
 				
 			}
 			
 			
+			ps.setInt(1, no);
+			rs = ps.executeQuery();
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		} finally {
 			closeAll(rs, ps, conn);
 		}
