@@ -390,8 +390,8 @@ public class DiaryDAO {
         				   							   id, rs.getString("title"), 
         				   							   rs.getString("content"), 
         				   							   new String[] {}, 
-        				   							   date, 
-        				   						  	   new CocoaDate(new Date(rs.getTimestamp("curr_date").getTime()))));
+        				   							   new CocoaDate(new Date(rs.getTimestamp("start_date").getTime())), 
+        				   						  	   new CocoaDate(new Date(rs.getTimestamp("end_date").getTime()))));
         	   monthlyDiary.add(day);
            }
         }catch(Exception e) {
