@@ -26,6 +26,7 @@ public class CalendarViewController implements Controller {
 		
 		// #00089 : Issue #10002 : Cal_view.jsp 완료 !
 		request.setAttribute("dayInfo", day);
+		System.out.println("CalendarViewController attribute : " + day);
 		return new ModelAndView("cal_view.jsp");
 	}
 
