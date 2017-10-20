@@ -49,6 +49,7 @@ public class DiaryDAO {
 	
 	// ------------------------------------------------ getAllNote ------------------------------------------------ //
 	public Vector<Note> getAllNote(String id) throws SQLException {
+
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
