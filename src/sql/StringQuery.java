@@ -55,4 +55,21 @@ public interface StringQuery {
 	String UPDATE_SCHEDULE = 
 			"UPDATE schedule SET title = ?, content = ?, start_date = to_date(?, 'YYYYMMDDHH24MI'), end_date = to_date(?,'YYYYMMDDHH24MI') WHERE schedule_no = ?";
 
+	
+	
+	
+	String DELETE_SCHEDULE_BY_NO =
+			"DELETE * FROM schedule WHERE schedule_no=?"; 
+
+	String DELETE_MEMO_BY_NO =
+			"DELETE * FROM memo WHERE MEMO_NO=?"; 
+
+	String DELETE_NOTE_BY_NO =
+			"DELETE * FROM note WHERE note_no=?";
+
+	
+	
+	
+	
+	
 }
