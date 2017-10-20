@@ -5,23 +5,36 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<link rel="stylesheet"  type="text/css" href="global-tier-one.css">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
 <title>Welcome to cocoaNOTE</title>
-<c:if test="${memberVO!=null}">
-<script type="text/javascript">
-	location.href = "DispatcherServlet?command=cal&year=${today.year}&month=${today.month}";
-</script>
-</c:if>
 </head>
 <body>
+
+<div id="layout-center" class="card" style="width: 20rem;" >
 <form action="DispatcherServlet" method="post">
-Log in<br />
-<input type="text" name="id" placeholder="아이디(email)" required="required"/><br />
-<input type="password" name="password" placeholder="password" required="required" /><br />
+
+  <div class="card-body">
+    <h4 class="card-title">오늘도 파이팅!</h4>
+    <input class="form-control" type="text" name="id" placeholder="아이디(email)" required="required"/><br />
+	<input class="form-control" type="password" name="password" placeholder="password" required="required" /><br />
+	
+   <input id="btn-long-pink" class="btn btn-primary" type="submit" value="로그인"/>
+  </div>
 
 
-<input type="submit" value="로그인"/>
+
+
+
+
 <c:if test="${param.login==false}"><br /><span style="color:red">회원정보가 일치하지 않습니다.</span></c:if>
 <input type="hidden" name="command" value="login" />
 </form>
+</div>
+
 </body>
 </html>
