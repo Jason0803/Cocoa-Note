@@ -10,6 +10,6 @@
 <body>
 <div class="nav">
 	<a href="DispatcherServlet?command=cal&year=${today.year}&month=${today.month}"><span class="nav-menu">캘린더</span></a>
-	<a href="DispatcherServlet?command=noteList"><span class="nav-menu">노트</span></a>
+	<a href="DispatcherServlet?command=noteView&isCurr=true"><span class="nav-menu">노트</span></a>
 	<a href="DispatcherServlet?command=memoList"><span class="nav-menu">메모</span></a>
 </div>
