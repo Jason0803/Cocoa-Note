@@ -18,6 +18,10 @@ public class HandlerMapping {
 				controller = new LoginController();
 				break;
 			}
+			case "register" : {
+				controller = new RegisterMemberController();
+				break;
+			}
 			case "updateMember" : {
 				controller = new UpdateMemberController();
 				break;
