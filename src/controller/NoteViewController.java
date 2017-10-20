@@ -2,6 +2,7 @@ package controller;
 
 import java.util.Vector;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -10,7 +11,6 @@ import org.apache.catalina.tribes.transport.nio.ParallelNioSender;
 
 import controller.util.ModelAndView;
 import dao.diary.DiaryDAO;
-import model.MemberDAO;
 import sun.security.jca.GetInstance;
 import util.CocoaDate;
 import vo.diary.Diary;
