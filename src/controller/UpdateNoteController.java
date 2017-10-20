@@ -17,8 +17,8 @@ public class UpdateNoteController implements Controller {
 														request.getParameter("title"), 
 														request.getParameter("content"));
 		
-		request.setAttribute("note", note);
-		return new ModelAndView("update_note.jsp");
+		// #10006 NoteView 플로우 관련 #12
+		return new ModelAndView("DispatcherServlet?command=noteView&diaryNo="+note.getNo());
 	}
 
 }
