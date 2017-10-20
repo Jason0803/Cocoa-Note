@@ -270,7 +270,7 @@ public class DiaryDAO {
          }finally {
              closeAll(rs, ps, conn);
          }
-         return currNo;
+         return currNo-1;
 	}
 	
 	public Memo writeDiary(Memo memo) throws SQLException {
