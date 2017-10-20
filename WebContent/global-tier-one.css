@@ -1,1 +1,12 @@
 @charset "EUC-KR";
+/* #layout-center {
+	margin : 0 auto;
+	text-align: center;
+} */
+#btn-long-pink {
+    color: #fff;
+    background-color:#F72765;
+    width: 280px;
+    height : 50px;
+    border-color: #F72765;
+}
