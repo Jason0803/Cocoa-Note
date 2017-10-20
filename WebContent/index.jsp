@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <c:if test="${memberVO!=null}">
 <script type="text/javascript">
-	location.href = "DispatcherServlet?command=cal";
+	location.href = "DispatcherServlet?command=cal&year=${today.year}&month=${today.month}";
 </script>
 </c:if>
 <script type="text/javascript">
