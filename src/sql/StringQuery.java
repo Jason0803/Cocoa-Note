@@ -22,11 +22,11 @@ public interface StringQuery {
 	
 	// ------------------------------------------------------- DiaryDAO ------------------------------------------------------- //
 	String GET_ALL_MEMO = 
-			"SELECT * FROM memo WHERE id = ?";
+			"SELECT * FROM memo WHERE id = ? ORDER BY wrt_date DESC";
 	String GET_ALL_SCHEDULE =
-			"SELECT * FROM schedule WHERE id = ?";
+			"SELECT * FROM schedule WHERE id = ? ORDER BY wrt_date DESC";
 	String GET_ALL_NOTE =
-			"SELECT * FROM note WHERE id = ?";
+			"SELECT * FROM note WHERE id = ? ORDER BY wrt_date DESC";
 
 	String SEARCH_NOTE_BY_KEYWORD = 
 			"SELECT * FROM note WHERE id = ? AND (title LIKE '%'||?||'%' OR content LIKE '%'||?||'%')";
