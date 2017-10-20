@@ -563,8 +563,8 @@ public class DiaryDAO {
 			
 			// 2. Excute query (sql.StringQuery.UPDATE_NOTE)
 			ps = conn.prepareStatement(StringQuery.UPDATE_NOTE);
-			ps.setString(1, "title");
-			ps.setString(2, "content");
+			ps.setString(1, title);
+			ps.setString(2, content);
 			ps.setInt(3, no);
 			
 			ps.executeUpdate();
