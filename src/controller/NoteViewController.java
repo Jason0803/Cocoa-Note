@@ -26,7 +26,7 @@ public class NoteViewController implements Controller {
 		Member mvo = (Member)request.getSession().getAttribute("memberVO");
 		String id = mvo.getId();
 		boolean isCurr = Boolean.parseBoolean(request.getParameter("isCurr"));
-		Vector<Note> notes=DiaryDAO.getInstance().getNoteList(request.getParameter("diaryNo"));
+		Vector<Note> notes=DiaryDAO.getInstance().getAllNote(id);
 		Note note=null;
 		
 		request.setAttribute("notes", notes);
