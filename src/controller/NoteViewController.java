@@ -30,11 +30,15 @@ public class NoteViewController implements Controller {
 		Note note=null;
 		
 		request.setAttribute("notes", notes);
-		if(isCurr==true) {
+		if(isCurr) {
 			int no=DiaryDAO.getInstance().getCurrDiaryNo();
 			note=DiaryDAO.getInstance().getNoteByNo(no);
-		}else {
+		}else if(!isCurr) {
 			note=DiaryDAO.getInstance().getNoteByNo(Integer.parseInt(request.getParameter("diaryNo")));
+		} else {
+			// Type Exception
+			System.out.println("[NoteViewController] : NULL for 'isCurr' entered !");
+			System.out.println(" - Current value for isCurr : " + isCurr);
 		}
 		request.setAttribute("note", note);
 		
