@@ -19,7 +19,7 @@ public class HandlerMapping {
 				break;
 			}
 			case "updateMember" : {
-				controller = new RegisterMemberController();
+				controller = new UpdateMemberController();
 				break;
 			}
 			case "writeMemo" : {
