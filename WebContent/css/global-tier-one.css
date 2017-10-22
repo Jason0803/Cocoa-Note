@@ -7,6 +7,8 @@
 
 <style type="text/css">
 
+
+
 .btn-primary {
     color: #fff;
     background-color: #007bff;
@@ -36,6 +38,30 @@
     width: 100px;
     height :35px;
     border-color: #F72765;
+}
+
+.rounded-bar {
+    border-radius: 1rem!important;
+}
+.rounded-notification {
+    border-radius: 1.5rem!important;
+}
+
+.rounded-content {
+    border-radius: 0.5rem!important;
+}
+
+.bg-grad-pink{
+	background:-webkit-linear-gradient(left top, #ffcbcb, #c5f0fb);
+}
+
+.bg-pink{
+	color: #fff;
+	background:#F72765;
+}
+
+.bg-ghostwhite{
+	background-color:ghostwhite;
 }
 
 
