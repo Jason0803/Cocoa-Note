@@ -30,8 +30,14 @@
 	<div class="bg-ghostwhite" style="margin-top: 50px"></div>
 	<div class="container">
 
-		<nav class="navbar navbar-light bg-grad-pink rounded-bar">
-			<span class="navbar-brand mb-0 h1">cocoaNOTE</span>
+		<nav class="navbar navbar-light bg-grad-pink rounded-bar d-flex justify-content-start">
+			<span class="navbar-brand mb-0 h1">cocoaNOTE</span>&nbsp;&nbsp;&nbsp;&nbsp;
+			<img src="icon/calendar-pink.svg" width="30px" height="30px"> &nbsp;&nbsp;&nbsp;&nbsp;
+			<img src="icon/notebook-pink.svg" width="30px" height="30px">&nbsp;&nbsp;&nbsp;&nbsp;
+			<img src="icon/memo-pink.svg" width="30px" height="30px">&nbsp;&nbsp;&nbsp;&nbsp;
+		
+      
+      
 		</nav>
 		<div class="row" style="margin-top: 50px">
 			<div class="col-8">
