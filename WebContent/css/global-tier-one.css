@@ -3,12 +3,31 @@
 	margin : 0 auto;
 	text-align: center;
 } */
+
+
+<style type="text/css">
+
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
 #btn-long-pink {
     color: #fff;
     background-color:#F72765;
     width: 280px;
     height : 50px;
     border-color: #F72765;
+}
+
+#btn-longer-pink {
+    color: #fff;
+    background-color:#F72765;
+    width: 360px;
+    height : 50px;
+    border-color: #F72765;
+    
 }
 
 #btn-sm-pink {
@@ -23,3 +42,4 @@
 .text-wrapper {
     text-align: center;
 }
+</style>

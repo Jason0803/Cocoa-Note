@@ -30,7 +30,7 @@
 	</script>
 </c:if>
 
-<title>Welcome to cocoaNOTE</title>
+<title>코코아노트. 당신의 하루를 기록하세요.</title>
 </head>
 <body>
 	<div class="container">
@@ -77,10 +77,10 @@
 			<div class="col-4 ">
 			<div><br/><br/><br/><br/></div>
 				<div class="card" style="width: 20rem;">
-					<div class="card-body">
+					<div class="card-body text-center">
 					
 						<form action="">
-							<h4 class="card-title text-center">오늘도 파이팅!</h4>
+							<h4 class="card-title">오늘도 파이팅!</h4>
 							<input class="form-control" type="text" name="id"
 								placeholder="아이디(email)" required="required" /><br /> 
 								<input class="form-control" type="password" name="password"
