@@ -77,7 +77,7 @@
 		</div>
 		<div class="row d-flex justify-content-center" style="margin-top : 20px">
 
-						<input class="form-control rounded-bar"  style="width: 84%;"  type="text" name="globalSearch" 	placeholder="여기에 입력하세요..." required="required" />&nbsp;
+						<input class="form-control rounded-bar"  style="width: 84%;"  type="text" name="globalSearch" 	placeholder="여기에서 검색이나 메모를 해보세요!" required="required" />&nbsp;
 						<button type="button" class="btn bg-pink rounded-bar" style="width: 6%;">검색</button> &nbsp;
 						<button type="button" class="btn bg-pink rounded-bar" style="width: 6%;">메모</button>
 
