@@ -9,7 +9,9 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
 	integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
 	crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="global-tier-one.css">
+<link rel="stylesheet" type="text/css" href="css/global-tier-one.css">
+<link rel="stylesheet" type="text/css" href="css/animate.css">
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 	crossorigin="anonymous"></script>
@@ -22,56 +24,80 @@
 	integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
 	crossorigin="anonymous"></script>
 
+<c:if test="${memberVO!=null}">
+	<script type="text/javascript">
+		location.href = "DispatcherServlet?command=cal&year=${today.year}&month=${today.month}";
+	</script>
+</c:if>
+
 <title>Welcome to cocoaNOTE</title>
 </head>
 <body>
-	
-		<div class="row">
-			<div class="col-6" style="border-right: 1px solid #000;">아따맘마</div>
-			<div class="col-4 d-flex justify-content-center", style="margin-top: 10%">
+	<div class="container">
+		<div class="row ">
+
+			 
+			
+			 
+			 
+			 <div class="col"> <br/><br/><h2>cocoaNOTE</h2></div>
+			 <div class="col"> 
+			 <form action="">
+			 <br/><br/>
+			 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			 <input id="btn-sm-pink" class="btn btn-primary" type="submit" value="회원가입" />
+			  </form>
+			 </div>
+			 
+			 
+			
+			
+			
+
+		</div>
+		<div class="dropdown-divider"></div>
+		<div class="row ">
+		
+			<div class="col-6  text-wrapper  " style="border-right: 0px solid gray;">
+			<div><br/><br/><br/></div>
+				<div class="animated-words d-flex justify-content-start">
+					<br> <br><span>일정, 노트, 메모를<br> 한 곳에서 모두
+						기록하세요.
+					</span> <span>설정 없이,<br> 모든 기기와 연동됩니다.
+					</span> <span>일정을 <br>친구와 공유해 보세요.
+					</span> <span>당신의<br>하루를 담아보세요.
+					</span>
+				</div>
+				<div class="animated-words-last d-flex justify-content-center">
+					<span>자, 이제<br>시작해 보세요.
+					</span>
+				</div>
+			</div>
+			<div class="col-4 ">
+			<div><br/><br/><br/><br/></div>
 				<div class="card" style="width: 20rem;">
 					<div class="card-body">
+					
 						<form action="">
 							<h4 class="card-title text-center">오늘도 파이팅!</h4>
 							<input class="form-control" type="text" name="id"
-								placeholder="아이디(email)" required="required" /><br /> <input
-								class="form-control" type="password" name="password"
-								placeholder="password" required="required" /><br /> <input
-								id="btn-long-pink" class="btn btn-primary" type="submit"
-								value="로그인" />
+								placeholder="아이디(email)" required="required" /><br /> 
+								<input class="form-control" type="password" name="password"
+								placeholder="password" required="required" /><br />
+								 <input id="btn-long-pink" class="btn btn-primary" type="submit" value="로그인" />
+							<c:if test="${param.login==false}">
+								<br />
+								<span style="color: red">회원정보가 일치하지 않습니다.</span>
+							</c:if>
+							<input type="hidden" name="command" value="login" />
 						</form>
 					</div>
-				
-
-				<!-- <div id="layout-center" class="card" style="width: 20rem;">
-					<form action="DispatcherServlet" method="post">
-
-						<div class="card-body">
-							<h4 class="card-title">오늘도 파이팅!</h4>
-							<input class="form-control" type="text" name="id"
-								placeholder="아이디(email)" required="required" /><br /> <input
-								class="form-control" type="password" name="password"
-								placeholder="password" required="required" /><br /> <input
-								id="btn-long-pink" class="btn btn-primary" type="submit"
-								value="로그인" />
-						</div>
-
-					</form>
-				</div> -->
+					
+				</div>
 			</div>
 		</div>
-
-
-
-
-
-
-		<c:if test="${param.login==false}">
-			<br />
-			<span style="color: red">회원정보가 일치하지 않습니다.</span>
-		</c:if>
-		<input type="hidden" name="command" value="login" />
-		</form>
+		<div class="row"></div>
 	</div>
 
 </body>

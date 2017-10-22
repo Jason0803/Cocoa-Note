@@ -10,3 +10,16 @@
     height : 50px;
     border-color: #F72765;
 }
+
+#btn-sm-pink {
+    color: #fff;
+    background-color:#F72765;
+    width: 100px;
+    height :35px;
+    border-color: #F72765;
+}
+
+
+.text-wrapper {
+    text-align: center;
+}
