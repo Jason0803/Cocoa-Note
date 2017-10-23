@@ -24,7 +24,7 @@ public interface StringQuery {
 	String GET_ALL_MEMO = 
 			"SELECT * FROM memo WHERE id = ? ORDER BY wrt_date DESC";
 	String GET_ALL_SCHEDULE =
-			"SELECT * FROM schedule WHERE id = ? ORDER BY wrt_date DESC";
+			"SELECT * FROM schedule WHERE id = ? ORDER BY start_date DESC";
 	String GET_ALL_NOTE =
 			"SELECT * FROM note WHERE id = ? ORDER BY wrt_date DESC";
 
@@ -43,8 +43,8 @@ public interface StringQuery {
 			 "INSERT INTO note (note_no, id, title, content, wrt_date, curr_date) "
 			 + "VALUES(seq_diary_no.nextVal, ?, ?, ?, to_date(?, 'YYYYMMDDHH24MI'), to_date(?, 'YYYYMMDDHH24MI'))";
 	String WRITE_SCHEDULE = 
-			"INSERT INTO schedule (schedule_no, id, start_date, end_date, title, content) "
-			+ "VALUES(seq_diary_no.nextVal, ?, ?, ?, ?)";
+			"INSERT INTO schedule (schedule_no, id, to_date(start_date), to_date(end_date), title, content) "
+			+ "VALUES(seq_diary_no.nextVal, ?, ?, ?, ?, ?)";
 	String WRITE_SCHEDULE_GROUP = "INSERT INTO schedule_group (schedule_no, group_member_id) VALUES(?, ?)";
 	
 	
