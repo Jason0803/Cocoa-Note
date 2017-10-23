@@ -42,9 +42,12 @@ td {
 }
 
 .memo {
-	border: 1px solid black;
-	width:15%;
-	float:left;
+	border: solid 2px black;
+	width:235px;
+	height:170px;
+	display:inline-block;
+	margin: 0 15px 30px 15px;
+	text-align: center;
 }
 
 .invited_member { /* write_schedule.jsp : 일정을 함께하는 친구 리스트 */

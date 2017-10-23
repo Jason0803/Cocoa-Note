@@ -13,6 +13,7 @@ import java.util.Date;
  * 3) Calendar 객체
  * 
  * 2017.10.17 / coding by K
+ * 2017.10.23 Jason Choi : compareDate 추가. 
  */
 
 public class CocoaDate {
@@ -172,7 +173,16 @@ public class CocoaDate {
 	}
 
 	public boolean compareDate(CocoaDate pDate) {
-		return this.year >= pDate.getYear() && this.month >= pDate.getMonth() && this.date > pDate.getDate();
+		// sychoi : compare THIS CocoaDate and pDate
+		return this.year == pDate.getYear()
+				&& this.month == pDate.getMonth() 
+				&& this.date == pDate.getDate();
+	}
+	public boolean compareDate(CocoaDate srcDate, CocoaDate destDate) {
+		// sychoi : check if THIS CocoaDate instance INCLUSIVELY in between srcDate & destDate
+		return IntegerRange.betweenInclusive(this.getYear(), srcDate.getYear(), destDate.getYear())
+				&& IntegerRange.betweenInclusive(this.getMonth(), srcDate.getYear(), destDate.getMonth())
+				&& IntegerRange.betweenInclusive(this.getDate(), srcDate.getDate(), destDate.getDate());
 	}
 	
 	@Override

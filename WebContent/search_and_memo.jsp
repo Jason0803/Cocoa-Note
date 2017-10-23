@@ -12,7 +12,7 @@ function search(){
 </script>
 	<div class="row d-flex justify-content-center" >
 		<form action="#" class="d-flex justify-content-center" method="post" name="searchAndMemoFrm" style="margin-top:30px; width: 100%; position:fixed; bottom:0;">
-		<input class="form-control rounded-bar" style="width: 70%;" type="text" name="globalSearch" placeholder="여기에서 검색이나 메모를 해보세요!"
+		<input class="form-control rounded-bar" style="width: 70%;" type="text" name="line" placeholder="여기에서 검색이나 메모를 해보세요!"
 			required="required" />&nbsp;
 		<button type="button" class="btn bg-pink rounded-bar" style="width: 5%;" onclick="search()">검색</button>&nbsp;
 		<button type="button" class="btn bg-pink rounded-bar" style="width: 5%;" onclick="writeMemo()">메모</button>

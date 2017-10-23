@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.Controller;
-import controller.hm.HandlerMapping;
-import controller.util.ModelAndView;
+import controller.HandlerMapping;
+import controller.ModelAndView;
 
 public class DispatcherServlet extends HttpServlet {
 	@Override
