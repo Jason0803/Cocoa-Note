@@ -1,0 +1,73 @@
+@charset "EUC-KR";
+/* #layout-center {
+	margin : 0 auto;
+	text-align: center;
+} */
+
+
+<style type="text/css">
+
+
+
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+#btn-long-pink {
+    color: #fff;
+    background-color:#F72765;
+    width: 280px;
+    height : 50px;
+    border-color: #F72765;
+}
+
+#btn-longer-pink {
+    color: #fff;
+    background-color:#F72765;
+    width: 360px;
+    height : 50px;
+    border-color: #F72765;
+    
+}
+
+#btn-sm-pink {
+    color: #fff;
+    background-color:#F72765;
+    width: 100px;
+    height :35px;
+    border-color: #F72765;
+}
+
+.rounded-bar {
+    border-radius: 1rem!important;
+}
+.rounded-notification {
+    border-radius: 1.5rem!important;
+    margin-top:20px; 
+    height: 100px;
+}
+
+.rounded-content {
+    border-radius: 0.5rem!important;
+}
+
+.bg-grad-pink{
+	background:-webkit-linear-gradient(left top, #ffcbcb, #c5f0fb);
+}
+
+.bg-pink{
+	color: #fff;
+	background:#F72765;
+}
+
+.bg-ghostwhite{
+	background-color:ghostwhite;
+}
+
+
+.text-wrapper {
+    text-align: center;
+}
+</style>

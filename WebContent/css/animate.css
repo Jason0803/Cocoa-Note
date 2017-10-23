@@ -1,0 +1,105 @@
+@charset "EUC-KR";
+/* change text animation start*/
+.animated-words {
+    display: inline-block;
+}
+
+.animated-words-last{
+    display: inline-block;
+}
+
+.animated-words span:nth-child(3) { 
+    -webkit-animation-delay: 1s; 
+    -ms-animation-delay: 1s; 
+    animation-delay: 1s; 
+    color: #6b889d;
+    font-size: 40pt;
+}
+.animated-words span:nth-child(4) { 
+    -webkit-animation-delay: 3s; 
+    -ms-animation-delay: 3s; 
+    animation-delay: 3s; 
+    color: #6b739d; 
+    font-size: 40pt;
+    
+}
+.animated-words span:nth-child(5) { 
+    -webkit-animation-delay: 5s; 
+    -ms-animation-delay: 5s; 
+    animation-delay: 5s; 
+    color: #7a6b9d;
+    font-size: 40pt;
+}
+.animated-words span:nth-child(6) { 
+    -webkit-animation-delay: 7s; 
+    -ms-animation-delay: 7s; 
+    animation-delay: 7s; 
+    color: #8d6b9d;
+    font-size: 40pt;
+    
+
+}
+ 
+.animated-words-last span:nth-child(1){
+	    -webkit-animation-delay: 9s; 
+    -ms-animation-delay: 9s; 
+    animation-delay: 9s; 
+    color: #8d6b9d;
+    font-size: 40pt;
+}
+
+
+
+.animated-words span {
+    position: absolute;
+    opacity: 0;
+    overflow: hidden;
+    color: #6b969d;
+    -webkit-animation: animateWord 5s linear;
+    -ms-animation: animateWord 5s linear;
+    animation: animateWord 5s linear;
+}
+
+.animated-words-last span {
+    position: absolute;
+    opacity: 0;
+    overflow: hidden;
+    color: #6b969d;
+    -webkit-animation: animateWordLast 50s linear;
+    -ms-animation: animateWordLast 50s linear;
+    animation: animateWordLast 50s linear infinite;
+}
+
+
+
+
+
+/*change text animation end*/
+
+@-webkit-keyframes animateWord {
+    0% { opacity: 0; }
+    2% { opacity: 0; -webkit-transform: translateY(-30px); }
+    5% { opacity: 1; -webkit-transform: translateY(0px);}
+    17% { opacity: 1; -webkit-transform: translateY(0px); }
+    20% { opacity: 0; -webkit-transform: translateY(30px); }
+    80% { opacity: 0; }
+    100% { opacity: 0; }
+}
+    
+    @-webkit-keyframes animateWordLast {
+    0% { opacity: 0; }
+    2% { opacity: 0; -webkit-transform: translateY(-30px); }
+    3% { opacity: 1; -webkit-transform: translateY(0px);}
+    17% { opacity: 1; -webkit-transform: translateY(0px); }
+    20% { opacity: 1; -webkit-transform: translateY(0px); }
+    80% { opacity: 1; }
+    100% { opacity: 1; }
+}
+    
+
+  
+
+    
+
+
+  
