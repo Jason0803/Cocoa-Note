@@ -18,6 +18,7 @@ public class Schedule extends Diary {
 	
 	public Schedule(int no, String id, String title, String content, String[] groupMemberID, CocoaDate startDate, CocoaDate endDate) {
 		super(no, id);
+		this.title = title;
 		this.content = content;
 		this.groupMemberID = groupMemberID;
 		this.startDate = startDate;
@@ -36,6 +37,8 @@ public class Schedule extends Diary {
 	public Schedule(int no, String id) {
 		super(no, id);
 	}
+	
+	
 	
 	public String getTitle() {
 		return title;

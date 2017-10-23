@@ -43,8 +43,8 @@ public interface StringQuery {
 			 "INSERT INTO note (note_no, id, title, content, wrt_date, curr_date) "
 			 + "VALUES(seq_diary_no.nextVal, ?, ?, ?, to_date(?, 'YYYYMMDDHH24MI'), to_date(?, 'YYYYMMDDHH24MI'))";
 	String WRITE_SCHEDULE = 
-			"INSERT INTO schedule (schedule_no, id, to_date(start_date), to_date(end_date), title, content) "
-			+ "VALUES(seq_diary_no.nextVal, ?, ?, ?, ?, ?)";
+			"INSERT INTO schedule (schedule_no, id, start_date, end_date, title, content) "
+			+ "VALUES(seq_diary_no.nextVal, ?, to_date(?, 'YYYYMMDDHH24MI'), to_date(?, 'YYYYMMDDHH24MI'), ?, ?)";
 	String WRITE_SCHEDULE_GROUP = "INSERT INTO schedule_group (schedule_no, group_member_id) VALUES(?, ?)";
 	
 	
