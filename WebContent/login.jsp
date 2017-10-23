@@ -91,7 +91,7 @@
 				<br/>
 				<div class="card" style="width: 20rem; margin-left: 100px;">
 				<div class="card-body text-center" style="padding:0.5rem;">
-					<div><h6><small>계정이 없으신가요? <a href=index.jsp>가입하기</a></small></h6></div>
+					<div><h6><small>계정이 없으신가요? <a href=register.jsp>가입하기</a></small></h6></div>
 				
 				</div>
 				</div>

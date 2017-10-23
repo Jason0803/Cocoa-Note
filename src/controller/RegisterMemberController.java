@@ -22,9 +22,14 @@ public class RegisterMemberController implements Controller {
 		
 		String path = "DisppatcherServlet?year="+today.getYear()+"&month="+today.getMonth();
 		Member vo = MemberDAO.getInstance().registerMember(new Member(id, password, name, 1, 1));
-		HttpSession session = request.getSession();
-		session.setAttribute("memberVO", vo);
-		session.setAttribute("today", today);
+		if(vo == null) {
+			path = "register?register=false";
+		} else{
+			HttpSession session = request.getSession();
+			
+			session.setAttribute("memberVO", vo);
+			session.setAttribute("today", today);
+		}
 		return new ModelAndView(path, true);
 	}
 

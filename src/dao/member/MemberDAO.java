@@ -69,7 +69,7 @@ public class MemberDAO {
 	}
 	
 	// ---------------------------------- for INSERT ---------------------------------- //
-	public Member registerMember(Member member) throws SQLException, DuplicateIdException {
+	public Member registerMember(Member member) throws SQLException {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		Member returnMember = member;
@@ -94,7 +94,7 @@ public class MemberDAO {
 				
 				System.out.println("[MemberDAO]@registerMember : Adding member done");
 			} else  {
-				throw new DuplicateIdException("[MemberDAO]@registerMember : Already Existing ID !");
+				return null;
 			}
 		} finally {
 			try{
