@@ -710,4 +710,24 @@ public class DiaryDAO {
 		
 		return day;
 	}
+
+	public int getCurrNoteNo() throws SQLException {
+		Connection conn = null;
+        PreparedStatement ps = null;
+		ResultSet rs = null;
+        int currNo = 0;
+        try {
+            conn = getConnection();
+            ps= conn.prepareStatement(StringQuery.GET_CURR_NOTE_NO);
+            rs = ps.executeQuery();
+            if(rs.next()) currNo = rs.getInt(1);
+         }catch(Exception e) {
+            e.printStackTrace();
+         }finally {
+             closeAll(rs, ps, conn);
+         }
+         // #00118 
+         return currNo-1;
+	}
+
 }

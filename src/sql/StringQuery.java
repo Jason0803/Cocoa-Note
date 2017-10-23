@@ -75,4 +75,7 @@ public interface StringQuery {
 			"DELETE note WHERE note_no=?";
 
 	
+	String GET_CURR_NOTE_NO = 
+			"SELECT note_no FROM note WHERE wrt_date = (SELECT MAX(wrt_date) FROM note)";
+	
 }

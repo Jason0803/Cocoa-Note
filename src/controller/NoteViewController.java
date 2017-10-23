@@ -31,7 +31,7 @@ public class NoteViewController implements Controller {
 		
 		request.setAttribute("notes", notes);
 		if(isCurr) {
-			int no=DiaryDAO.getInstance().getCurrDiaryNo();
+			int no=DiaryDAO.getInstance().getCurrNoteNo();
 			note=DiaryDAO.getInstance().getNoteByNo(no);
 		}else if(!isCurr) {
 			note=DiaryDAO.getInstance().getNoteByNo(Integer.parseInt(request.getParameter("diaryNo")));
