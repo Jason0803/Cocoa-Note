@@ -66,13 +66,13 @@ public interface StringQuery {
 	
 	
 	String DELETE_SCHEDULE_BY_NO =
-			"DELETE * FROM schedule WHERE schedule_no=?"; 
+			"DELETE schedule WHERE schedule_no=?"; 
 
 	String DELETE_MEMO_BY_NO =
-			"DELETE * FROM memo WHERE MEMO_NO=?"; 
+			"DELETE memo WHERE MEMO_NO=?"; 
 
 	String DELETE_NOTE_BY_NO =
-			"DELETE * FROM note WHERE note_no=?";
+			"DELETE note WHERE note_no=?";
 
 	
 }
