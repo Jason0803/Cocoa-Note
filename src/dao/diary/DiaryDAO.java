@@ -574,12 +574,12 @@ public class DiaryDAO {
 			rs = ps.executeQuery();
 			
 			if(rs.next()) {
-				note = new Note(rs.getInt("note_no"), 			// no
-						rs.getString("id"),							// id
+				note = new Note(rs.getInt("note_no"), 									// no
+						rs.getString("id"),												// id
 						new CocoaDate(new Date(rs.getDate("wrt_date").getTime())), 		// writeDate
-						rs.getString("content"),					// content
+						rs.getString("content"),										// content
 						new CocoaDate(new Date(rs.getDate("curr_date").getTime())),		// currentDate
-						rs.getString("title"));						// title
+						rs.getString("title"));											// title
 				
 			}
 
