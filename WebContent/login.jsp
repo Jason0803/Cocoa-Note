@@ -72,7 +72,7 @@
 				<div class="card" style="width: 20rem; margin-left: 100px;">
 					<div class="card-body text-center ">
 					
-						<form action="">
+						<form action="DispatcherServlet" method="post">
 							<h4 class="card-title">오늘도 파이팅!</h4>
 							<input class="form-control" type="text" name="id"
 								placeholder="아이디(email)" required="required" /><br /> 
