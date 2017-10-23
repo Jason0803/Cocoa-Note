@@ -26,7 +26,7 @@ public class RegisterMemberController implements Controller {
 		if(vo == null) {
 			path = "register.jsp?register=false";
 		} else{
-			path = "DisppatcherServlet?year="+today.getYear()+"&month="+today.getMonth();
+			path = "DispatcherServlet?command=cal&year="+today.getYear()+"&month="+today.getMonth();
 			HttpSession session = request.getSession();
 			
 			session.setAttribute("memberVO", vo);
