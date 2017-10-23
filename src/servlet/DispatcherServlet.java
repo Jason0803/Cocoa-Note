@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.Controller;
-import controller.HandlerMapping;
+import controller.hm.HandlerMapping;
 import controller.util.ModelAndView;
 
 public class DispatcherServlet extends HttpServlet {
