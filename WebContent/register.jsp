@@ -77,6 +77,10 @@ function registerCheck() {
 							<input class="form-control" type="password" name="password_chk" 	placeholder="비밀번호 확인" required="required" /><br /> 
 							<input class="form-control" type="text" name="name" placeholder="이름" required="required" /><br />
 							<input id="btn-longer-pink" class="btn btn-primary"   type="submit" value="가입하기" />
+							<c:if test="${param.register==false}">
+								<br />
+								<span style="color: red">이미 존재하는 ID입니다.</span>
+							</c:if>
 							 <input class="form-control" type="hidden" name="command" value="register" /><br /> 
 							 <br/>
 							 <h6><small>가입과 동시에 귀하는 쿠키 사용을 포함해 이용약관과 개인정보 처리방침에 동의하는 것입니다. </small></h6>
