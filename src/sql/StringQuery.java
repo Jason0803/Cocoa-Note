@@ -26,7 +26,7 @@ public interface StringQuery {
 	String GET_ALL_SCHEDULE =
 			"SELECT * FROM schedule WHERE id = ? ORDER BY start_date DESC";
 	String GET_ALL_NOTE =
-			"SELECT * FROM note WHERE id = ? ORDER BY wrt_date DESC";
+			"SELECT * FROM note WHERE id = ? ORDER BY curr_date DESC";
 
 	String SEARCH_NOTE_BY_KEYWORD = 
 			"SELECT * FROM note WHERE id = ? AND (title LIKE '%'||?||'%' OR content LIKE '%'||?||'%')";

@@ -63,12 +63,12 @@ public class DiaryDAO {
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				Note m = new Note(rs.getInt("note_no"), 			// no
-						rs.getString("id"),							// id
+				Note m = new Note(rs.getInt("note_no"), 								// no
+						rs.getString("id"),												// id
 						new CocoaDate(new Date(rs.getDate("wrt_date").getTime())), 		// writeDate
-						rs.getString("content"),					// content
+						rs.getString("content"),										// content
 						new CocoaDate(new Date(rs.getDate("curr_date").getTime())),		// currentDate
-						rs.getString("title"));						// title
+						rs.getString("title"));											// title
 				
 				n.add(m);
 			}
@@ -237,12 +237,12 @@ public class DiaryDAO {
               if(rs.getString("title").equalsIgnoreCase(keyword) || rs.getString("content").equalsIgnoreCase(keyword)) {
           if(!sc.containsKey(rs.getInt("schedule_no"))){
              Schedule s = new Schedule(rs.getInt("schedule_no"),
-                   rs.getString("id"),                      // id
-                       rs.getString("title"),                      // title
-                       rs.getString("content"),                  // content
-                       temp_str,                              // group
-                       new CocoaDate(new Date(rs.getTimestamp("start_date").getTime())),      // startDate
-                       new CocoaDate(new Date(rs.getTimestamp("end_date").getTime())));      // endDate
+            		   rs.getString("id"),                  									// id
+                       rs.getString("title"),                      								// title
+                       rs.getString("content"),                  								// content
+                       temp_str,                              									// group
+                       new CocoaDate(new Date(rs.getTimestamp("start_date").getTime())),     	// startDate
+                       new CocoaDate(new Date(rs.getTimestamp("end_date").getTime())));  		// endDate
              sc.put(rs.getInt("schedule_no"), s);
           }}}
            
@@ -531,12 +531,12 @@ public class DiaryDAO {
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				Note m = new Note(rs.getInt("note_no"), 			// no
-						rs.getString("id"),							// id
-						new CocoaDate(rs.getDate("wrt_date")), 		// writeDate
-						rs.getString("content"),					// content
-						new CocoaDate(rs.getDate("curr_date")),		// currentDate
-						rs.getString("title"));						// title
+				Note m = new Note(rs.getInt("note_no"), 								// no
+						rs.getString("id"),												// id
+						new CocoaDate(new Date(rs.getDate("wrt_date").getTime())), 		// writeDate
+						rs.getString("content"),										// content
+						new CocoaDate(new Date(rs.getDate("curr_date").getTime())),		// currentDate
+						rs.getString("title"));											// title
 				
 				n.add(m);
 			}
@@ -568,9 +568,9 @@ public class DiaryDAO {
 			if(rs.next()) {
 				note = new Note(rs.getInt("note_no"), 			// no
 						rs.getString("id"),							// id
-						new CocoaDate(rs.getDate("wrt_date")), 		// writeDate
+						new CocoaDate(new Date(rs.getDate("wrt_date").getTime())), 		// writeDate
 						rs.getString("content"),					// content
-						new CocoaDate(rs.getDate("curr_date")),		// currentDate
+						new CocoaDate(new Date(rs.getDate("curr_date").getTime())),		// currentDate
 						rs.getString("title"));						// title
 				
 			}
@@ -608,11 +608,10 @@ public class DiaryDAO {
 			ps.executeUpdate();
 			System.out.println("[DiaryDAO]@updateNote : Update Complete for Note no : " + no);
 			
-			
+
 			// To return note instance
-			note.setTitle(title);
-			note.setContent(content);
-				
+			note = getNoteByNo(no);
+			
 		} catch(SQLException e) {
 			System.out.println("[DiaryDAO]@updateNote : Update Failed for Note.no : " + no);
 			System.out.println("[DiaryDAO]@updateNote : SQLException !");
