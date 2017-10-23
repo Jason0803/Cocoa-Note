@@ -726,7 +726,7 @@ public class DiaryDAO {
          }finally {
              closeAll(rs, ps, conn);
          }
-         // #00118 
+         // #00133
          return currNo-1;
 	}
 
