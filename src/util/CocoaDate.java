@@ -171,6 +171,10 @@ public class CocoaDate {
 		this.lastDate = lastDate;
 	}
 
+	public boolean compareDate(CocoaDate pDate) {
+		return this.year >= pDate.getYear() && this.month >= pDate.getMonth() && this.date > pDate.getDate();
+	}
+	
 	@Override
 	public String toString() {
 		return year + "/" + month + "/" + date + ", " + hour + ":"

@@ -65,9 +65,9 @@ public class DiaryDAO {
 			while(rs.next()) {
 				Note m = new Note(rs.getInt("note_no"), 			// no
 						rs.getString("id"),							// id
-						new CocoaDate(rs.getDate("wrt_date")), 		// writeDate
+						new CocoaDate(new Date(rs.getDate("wrt_date").getTime())), 		// writeDate
 						rs.getString("content"),					// content
-						new CocoaDate(rs.getDate("curr_date")),		// currentDate
+						new CocoaDate(new Date(rs.getDate("curr_date").getTime())),		// currentDate
 						rs.getString("title"));						// title
 				
 				n.add(m);
@@ -104,8 +104,8 @@ public class DiaryDAO {
 						rs.getString("title"), 							// title
 						rs.getString("content"),						// content
 						temp_str,										// group
-						new CocoaDate(rs.getDate("start_date")),		// startDate
-						new CocoaDate(rs.getDate("end_date"))));		// endDate
+						new CocoaDate(new Date(rs.getTimestamp("start_date").getTime())),		// startDate
+						new CocoaDate(new Date(rs.getTimestamp("end_date").getTime()))));		// endDate
 			}
 			
 		}catch(Exception e) {
@@ -273,7 +273,7 @@ public class DiaryDAO {
          // #00118 
          return currNo-1;
 	}
-	
+	// ------------------------------------------------ writeDiary ------------------------------------------------ //
 	public Memo writeDiary(Memo memo) throws SQLException {
 		Connection conn = null;
         PreparedStatement ps = null;
@@ -291,6 +291,7 @@ public class DiaryDAO {
            currNo = getCurrDiaryNo();
            rmemo.setNo(currNo);
         }catch(Exception e) {
+        	System.out.println("[DiaryDAO]@writeDiary(Memo memo) : SQLException");
            e.printStackTrace();
         }finally {
            closeAll(rs, ps, conn);
@@ -319,7 +320,7 @@ public class DiaryDAO {
            currNo = getCurrDiaryNo();
            rnote.setNo(currNo);
         }catch(Exception e) {
-        	System.out.println("[DiaryDAO]@writeDiary(Note note) : ");
+        	System.out.println("[DiaryDAO]@writeDiary(Note note) : SQLException");
         	e.printStackTrace();
         }finally {
            closeAll(rs, ps, conn);
@@ -327,33 +328,54 @@ public class DiaryDAO {
         return rnote;
 	}
 	// ------------------------------------------------ writeDiary ------------------------------------------------ //
-	public Schedule writeDiary(Schedule schedule) {
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		return null;
+	public Schedule writeDiary(Schedule schedule) throws SQLException {
+		Connection conn = null;
+        PreparedStatement ps = null;
+        Schedule rSchedule = null;
+        try {
+           conn = getConnection();
+           rSchedule = schedule;
+           ps = conn.prepareStatement(StringQuery.WRITE_SCHEDULE);
+           ps.setString(1, schedule.getId());
+           ps.setString(2, schedule.getStartDate().getDateQuery());
+           ps.setString(3, schedule.getEndDate().getDateQuery());
+           ps.setString(4, schedule.getTitle());
+           ps.setString(5, schedule.getContent());
+           
+           ps.executeUpdate();
+           rSchedule.setNo(getCurrDiaryNo());
+           System.out.println("[DiaryDAO]@writeDiary(Schedule schedule) : currNo : " + rSchedule.getNo());
+        }catch(Exception e) {
+        	System.out.println("[DiaryDAO]@writeDiary(Schedule schedule) : SQLException !");
+        	e.printStackTrace();
+        }finally {
+           closeAll(ps, conn);
+         }
+        
+        return rSchedule;
 	}
-	
+	// ------------------------------------------------ writeDiary ------------------------------------------------ //
+	public void createScheduleGroup(Schedule schedule, String id) throws SQLException {
+		Connection conn = null;
+        PreparedStatement ps = null;
+        
+        try { 
+        	conn = getConnection();
+        	ps = conn.prepareStatement(StringQuery.WRITE_SCHEDULE_GROUP);
+        	ps.setInt(1, schedule.getNo());
+        	ps.setString(2, id);
+        	
+        	ps.executeUpdate();
+        	System.out.println("[DiaryDAO]@createScheduleGroup(Schedule schedule, String id) : Success ! ");
+        } catch(SQLException e) {
+        	System.out.println("[DiaryDAO]@createScheduleGroup(Schedule schedule, String id) : SQLException !");
+        	e.printStackTrace();
+        } finally {
+        	closeAll(ps, conn);
+        }
+        
+	}
+	// ------------------------------------------------ getMonthly ------------------------------------------------ //
 	public ArrayList<Day> getMonthlyDiary(String id, CocoaDate date) throws SQLException{
 		Connection conn = null;
         PreparedStatement ps = null;
@@ -446,28 +468,43 @@ public class DiaryDAO {
 		try {
 			conn = getConnection();
 			ps = conn.prepareStatement(StringQuery.DELETE_SCHEDULE_BY_NO);
+			ps.setInt(1, no);
 			queryResult = ps.executeUpdate();
 			
-			if(queryResult == 0) { 
-				// !Schedule
+			if(queryResult == 0) {
+				// !Schedule 에서 없을경우
+				System.out.println("스케줄에는 삭제할 내용이 없습니다.");
 				ps = conn.prepareStatement(StringQuery.DELETE_MEMO_BY_NO);
+				ps.setInt(1, no);
+				rs = ps.executeQuery();
 				
-				if(queryResult==0){
-					// !Memo
-					ps = conn.prepareStatement(StringQuery.DELETE_NOTE_BY_NO);
+				if(queryResult == 1) {
+					System.out.println("메모에서 글번호 : (" +no+ ") 가 삭제되었습니다.");
+				
 					if(queryResult==0){
-						System.out.println(no+"삭제하려는 글이 없습니다.");
-					} 
-				}	 
+						// !Memo 에서 없을경우
+						System.out.println("메모에는 삭제할 내용 없습니다.");
+						ps = conn.prepareStatement(StringQuery.DELETE_NOTE_BY_NO);
+						ps.setInt(1, no);
+						rs = ps.executeQuery();
+						
+						if(queryResult == 1) {
+							System.out.println("노트에서 글번호 : (" +no+ ") 가 삭제되었습니다.");
+							
+							if(queryResult==0){
+								// 모두 없을 경우
+								System.out.println(no+"의 글이 다이어리에 없습니다.");
+							}
+						}
+					}	 
+				}
+				
 			} else {
 				// queryResult == 1 --> Schedule
 				System.out.println("스케줄 번호 : "+no+" 이 삭제 되었습니다.");
 				
 			}
 			
-			
-			ps.setInt(1, no);
-			rs = ps.executeQuery();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -672,5 +709,24 @@ public class DiaryDAO {
 		}
 		
 		return day;
+	}
+
+	public int getCurrNoteNo() throws SQLException {
+		Connection conn = null;
+        PreparedStatement ps = null;
+		ResultSet rs = null;
+        int currNo = 0;
+        try {
+            conn = getConnection();
+            ps= conn.prepareStatement(StringQuery.GET_CURR_NOTE_NO);
+            rs = ps.executeQuery();
+            if(rs.next()) currNo = rs.getInt(1);
+         }catch(Exception e) {
+            e.printStackTrace();
+         }finally {
+             closeAll(rs, ps, conn);
+         }
+         // #00133
+         return currNo-1;
 	}
 }
