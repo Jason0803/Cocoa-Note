@@ -13,6 +13,7 @@ import java.util.Date;
  * 3) Calendar 객체
  * 
  * 2017.10.17 / coding by K
+ * 2017.10.23 Jason Choi : compareDate 추가. 
  */
 
 public class CocoaDate {
