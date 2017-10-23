@@ -4,6 +4,12 @@ public class Diary {
 	protected int no;
 	protected String id; // (Member.id)
 	
+	// return type의 확인을위한 static
+	public static final int NAD = 0;
+	public static final int SCHEDULE = 100;
+	public static final int NOTE = 200;
+	public static final int MEMO = 300;
+	
 	public Diary() {
 		super();
 	}
