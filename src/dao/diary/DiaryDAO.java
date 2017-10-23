@@ -65,9 +65,9 @@ public class DiaryDAO {
 			while(rs.next()) {
 				Note m = new Note(rs.getInt("note_no"), 			// no
 						rs.getString("id"),							// id
-						new CocoaDate(rs.getDate("wrt_date")), 		// writeDate
+						new CocoaDate(new Date(rs.getDate("wrt_date").getTime())), 		// writeDate
 						rs.getString("content"),					// content
-						new CocoaDate(rs.getDate("curr_date")),		// currentDate
+						new CocoaDate(new Date(rs.getDate("curr_date").getTime())),		// currentDate
 						rs.getString("title"));						// title
 				
 				n.add(m);
@@ -104,8 +104,8 @@ public class DiaryDAO {
 						rs.getString("title"), 							// title
 						rs.getString("content"),						// content
 						temp_str,										// group
-						new CocoaDate(rs.getDate("start_date")),		// startDate
-						new CocoaDate(rs.getDate("end_date"))));		// endDate
+						new CocoaDate(new Date(rs.getTimestamp("start_date").getTime())),		// startDate
+						new CocoaDate(new Date(rs.getTimestamp("end_date").getTime()))));		// endDate
 			}
 			
 		}catch(Exception e) {
@@ -709,5 +709,24 @@ public class DiaryDAO {
 		}
 		
 		return day;
+	}
+
+	public int getCurrNoteNo() throws SQLException {
+		Connection conn = null;
+        PreparedStatement ps = null;
+		ResultSet rs = null;
+        int currNo = 0;
+        try {
+            conn = getConnection();
+            ps= conn.prepareStatement(StringQuery.GET_CURR_NOTE_NO);
+            rs = ps.executeQuery();
+            if(rs.next()) currNo = rs.getInt(1);
+         }catch(Exception e) {
+            e.printStackTrace();
+         }finally {
+             closeAll(rs, ps, conn);
+         }
+         // #00133
+         return currNo-1;
 	}
 }
