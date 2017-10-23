@@ -96,6 +96,9 @@ public class HandlerMapping {
 				controller = new WriteScheduleController();
 				break;
 			}
+			case "logout" : {
+				break;
+			}
 		}
 		/*
 		if(command.equals("register")) {
