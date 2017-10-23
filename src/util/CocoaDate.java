@@ -172,7 +172,16 @@ public class CocoaDate {
 	}
 
 	public boolean compareDate(CocoaDate pDate) {
-		return this.year >= pDate.getYear() && this.month >= pDate.getMonth() && this.date > pDate.getDate();
+		// compare THIS CocoaDate and pDate
+		return this.year == pDate.getYear()
+				&& this.month == pDate.getMonth() 
+				&& this.date == pDate.getDate();
+	}
+	public boolean compareDate(CocoaDate srcDate, CocoaDate destDate) {
+		// check if THIS CocoaDate instance INCLUSIVELY in between srcDate & destDate
+		return IntegerRange.betweenInclusive(this.getYear(), srcDate.getYear(), destDate.getYear())
+				&& IntegerRange.betweenInclusive(this.getMonth(), srcDate.getYear(), destDate.getMonth())
+				&& IntegerRange.betweenInclusive(this.getDate(), srcDate.getDate(), destDate.getDate());
 	}
 	
 	@Override

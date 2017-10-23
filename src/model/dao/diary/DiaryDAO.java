@@ -674,6 +674,8 @@ public class DiaryDAO {
 				System.out.println("[DiaryDAO]@getDay : No Notes Found for Member id : " + id);
 			} else {
 				// in case member has either notes or schedules
+				
+				/*
 				for(Note note : notes) {
 					if(searchDate.getYear() == note.getWriteDate().getYear() && 
 							searchDate.getMonth() == note.getWriteDate().getMonth() && 
@@ -682,12 +684,25 @@ public class DiaryDAO {
 						day.getNotes().add(note);						
 					}
 				}
-				
+				*/
+				// #00157 : Apply CocoaDate.compareDate()
+				for(Note note : notes) {
+					if(searchDate.compareDate(note.getWriteDate()))
+						day.getNotes().add(note);
+				}
+
+				/*
 				for(Schedule schedule : schedules) {
 					if(IntegerRange.betweenInclusive(searchDate.getYear(), schedule.getStartDate().getYear(), schedule.getEndDate().getYear()))
 						if(IntegerRange.betweenInclusive(searchDate.getMonth(), schedule.getStartDate().getMonth(), schedule.getEndDate().getMonth()))
 							if(IntegerRange.betweenInclusive(searchDate.getDate(), schedule.getStartDate().getDate(), schedule.getEndDate().getDate()))
 								day.getSchedules().add(schedule);
+				}
+				*/
+				// #00157 : Apply CocoaDate.compareDate()
+				for(Schedule schedule : schedules) {
+					if(searchDate.compareDate(schedule.getStartDate(), schedule.getEndDate()))
+						day.getSchedules().add(schedule);
 				}
 			}
 			
