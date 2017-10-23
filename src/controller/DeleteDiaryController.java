@@ -17,7 +17,7 @@ public class DeleteDiaryController implements Controller {
 		CocoaDate today = new CocoaDate();
 		int no = Integer.parseInt(request.getParameter("no"));
 		request.setAttribute("no", no);
-		String path = "cal.jsp?year="+today.getYear()+"&month="+today.getMonth();
+		String path = "DispatcherServlet?year="+today.getYear()+"&month="+today.getMonth();
 		
 		return new ModelAndView(path);
 	}
