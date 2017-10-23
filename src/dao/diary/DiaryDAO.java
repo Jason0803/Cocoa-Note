@@ -31,6 +31,12 @@ public class DiaryDAO {
 	public static DiaryDAO getInstance() {
 		return dao;
 	}
+	// query 수행 결과 확인을위한 static
+	private static final int TRUE = 1;
+	private static final int FALSE = 0;
+	
+
+	
 	
 	public Connection getConnection() throws SQLException{
 		return DataSourceManager.getInstance().getConnection();
@@ -457,13 +463,13 @@ public class DiaryDAO {
 	
 	// ------------------------------------------------ deleteDiary ------------------------------------------------ //
 	// #10004 : [Major] deleteDiary(int no) 구현방법 회의 (#9)
-	// 
+	// #00150 : deleteDiary 수정
 
-	public Diary deleteDiary(int no) throws SQLException{ 
+	public int deleteDiary(int no) throws SQLException{ 
 		Connection conn = null;
 		PreparedStatement ps = null;
-		ResultSet rs = null;
-		int queryResult;
+		int queryResult = FALSE;
+		int result = Diary.NAD;
 		
 		try {
 			conn = getConnection();
@@ -471,49 +477,51 @@ public class DiaryDAO {
 			ps.setInt(1, no);
 			queryResult = ps.executeUpdate();
 			
-			if(queryResult == 0) {
-				// !Schedule 에서 없을경우
-				System.out.println("스케줄에는 삭제할 내용이 없습니다.");
-				ps = conn.prepareStatement(StringQuery.DELETE_MEMO_BY_NO);
-				ps.setInt(1, no);
-				rs = ps.executeQuery();
-				
-				if(queryResult == 1) {
-					System.out.println("메모에서 글번호 : (" +no+ ") 가 삭제되었습니다.");
-				
-					if(queryResult==0){
-						// !Memo 에서 없을경우
-						System.out.println("메모에는 삭제할 내용 없습니다.");
-						ps = conn.prepareStatement(StringQuery.DELETE_NOTE_BY_NO);
-						ps.setInt(1, no);
-						rs = ps.executeQuery();
-						
-						if(queryResult == 1) {
-							System.out.println("노트에서 글번호 : (" +no+ ") 가 삭제되었습니다.");
-							
-							if(queryResult==0){
-								// 모두 없을 경우
-								System.out.println(no+"의 글이 다이어리에 없습니다.");
-							}
-						}
-					}	 
-				}
+			if (queryResult==TRUE) {
+				// 스케줄이 맞음 -> 메세지 출력 & 해당 값 반환 하면서 형변화
+				// diary = (Schedule)삭제된스케쥴;
+				System.out.println("[DiaryDAO]@deleteDiary(int no) :" +no+ "번호의 스케줄이 삭제되었습니다.");
+				return Diary.SCHEDULE;
 				
 			} else {
-				// queryResult == 1 --> Schedule
-				System.out.println("스케줄 번호 : "+no+" 이 삭제 되었습니다.");
+				// 스케줄이 아님 -> 메모를 삭제
+				ps = conn.prepareStatement(StringQuery.DELETE_MEMO_BY_NO);
+				ps.setInt(1, no);
+				queryResult = ps.executeUpdate();
 				
-			}
-			
+				if (queryResult==TRUE) {
+					// 메모삭제됨 메세지 출력
+					System.out.println("[DiaryDAO]@deleteDiary(int no) :" +no+ "번호의 메모가 삭제되었습니다.");
+					return Diary.MEMO;
+					
+				} else {
+					// 메모가 아님 노트를삭제 -> 없으면 삭제할 내용이 없다고 출력함
+					ps = conn.prepareStatement(StringQuery.DELETE_NOTE_BY_NO);
+					ps.setInt(1, no);
+					queryResult = ps.executeUpdate();
+					
+					if (queryResult==TRUE) {
+						// 노트가 삭제됨 출력 
+						System.out.println("[DiaryDAO]@deleteDiary(int no) :" +no+ "번호의 노트가 삭제되었습니다.");
+						return Diary.NOTE;
+					} else {
+						// diary 에서 삭제될 내용이 없다고 출력
+						System.out.println("[DiaryDAO]@deleteDiary(int no) : 삭제될 내용이 diary에 없습니다. ");
+						return Diary.NAD;
+						
+					}
+				}
+			} 
+				
+		
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			closeAll(rs, ps, conn);
+			closeAll(ps, conn);
 		}
 		
-		
-		return null;
+		return result;
 	}
 	// ------------------------------------------------ getNoteList ------------------------------------------------ //
 	public Vector<Note> getNoteList(String id) throws SQLException {
@@ -566,12 +574,12 @@ public class DiaryDAO {
 			rs = ps.executeQuery();
 			
 			if(rs.next()) {
-				note = new Note(rs.getInt("note_no"), 			// no
-						rs.getString("id"),							// id
+				note = new Note(rs.getInt("note_no"), 									// no
+						rs.getString("id"),												// id
 						new CocoaDate(new Date(rs.getDate("wrt_date").getTime())), 		// writeDate
-						rs.getString("content"),					// content
+						rs.getString("content"),										// content
 						new CocoaDate(new Date(rs.getDate("curr_date").getTime())),		// currentDate
-						rs.getString("title"));						// title
+						rs.getString("title"));											// title
 				
 			}
 
