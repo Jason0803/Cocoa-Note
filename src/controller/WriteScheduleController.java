@@ -18,11 +18,11 @@ public class WriteScheduleController implements Controller {
 	public ModelAndView handle(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Member vo = (Member)request.getSession().getAttribute("memberVO");
 		String id = vo.getId();
-		String title = (String)request.getAttribute("title");
-		CocoaDate start_date = (CocoaDate)request.getAttribute("start_date"); 
-		CocoaDate end_date = (CocoaDate)request.getAttribute("end_date");
-		String content = (String)request.getAttribute("content");
-		String[] members = ((String)request.getAttribute("group_member")).split(",");
+		String title = (String)request.getParameter("title");
+		String start_date = (String)request.getParameter("start_date"); 
+		String end_date = (String)request.getParameter("end_date");
+		String content = (String)request.getParameter("content");
+		String[] members = ((String)request.getParameter("group_member")).split(",");
 		
 		Schedule schedule = DiaryDAO.getInstance().writeDiary(new Schedule(
 									0, 									// no
@@ -30,14 +30,14 @@ public class WriteScheduleController implements Controller {
 									title, 								// title
 									content,							// content
 									members,							// group_member_id
-									start_date,			// start_date
-									end_date));			// end_date
+									new CocoaDate(start_date),			// start_date
+									new CocoaDate(end_date)));			// end_date
 		
 		
 		return new ModelAndView("DispatcherServlet?command=calView& "
-								+"year="+start_date.getYear()
-								+"month="+start_date.getMonth()
-								+"&date="+start_date.getDate());
+								+"year=" + new CocoaDate(start_date).getYear()
+								+"month="+ new CocoaDate(start_date).getMonth()
+								+"&date="+ new CocoaDate(start_date).getDate());
 	}
 	
 }
