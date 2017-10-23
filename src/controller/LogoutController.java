@@ -20,7 +20,7 @@ public class LogoutController implements Controller {
 		request.getSession().removeAttribute("memberVO");
 		request.getSession().invalidate();
 		
-		return new ModelAndView("index.html?name="+name);
+		return new ModelAndView("/index.html?name="+name);
 	}
 
 }
