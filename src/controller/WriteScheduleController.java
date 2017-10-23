@@ -34,9 +34,9 @@ public class WriteScheduleController implements Controller {
 									new CocoaDate(end_date)));			// end_date
 		
 		
-		return new ModelAndView("DispatcherServlet?command=calView& "
+		return new ModelAndView("DispatcherServlet?command=calView&"
 								+"year=" + new CocoaDate(start_date).getYear()
-								+"month="+ new CocoaDate(start_date).getMonth()
+								+"&month="+ new CocoaDate(start_date).getMonth()
 								+"&date="+ new CocoaDate(start_date).getDate());
 	}
 	
