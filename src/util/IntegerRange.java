@@ -1,5 +1,12 @@
 package util;
-
+/*
+ * 대수 비교용 custom 클래스
+ * IntegerRange.betweenExclusive(input, min, max) --> true | false
+ * IntegerRange.betweenInclusive(input, min, max) --> true | false
+ * --> CocoaDate.compareDate() 에서 응용 ! (#00157)
+ * 
+ * by Jason Choi.
+ */
 // #00099 : IntegerRange
 public class IntegerRange {
 	private IntegerRange ir = new IntegerRange();
