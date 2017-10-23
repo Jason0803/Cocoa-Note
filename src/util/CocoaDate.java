@@ -172,8 +172,7 @@ public class CocoaDate {
 	}
 
 	public boolean compareDate(CocoaDate pDate) {
-		
-		return this.year >= pDate.getYear() && ;
+		return this.year >= pDate.getYear() && this.month >= pDate.getMonth() && this.date > pDate.getDate();
 	}
 	
 	@Override
