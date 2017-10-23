@@ -1,15 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html class="bg-ghostwhite">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Cocoa Note : 행복한 하루 되세요!</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+	integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="css/global-tier-one.css">
+<link rel="stylesheet" type="text/css" href="css/animate.css">
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+	integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+	crossorigin="anonymous"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+	integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+	crossorigin="anonymous"></script>
+
 <link rel="stylesheet" href="CocoaCSS.css">
 </head>
-<body>
-<div class="nav">
-	<a href="DispatcherServlet?command=cal&year=${today.year}&month=${today.month}"><span class="nav-menu">캘린더</span></a>
-	<a href="DispatcherServlet?command=noteView&isCurr=true"><span class="nav-menu">노트</span></a>
-	<a href="DispatcherServlet?command=memoList"><span class="nav-menu">메모</span></a>
-</div>
+<body class="bg-ghostwhite">
+<div class="bg-ghostwhite" style="margin-top: 50px"></div>
+	<div class="container">
+
+		<nav class="navbar navbar-light bg-grad-pink rounded-bar d-flex justify-content-start" style="margin-bottom:30px;">
+			<span class="navbar-brand mb-0 h1">cocoaNOTE</span>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="DispatcherServlet?command=cal&year=${today.year}&month=${today.month}"><img  src="icon/calendar-pink.svg" width="30px" height="30px"></a> &nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="DispatcherServlet?command=noteView&isCurr=true"><img src="icon/notebook-pink.svg" width="30px" height="30px"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="DispatcherServlet?command=memoList"><img src="icon/memo-pink.svg" width="30px" height="30px"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+		</nav>
+	

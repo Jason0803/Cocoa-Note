@@ -45,6 +45,8 @@
 }
 .rounded-notification {
     border-radius: 1.5rem!important;
+    margin-top:20px; 
+    height: 100px;
 }
 
 .rounded-content {

@@ -41,14 +41,7 @@
 			 
 			 
 			 <div class="col"> <br/><br/><h2>cocoaNOTE</h2></div>
-			 <div class="col"> 
-			 <form action="">
-			 <br/><br/>
-			 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			 <input id="btn-sm-pink" class="btn btn-primary" type="submit" value="회원가입" />
-			  </form>
-			 </div>
+			 
 			 
 			 
 			
@@ -61,7 +54,7 @@
 		
 			<div class="col-6  text-wrapper  " style="border-right: 0px solid gray;">
 			<div><br/><br/><br/></div>
-				<div class="animated-words d-flex justify-content-start">
+				<div class="animated-words d-flex justify-content-start" style="margin-left:100px;" >
 					<br> <br><span>일정, 노트, 메모를<br> 한 곳에서 모두
 						기록하세요.
 					</span> <span>설정 없이,<br> 모든 기기와 연동됩니다.
@@ -74,10 +67,10 @@
 					</span>
 				</div>
 			</div>
-			<div class="col-4 ">
+			<div class="col-4">
 			<div><br/><br/><br/><br/></div>
-				<div class="card" style="width: 20rem;">
-					<div class="card-body text-center">
+				<div class="card" style="width: 20rem; margin-left: 100px;">
+					<div class="card-body text-center ">
 					
 						<form action="">
 							<h4 class="card-title">오늘도 파이팅!</h4>
@@ -94,6 +87,13 @@
 						</form>
 					</div>
 					
+				</div>
+				<br/>
+				<div class="card" style="width: 20rem; margin-left: 100px;">
+				<div class="card-body text-center" style="padding:0.5rem;">
+					<div><h6><small>계정이 없으신가요? <a href=index.jsp>가입하기</a></small></h6></div>
+				
+				</div>
 				</div>
 			</div>
 		</div>

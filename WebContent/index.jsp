@@ -60,11 +60,11 @@ function registerCheck() {
 		
 	<div class="row">
 	
-			<div class="col-6 d-flex justify-content-center " style="margin-top: 100px;">
+			<div class="col-6 d-flex justify-content-end " style="margin-top: 30px;">
 				<div><br/><br/><br/></div>
+				 
 				
-				
-				<div class="card text-center" style="width: 25rem;">
+				<div class="card text-center" style="width: 25rem; height: 30rem">
 				<br/>				
 				<h4>
 					<strong>지금 코코아노트에 가입하세요.</strong>
@@ -80,14 +80,14 @@ function registerCheck() {
 							 <input class="form-control" type="hidden" name="command" value="register" /><br /> 
 							 <br/>
 							 <h6><small>가입과 동시에 귀하는 쿠키 사용을 포함해 이용약관과 개인정보 처리방침에 동의하는 것입니다. </small></h6>
-							이미 회원이신가요? <a	href="login.jsp">로그인</a>
+							<h6>이미 회원이신가요? <a	href="login.jsp">로그인</a></h6>
 						</form>
 				</div>
 			</div>
 			
 			
 			</div>
-			<div  class="col-6 d-flex justify-content-center " style="margin-top: 100px;">
+			<div  class="col-6 d-flex justify-content-start " style="margin-top: 30px;">
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -96,13 +96,13 @@ function registerCheck() {
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block rounded" src="img/1.JPG" width="400" height="505" alt="First slide">
+      <img class="d-block rounded" src="img/1.JPG" width="400" height="480" alt="First slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block rounded" src="img/2.JPG" width="400" height="505" alt="Second slide">
+      <img class="d-block rounded" src="img/2.JPG" width="400" height="480" alt="Second slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block rounded" src="img/3.JPG" width="400" height="505" alt="Third slide">
+      <img class="d-block rounded" src="img/3.JPG" width="400" height="480" alt="Third slide">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
