@@ -19,7 +19,7 @@ public class DeleteDiaryController implements Controller {
 		request.setAttribute("no", no);
 		DiaryDAO.getInstance().deleteDiary(no);
 		
-		String path = "DispatcherServlet?year="+today.getYear()+"&month="+today.getMonth();
+		String path = "DispatcherServlet?command=cal&year="+today.getYear()+"&month="+today.getMonth();
 		
 		
 		return new ModelAndView(path);
