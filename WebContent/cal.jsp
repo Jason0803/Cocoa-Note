@@ -23,19 +23,27 @@
 	}
 </script>
 
-<a href="javascript:prevMonth()">◀</a>
-${param.year}년 ${param.month}월
-<a href="javascript:nextMonth()">▶</a><br />
-<table>
+
+		<div class="row" style="height: 800px;">
+			<div class="col-8">
+				<div class="card rounded-content" style="width: 100%; height: 90%;">
+					<div class="card-body">
+						<h4 class="card-title">Calender</h4>
+						<h6 class="card-subtitle mb-2 ">
+						<a href="javascript:prevMonth()"><img  src="icon/back-bold.svg" width="10px" height="10px"/></a> ${param.year}년 ${param.month}월 
+						<a href="javascript:nextMonth()"><img  src="icon/next-bold.svg" width="10px" height="10px"/></a><br />
+						</h6>
+						<p class="card-text">
+						<table class="table">
 <thead>
 	<tr>
-		<th>일</th>
-		<th>월</th>
-		<th>화</th>
-		<th>수</th>
-		<th>목</th>
-		<th>금</th>
-		<th>토</th>
+		<th scope="col">일</th>
+		<th scope="col">월</th>
+		<th scope="col">화</th>
+		<th scope="col">수</th>
+		<th scope="col">목</th>
+		<th scope="col">금</th>
+		<th scope="col">토</th>
 	</tr>
 </thead>
 <tbody>
@@ -43,12 +51,12 @@ ${param.year}년 ${param.month}월
 <c:forEach var="day" items="${monthlyDiary}" varStatus="column">
 	<td id="date_${day.date.date}">
 			<c:if test="${day.date.date!=null }">
-				<a href="DispatcherServlet?command=calView&year=${param.year}&month=${param.month}&date=${day.date.date}"><span class="date">${day.date.date}</span></a><br/>
+				<a style="color:white;" href="DispatcherServlet?command=calView&year=${param.year}&month=${param.month}&date=${day.date.date}"><span class="date">${day.date.date}</span></a><br/>
 				<c:forEach var="note" items="${day.notes}">
-					<a href="DispatcherServlet?command=noteView&diaryNo=${note.no}"><span class="span-note">${note.title}</span></a><br />
+					<a href="DispatcherServlet?command=noteView&diaryNo=${note.no}"><span class="note">${note.title}</span></a><br />
 				</c:forEach>
 				<c:forEach var="schedule" items="${day.schedules}">
-					<span class="span-note">${schedule.title}</span><br />
+					<span >${schedule.title}</span><br />
 				</c:forEach>
 			</c:if>
 	</td>
@@ -60,4 +68,39 @@ ${param.year}년 ${param.month}월
 </tr>
 </tbody>
 </table>
+						</p>
+
+					</div>
+				</div>
+			</div>
+			<div class="col-4">
+				<div class="card rounded-content" style="width: 100%; height: 70%;">
+					<div class="card-body">
+						<h4 class="card-title">Upcoming events</h4>
+						<h6 class="card-subtitle mb-2 text-muted"></h6>
+						
+						<div class="card rounded-notification bg-pink">
+						<div class="card-body">
+						<h4 class="card-title">D-7</h4>
+						<h6 class="card-subtitle ">코코아노트 개발팀 회식</h6>
+						</div>
+						</div>
+						
+						<div class="card rounded-notification bg-pink">
+						<div class="card-body">
+						<h4 class="card-title">D-8</h4>
+						<h6 class="card-subtitle ">프로젝트 마감일</h6>
+						</div>
+						</div>
+						
+
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		
+
 <jsp:include page="foot.jsp"></jsp:include>
