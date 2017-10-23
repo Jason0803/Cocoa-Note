@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import controller.util.ModelAndView;
-import dao.member.MemberDAO;
-import vo.member.Member;
+import model.dao.member.MemberDAO;
+import model.vo.member.Member;
 
 public class UpdateMemberController implements Controller {
 

@@ -6,10 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.util.ModelAndView;
-import dao.diary.DiaryDAO;
-import vo.diary.Memo;
-import vo.diary.Note;
-import vo.member.Member;
+import model.dao.diary.DiaryDAO;
+import model.vo.diary.Memo;
+import model.vo.diary.Note;
+import model.vo.member.Member;
 
 public class NoteListController implements Controller {
 

@@ -1,4 +1,4 @@
-package vo.diary;
+package model.vo.diary;
 
 import java.util.Date;
 

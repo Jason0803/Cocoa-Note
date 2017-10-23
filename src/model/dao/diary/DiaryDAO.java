@@ -1,4 +1,4 @@
-package dao.diary;
+package model.dao.diary;
 
 // #00011 : import change required
 
@@ -15,15 +15,15 @@ import java.util.Vector;
 
 import javafx.scene.chart.PieChart.Data;
 import jdbc.exception.RecordNotFoundException;
+import model.vo.day.Day;
+import model.vo.diary.Diary;
+import model.vo.diary.Memo;
+import model.vo.diary.Note;
+import model.vo.diary.Schedule;
 import sql.StringQuery;
 import util.CocoaDate;
 import util.DataSourceManager;
 import util.IntegerRange;
-import vo.day.Day;
-import vo.diary.Diary;
-import vo.diary.Memo;
-import vo.diary.Note;
-import vo.diary.Schedule;
 // ------------------------------------------------ Singleton ------------------------------------------------ //
 public class DiaryDAO {
 	private static DiaryDAO dao = new DiaryDAO();

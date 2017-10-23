@@ -6,10 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.util.ModelAndView;
-import dao.diary.DiaryDAO;
+import model.dao.diary.DiaryDAO;
+import model.vo.day.Day;
+import model.vo.member.Member;
 import util.CocoaDate;
-import vo.day.Day;
-import vo.member.Member;
 
 
 public class CalendarController implements Controller {

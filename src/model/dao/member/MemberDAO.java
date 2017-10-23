@@ -1,4 +1,4 @@
-package dao.member;
+package model.dao.member;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,8 +12,8 @@ import javax.sql.DataSource;
 
 import jdbc.exception.DuplicateIdException;
 import jdbc.exception.RecordNotFoundException;
+import model.vo.member.Member;
 import sql.StringQuery;
-import vo.member.Member;
 
 
 public class MemberDAO {

@@ -4,9 +4,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.util.ModelAndView;
-import dao.diary.DiaryDAO;
+import model.dao.diary.DiaryDAO;
+import model.vo.diary.Note;
 import util.CocoaDate;
-import vo.diary.Note;
 
 
 public class UpdateNoteController implements Controller {

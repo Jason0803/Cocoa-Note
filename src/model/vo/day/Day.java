@@ -1,11 +1,11 @@
-package vo.day;
+package model.vo.day;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Vector;
 
+import model.vo.diary.*;
 import util.CocoaDate;
-import vo.diary.*;
 
 public class Day {
 	private CocoaDate date;

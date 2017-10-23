@@ -5,16 +5,16 @@ import javax.servlet.http.HttpServletResponse;
 /*
 import controller.Controller;
 import controller.util.ModelAndView;
-import dao.diary.DiaryDAO;
+import model.dao.diary.DiaryDAO;
 import util.CocoaDate;
-import vo.day.Day;
-import vo.member.Member;
+import model.vo.day.Day;
+import model.vo.member.Member;
 */
 
 import controller.util.ModelAndView;
-import dao.diary.DiaryDAO;
-import vo.day.Day;
-import vo.member.Member;
+import model.dao.diary.DiaryDAO;
+import model.vo.day.Day;
+import model.vo.member.Member;
 
 public class CalendarViewController implements Controller {
 

@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import controller.util.ModelAndView;
-import dao.member.MemberDAO;
+import model.dao.member.MemberDAO;
+import model.vo.member.Member;
 import util.CocoaDate;
-import vo.member.Member;
 
 public class LoginController implements Controller {
 
