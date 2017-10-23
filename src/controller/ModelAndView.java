@@ -1,4 +1,4 @@
-package controller.util;
+package controller;
 
 public class ModelAndView {
 	private String path;

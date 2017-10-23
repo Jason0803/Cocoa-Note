@@ -1,23 +1,21 @@
-package controller.hm;
+package controller;
 
-import controller.CalendarController;
-import controller.CalendarViewController;
-import controller.Controller;
-import controller.DeleteDiaryController;
-import controller.LoginController;
-import controller.MemoListController;
-import controller.NoteListController;
-import controller.NoteViewController;
-import controller.RegisterMemberController;
-import controller.ScheduleViewController;
-import controller.SearchController;
-import controller.UpdateMemberController;
-import controller.UpdateNoteController;
-import controller.UpdateScheduleController;
-import controller.WriteMemoController;
-import controller.WriteNoteController;
-import controller.WriteScheduleController;
-import controller.util.*;
+import controller.calendar.CalendarController;
+import controller.calendar.CalendarViewController;
+import controller.diary.DeleteDiaryController;
+import controller.diary.MemoListController;
+import controller.diary.NoteListController;
+import controller.diary.NoteViewController;
+import controller.diary.ScheduleViewController;
+import controller.diary.SearchController;
+import controller.diary.UpdateNoteController;
+import controller.diary.UpdateScheduleController;
+import controller.diary.WriteMemoController;
+import controller.diary.WriteNoteController;
+import controller.diary.WriteScheduleController;
+import controller.member.LoginController;
+import controller.member.RegisterMemberController;
+import controller.member.UpdateMemberController;
 
 public class HandlerMapping {
 	private static HandlerMapping handler = new HandlerMapping();

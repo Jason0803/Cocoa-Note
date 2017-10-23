@@ -1,4 +1,4 @@
-package controller;
+package controller.calendar;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,7 +11,8 @@ import model.vo.day.Day;
 import model.vo.member.Member;
 */
 
-import controller.util.ModelAndView;
+import controller.Controller;
+import controller.ModelAndView;
 import model.dao.diary.DiaryDAO;
 import model.vo.day.Day;
 import model.vo.member.Member;

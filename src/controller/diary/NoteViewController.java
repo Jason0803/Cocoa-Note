@@ -1,4 +1,4 @@
-package controller;
+package controller.diary;
 
 import java.util.Vector;
 
@@ -9,7 +9,8 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.catalina.tribes.transport.nio.ParallelNioSender;
 
-import controller.util.ModelAndView;
+import controller.Controller;
+import controller.ModelAndView;
 import model.dao.diary.DiaryDAO;
 import model.vo.diary.Diary;
 import model.vo.diary.Memo;

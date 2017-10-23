@@ -1,9 +1,10 @@
-package controller;
+package controller.diary;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controller.util.ModelAndView;
+import controller.Controller;
+import controller.ModelAndView;
 import model.dao.diary.DiaryDAO;
 import model.vo.diary.Note;
 import util.CocoaDate;

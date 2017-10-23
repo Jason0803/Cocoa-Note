@@ -1,11 +1,12 @@
-package controller;
+package controller.diary;
 
 import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controller.util.ModelAndView;
+import controller.Controller;
+import controller.ModelAndView;
 import model.dao.diary.DiaryDAO;
 import model.vo.diary.Memo;
 import model.vo.diary.Schedule;
