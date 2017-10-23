@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import controller.util.ModelAndView;
 import dao.member.MemberDAO;
+import util.CocoaDate;
 import vo.member.Member;
 
 public class RegisterMemberController implements Controller {
@@ -17,11 +18,13 @@ public class RegisterMemberController implements Controller {
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
-		int month = Calendar.getInstance().get(Calendar.MONTH) + 1;
-		String path = "cal.jsp?month="+month;
+		CocoaDate today = new CocoaDate();
+		
+		String path = "DisppatcherServlet?year="+today.getYear()+"&month="+today.getMonth();
 		Member vo = MemberDAO.getInstance().registerMember(new Member(id, password, name, 1, 1));
 		HttpSession session = request.getSession();
 		session.setAttribute("memberVO", vo);
+		session.setAttribute("today", today);
 		return new ModelAndView(path, true);
 	}
 
