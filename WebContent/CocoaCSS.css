@@ -3,13 +3,14 @@ table {
 }
 td {
 	text-align:center;
-	border: 1px solid black;
+	 border: 1px solid #e9ecef;
 	width:14.28%;
 	vertical-align:top;
 	height:100px;
 }
 .date {
 	width:100%;
+	border-radius: 1.5rem!important;
 	background:pink;
 	display:inline-block;
 }
@@ -44,4 +45,25 @@ td {
 	border: 1px solid black;
 	width:15%;
 	float:left;
+}
+
+.invited_member { /* write_schedule.jsp : 일정을 함께하는 친구 리스트 */
+	display: inline-block;
+	min-height:25px;
+	line-height:30px;
+	background:pink;
+	padding:5px;
+	margin:5px;
+	border-radius: 5px;
+}
+
+.delete_member { /* write_schedule.jsp : 일정을 함께하는 친구 리스트 제거버튼블럭 */
+	display: inline-block;
+	width:20px;
+	margin-left:5px;
+	margin-top:-6px;
+	height:20px;
+	background:red;
+	vertical-align: middle;
+	
 }
