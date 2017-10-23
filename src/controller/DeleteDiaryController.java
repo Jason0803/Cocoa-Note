@@ -19,3 +19,5 @@ public class DeleteDiaryController implements Controller {
 	}
 
 }
+
+
