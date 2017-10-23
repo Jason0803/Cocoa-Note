@@ -34,10 +34,7 @@ public class DiaryDAO {
 	// query 수행 결과 확인을위한 static
 	private static final int TRUE = 1;
 	private static final int FALSE = 0;
-	
-
-	
-	
+	// ------------------------------------------------ forConnection ------------------------------------------------ //
 	public Connection getConnection() throws SQLException{
 		return DataSourceManager.getInstance().getConnection();
 	}
@@ -45,17 +42,14 @@ public class DiaryDAO {
 		if(ps!=null) ps.close();
 		if(conn!=null) conn.close();
 	}
-	
 	public void closeAll(ResultSet rs,PreparedStatement ps, Connection conn)throws SQLException{
 		if(rs!=null){
 			rs.close();
 			closeAll(ps, conn);
 		}
-	}//
-	
+	}
 	// ------------------------------------------------ getAllNote ------------------------------------------------ //
 	public Vector<Note> getAllNote(String id) throws SQLException {
-
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -105,11 +99,11 @@ public class DiaryDAO {
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				sc.add(new Schedule(rs.getInt("schedule_no"), 			// no
-						rs.getString("id"), 							// id
-						rs.getString("title"), 							// title
-						rs.getString("content"),						// content
-						temp_str,										// group
+				sc.add(new Schedule(rs.getInt("schedule_no"), 									// no
+						rs.getString("id"), 													// id
+						rs.getString("title"), 													// title
+						rs.getString("content"),												// content
+						temp_str,																// group
 						new CocoaDate(new Date(rs.getTimestamp("start_date").getTime())),		// startDate
 						new CocoaDate(new Date(rs.getTimestamp("end_date").getTime()))));		// endDate
 			}
@@ -151,7 +145,6 @@ public class DiaryDAO {
 		}
 		return m;
 	}
-
 	// ------------------------------------------------ searchNote ------------------------------------------------ //
 	public Map<Integer,Note> searchNoteByKeyword(String id, String keyword) {
 		Connection conn = null;
@@ -188,7 +181,6 @@ public class DiaryDAO {
 	}
 	// ------------------------------------------------ searchMemo ------------------------------------------------ //
 	public Map<Integer,Memo> searchMemoByKeyword(String id, String keyword) throws SQLException{
-
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -259,7 +251,6 @@ public class DiaryDAO {
          }
         return sc;
      }
-	
 	// ------------------------------------------------ writeDiary ------------------------------------------------ //
 	public int getCurrDiaryNo() throws SQLException {
 		Connection conn = null;
@@ -303,8 +294,7 @@ public class DiaryDAO {
            closeAll(rs, ps, conn);
          }
         return rmemo;
-     }
-		
+     }		
 	// ------------------------------------------------ writeDiary ------------------------------------------------ //
 	public Note writeDiary(Note note) throws SQLException {
 		Connection conn = null;
@@ -460,11 +450,7 @@ public class DiaryDAO {
 		}
 		return sc;
 	}
-	
 	// ------------------------------------------------ deleteDiary ------------------------------------------------ //
-	// #10004 : [Major] deleteDiary(int no) 구현방법 회의 (#9)
-	// #00150 : deleteDiary 수정
-
 	public int deleteDiary(int no) throws SQLException{ 
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -525,7 +511,6 @@ public class DiaryDAO {
 	}
 	// ------------------------------------------------ getNoteList ------------------------------------------------ //
 	public Vector<Note> getNoteList(String id) throws SQLException {
-		
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -559,7 +544,6 @@ public class DiaryDAO {
 		
 		return n;
 	}
-	
 	// ------------------------------------------------ getNoteByNo ------------------------------------------------ //
 	public Note getNoteByNo(int no) throws SQLException {
 		Connection conn = null;
@@ -615,7 +599,6 @@ public class DiaryDAO {
 			
 			ps.executeUpdate();
 			System.out.println("[DiaryDAO]@updateNote : Update Complete for Note no : " + no);
-			
 
 			// To return note instance
 			note = getNoteByNo(no);
@@ -666,8 +649,7 @@ public class DiaryDAO {
 		} finally {
 			closeAll(ps, conn);
 		}
-		
-		
+
 		return schedule;
 	}
 	// ------------------------------------------------ getDay  ------------------------------------------------ //
@@ -717,7 +699,7 @@ public class DiaryDAO {
 		
 		return day;
 	}
-
+	// ------------------------------------------------ getCurrNoteNo  ------------------------------------------------ //
 	public int getCurrNoteNo() throws SQLException {
 		Connection conn = null;
         PreparedStatement ps = null;
