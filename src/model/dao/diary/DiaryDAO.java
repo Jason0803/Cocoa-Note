@@ -686,10 +686,8 @@ public class DiaryDAO {
 				}
 				*/
 				// #00157 : Apply CocoaDate.compareDate()
-				for(Note note : notes) {
-					if(searchDate.compareDate(note.getWriteDate()))
-						day.getNotes().add(note);
-				}
+				for(Note note : notes) if(searchDate.compareDate(note.getWriteDate())) day.getNotes().add(note);
+				
 
 				/*
 				for(Schedule schedule : schedules) {
@@ -700,10 +698,9 @@ public class DiaryDAO {
 				}
 				*/
 				// #00157 : Apply CocoaDate.compareDate()
-				for(Schedule schedule : schedules) {
-					if(searchDate.compareDate(schedule.getStartDate(), schedule.getEndDate()))
-						day.getSchedules().add(schedule);
-				}
+				for(Schedule schedule : schedules) 
+					if(searchDate.compareDate(schedule.getStartDate(), schedule.getEndDate())) day.getSchedules().add(schedule);
+				
 			}
 			
 		} catch(SQLException e) {
