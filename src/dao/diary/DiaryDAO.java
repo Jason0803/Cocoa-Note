@@ -710,8 +710,6 @@ public class DiaryDAO {
 		
 		return day;
 	}
-<<<<<<< HEAD
-=======
 
 	public int getCurrNoteNo() throws SQLException {
 		Connection conn = null;
@@ -731,6 +729,4 @@ public class DiaryDAO {
          // #00133
          return currNo-1;
 	}
-
->>>>>>> origin/NOTEVIEWminyoung
 }
