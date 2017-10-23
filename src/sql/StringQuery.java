@@ -44,7 +44,7 @@ public interface StringQuery {
 			 + "VALUES(seq_diary_no.nextVal, ?, ?, ?, to_date(?, 'YYYYMMDDHH24MI'), to_date(?, 'YYYYMMDDHH24MI'))";
 	String WRITE_SCHEDULE = 
 			"INSERT INTO schedule (schedule_no, id, start_date, end_date, title, content) "
-			+ "VALUES(seq_diary_no.nextVal, ?, ?, ?, ?)";
+			+ "VALUES(seq_diary_no.nextVal, ?, ?, ?, ?, ?)";
 	String WRITE_SCHEDULE_GROUP = "INSERT INTO schedule_group (schedule_no, group_member_id) VALUES(?, ?)";
 	
 	
