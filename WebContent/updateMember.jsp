@@ -1,8 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
+<jsp:include page="head.jsp"></jsp:include>
 <script>
 function window.onload(){
 	if('${selected}'== $("#cocoaTheme").attr("value")){
@@ -28,5 +26,4 @@ function window.onload(){
 <input type="submit" value="회원정보 수정"/>
 <input type="hidden" name="command" value="updateMember" />
 </form>
-</body>
-</html>
+<jsp:include page="foot.jsp"></jsp:include>

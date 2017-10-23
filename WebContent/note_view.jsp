@@ -5,6 +5,10 @@
 function write_note() {
 	document.writeFrm.submit();
 }
+
+function deleteNote(no) {
+	location.href="DispatcherServlet?command=deleteDiary&no="+no;
+}
 </script>
 <input type="button" value="새 노트 작성" onclick="javascript:write_note();">
 <form class="hidden_form" name="writeFrm" method="post" action="DispatcherServlet">
@@ -24,6 +28,7 @@ function write_note() {
 	작성 : ${note.writeDate.year}-${note.writeDate.month}-${note.writeDate.date} / 최종수정 : ${note.currentDate.year}-${note.currentDate.month}-${note.currentDate.date}<br />
 	<textarea name="content">${note.content}</textarea>
 	<input type="submit" value="저장"  />
+	<input type="button" value="노트삭제" onclick="deleteNote(${note.no})" />
 	<input type="hidden" name="command" value="updateNote" />
 	<input type="hidden" name="isCurr" value="false" />
 	<input type="hidden" name="diaryNo" value="${note.no}" />
