@@ -16,6 +16,7 @@ import controller.UpdateNoteController;
 import controller.UpdateScheduleController;
 import controller.WriteMemoController;
 import controller.WriteNoteController;
+import controller.WriteScheduleController;
 import controller.util.*;
 
 public class HandlerMapping {
@@ -89,6 +90,10 @@ public class HandlerMapping {
 			}
 			case "calView" : {
 				controller = new CalendarViewController();
+				break;
+			}
+			case "writeSchedule" : {
+				controller = new WriteScheduleController();
 				break;
 			}
 		}
