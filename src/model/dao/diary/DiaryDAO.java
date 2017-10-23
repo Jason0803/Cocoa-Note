@@ -48,6 +48,80 @@ public class DiaryDAO {
 			closeAll(ps, conn);
 		}
 	}
+	// ------------------------------------------------ getAllDiary ------------------------------------------------ //
+	@SuppressWarnings("unchecked")
+	public Vector<Diary> getAllDiary(String id, String type) throws SQLException {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Vector diary = null;
+		
+		try{
+			conn = getConnection();
+			
+			switch(type.toLowerCase()) {
+				case "note" : {
+					ps = conn.prepareStatement(StringQuery.GET_ALL_NOTE);
+					ps.setString(1, id);
+					rs = ps.executeQuery();
+					diary = new Vector<Note>();
+					while(rs.next()) {
+						Note m = new Note(rs.getInt("note_no"), 								// no
+								rs.getString("id"),												// id
+								new CocoaDate(new Date(rs.getDate("wrt_date").getTime())), 		// writeDate
+								rs.getString("content"),										// content
+								new CocoaDate(new Date(rs.getDate("curr_date").getTime())),		// currentDate
+								rs.getString("title"));											// title
+						
+						diary.add(m);
+					}
+					System.out.println("[DiaryDAO]@getAllDiary(Note) Done !");
+					break;
+				}
+				case "memo" : {
+					ps= conn.prepareStatement(StringQuery.GET_ALL_MEMO);
+					ps.setString(1, id);
+					rs = ps.executeQuery();
+					diary = new Vector<Memo>();
+					
+					while(rs.next()) {
+						diary.add(new Memo(rs.getInt("memo_no"), 
+									id, 
+									new CocoaDate(new Date(rs.getTimestamp("wrt_date").getTime())), 
+									rs.getString("content")));
+					}	
+					System.out.println("[DiaryDAO]@getAllDiary(Memo) Done !");
+					break;
+				}
+				case "schedule" : {
+					String[] temp_str = {};
+					ps= conn.prepareStatement(StringQuery.GET_ALL_SCHEDULE);
+					ps.setString(1, id);
+					rs = ps.executeQuery();
+					diary = new Vector<Schedule>();
+					
+					while(rs.next()) {
+						diary.add(new Schedule(rs.getInt("schedule_no"), 									// no
+									rs.getString("id"), 													// id
+									rs.getString("title"), 													// title
+									rs.getString("content"),												// content
+									temp_str,																// group
+									new CocoaDate(new Date(rs.getTimestamp("start_date").getTime())),		// startDate
+									new CocoaDate(new Date(rs.getTimestamp("end_date").getTime()))));		// endDate
+					}
+					System.out.println("[DiaryDAO]@getAllDiary(Schedule) Done !");
+					break;
+				}
+				default : return null;
+			}
+			
+		} catch(SQLException e) {
+			System.out.println("ERROR : [DiaryDAO]@getAllDiary : SQLException Caught !");
+			e.printStackTrace();
+		}
+		
+		return diary;
+	}
 	// ------------------------------------------------ getAllNote ------------------------------------------------ //
 	public Vector<Note> getAllNote(String id) throws SQLException {
 		Connection conn = null;
@@ -72,7 +146,7 @@ public class DiaryDAO {
 				
 				n.add(m);
 			}
-
+			System.out.println("[DiaryDAO]@cgetAllNote(String id) : getAllNote Done !");
 		} catch(SQLException e) {
 			System.out.println("ERROR : [DiaryDAO]@getAllMemo : SQLException Caught !");
 			e.printStackTrace();
@@ -107,7 +181,7 @@ public class DiaryDAO {
 						new CocoaDate(new Date(rs.getTimestamp("start_date").getTime())),		// startDate
 						new CocoaDate(new Date(rs.getTimestamp("end_date").getTime()))));		// endDate
 			}
-			
+			System.out.println("[DiaryDAO]@cgetAllSchedule(String id) : getAllSchdule Done !");
 		}catch(Exception e) {
 			System.out.println("ERROR : [DiaryDAO]@getAllSchedule : SQLException Caught !");
 			e.printStackTrace();
@@ -137,8 +211,9 @@ public class DiaryDAO {
 						new CocoaDate(new Date(rs.getTimestamp("wrt_date").getTime())), 
 						rs.getString("content")));
 			}	
-			
+			System.out.println("[DiaryDAO]@cgetAllMemo(String id) : getAllMemo Done !");
 		}catch(Exception e) {
+			System.out.println("[DiaryDAO]@cgetAllMemo(String id) : SQLException !");
 			e.printStackTrace();
 		}finally {
 			closeAll(rs, ps, conn);
