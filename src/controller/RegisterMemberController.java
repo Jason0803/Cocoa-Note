@@ -20,11 +20,12 @@ public class RegisterMemberController implements Controller {
 		String name = request.getParameter("name");
 		CocoaDate today = new CocoaDate();
 		
-		String path = "DisppatcherServlet?year="+today.getYear()+"&month="+today.getMonth();
+		String path = null;
 		Member vo = MemberDAO.getInstance().registerMember(new Member(id, password, name, 1, 1));
 		if(vo == null) {
-			path = "register?register=false";
+			path = "register.jsp?register=false";
 		} else{
+			path = "DisppatcherServlet?year="+today.getYear()+"&month="+today.getMonth();
 			HttpSession session = request.getSession();
 			
 			session.setAttribute("memberVO", vo);
