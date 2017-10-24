@@ -53,10 +53,6 @@ public class HandlerMapping {
 				controller = new NoteViewController();
 				break;
 			}
-			case "scheduleView" : {
-				controller = new ScheduleViewController();
-				break;
-			}
 			case "deleteDiary" : {
 				controller = new DeleteDiaryController();
 				break;
