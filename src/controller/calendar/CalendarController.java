@@ -1,6 +1,7 @@
 package controller.calendar;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,6 +10,7 @@ import controller.Controller;
 import controller.ModelAndView;
 import model.dao.diary.DiaryDAO;
 import model.vo.day.Day;
+import model.vo.diary.Diary;
 import model.vo.member.Member;
 import util.CocoaDate;
 
@@ -23,8 +25,9 @@ public class CalendarController implements Controller {
 		int month = Integer.parseInt(request.getParameter("month"));
 		System.out.println(year);
 		CocoaDate date = new CocoaDate(year, month, 1);
-		ArrayList<Day> monthlyDiary = DiaryDAO.getInstance().getMonthlyDiary(id, date);
-		request.setAttribute("monthlyDiary", monthlyDiary);
+		
+		request.setAttribute("monthlyDiary", DiaryDAO.getInstance().getMonthlyDiary(id, date));
+		request.setAttribute("scheduleList", DiaryDAO.getInstance().getAllDiary(id, "schedule"));
 		return new ModelAndView("cal.jsp?year="+year+"&month="+month);
 	}
 
