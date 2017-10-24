@@ -116,7 +116,7 @@ public class DiaryDAO {
 			}
 			
 		} catch(SQLException e) {
-			System.out.println("ERROR : [DiaryDAO]@getAllDiary : SQLException Caught !");
+			System.out.println("ERROR : [DiaryDAO]@getAllDiary : SQLException Caught at : " + type);
 			e.printStackTrace();
 		}
 		
@@ -366,7 +366,11 @@ public class DiaryDAO {
         	System.out.println("[DiaryDAO]@writeDiary(Memo memo) : SQLException");
            e.printStackTrace();
         }finally {
-           closeAll(rs, ps, conn);
+        	try{
+        		closeAll(rs, ps, conn);
+        	} catch(Exception e) {
+        		e.printStackTrace();
+        	}
          }
         return rmemo;
      }		
@@ -394,7 +398,11 @@ public class DiaryDAO {
         	System.out.println("[DiaryDAO]@writeDiary(Note note) : SQLException");
         	e.printStackTrace();
         }finally {
-           closeAll(rs, ps, conn);
+        	try{
+        		closeAll(rs, ps, conn);
+        	} catch(Exception e) {
+        		e.printStackTrace();
+        	}
          }
         return rnote;
 	}
@@ -420,7 +428,11 @@ public class DiaryDAO {
         	System.out.println("[DiaryDAO]@writeDiary(Schedule schedule) : SQLException !");
         	e.printStackTrace();
         }finally {
-           closeAll(ps, conn);
+        	try{
+        		closeAll(ps, conn);
+        	} catch (Exception e) {
+        		e.printStackTrace();
+        	}
          }
         
         return rSchedule;
