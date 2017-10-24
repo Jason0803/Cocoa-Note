@@ -93,7 +93,7 @@
 				<div class="card-body text-center" style="padding:0.5rem;">
 					<div><h6><small>계정이 없으신가요? <a href=register.jsp>가입하기</a></small></h6></div>
 					
-					<div><h6><small>비밀번호를 잊으셨나요? <a href=DispatcherServlet?command=forgotPassword>비밀번호찾기</a></small></h6></div>
+					<div><h6><small>비밀번호를 잊으셨나요? <a href="forgotPassword.jsp">비밀번호찾기</a></small></h6></div>
 				
 				</div>
 				</div>
