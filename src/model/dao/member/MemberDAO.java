@@ -37,7 +37,7 @@ public class MemberDAO {
 	}
 	
 	// ---------------------------------- for connection ----------------------------------//
-	public Connection connection() {
+	public Connection connection() throws SQLException {
 		Connection conn = null;
 		try {
 			conn = ds.getConnection();
@@ -118,6 +118,15 @@ public class MemberDAO {
 
 		return rs.next();
 	}
+	public boolean doesExist(String id) throws SQLException {
+		Connection conn = connection();
+		PreparedStatement ps = 
+				conn.prepareStatement(StringQuery.ISEXIST_MEMBER);
+		ps.setString(1, id);
+		ResultSet rs = ps.executeQuery();
+
+		return  rs.next();
+	}
 	
 	public boolean checkPasswordValidation(String id, String password, Connection conn) throws SQLException, RecordNotFoundException{
 		PreparedStatement ps = 
@@ -179,7 +188,7 @@ public class MemberDAO {
 		try {
 			conn = connection();
 			if(checkPasswordValidation(id, password, conn)) {
-				ps = conn.prepareStatement(StringQuery.GET_MEMBER_INFO);
+				ps = conn.prepareStatement(StringQuery.FIND_MEMBER_BY_ID);
 				ps.setString(1, id);
 				rs = ps.executeQuery();
 				if(rs.next()) {
@@ -194,5 +203,31 @@ public class MemberDAO {
 		
 		return member;
 	}
+	
+	public Member findMemberById(String id) throws SQLException, RecordNotFoundException {
+		Member member = null;
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = connection();
 
+				ps = conn.prepareStatement(StringQuery.FIND_MEMBER_BY_ID);
+				ps.setString(1, id);
+				rs = ps.executeQuery();
+				if(rs.next()) {
+					member = new Member(id, rs.getString("password"), rs.getString("name"), rs.getInt("acc_plan"), rs.getInt("theme"));
+				}
+			
+		}finally {
+			try{
+				closeAll(ps, conn, rs);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return member;
+	}
 }

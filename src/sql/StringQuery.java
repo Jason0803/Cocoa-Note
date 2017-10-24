@@ -17,9 +17,8 @@ public interface StringQuery {
 			"SELECT password FROM member WHERE id = ?";
 	String UPDATE_MEMBER =
 			"UPDATE member SET password=?, name=?, acc_plan=?, theme=? where id=?";
-	String GET_MEMBER_INFO =
+	String FIND_MEMBER_BY_ID =
 			"SELECT * FROM member where id=?";
-	
 	// ------------------------------------------------------- DiaryDAO ------------------------------------------------------- //
 	String GET_ALL_MEMO = 
 			"SELECT * FROM memo WHERE id = ? ORDER BY wrt_date DESC";
