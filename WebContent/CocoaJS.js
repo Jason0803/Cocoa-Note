@@ -1,6 +1,46 @@
 /**
  * 
  */
+function calView(year,month,date){
+	var year = year;
+	var month = month;
+	var date = date;
+	location.href = "DispatcherServlet?command=calView&year="+year+"&month="+month+"&date="+date;
+}
+function getD_Day(upcomings){
+	for(i=0;i<upcomings.length;i++){
+		var tempStr = upcomings[i].innerHTML;
+		tempStr = tempStr.split(',');
+		tempStr = tempStr[0].split('/');
+		var year = tempStr[0];
+		var month = tempStr[1];
+		var date = tempStr[2];
+		var nowDate = new Date();
+		var targetDate = new Date(year,month-1,date);
+		var count = Math.ceil((targetDate-nowDate) / 1000 / 60 / 60 / 24);
+		upcomings[i].innerHTML = "D - "+count;
+	}
+}
+//----------------------------------------------------------------------------
+function prevMonth(year, month) {
+	var year = year;
+	var month = month;
+	if(month==1){
+		year -= 1;
+		month = 12;
+	} else month -= 1;
+	location.href="DispatcherServlet?command=cal&year="+year+"&month="+month;
+}
+function nextMonth(year, month) {
+	var year = year;
+	var month = month;
+	if(month==12){
+		year += 1;
+		month = 1;
+	} else month +=1;
+	location.href="DispatcherServlet?command=cal&year="+year+"&month="+month;
+}
+// ---------------------------------------------------------------------------
 var group_member = new Array();
 function addGroupMember() {
 	var group_memberFrm = document.scheduleFrm.schedule_group.value;
@@ -131,3 +171,5 @@ function updateSchedule(diaryNo, schedule){
 	document.getElementById('scheduleFrmTitle').innerHTML = "일정 변경하기";
 	document.getElementsByName('scheduleFrmSubmit')[0].value="일정 수정";
 }
+/* --------------------------------------------------------------------- */
+

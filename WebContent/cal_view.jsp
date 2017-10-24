@@ -49,7 +49,6 @@
 				<input type="datetime-local" class="form-control rounded-bar date-control" name="endDate" required="required"/><br>
 				<br/>
 				<input type="text" class="form-control rounded-bar" name="content" required="required" placeholder="일정 내용"/><br>
-				
 				<div class="row">
 					<div class="col-9">
 						<input type="text" class="form-control rounded-bar shcedule_group" name="schedule_group" placeholder="함께하는 사람"/>
