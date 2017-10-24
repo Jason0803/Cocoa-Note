@@ -28,7 +28,7 @@
 					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					${memberVO.name }</button>
 				<div class="dropdown-menu">
-					<a class="dropdown-item" href="DispatcherServlet?command=setting">설정</a> 
+					<a class="dropdown-item" href="updateMember.jsp">설정</a> 
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="DispatcherServlet?command=logout&memberVO=${memberVO.id}">로그아웃</a>
 				</div>
