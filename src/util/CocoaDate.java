@@ -181,7 +181,7 @@ public class CocoaDate {
 	public boolean compareDate(CocoaDate srcDate, CocoaDate destDate) {
 		// sychoi : check if THIS CocoaDate instance INCLUSIVELY in between srcDate & destDate
 		return IntegerRange.betweenInclusive(this.getYear(), srcDate.getYear(), destDate.getYear())
-				&& IntegerRange.betweenInclusive(this.getMonth(), srcDate.getYear(), destDate.getMonth())
+				&& IntegerRange.betweenInclusive(this.getMonth(), srcDate.getMonth(), destDate.getMonth())
 				&& IntegerRange.betweenInclusive(this.getDate(), srcDate.getDate(), destDate.getDate());
 	}
 	
