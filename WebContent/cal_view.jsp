@@ -60,6 +60,77 @@ function valueCheck() {
 function noteView(noteNo) {
 	location.href="DispatcherServlet?command=noteView&diaryNo="+noteNo+"&isCurr=false"
 }
+function loadBtnSet(item){
+	var child = item.children;
+	child[3].style['display'] = "block";
+}
+
+function hideBtnSet(item){
+	var child = item.children;
+	child[3].style['display'] = "none";
+}
+
+function deleteDiary(scheduleNo){
+	location.href="DispatcherServlet?command=deleteDiary&no="+scheduleNo+"&year=${dayInfo.date.year}&month=${dayInfo.date.month}&date=${dayInfo.date.date}";
+}
+
+function updateSchedule(diaryNo, schedule){
+	var scheduleToStringArray = schedule.split(',');
+	var tempStr = scheduleToStringArray[0].split('=');
+	var title = tempStr[1];
+	tempStr = scheduleToStringArray[1].split('=');
+	var content = tempStr[1];
+	tempStr = scheduleToStringArray[3].split('=');
+	var startDate = tempStr[1];
+	var startTime = scheduleToStringArray[4];
+	tempStr = scheduleToStringArray[5].split('=');
+	var endDate = tempStr[1];
+	var endTime = scheduleToStringArray[6].substring(0,scheduleToStringArray[6].length-1);
+	
+	startDate = startDate.replace('/', '-');
+	startDate = startDate.replace('/', '-');
+	
+	startTime = startTime.trim();
+	if(startTime[1]==':') {
+		startTime = "0"+startTime+"";
+	}
+	if(startTime.length==4) {
+		var tempChar = startTime[3];
+		startTime[3] = "0";
+		startTime += tempChar;
+	}
+	
+	endTime = endTime.trim();
+	if(endTime[1]==':') {
+		endTime = "0"+endTime+"";
+	}
+	if(endTime.length==4) {
+		var tempChar = endTime[3];
+		endTime[3] = "0";
+		endTime += tempChar;
+	}
+	
+	startDate = startDate+"T"+startTime+":00.000";
+	endDate = endDate.replace('/', '-');
+	endDate = endDate.replace('/', '-');
+	endDate = endDate+"T"+endTime+":00.000";
+
+	var inputNode = document.createElement('input');
+	inputNode.setAttribute('type', 'hidden');
+	inputNode.setAttribute('name', 'diaryNo');
+	inputNode.setAttribute('value', diaryNo);
+	document.scheduleFrm.appendChild(inputNode);
+	
+	document.scheduleFrm.command.value = 'updateSchedule';
+	document.scheduleFrm.title.value = title;
+	document.scheduleFrm.title.value = title;
+	document.scheduleFrm.content.value = content;
+	document.scheduleFrm.startDate.value = startDate;
+	document.scheduleFrm.endDate.value = endDate;
+	
+	document.getElementById('scheduleFrmTitle').innerHTML = "일정 변경하기";
+	document.getElementsByName('scheduleFrmSubmit')[0].value="일정 수정";
+}
 </script>
 <div class="row">
 <div class="col-7">
@@ -72,10 +143,16 @@ function noteView(noteNo) {
 				- 등록된 일정이 없습니다.
 			</c:if>
 			<c:forEach var = "schedule" items="${dayInfo.schedules}">
-			일정명 : ${schedule.title}
-			일정 기간 : ${schedule.startDate.year}.${schedule.startDate.month}.${schedule.startDate.date}
-						~${schedule.endDate.year}.${schedule.endDate.month}.${schedule.endDate.date}
-			일정 내용 : ${schedule.content}
+				<div class="scheduleItem" onmouseover="loadBtnSet(this)" onmouseout="hideBtnSet(this)">
+					<span class="scheduleTitle">${schedule.title}</span>
+					<span class="scheduleDate">${schedule.startDate.year}.${schedule.startDate.month}.${schedule.startDate.date} ${schedule.startDate.hour}:${schedule.startDate.minute}
+								~${schedule.endDate.year}.${schedule.endDate.month}.${schedule.endDate.date} ${schedule.endDate.hour}:${schedule.endDate.minute}</span>
+					<p class="scheduleContent">- ${schedule.content}</p>
+					<div class="scheduleBtn">
+						<input type="button" value="수정" onclick="updateSchedule('${schedule.no}', '${schedule}')" />
+						<input type="button" value="삭제" onclick="deleteDiary(${schedule.no})"/>
+					</div>
+				</div>
 			</c:forEach>
 			<hr>
 			<h5>노트</h5>
@@ -93,7 +170,7 @@ function noteView(noteNo) {
 <div class="col-5">
 	<div class="card rounded-content">
 		<div class="card-body">
-			<h4 class="card-title">새로운 일정</h4>
+			<h4 class="card-title" id="scheduleFrmTitle">새로운 일정</h4>
 			<p class="card-text"></p>
 			<hr>
 			<form action="DispatcherServlet" name="scheduleFrm" method="post" onsubmit="return valueCheck()">
@@ -113,7 +190,7 @@ function noteView(noteNo) {
 					</div>
 					<div id="shcedule_group_container"></div><br /><br />
 				</div>
-				<input id="btn-long-pink" style="width:100%; margin-top:20px;" type="submit" class="btn btn-primary" value="일정 등록" />
+				<input name="scheduleFrmSubmit" id="btn-long-pink" style="width:100%; margin-top:20px;" type="submit" class="btn btn-primary" value="일정 등록" />
 				<input type="hidden" name="command" value="writeSchedule" />
 				<input type="hidden" name="start_date" />
 				<input type="hidden" name="end_date" />
@@ -127,5 +204,6 @@ function noteView(noteNo) {
 <script type="text/javascript">
 	document.scheduleFrm.startDate.value = "${dayInfo.date.year}-${dayInfo.date.month}-${dayInfo.date.date}T09:00:00.000";
 	document.scheduleFrm.endDate.value = "${dayInfo.date.year}-${dayInfo.date.month}-${dayInfo.date.date}T18:00:00.000";
+	
 </script>
 <jsp:include page="foot.jsp"></jsp:include>
