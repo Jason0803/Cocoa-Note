@@ -1,21 +1,9 @@
 package controller;
 
-import controller.calendar.CalendarController;
-import controller.calendar.CalendarViewController;
-import controller.diary.DeleteDiaryController;
-import controller.diary.MemoListController;
-import controller.diary.NoteListController;
-import controller.diary.NoteViewController;
-import controller.diary.ScheduleViewController;
-import controller.diary.SearchController;
-import controller.diary.UpdateNoteController;
-import controller.diary.UpdateScheduleController;
-import controller.diary.WriteMemoController;
-import controller.diary.WriteNoteController;
-import controller.diary.WriteScheduleController;
-import controller.member.LoginController;
-import controller.member.RegisterMemberController;
-import controller.member.UpdateMemberController;
+import controller.calendar.*;
+import controller.diary.*;
+import controller.member.*;
+
 
 public class HandlerMapping {
 	private static HandlerMapping handler = new HandlerMapping();
@@ -59,11 +47,6 @@ public class HandlerMapping {
 			}
 			case "writeNote" : {
 				controller = new WriteNoteController();
-				break;
-			}
-			// #00082 : HandlerMapping or 6 New ..Controllers
-			case "noteList" : {
-				controller = new NoteListController();
 				break;
 			}
 			case "noteView" : {
