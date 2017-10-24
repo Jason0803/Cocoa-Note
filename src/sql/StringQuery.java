@@ -23,7 +23,7 @@ public interface StringQuery {
 	String GET_ALL_MEMO = 
 			"SELECT * FROM memo WHERE id = ? ORDER BY wrt_date DESC";
 	String GET_ALL_SCHEDULE =
-			"SELECT * FROM schedule WHERE id = ? ORDER BY start_date ASC";
+			"SELECT * FROM schedule WHERE id = ? ORDER BY start_date DESC";
 	String GET_ALL_NOTE =
 			"SELECT * FROM note WHERE id = ? ORDER BY curr_date DESC";
 
