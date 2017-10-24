@@ -17,6 +17,9 @@
 					<span class="scheduleDate">${schedule.startDate.year}.${schedule.startDate.month}.${schedule.startDate.date} ${schedule.startDate.hour}:${schedule.startDate.minute}
 								~${schedule.endDate.year}.${schedule.endDate.month}.${schedule.endDate.date} ${schedule.endDate.hour}:${schedule.endDate.minute}</span>
 					<p class="scheduleContent">- ${schedule.content}</p>
+					<c:forEach var="friend" items="${group_member}">
+						<div>${friend }AWEFASEFASFSDFASDFASDF</div>
+					</c:forEach>
 					<div class="scheduleBtn">
 						<input type="button" value="수정" onclick="updateSchedule('${schedule.no}', '${schedule}')" />
 						<input type="button" value="삭제" onclick="deleteDiary(${schedule.no},${schedule.startDate.year},${schedule.startDate.month},${schedule.startDate.date})"/>
