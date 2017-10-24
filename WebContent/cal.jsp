@@ -24,7 +24,7 @@
 </script>
 
 
-		<div class="row" style="height: 800px;">
+		<div class="row" style="height: 900px;">
 			<div class="col-8">
 				<div class="card rounded-content" style="width: 100%; height: 90%;">
 					<div class="card-body">
@@ -74,7 +74,7 @@
 				</div>
 			</div>
 			<div class="col-4">
-				<div class="card rounded-content" style="width: 100%; height: 70%;">
+				<div class="card rounded-content" style="width: 100%; height: 90%;">
 					<div class="card-body">
 						<h4 class="card-title">Upcoming events</h4>
 						<h6 class="card-subtitle mb-2 text-muted"></h6>
