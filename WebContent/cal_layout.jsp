@@ -7,7 +7,7 @@
 	<!-- As a heading -->
 	
 	
-		<div class="row" style="height: 800px;">
+		<div class="row" style="height: 1000px;">
 			<div class="col-8">
 				<div class="card rounded-content" style="width: 100%; height: 70%;">
 					<div class="card-body">
