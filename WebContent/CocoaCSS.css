@@ -3,7 +3,7 @@ table {
 }
 td {
 	text-align:center;
-	 border: 1px solid #e9ecef;
+	border: 1px solid #e9ecef;
 	width:14.28%;
 	vertical-align:top;
 	height:100px;
@@ -130,4 +130,8 @@ figure.deleteBtn:hover img {
 	background:red;
 	vertical-align: middle;
 	
+}
+
+.updateInfo{
+	text-align:center;
 }
