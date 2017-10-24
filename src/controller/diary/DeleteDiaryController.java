@@ -27,7 +27,9 @@ public class DeleteDiaryController implements Controller {
 				break;
 			}
 			default : {
-				path = "DispatcherServlet?command=cal&year="+today.getYear()+"&month="+today.getMonth();
+				path = "DispatcherServlet?command=calView&year="+request.getParameter("year")
+																+"&month="+request.getParameter("month")
+																+"&date="+request.getParameter("date");
 				break;
 			}
 		}
