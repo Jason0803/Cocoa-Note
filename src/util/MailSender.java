@@ -28,7 +28,7 @@ public class MailSender {
 	public static MailSender getInstance() {
 		return ms;
 	}
-	public static void sendMail(String id) {
+	public static void sendTemporaryPassword(String id) {
 		Session session = null;
 		MimeMessage msg = null;
 		String tempPassword = null;
@@ -66,7 +66,7 @@ public class MailSender {
 				msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(id, false));
 				
 				// tempPassword Logic
-				tempPassword += (int)(Math.random()*100000 +1);
+				tempPassword = ""+(int)(Math.random()*100000 +1);
 
 
 				// set tempPassword
