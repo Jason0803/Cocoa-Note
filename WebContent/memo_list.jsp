@@ -5,7 +5,7 @@
 <c:forEach var="memo" items="${memos}">
 	<div class="memo card rounded-content">
 	<div class="memoWrtDate">${memo.writeDate}</div>
-	<input type="button" class="deleteBtn" onclick="deleteMemo(${memo.no})">
+	<input type="button" class="deleteBtn hover" onclick="deleteMemo(${memo.no})">
 	<div class="memoContent">${memo.content}</div>
 	</div>
 </c:forEach>
@@ -19,6 +19,13 @@ for(i=0;i<memos.length;i++){
 	var count = Math.floor(Math.random()*5)+1;
 	memos[i].className += " memo"+count+"";
 }
+
+$(".hover").mouseleave(
+	    function () {
+	      $(this).removeClass("hover");
+	    }
+	  );
+
 </script>
 <jsp:include page="foot.jsp"></jsp:include>
 </div>

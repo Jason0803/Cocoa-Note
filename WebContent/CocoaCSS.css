@@ -83,18 +83,20 @@ td {
 	right:10px;
 	bottom:1px;
 	font-size: 13px;
+	color:gray;
 }
 
 .memoContent{
 	position:relative;
 	top:45px;
+	font-size: 15px;
 }
 
 .deleteBtn{
 	background-image: url("img/XIcon.png");
 	padding:0px;
-	width:15px;
-	height:15px;
+	width:10px;
+	height:10px;
 	border:0px;
 	background-color: transparent;
 	background-size: 100%;
@@ -102,6 +104,11 @@ td {
 	position:absolute;
 	top:10px;
 	right:10px;
+}
+
+figure.deleteBtn:hover img {
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
 }
 
 .invited_member { /* write_schedule.jsp : 일정을 함께하는 친구 리스트 */
