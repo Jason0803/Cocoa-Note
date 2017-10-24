@@ -19,7 +19,7 @@
 					<p class="scheduleContent">- ${schedule.content}</p>
 					<div class="scheduleBtn">
 						<input type="button" value="수정" onclick="updateSchedule('${schedule.no}', '${schedule}')" />
-						<input type="button" value="삭제" onclick="deleteDiary(${schedule.no})"/>
+						<input type="button" value="삭제" onclick="deleteDiary(${schedule.no},${schedule.startDate.year},${schedule.startDate.month},${schedule.startDate.date})"/>
 					</div>
 				</div>
 			</c:forEach>

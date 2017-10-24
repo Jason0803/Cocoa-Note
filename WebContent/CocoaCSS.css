@@ -13,6 +13,8 @@ td {
 	border-radius: 1.5rem!important;
 	background:pink;
 	display:inline-block;
+	color:white;
+	cursor:pointer;
 }
 
 .span-note {
@@ -175,4 +177,10 @@ figure.deleteBtn:hover img {
 	padding:4px 8px;
 	background-color:#17a2b8;
 	color:white;
+}
+.cal_schedule_item {
+	display:inline-block;
+	width:calc(100%+26px);
+	background-color:orange;
+	margin-left:-13px;
 }

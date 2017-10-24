@@ -109,8 +109,8 @@ function hideBtnSet(item){
 	child[3].style['display'] = "none";
 }
 
-function deleteDiary(scheduleNo){
-	location.href="DispatcherServlet?command=deleteDiary&no="+scheduleNo+"&year=${dayInfo.date.year}&month=${dayInfo.date.month}&date=${dayInfo.date.date}";
+function deleteDiary(scheduleNo,year, month, date){
+	location.href="DispatcherServlet?command=deleteDiary&no="+scheduleNo+"&year="+year+"&month="+month+"&date="+date;
 }
 
 function updateSchedule(diaryNo, schedule){
