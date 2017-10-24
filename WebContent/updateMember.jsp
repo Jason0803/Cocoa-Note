@@ -15,21 +15,21 @@ function window.onload(){
 	<div class="col-6 d-flex justify-content-end" >
 		<div class="card rounded-content textcenter" style="width: 25rem; height: 30rem;">
 			<div class="card-body" >
-				<h4 class="card-title">Mypage</h4>
+				<h4 class="card-title" style="text-align:center;">Mypage</h4>
 				<br />
 				<form action="DispatcherServlet" method="post">
-					<input class="form-control" type="text" name="id"
-						readonly="readonly" value="${memberVO.id}" /><br /> <input
-						class="form-control" type="password" name="password"
-						placeholder="현재 비밀번호" required="required" /><br /> <input
-						class="form-control" type="password" name="new_password"
-						placeholder="변경할 비밀번호" /><br /> <input class="form-control"
-						type="text" name="name" placeholder="이름" required="required"
-						value="${memberVO.name}" /><br /> 테마<input type="radio"
-						name="theme" id=cocoaTheme value="cocoa">코코아 <input
-						type="radio" name="theme" id=peachTheme value="peach">피치<br />
-					<input type="submit" value="회원정보 수정" /> <input type="hidden"
-						name="command" value="updateMember" />
+					<input class="form-control" type="text" name="id" readonly="readonly" value="${memberVO.id}" /><br /> 
+					<input class="form-control" type="password" name="password"	placeholder="현재 비밀번호" required="required" /><br /> 
+					<input class="form-control" type="password" name="new_password"	placeholder="변경할 비밀번호" /><br /> 
+					<input class="form-control" type="text" name="name" placeholder="이름" required="required" value="${memberVO.name}" /><br /> 
+					<span>
+					테마 <input type="radio" name="theme" id=cocoaTheme value="cocoa">코코아 
+						<input type="radio" name="theme" id=peachTheme value="peach">피치
+					</span>
+					<br/>
+						<input type="submit" class="updateBtn" value="저장" />
+						<input type="hidden" name="command" value="updateMember" />
+						
 				</form>
 			</div>
 		</div>

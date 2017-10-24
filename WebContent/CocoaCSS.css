@@ -22,8 +22,6 @@ td {
 .sam {
 	position: fixed;
 	bottom: 0;
-	
-	
 }
 
 .hidden_form { 
@@ -106,11 +104,6 @@ td {
 	right:10px;
 }
 
-figure.deleteBtn:hover img {
-  -webkit-transform: scale(1.5);
-  transform: scale(1.5);
-}
-
 .invited_member { /* write_schedule.jsp : 일정을 함께하는 친구 리스트 */
 	display: inline-block;
 	min-height:25px;
@@ -132,6 +125,13 @@ figure.deleteBtn:hover img {
 	
 }
 
-.updateInfo{
-	text-align:center;
+.updateBtn{
+	position:absolute;
+	background-color:transparent;
+	border-radius: 0.5rem!important;
+	border: solid 1px pink;
+	font-size: bold 20px black; 
+	left:20px;
+	bottom:20px;
+	cursor:pointer;
 }
