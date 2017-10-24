@@ -68,7 +68,7 @@
 					<div class="card-body text-center ">
 					
 						<form action="DispatcherServlet" method="post">
-							<h4 class="card-title">앗! <br/><br/>비밀번호를 잊으셨나요?</h4><br/>
+							<h4 class="card-title">앗! <br/>비밀번호를 잊으셨나요?</h4><br/>
 							<input class="form-control" type="text" name="id" placeholder="이메일(email)을 입력해주세요" required="required" /><br /> 
 							<input id="btn-long-pink" class="btn btn-primary" type="submit" value="비밀번호 찾기" />
 							
