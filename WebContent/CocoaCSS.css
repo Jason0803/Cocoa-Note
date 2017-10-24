@@ -42,12 +42,66 @@ td {
 }
 
 .memo {
-	border: solid 2px black;
+	background-size:100%;
+	background-color:transparent;
 	width:235px;
 	height:170px;
 	display:inline-block;
 	margin: 0 15px 30px 15px;
 	text-align: center;
+	overflow:hidden;
+	border:none;
+	padding-top: 5px;
+	padding-left: 12px;
+	padding-right: 12px;
+	box-shadow: -5px 5px 5px 0px lightgray;
+}
+
+.memo1{
+	background-image:url("img/blue.png");
+}
+
+.memo2{
+	background-image:url("img/green.png");
+}
+
+.memo3{
+	background-image:url("img/purple.png");
+}
+
+.memo4{
+	background-image:url("img/yellow.png");
+}
+
+.memo5{
+	background-image:url("img/pink.png");
+}
+
+.memoWrtDate{
+	margin-bottom: 10px;
+	position:absolute;
+	right:10px;
+	bottom:1px;
+	font-size: 13px;
+}
+
+.memoContent{
+	position:relative;
+	top:45px;
+}
+
+.deleteBtn{
+	background-image: url("img/XIcon.png");
+	padding:0px;
+	width:15px;
+	height:15px;
+	border:0px;
+	background-color: transparent;
+	background-size: 100%;
+	cursor:pointer;
+	position:absolute;
+	top:10px;
+	right:10px;
 }
 
 .invited_member { /* write_schedule.jsp : 일정을 함께하는 친구 리스트 */

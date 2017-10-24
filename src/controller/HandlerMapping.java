@@ -81,6 +81,10 @@ public class HandlerMapping {
 				controller = new LogoutController();
 				break;
 			}
+			case "forgotPassword" : {
+				controller = new ForgotPasswordController();
+				break;
+			}
 		}
 		/*
 		if(command.equals("register")) {

@@ -24,11 +24,6 @@
 	integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
 	crossorigin="anonymous"></script>
 
-<c:if test="${memberVO!=null}">
-	<script type="text/javascript">
-		location.href = "DispatcherServlet?command=cal&year=${today.year}&month=${today.month}";
-	</script>
-</c:if>
 
 <title>코코아노트. 당신의 하루를 기록하세요.</title>
 </head>
@@ -73,30 +68,17 @@
 					<div class="card-body text-center ">
 					
 						<form action="DispatcherServlet" method="post">
-							<h4 class="card-title">오늘도 파이팅!</h4>
-							<input class="form-control" type="text" name="id"
-								placeholder="아이디(email)" required="required" /><br /> 
-								<input class="form-control" type="password" name="password"
-								placeholder="password" required="required" /><br />
-								 <input id="btn-long-pink" class="btn btn-primary" type="submit" value="로그인" />
-							<c:if test="${param.login==false}">
-								<br />
-								<span style="color: red">회원정보가 일치하지 않습니다.</span>
-							</c:if>
-							<input type="hidden" name="command" value="login" />
+							<h4 class="card-title">앗! <br/>비밀번호를 잊으셨나요?</h4><br/>
+							<input class="form-control" type="text" name="id" placeholder="이메일(email)을 입력해주세요" required="required" /><br /> 
+							<input id="btn-long-pink" class="btn btn-primary" type="submit" value="비밀번호 찾기" />
+							
+							<input type="hidden" name="command" value="forgotPassword" />
 						</form>
 					</div>
 					
 				</div>
 				<br/>
-				<div class="card" style="width: 20rem; margin-left: 100px;">
-				<div class="card-body text-center" style="padding:0.5rem;">
-					<div><h6><small>계정이 없으신가요? <a href=register.jsp>가입하기</a></small></h6></div>
-					
-					<div><h6><small>비밀번호를 잊으셨나요? <a href="forgotPassword.jsp">비밀번호찾기</a></small></h6></div>
 				
-				</div>
-				</div>
 			</div>
 		</div>
 		<div class="row"></div>
