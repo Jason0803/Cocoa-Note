@@ -517,6 +517,7 @@ public class DiaryDAO {
 	
 		try {
 			conn = getConnection();
+			
 			ps = conn.prepareStatement(StringQuery.GET_SCHEDULE_BY_NO);
 			ps.setInt(1, no);
 			rs = ps.executeQuery();
@@ -529,7 +530,9 @@ public class DiaryDAO {
 							temp_str,
 							new CocoaDate(new Date(rs.getTimestamp("start_date").getTime())),
 							new CocoaDate(new Date(rs.getTimestamp("end_date").getTime())));
-			}	
+			}
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -792,5 +795,32 @@ public class DiaryDAO {
          }
          // #00133
          return currNo-1;
+	}
+	// ------------------------------------------------ getSharingMembers  ------------------------------------------------ //
+	public Vector<String> findSharingMembers(int no) throws SQLException {
+		Connection conn = null;
+        PreparedStatement ps = null;
+		ResultSet rs = null;
+		Vector<String> result = null;
+		
+		try {
+			conn = getConnection();
+			result = new Vector<String>();
+			
+			ps = conn.prepareStatement(StringQuery.GET_SHARING_USERS);
+			ps.setInt(1, no);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				result.add(rs.getString("group_member_id"));
+			}
+			System.out.println("[DiaryDAO]@findSharingMembers Resut : " + result);
+			
+		} catch(SQLException e) {
+			System.out.println("[DiaryDAO]@findSharingMembers : SQLException !");
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 }
