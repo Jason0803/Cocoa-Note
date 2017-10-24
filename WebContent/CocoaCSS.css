@@ -56,7 +56,7 @@ td {
 	line-height:30px;
 	background:pink;
 	padding:5px;
-	margin:5px;
+	margin:15px 0px 0px 15px;
 	border-radius: 5px;
 }
 
@@ -69,4 +69,14 @@ td {
 	background:red;
 	vertical-align: middle;
 	
+}
+
+.date-control { /* write_schedule.jsp 날짜입력 input css */
+	display: inline-block;
+	width:100%;
+}
+
+.shcedule_group { /* write_schedule.jsp group_member css */
+	display: inline-block;
+	width:100%;
 }
