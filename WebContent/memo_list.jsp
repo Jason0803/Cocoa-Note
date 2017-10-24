@@ -20,12 +20,6 @@ for(i=0;i<memos.length;i++){
 	memos[i].className += " memo"+count+"";
 }
 
-$(".hover").mouseleave(
-	    function () {
-	      $(this).removeClass("hover");
-	    }
-	  );
-
 </script>
 <jsp:include page="foot.jsp"></jsp:include>
 </div>

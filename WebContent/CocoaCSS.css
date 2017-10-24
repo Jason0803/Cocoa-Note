@@ -3,7 +3,7 @@ table {
 }
 td {
 	text-align:center;
-	border: 1px solid #e9ecef;
+	 border: 1px solid #e9ecef;
 	width:14.28%;
 	vertical-align:top;
 	height:100px;
@@ -13,6 +13,8 @@ td {
 	border-radius: 1.5rem!important;
 	background:pink;
 	display:inline-block;
+	color:white;
+	cursor:pointer;
 }
 
 .span-note {
@@ -22,8 +24,6 @@ td {
 .sam {
 	position: fixed;
 	bottom: 0;
-	
-	
 }
 
 .hidden_form { 
@@ -106,18 +106,13 @@ td {
 	right:10px;
 }
 
-figure.deleteBtn:hover img {
-  -webkit-transform: scale(1.5);
-  transform: scale(1.5);
-}
-
 .invited_member { /* write_schedule.jsp : 일정을 함께하는 친구 리스트 */
 	display: inline-block;
 	min-height:25px;
 	line-height:30px;
 	background:pink;
 	padding:5px;
-	margin:5px;
+	margin:15px 0px 0px 15px;
 	border-radius: 5px;
 }
 
@@ -132,6 +127,65 @@ figure.deleteBtn:hover img {
 	
 }
 
-.updateInfo{
-	text-align:center;
+<<<<<<< HEAD
+.updateBtn{
+	position:absolute;
+	background-color:transparent;
+	border-radius: 0.5rem!important;
+	border: solid 1px pink;
+	font-size: bold 20px black; 
+	left:20px;
+	bottom:20px;
+	cursor:pointer;
+=======
+.date-control { /* write_schedule.jsp 날짜입력 input css */
+	display: inline-block;
+	width:100%;
+}
+
+.shcedule_group { /* write_schedule.jsp group_member css */
+	display: inline-block;
+	width:100%;
+}
+
+
+.scheduleTitle { /* cal_view.jsp 스케쥴 제목 css */
+	font-weight: bold;
+	margin-left:20px;
+>>>>>>> origin/K5-Branch
+}
+
+.scheduleDate { /* cal_view.jsp 스케쥴 날짜 css */
+	font-size: small;
+	color:#999;
+}
+
+.scheduleContent { /* cal_view.jsp 스케쥴 내용 css */
+	margin-left:30px;
+}
+
+.scheduleItem { /* cal_view.jsp 스케쥴 item css */
+	position:relative;
+}
+
+.scheduleBtn { /* cal_view.jsp 스케쥴 수정, 삭제버튼 box css */
+	position:absolute;
+	top:10px;
+	right:10px;
+	display:none;
+}
+
+.scheduleBtn input[type=button] {
+	border-radius: 40%;
+	border:0;
+	font-size:x-small;
+	padding:4px 8px;
+	background-color:#17a2b8;
+	color:white;
+}
+.cal_schedule_item {
+	display:inline-block;
+	width:calc(100%+26px);
+	background-color:orange;
+	margin-left:-13px;
 }

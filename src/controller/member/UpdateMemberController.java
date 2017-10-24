@@ -10,6 +10,7 @@ import controller.Controller;
 import controller.ModelAndView;
 import model.dao.member.MemberDAO;
 import model.vo.member.Member;
+import util.CocoaDate;
 
 public class UpdateMemberController implements Controller {
 
@@ -22,12 +23,14 @@ public class UpdateMemberController implements Controller {
 		int accountPlan = 1;
 		int theme = 1;
 		int month = Calendar.getInstance().get(Calendar.MONTH) + 1;
-		String path = "cal.jsp?month="+month;
+		String path = null;
+		CocoaDate today = new CocoaDate();
 		Member vo = MemberDAO.getInstance().updateMember(new Member(id, password, name, accountPlan, theme), newPassword);
 		if(vo==null) path = "updateMember.jsp";
 		else {
 			HttpSession session = request.getSession();
 			session.setAttribute("memberVO", vo);
+			path = "DispatcherServlet?command=cal&year="+today.getYear()+"&month="+today.getMonth();
 		}
 		return new ModelAndView(path, true);
 	}
