@@ -26,10 +26,14 @@ public class DeleteDiaryController implements Controller {
 				path = "DispatcherServlet?command=memoList";
 				break;
 			}
-			default : {
+			case Diary.SCHEDULE : {
 				path = "DispatcherServlet?command=calView&year="+request.getParameter("year")
 																+"&month="+request.getParameter("month")
 																+"&date="+request.getParameter("date");
+				break;
+			}
+			case Diary.NOTE : {
+				path = "DispatcherServlet?command=cal&year="+today.getYear()+"&month="+today.getMonth();
 				break;
 			}
 		}
