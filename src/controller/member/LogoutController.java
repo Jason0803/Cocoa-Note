@@ -17,11 +17,10 @@ public class LogoutController implements Controller {
 	public ModelAndView handle(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Member member = (Member)request.getSession().getAttribute("memberVO");
 		String name = member.getName();
-		
-		request.getSession().removeAttribute("memberVO");
+
 		request.getSession().invalidate();
 		
-		return new ModelAndView("/index.html?name="+name);
+		return new ModelAndView("/login.jsp?name="+name);
 	}
 
 }
