@@ -40,6 +40,25 @@
     border-color: #F72765;
 }
 
+.navbar-brand {
+	margin-right:50px;
+}
+
+.icon {
+	margin-right:30px;
+}
+
+.icon-right {
+	margin-right:730px;
+}
+
+.profile {
+	width: 3rem;
+	height: 3rem;
+	margin-left: 60%;
+	
+}
+
 .rounded-bar {
     border-radius: 1rem!important;
 }
@@ -62,6 +81,10 @@
 	background:#F72765;
 }
 
+.bg-white {
+	color: black;
+	background : ghostwhite;
+}
 .bg-ghostwhite{
 	background-color:ghostwhite;
 }

@@ -78,6 +78,7 @@ public class HandlerMapping {
 				break;
 			}
 			case "logout" : {
+				controller = new LogoutController();
 				break;
 			}
 		}
