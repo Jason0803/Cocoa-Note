@@ -70,10 +70,10 @@ public class MailSender {
 
 
 				// set tempPassword
-				String body = "Your Temporary Password is : " + tempPassword;
+				String body = "Your Temporary Password for " +id + " : " + tempPassword;
 
 				MemberDAO.getInstance().updateMember(MemberDAO.getInstance().findMemberById(id), tempPassword);
-				msg.setSubject("[CocoaNote] : Your Temporary Password !", "UTF-8");
+				msg.setSubject("[CocoaNote] : " +id +", Temporary Password !", "UTF-8");
 				msg.setText(body, "UTF-8");
 				msg.setSentDate(new Date());
 
