@@ -10,7 +10,12 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 <script src="CocoaJS.js" type="text/javascript"></script>
 <link rel="stylesheet" href="CocoaCSS.css">
+<c:if test="${memberVO.theme eq '1'}">
 <link rel="stylesheet" href="css/global-tier-one.css">
+</c:if>
+<c:if test="${memberVO.theme eq '2'}">
+<link rel="stylesheet" href="css/global-tier-two.css">
+</c:if>
 <c:if test="${memberVO==null}">
 	<script type="text/javascript">
 		location.href="login.jsp";
@@ -22,10 +27,19 @@
 	<div class="container">
 		<nav class="navbar navbar-light bg-grad-pink rounded-bar d-flex justify-content-start" style="margin-bottom:30px;">
 			<span class="navbar-brand mb-0 h1">cocoaNOTE</span>
-			<a href="DispatcherServlet?command=cal&year=${today.year}&month=${today.month}"><img class="icon"  src="icon/calendar-pink.svg" width="30px" height="30px"></a> 
-			<a href="DispatcherServlet?command=noteView&isCurr=true"><img class="icon" src="icon/notebook-pink.svg" width="30px" height="30px"></a>
-			<a href="DispatcherServlet?command=memoList"><img class="icon " src="icon/memo-pink.svg" width="30px" height="30px"></a>
-			<div class="dropdown show profile">
+			<!-- change icon color depending theme -->
+			<c:if test = "${memberVO.theme eq '1' }">
+			<a href="DispatcherServlet?command=cal&year=${today.year}&month=${today.month}"><img class="icon"  src="icon/calendar-cocoa.svg" width="40px" height="40px"></a> 
+			<a href="DispatcherServlet?command=noteView&isCurr=true"><img class="icon" src="icon/notebook-cocoa.png" width="41px" height="41px"></a>
+			<a href="DispatcherServlet?command=memoList"><img class="icon " src="icon/memo-cocoa.svg" width="40px" height="40px"></a>
+			</c:if>
+			
+			<c:if test = "${memberVO.theme eq '2' }">
+			<a href="DispatcherServlet?command=cal&year=${today.year}&month=${today.month}"><img class="icon"  src="icon/calendar-cocoa.svg" width="40px" height="40px"></a> 
+			<a href="DispatcherServlet?command=noteView&isCurr=true"><img class="icon" src="icon/notebook-cocoa.png" width="41px" height="41px"></a>
+			<a href="DispatcherServlet?command=memoList"><img class="icon " src="icon/memo-cocoa.svg" width="40px" height="40px"></a>
+			</c:if>
+			<div class="dropdown show profile-position">
 				<button type="button"
 					class="btn bg-white dropdown-toggle rounded-bar"
 					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
