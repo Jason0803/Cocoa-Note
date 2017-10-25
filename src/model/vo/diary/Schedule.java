@@ -2,13 +2,14 @@ package model.vo.diary;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Vector;
 
 import util.CocoaDate;
 
 public class Schedule extends Diary {
 	private String title;
 	private String content;
-	private String[] groupMemberID;
+	private Vector<String> groupMemberID;
 	private CocoaDate startDate;
 	private CocoaDate endDate;
 	
@@ -16,7 +17,7 @@ public class Schedule extends Diary {
 		super();
 	}
 	
-	public Schedule(int no, String id, String title, String content, String[] groupMemberID, CocoaDate startDate, CocoaDate endDate) {
+	public Schedule(int no, String id, String title, String content, Vector<String> groupMemberID, CocoaDate startDate, CocoaDate endDate) {
 		super(no, id);
 		this.title = title;
 		this.content = content;
@@ -25,7 +26,7 @@ public class Schedule extends Diary {
 		this.endDate = endDate;
 	}
 	
-	public Schedule(String id, String title, String content, String[] groupMemberID, CocoaDate startDate,
+	public Schedule(String id, String title, String content, Vector<String> groupMemberID, CocoaDate startDate,
 			CocoaDate endDate) {
 		super(id);
 		this.title = title;
@@ -52,10 +53,10 @@ public class Schedule extends Diary {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String[] getGroupMemberID() {
+	public Vector<String> getGroupMemberID() {
 		return groupMemberID;
 	}
-	public void setGroupMemberID(String[] groupMemberID) {
+	public void setGroupMemberID(Vector<String> groupMemberID) {
 		this.groupMemberID = groupMemberID;
 	}
 	public CocoaDate getStartDate() {
@@ -70,12 +71,14 @@ public class Schedule extends Diary {
 	public void setEndDate(CocoaDate endDate) {
 		this.endDate = endDate;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Schedule [title=" + title + ", content=" + content + ", groupMemberID=" + Arrays.toString(groupMemberID)
-				+ ", startDate=" + startDate + ", endDate=" + endDate + "]";
+		return "Schedule [title=" + title + ", content=" + content + ", groupMemberID=" + groupMemberID + ", startDate="
+				+ startDate + ", endDate=" + endDate + "]";
 	}
+	
+
 	
 	
 	

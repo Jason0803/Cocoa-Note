@@ -62,7 +62,8 @@ public interface StringQuery {
 			"UPDATE schedule SET title = ?, content = ?, start_date = to_date(?, 'YYYYMMDDHH24MI'), end_date = to_date(?,'YYYYMMDDHH24MI') WHERE schedule_no = ?";
 	String GET_SHARING_USERS = 
 			"SELECT group_member_id FROM schedule_group WHERE schedule_no = ?";
-	
+	String SET_SHARING_USERS =
+			"INSERT INTO schedule_group (schedule_no, group_member_id) VALUES(?,?)";
 	
 	String DELETE_SCHEDULE_BY_NO =
 			"DELETE schedule WHERE schedule_no=?"; 
