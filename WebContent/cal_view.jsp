@@ -18,7 +18,9 @@
 								~${schedule.endDate.year}.${schedule.endDate.month}.${schedule.endDate.date} ${schedule.endDate.hour}:${schedule.endDate.minute}</span>
 					<p class="scheduleContent">- ${schedule.content}</p>
 					<c:forEach var="friend" items="${group_member}">
-						<div>${friend }AWEFASEFASFSDFASDFASDF</div>
+						<c:if test="${friend.key eq schedule.no}">
+							<div>함께하는 친구 : ${friend}</div>
+						</c:if>
 					</c:forEach>
 					<div class="scheduleBtn">
 						<input type="button" value="수정" onclick="updateSchedule('${schedule.no}', '${schedule}')" />
