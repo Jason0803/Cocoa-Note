@@ -10,7 +10,12 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 <script src="CocoaJS.js" type="text/javascript"></script>
 <link rel="stylesheet" href="CocoaCSS.css">
+<c:if test="${memberVO.theme eq '1'}">
 <link rel="stylesheet" href="css/global-tier-one.css">
+</c:if>
+<c:if test="${memberVO.theme eq '2'}">
+<link rel="stylesheet" href="css/global-tier-two.css">
+</c:if>
 <c:if test="${memberVO==null}">
 	<script type="text/javascript">
 		location.href="login.jsp";
