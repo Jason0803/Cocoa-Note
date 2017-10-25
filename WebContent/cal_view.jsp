@@ -6,6 +6,7 @@
 	<div class="card rounded-content">
 		<div class="card-body">
 			<h4 class="card-title">${dayInfo.date.year}년 ${dayInfo.date.month}월 ${dayInfo.date.date}일</h4>
+			<input class="newNoteBtn" type="button" value="+" onclick="javascript:location.reload()" style="top:20px" />
 			<hr>
 			<h5>일정</h5>
 			<c:if test="${empty dayInfo.schedules}">
