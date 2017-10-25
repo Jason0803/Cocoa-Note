@@ -120,18 +120,24 @@ function noteView(noteNo) {
 
 function noteListView(nlId) {
 	var viewStyle = document.getElementById(nlId).style['display'];
-	if(viewStyle=='block') document.getElementById(nlId).style['display'] = 'none';
-	else document.getElementById(nlId).style['display'] = 'block';
+	if(viewStyle=='block')
+		document.getElementById(nlId).style['display'] = 'none';
+	else {
+		var lists = document.getElementsByClassName('cal_note_list');
+		for(i=0;i<lists.length;i++)
+			lists[i].style['display'] = 'none';
+		document.getElementById(nlId).style['display'] = 'block';
+	}
 }
 
 function loadBtnSet(item){
-	var child = item.children;
-	child[3].style['display'] = "block";
+	var child = item.getElementsByClassName('scheduleBtn');
+	child[0].style['display'] = "block";
 }
 
 function hideBtnSet(item){
-	var child = item.children;
-	child[3].style['display'] = "none";
+	var child = item.getElementsByClassName('scheduleBtn');
+	child[0].style['display'] = "none";
 }
 
 function deleteDiary(scheduleNo,year, month, date){
