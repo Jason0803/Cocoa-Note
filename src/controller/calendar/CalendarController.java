@@ -28,6 +28,7 @@ public class CalendarController implements Controller {
 		Vector<Diary> schedules = DiaryDAO.getInstance().getAllDiary(id, "schedule");
 		//Collections.reverse(schedules);
 		
+		
 		request.setAttribute("monthlyDiary", DiaryDAO.getInstance().getMonthlyDiary(id, date));
 		request.setAttribute("scheduleList",  schedules);
 		return new ModelAndView("cal.jsp?year="+year+"&month="+month);
