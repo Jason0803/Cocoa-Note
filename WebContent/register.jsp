@@ -64,7 +64,7 @@ function registerCheck() {
 				<div><br/><br/><br/></div>
 				 
 				
-				<div class="card text-center" style="width: 25rem; height: 30rem">
+				<div class="card text-center" style="width: 25rem; min-height: 30rem">
 				<br/>				
 				<h4>
 					<strong>지금 코코아노트에 가입하세요.</strong>
@@ -81,6 +81,7 @@ function registerCheck() {
 								<br />
 								<span style="color: red">이미 존재하는 ID입니다.</span>
 							</c:if>
+							
 							 <input class="form-control" type="hidden" name="command" value="register" /><br /> 
 							 <br/>
 							 <h6><small>가입과 동시에 귀하는 쿠키 사용을 포함해 이용약관과 개인정보 처리방침에 동의하는 것입니다. </small></h6>
