@@ -778,7 +778,7 @@ public class DiaryDAO {
 		return day;
 	}
 	// ------------------------------------------------ getCurrNoteNo  ------------------------------------------------ //
-	public int getCurrNoteNo() throws SQLException {
+	public int getCurrNoteNo(String id) throws SQLException {
 		Connection conn = null;
         PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -786,6 +786,7 @@ public class DiaryDAO {
         try {
             conn = getConnection();
             ps= conn.prepareStatement(StringQuery.GET_CURR_NOTE_NO);
+			ps.setString(1, id);
             rs = ps.executeQuery();
             if(rs.next()) currNo = rs.getInt(1);
          }catch(Exception e) {
