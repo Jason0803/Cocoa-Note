@@ -175,20 +175,22 @@ public class DiaryDAO {
 		ResultSet rs = null;
 		Vector<Schedule> sc = null;
 		Vector<String> group_members = null;
-		
+		Vector<Member> members = null;
 		try {
 			conn = getConnection();
 			sc = new Vector<Schedule>();
-			ps= conn.prepareStatement(StringQuery.GET_ALL_SCHEDULE);
+			ps = conn.prepareStatement(StringQuery.GET_ALL_SCHEDULE);
 			ps.setString(1, id);
 			rs = ps.executeQuery();
-			group_members = new Vector<String>();
 			
 			while(rs.next()) {
-				
-				for(Member member : findSharingMembers(rs.getInt("schedule_no"))) {
+				members = findSharingMembers(rs.getInt("schedule_no"));
+				group_members = new Vector<String>();
+				for(Member member : members) {
+					System.out.println("[DiaryDAO]@getAllSchedule : findSharingMembers : " + rs.getInt("schedule_no"));
 					group_members.add(member.getId());
 				}
+				
 				sc.add(new Schedule(rs.getInt("schedule_no"), 									// no
 						rs.getString("id"), 													// id
 						rs.getString("title"), 													// title
@@ -851,6 +853,7 @@ public class DiaryDAO {
 			while(rs.next()) {
 				sharedMember = MemberDAO.getInstance().findMemberById(rs.getString("group_member_id"));
 				if(sharedMember != null) result.add(sharedMember);
+				else result.add(new Member(rs.getString("group_member_id")));
 			}
 			System.out.println("[DiaryDAO]@findSharingMembers Result : " + result);
 			
