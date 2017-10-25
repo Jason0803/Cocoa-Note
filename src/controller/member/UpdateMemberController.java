@@ -20,8 +20,10 @@ public class UpdateMemberController implements Controller {
 		String password = request.getParameter("password");
 		String newPassword = request.getParameter("new_password");
 		String name = request.getParameter("name");
+		
+		int theme = Integer.parseInt(request.getParameter("theme")); 	// #00192: theme 값변경 
 		int accountPlan = 1;
-		int theme = 1;
+		
 		int month = Calendar.getInstance().get(Calendar.MONTH) + 1;
 		String path = null;
 		CocoaDate today = new CocoaDate();
