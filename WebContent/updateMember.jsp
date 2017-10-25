@@ -23,8 +23,8 @@ function window.onload(){
 					<input class="form-control" type="password" name="new_password"	placeholder="변경할 비밀번호" /><br /> 
 					<input class="form-control" type="text" name="name" placeholder="이름" required="required" value="${memberVO.name}" /><br /> 
 					<span>
-					테마 <input type="radio" name="theme" id=cocoaTheme value="cocoa">코코아 
-						<input type="radio" name="theme" id=peachTheme value="peach">피치
+					테마 <input type="radio" name="theme" id=cocoaTheme value="1">코코아 
+						<input type="radio" name="theme" id=peachTheme value="2">피치
 					</span>
 					<br/>
 						<input type="submit" class="updateBtn" value="저장" />
