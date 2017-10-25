@@ -19,7 +19,9 @@
 					<p class="scheduleContent">- ${schedule.content}</p>
 					<c:forEach var="friend" items="${group_member}">
 						<c:if test="${friend.key eq schedule.no}">
-							<div>함께하는 친구 : ${friend}</div>
+							<c:forEach var="groupMember" items="${friend.value}">
+								${groupMember.name}
+							</c:forEach>
 						</c:if>
 					</c:forEach>
 					<div class="scheduleBtn">
