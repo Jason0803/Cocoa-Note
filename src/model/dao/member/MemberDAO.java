@@ -213,13 +213,13 @@ public class MemberDAO {
 		try {
 			conn = connection();
 
-				ps = conn.prepareStatement(StringQuery.FIND_MEMBER_BY_ID);
-				ps.setString(1, id);
-				rs = ps.executeQuery();
-				if(rs.next()) {
-					member = new Member(id, rs.getString("password"), rs.getString("name"), rs.getInt("acc_plan"), rs.getInt("theme"));
-				}
-			
+			ps = conn.prepareStatement(StringQuery.FIND_MEMBER_BY_ID);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				member = new Member(id, rs.getString("password"), rs.getString("name"), rs.getInt("acc_plan"), rs.getInt("theme"));
+			}
+
 		}finally {
 			try{
 				closeAll(ps, conn, rs);

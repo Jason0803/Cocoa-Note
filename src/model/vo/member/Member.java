@@ -21,8 +21,11 @@ public class Member {
 		this.accountPlan = accountPlan;
 		this.theme = theme;
 	}
-	
-	
+	public Member(String id) {
+		super();
+		this.name = id;
+		this.id = id;
+	}
 
 	public String getId() {
 		return id;
