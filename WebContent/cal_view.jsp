@@ -18,7 +18,11 @@
 								~${schedule.endDate.year}.${schedule.endDate.month}.${schedule.endDate.date} ${schedule.endDate.hour}:${schedule.endDate.minute}</span>
 					<p class="scheduleContent">- ${schedule.content}</p>
 					<c:forEach var="friend" items="${group_member}">
-						<div>${friend }AWEFASEFASFSDFASDFASDF</div>
+						<c:if test="${friend.key eq schedule.no}">
+							<c:forEach var="groupMember" items="${friend.value}">
+								${groupMember.name}
+							</c:forEach>
+						</c:if>
 					</c:forEach>
 					<div class="scheduleBtn">
 						<input type="button" value="수정" onclick="updateSchedule('${schedule.no}', '${schedule}')" />
@@ -73,8 +77,11 @@
 </div>
 </div>
 <script type="text/javascript">
-	document.scheduleFrm.startDate.value = "${dayInfo.date.year}-${dayInfo.date.month}-${dayInfo.date.date}T09:00:00.000";
-	document.scheduleFrm.endDate.value = "${dayInfo.date.year}-${dayInfo.date.month}-${dayInfo.date.date}T18:00:00.000";
-	
+	var month = ${dayInfo.date.month};
+	if(month<10) month = "0"+month;
+	var date = ${dayInfo.date.date};
+	if(date<10) date = "0"+date;
+	document.scheduleFrm.startDate.value = "${dayInfo.date.year}-"+month+"-"+date+"T09:00:00.000";
+	document.scheduleFrm.endDate.value = "${dayInfo.date.year}-"+month+"-"+date+"T18:00:00.000";
 </script>
 <jsp:include page="foot.jsp"></jsp:include>

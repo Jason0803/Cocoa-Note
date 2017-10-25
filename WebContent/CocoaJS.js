@@ -1,6 +1,22 @@
 /**
  * 
  */
+function drawEvent(title, startDate, endDate){ // 달력에 이벤트를 뿌려주는 함수
+	var findId = "";
+	var drawCol;
+	var spanCount;
+	for(findDate=startDate;findDate<=endDate;findDate++){
+		drawCol = document.getElementById("date_"+findDate);
+		var drawItem = document.createElement('SPAN');
+		if(findDate==startDate) {
+			spanCount = drawCol.getElementsByClassName('cal_schedule_item').length+1;
+			drawItem.appendChild(document.createTextNode(title));
+		}
+		drawItem.className += ("cal_schedule_item csi_"+spanCount);
+		if(spanCount<=4) drawCol.appendChild(drawItem);
+	}
+}
+
 function calView(year,month,date){
 	var year = year;
 	var month = month;
@@ -18,7 +34,9 @@ function getD_Day(upcomings){
 		var nowDate = new Date();
 		var targetDate = new Date(year,month-1,date);
 		var count = Math.ceil((targetDate-nowDate) / 1000 / 60 / 60 / 24);
-		upcomings[i].innerHTML = "D - "+count;
+		if(count>0) upcomings[i].innerHTML = "D - "+count;
+		else if(count==0) upcomings[i].innerHTML = "D-DAY";
+		else if(count<0) upcomings[i].parentNode.parentNode.style.display='none';
 	}
 }
 //----------------------------------------------------------------------------
@@ -99,6 +117,13 @@ function valueCheck() {
 function noteView(noteNo) {
 	location.href="DispatcherServlet?command=noteView&diaryNo="+noteNo+"&isCurr=false"
 }
+
+function noteListView(nlId) {
+	var viewStyle = document.getElementById(nlId).style['display'];
+	if(viewStyle=='block') document.getElementById(nlId).style['display'] = 'none';
+	else document.getElementById(nlId).style['display'] = 'block';
+}
+
 function loadBtnSet(item){
 	var child = item.children;
 	child[3].style['display'] = "block";
