@@ -17,9 +17,8 @@ public interface StringQuery {
 			"SELECT password FROM member WHERE id = ?";
 	String UPDATE_MEMBER =
 			"UPDATE member SET password=?, name=?, acc_plan=?, theme=? where id=?";
-	String GET_MEMBER_INFO =
+	String FIND_MEMBER_BY_ID =
 			"SELECT * FROM member where id=?";
-	
 	// ------------------------------------------------------- DiaryDAO ------------------------------------------------------- //
 	String GET_ALL_MEMO = 
 			"SELECT * FROM memo WHERE id = ? ORDER BY wrt_date DESC";
@@ -61,8 +60,8 @@ public interface StringQuery {
 			"UPDATE note SET title = ?, content = ?, curr_date = sysdate WHERE note_no = ?";
 	String UPDATE_SCHEDULE = 
 			"UPDATE schedule SET title = ?, content = ?, start_date = to_date(?, 'YYYYMMDDHH24MI'), end_date = to_date(?,'YYYYMMDDHH24MI') WHERE schedule_no = ?";
-
-	
+	String GET_SHARING_USERS = 
+			"SELECT group_member_id FROM schedule_group WHERE schedule_no = ?";
 	
 	
 	String DELETE_SCHEDULE_BY_NO =

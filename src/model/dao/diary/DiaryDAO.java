@@ -116,7 +116,7 @@ public class DiaryDAO {
 			}
 			
 		} catch(SQLException e) {
-			System.out.println("ERROR : [DiaryDAO]@getAllDiary : SQLException Caught !");
+			System.out.println("ERROR : [DiaryDAO]@getAllDiary : SQLException Caught at : " + type);
 			e.printStackTrace();
 		}
 		
@@ -366,7 +366,11 @@ public class DiaryDAO {
         	System.out.println("[DiaryDAO]@writeDiary(Memo memo) : SQLException");
            e.printStackTrace();
         }finally {
-           closeAll(rs, ps, conn);
+        	try{
+        		closeAll(rs, ps, conn);
+        	} catch(Exception e) {
+        		e.printStackTrace();
+        	}
          }
         return rmemo;
      }		
@@ -394,7 +398,11 @@ public class DiaryDAO {
         	System.out.println("[DiaryDAO]@writeDiary(Note note) : SQLException");
         	e.printStackTrace();
         }finally {
-           closeAll(rs, ps, conn);
+        	try{
+        		closeAll(rs, ps, conn);
+        	} catch(Exception e) {
+        		e.printStackTrace();
+        	}
          }
         return rnote;
 	}
@@ -420,7 +428,11 @@ public class DiaryDAO {
         	System.out.println("[DiaryDAO]@writeDiary(Schedule schedule) : SQLException !");
         	e.printStackTrace();
         }finally {
-           closeAll(ps, conn);
+        	try{
+        		closeAll(ps, conn);
+        	} catch (Exception e) {
+        		e.printStackTrace();
+        	}
          }
         
         return rSchedule;
@@ -505,6 +517,7 @@ public class DiaryDAO {
 	
 		try {
 			conn = getConnection();
+			
 			ps = conn.prepareStatement(StringQuery.GET_SCHEDULE_BY_NO);
 			ps.setInt(1, no);
 			rs = ps.executeQuery();
@@ -517,7 +530,9 @@ public class DiaryDAO {
 							temp_str,
 							new CocoaDate(new Date(rs.getTimestamp("start_date").getTime())),
 							new CocoaDate(new Date(rs.getTimestamp("end_date").getTime())));
-			}	
+			}
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -748,34 +763,10 @@ public class DiaryDAO {
 			if( notes == null && schedules == null) {
 				System.out.println("[DiaryDAO]@getDay : No Notes Found for Member id : " + id);
 			} else {
-				// in case member has either notes or schedules
-				
-				/*
-				for(Note note : notes) {
-					if(searchDate.getYear() == note.getWriteDate().getYear() && 
-							searchDate.getMonth() == note.getWriteDate().getMonth() && 
-							searchDate.getDate() == note.getWriteDate().getDate()) {
-						
-						day.getNotes().add(note);						
-					}
-				}
-				*/
-				// #00157 : Apply CocoaDate.compareDate()
 				for(Note note : notes) if(searchDate.compareDate(note.getWriteDate())) day.getNotes().add(note);
-				
 
-				/*
-				for(Schedule schedule : schedules) {
-					if(IntegerRange.betweenInclusive(searchDate.getYear(), schedule.getStartDate().getYear(), schedule.getEndDate().getYear()))
-						if(IntegerRange.betweenInclusive(searchDate.getMonth(), schedule.getStartDate().getMonth(), schedule.getEndDate().getMonth()))
-							if(IntegerRange.betweenInclusive(searchDate.getDate(), schedule.getStartDate().getDate(), schedule.getEndDate().getDate()))
-								day.getSchedules().add(schedule);
-				}
-				*/
-				// #00157 : Apply CocoaDate.compareDate()
 				for(Schedule schedule : schedules) 
 					if(searchDate.compareDate(schedule.getStartDate(), schedule.getEndDate())) day.getSchedules().add(schedule);
-				
 			}
 			
 		} catch(SQLException e) {
@@ -804,5 +795,32 @@ public class DiaryDAO {
          }
          // #00133
          return currNo-1;
+	}
+	// ------------------------------------------------ getSharingMembers  ------------------------------------------------ //
+	public Vector<String> findSharingMembers(int no) throws SQLException {
+		Connection conn = null;
+        PreparedStatement ps = null;
+		ResultSet rs = null;
+		Vector<String> result = null;
+		
+		try {
+			conn = getConnection();
+			result = new Vector<String>();
+			
+			ps = conn.prepareStatement(StringQuery.GET_SHARING_USERS);
+			ps.setInt(1, no);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				result.add(rs.getString("group_member_id"));
+			}
+			System.out.println("[DiaryDAO]@findSharingMembers Resut : " + result);
+			
+		} catch(SQLException e) {
+			System.out.println("[DiaryDAO]@findSharingMembers : SQLException !");
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 }

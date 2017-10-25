@@ -53,10 +53,6 @@ public class HandlerMapping {
 				controller = new NoteViewController();
 				break;
 			}
-			case "scheduleView" : {
-				controller = new ScheduleViewController();
-				break;
-			}
 			case "deleteDiary" : {
 				controller = new DeleteDiaryController();
 				break;
@@ -79,6 +75,10 @@ public class HandlerMapping {
 			}
 			case "logout" : {
 				controller = new LogoutController();
+				break;
+			}
+			case "forgotPassword" : {
+				controller = new ForgotPasswordController();
 				break;
 			}
 		}
