@@ -12,7 +12,7 @@
 				${param.year}년 ${param.month}월 
 				<img src="icon/next-bold.svg" width="10px" height="10px" onclick="nextMonth(${param.year},${param.month})"/><br />
 				</h6>
-				<table class="table">
+				<table class="table text-wrapper">
 					<thead>
 						<tr>
 							<th scope="col">일</th>
