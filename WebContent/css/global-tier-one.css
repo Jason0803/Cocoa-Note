@@ -2,8 +2,8 @@
 /* #layout-center {
 	margin : 0 auto;
 	text-align: center;
-} */
-
+	
+	
 /*  For Cocoa Theme style*/
 
 <style type="text/css">
@@ -18,31 +18,32 @@
 
 #btn-long-pink {
     color: #fff;
-    background-color:#F72765;
+    background-color:#523738;
     width: 280px;
     height : 50px;
-    border-color: #F72765;
+    border-color: #523738;
 }
 
 #btn-longer-pink {
     color: #fff;
-    background-color:#F72765;
+    background-color:#523738;
     width: 360px;
     height : 50px;
-    border-color: #F72765;
+    border-color: #523738;
     
 }
 
 #btn-sm-pink {
     color: #fff;
-    background-color:#F72765;
+    background-color:#523738;
     width: 100px;
     height :35px;
-    border-color: #F72765;
+    border-color: #523738;
 }
 
 .navbar-brand {
 	margin-right:50px;
+	color: rgb(237, 221, 174)!important;
 }
 
 .note-title {
@@ -80,10 +81,11 @@
 	margin-right:730px;
 }
 
-.profile {
+.profile-position {
 	width: 3rem;
 	height: 3rem;
-	margin-left: 60%;
+	margin-left: 58%;
+	margin-top: 10px;
 	
 }
 
@@ -100,13 +102,13 @@
     border-radius: 0.5rem!important;
 }
 
-.bg-grad-pink{
-	background:-webkit-linear-gradient(left top, #523738, wheat);
+.bg-grad-pink{/* nav-bar cocoa background color */
+	background:-webkit-linear-gradient(left top, #523738, rgb(237, 221, 174));
 }
 
 .bg-pink{
 	color: #fff;
-	background:#F72765;
+	background:#523738;
 }
 
 .bg-white {
