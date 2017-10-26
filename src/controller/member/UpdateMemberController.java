@@ -19,15 +19,19 @@ public class UpdateMemberController implements Controller {
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 		String newPassword = request.getParameter("new_password");
-		String name = request.getParameter("name");
-		
-		int theme = Integer.parseInt(request.getParameter("theme")); 	// #00192: theme 값변경 
+		String name = request.getParameter("name");		
+		String themeTemp = request.getParameter("theme"); 	// #00192: theme 값변경 
+		int theme = 0;
+		System.out.println("프론트에서 넘어온 테마 값:"+themeTemp);
+		if(themeTemp.equals("코코아")) theme = 1;
+		else if(themeTemp.equals("피치")) theme=2;
+		System.out.println(theme+"테마 받았당!!!!!!!!!!!!!!!!!");
 		int accountPlan = 1;
 		
 		int month = Calendar.getInstance().get(Calendar.MONTH) + 1;
 		String path = null;
 		CocoaDate today = new CocoaDate();
-		Member vo = MemberDAO.getInstance().updateMember(new Member(id, password, name, accountPlan, theme), newPassword);
+		Member vo = MemberDAO.getInstance().updateMember(new Member(id, password, name, accountPlan, theme), newPassword, theme);
 		if(vo==null) path = "updateMember.jsp";
 		else {
 			HttpSession session = request.getSession();
