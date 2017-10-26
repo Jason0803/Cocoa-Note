@@ -26,6 +26,7 @@ import sql.DataSourceManager;
 import sql.StringQuery;
 import util.CocoaDate;
 import util.IntegerRange;
+import util.MailSender;
 // ------------------------------------------------ Singleton ------------------------------------------------ //
 public class DiaryDAO {
 	private static DiaryDAO dao = new DiaryDAO();
@@ -478,7 +479,7 @@ public class DiaryDAO {
         	ps = conn.prepareStatement(StringQuery.WRITE_SCHEDULE_GROUP);
         	ps.setInt(1, schedule.getNo());
         	ps.setString(2, id);
-        	
+			MailSender.sendMail(id, "share_added", schedule.getTitle());
         	ps.executeUpdate();
         	System.out.println("[DiaryDAO]@createScheduleGroup(Schedule schedule, String id) : Success ! ");
         } catch(SQLException e) {
@@ -775,6 +776,7 @@ public class DiaryDAO {
 				ps.setInt(1, no);
 				ps.setString(2, sharedMemberId);
 				ps.executeUpdate();
+				MailSender.sendMail(sharedMemberId, "share_added", title);
 			}
 			
 			// 4. Execute query (sql.StringQuery.UPDATE_SCHEDULE)
@@ -905,16 +907,19 @@ public class DiaryDAO {
 	public void setSharingMembers(int no, Vector<String> sharedMemberIds) throws SQLException {
 		Connection conn = null;
 		PreparedStatement ps = null;
-		
+		String scheduleName = null;
 		try { 
 			conn = getConnection();
 			ps = conn.prepareStatement(StringQuery.SET_SHARING_USERS);
+			scheduleName = getScheduleByNo(no).getTitle();
 			for(String sharedMemberId : sharedMemberIds) {
 				ps.setInt(1, no);
 				ps.setString(2, sharedMemberId);
 				ps.executeUpdate();
+				MailSender.sendMail(sharedMemberId, "share_added", scheduleName);
 			}
 			System.out.println("[DiaryDAO]@setSharingMembers Done for Members : " + sharedMemberIds);
+			
 		} catch(SQLException e) {
 			System.out.println("[DiaryDAO]@setSharingMembers : SQLException !");
 			e.printStackTrace();
