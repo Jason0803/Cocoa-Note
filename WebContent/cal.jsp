@@ -61,14 +61,6 @@
 			</div>
 		</div>
 	</div>
-	<!-- event(schedule)을 달력에 그리는 기능 -->
-	<script type="text/javascript">
-		<c:forEach var="day" items="${monthlyDiary}">
-			<c:forEach var="schedule" items="${day.schedules}">
-				drawEvent('${schedule.title}', ${schedule.startDate.date}, ${schedule.endDate.date}, ${today.lastDate});
-			</c:forEach>
-		</c:forEach>
-	</script>
 	<div class="col-2">
 		<div class="card rounded-content" style="width: 100%; height: 90%;">
 			<div class="card-body">
@@ -83,8 +75,15 @@
 					</div>
 				</c:forEach>
 				<script type="text/javascript">
-					var upcomings = document.getElementsByName('d-day');
-					getD_Day(upcomings);
+					<!-- D-day를 계산해서 텍스트를 바꿔주는 함수 -->
+					getD_Day(document.getElementsByName('d-day'));
+					
+					<!-- event(schedule)을 달력에 그리는 기능 -->
+					<c:forEach var="schedule" items="${scheduleList}">
+						<c:if test="${(schedule.startDate.year==param.year and schedule.startDate.month==param.month) or (schedule.endDate.year==param.year and schedule.endDate.month==param.month)}">
+							drawEvent('${schedule.title}', '${schedule.startDate.dateQuery}', '${schedule.endDate.dateQuery}', ${param.year}, ${param.month});
+						</c:if>
+					</c:forEach>
 				</script>
 			</div>
 		</div>

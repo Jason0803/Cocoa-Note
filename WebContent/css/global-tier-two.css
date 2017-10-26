@@ -80,13 +80,12 @@
 	margin-right:730px;
 }
 
-/* profile-position is Deprecated. ->d-flex ml-auto 
-.profile-position {
+.profile {
 	width: 3rem;
 	height: 3rem;
 	margin-left: 58%;
 	
-} */
+}
 
 .rounded-bar {
     border-radius: 1rem!important;
@@ -110,9 +109,9 @@
 	background:#F72765;
 }
 
-.bg-white {
+.bg-transwhite {
 	color: black;
-	background : ghostwhite;
+	background-color: rgba(255, 255, 255, 0.31)!important;
 }
 .bg-ghostwhite{
 	background-color:ghostwhite;
