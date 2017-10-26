@@ -17,6 +17,7 @@
 <c:if test="${memberVO.theme eq '2'}">
 <link rel="stylesheet" href="css/global-tier-two.css">
 </c:if>
+<link rel="stylesheet" href="css/animate.css">
 <c:if test="${memberVO==null}">
 	<script type="text/javascript">
 		location.href="login.jsp";
