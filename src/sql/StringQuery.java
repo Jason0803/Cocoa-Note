@@ -77,5 +77,8 @@ public interface StringQuery {
 	
 	String GET_CURR_NOTE_NO = 
 			"SELECT note_no FROM note WHERE curr_date = (SELECT MAX(curr_date) FROM note) AND id=?";
+	String DELETE_SCHEDULE_GROUP = 
+			"delete schedule_group where schedule_no=?";
+	
 	
 }
