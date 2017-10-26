@@ -750,11 +750,11 @@ public class DiaryDAO {
 		return note;
 	}
 	// ------------------------------------------------ updateSchedule(1) ------------------------------------------------ //
-	public Schedule updateSchedule(int no, String title, String content, CocoaDate start_date, CocoaDate end_date) throws SQLException, RecordNotFoundException {
+	public Schedule updateSchedule(int no, String title, String content, String group_member, CocoaDate start_date, CocoaDate end_date) throws SQLException, RecordNotFoundException {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		Schedule schedule = null;
-		
+		String[] groupMember = group_member.split(",");
 		try{
 			conn = getConnection();
 			
@@ -763,7 +763,20 @@ public class DiaryDAO {
 			if(schedule == null) throw new RecordNotFoundException("[DiaryDAO]@updateSchedule : No Such Schedule Found with no : " + no);
 			else System.out.println("[DiaryDAO]@updateSchedule : Found schedule with no : " + no);
 			
-			// 2. Execute query (sql.StringQuery.UPDATE_SCHEDULE)
+			// 2. Delete schedule_group 
+			ps = conn.prepareStatement(StringQuery.DELETE_SCHEDULE_GROUP);
+			ps.setInt(1, no);
+			ps.executeUpdate();
+			
+			// 3. Set new sharing table
+			ps = conn.prepareStatement(StringQuery.SET_SHARING_USERS);
+			for(String sharedMemberId : groupMember) {
+				ps.setInt(1, no);
+				ps.setString(2, sharedMemberId);
+				ps.executeUpdate();
+			}
+			
+			// 4. Execute query (sql.StringQuery.UPDATE_SCHEDULE)
 			ps = conn.prepareStatement(StringQuery.UPDATE_SCHEDULE);
 			ps.setString(1, title);
 			ps.setString(2, content);
@@ -774,10 +787,18 @@ public class DiaryDAO {
 			ps.executeUpdate();
 			System.out.println("[DiaryDAO]@updateSchedule : Update Complete for Schedule.no : " + no);
 			
+			// 5. Renew returning instance
 			schedule.setTitle(title);
 			schedule.setContent(content);
 			schedule.setStartDate(start_date);
 			schedule.setEndDate(end_date);
+			Vector<String> groupMemberIDs = new Vector<String>();
+			
+			for(String id : groupMember) {
+				groupMemberIDs.add(id);
+			}
+			
+			schedule.setGroupMemberID(groupMemberIDs);
 			
 		} catch(SQLException e) {
 			System.out.println("[DiaryDAO]@updateSchedule : Update Failed for Schedule.no : " + no);
