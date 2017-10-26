@@ -10,6 +10,7 @@ function deleteNote(no) {
    location.href="DispatcherServlet?command=deleteDiary&no="+no;
 }
 </script>
+<title>코코아노트</title>
 
 <div class="row" style="height: 1000px;">
    <div class="col-8">
