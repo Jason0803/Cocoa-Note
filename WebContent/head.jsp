@@ -26,11 +26,9 @@
 <div class="bg-ghostwhite" style="margin-top: 50px"></div>
 	<div class="container">
 		<nav class="navbar navbar-light bg-grad-pink rounded-bar d-flex justify-content-start" style="margin-bottom:30px;">
-<<<<<<< HEAD
+
 			<a href="DispatcherServlet?command=cal&year=${today.year}&month=${today.month}"><span class="navbar-brand mb-0 h1">cocoaNOTE</span></a>
-=======
-			<span class="navbar-brand mb-0 h1">cocoaNOTE</span>
->>>>>>> origin/171026_minyoung
+
 			<!-- change icon color depending theme -->
 			<c:if test = "${memberVO.theme eq '1' }">
 			<a href="DispatcherServlet?command=cal&year=${today.year}&month=${today.month}"><img class="icon"  src="icon/calendar-cocoa.svg" width="40px" height="40px"></a> 
