@@ -14,7 +14,7 @@
 				<h4 class="card-title">Find Schedule</h4>				
 				<p class="card-text">
 	<c:forEach var="schedule" items="${schedules}">
-		${schedule.value}<br />
+		<span class="text-bold"><strong>${schedule.value.title}</strong></span> ${schedule.value.content}<br />
 	</c:forEach>
 				</p>
 			</div>

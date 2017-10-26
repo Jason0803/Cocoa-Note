@@ -25,8 +25,8 @@ public class SearchController implements Controller {
 		request.setAttribute("memos", memos);
 		Map<Integer, Note> notes = DiaryDAO.getInstance().searchNoteByKeyword(id, keyword);
 		request.setAttribute("notes", notes);
-//		Map<Integer, Schedule> schedules = DiaryDAO.getInstance().searchScheduleByKeyword(id, keyword);
-//		request.setAttribute("schedules", schedules);
+		Map<Integer, Schedule> schedules = DiaryDAO.getInstance().searchScheduleByKeyword(id, keyword);
+		request.setAttribute("schedules", schedules);
 		return new ModelAndView("search_result.jsp");
 	}
 
