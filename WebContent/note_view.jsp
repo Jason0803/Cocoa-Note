@@ -10,45 +10,40 @@ function deleteNote(no) {
    location.href="DispatcherServlet?command=deleteDiary&no="+no;
 }
 </script>
-<title>코코아노트</title>
 
 <div class="row" style="height: 1000px;">
    <div class="col-8">
       <div class="card rounded-content" style="width: 100%; min-height: 80%;">
          <div class="card-body">
          <div class="row">
+<<<<<<< HEAD
             &nbsp;&nbsp;&nbsp;&nbsp;<h4 class="card-title">Note</h4>
             <input class="btn bg-pink rounded-bar" style="position:absolute; right:3%;" type="button" value="새 노트 작성" onclick="javascript:write_note();">
+=======
+            <input class="newNoteBtn" type="button" value="+" onclick="write_note();" />
+>>>>>>> origin/K5-Branch
             </div>
-            
             <form class="hidden_form" name="writeFrm" method="post"
                action="DispatcherServlet">
+<<<<<<< HEAD
                <input type="text" name="title" value="제목없음" />
                <textarea name="content">-</textarea>
+=======
+               <input type="text" name="title" value="새 노트" />
+               <textarea name="content">여기에 입력하세요.</textarea>
+>>>>>>> origin/K5-Branch
                <input type="hidden" name="command" value="writeNote" /> 
                <input type="hidden" name="isCurr" value="true" />
             </form>
-            
-               
-               
                <div>
-                 
                <form action="DispatcherServlet" name="updateFrm" method="post">
                  <input class="form-invisible note-title" type="text" value="${note.title}" name="title"> 
-                  <span class="text-muted">  &nbsp;&nbsp;&nbsp;${note.writeDate.year}/${note.writeDate.month}/${note.writeDate.date}작성
-                                             &nbsp;&nbsp;&nbsp;<c:if test="${(note.writeDate.date != note.currentDate.date) or (note.writeDate.month != note.currentDate.month) or (note.writeDate.year != note.currentDate.year)}">
-                                             ${note.currentDate.year}/${note.currentDate.month}/${note.currentDate.date}수정</span>
-                                             </c:if>
+                  <span class="text-muted" style="padding-left:10px; font-style: italic;">최종 수정 ${note.currentDate.year}/${note.currentDate.month}/${note.currentDate.date} ${note.currentDate.hour}:${note.currentDate.minute}</span>
                   <div class="dropdown-divider"></div>
-                  <c:if test="${note.content eq '-'}">
-  	                <textarea class="form-invisible note-content" name="content" placeholder = "여기에 입력하세요"rows="19"></textarea><br/>
-                  </c:if>
-                  <c:if test="${note.content != '-'}">
                   <textarea class="form-invisible note-content" name="content" rows="19">${note.content}</textarea><br/>
-                  </c:if>
                      <div class="d-flex justify-content-end">
                         <input  class="button btn bg-pink rounded-bar" type="submit" value="저장" />&nbsp;
-                        <input class="btn bg-pink rounded-bar" type="button" value="노트삭제" onclick="deleteNote(${note.no})" /> 
+                        <input class="btn bg-pink rounded-bar" type="button" value="삭제" onclick="deleteNote(${note.no})" /> 
                      </div>   
                      <input  type="hidden" name="command" value="updateNote" /> 
                      <input  type="hidden" name="isCurr" value="false" /> 

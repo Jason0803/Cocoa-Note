@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
 	color:#333;
 }
@@ -24,6 +25,30 @@ td {
    border:none;
    font-weight: bold;
    color:white;
+=======
+table {
+	width:70%;
+}
+td {
+	text-align:center;
+	 border: 1px solid #e9ecef;
+	width:14.28%;
+	vertical-align:top;
+	height:100px;
+}
+
+.newNoteBtn {
+	width:30px;
+	height:30px;
+	right:20px;
+	top:40px;
+	position:absolute;
+	border-radius: 50%;
+	background:#F72765;
+	border:none;
+	font-weight: bold;
+	color:white;
+>>>>>>> origin/K5-Branch
 }
 
 .date {
@@ -42,8 +67,13 @@ td {
 }
 
 .date_td {
+<<<<<<< HEAD
    position:relative;
    padding: 0;
+=======
+	position:relative;
+	padding: 0;
+>>>>>>> origin/K5-Branch
 }
 
 .date_td:hover {
@@ -144,8 +174,13 @@ td {
 }
 
 .sam {
+<<<<<<< HEAD
    position: fixed;
    bottom: 0;
+=======
+	position: fixed;
+	bottom: 0;
+>>>>>>> origin/K5-Branch
 }
 
 .hidden_form { 
@@ -229,6 +264,7 @@ td {
    transition-duration: 1s;
 }
 
+<<<<<<< HEAD
 .deleteBtn:hover{
 	transform: rotate(180deg);
 }
@@ -281,6 +317,56 @@ td {
    padding:12px;
    width: 358px;
    cursor:pointer;
+=======
+.groupMembers { /* write_schedule.jsp ; 일정목록(scheduleItem) 친구리스트 박스 */
+	margin-left:15px;
+	margin-bottom:20px;
+}
+
+.groupMember { /* write_schedule.jsp ; 일정목록(scheduleItem) 친구리스트 */
+	display: inline-block;
+	min-height:15px;
+	line-height:15px;
+	background:pink;
+	padding:2px;
+	margin:0px 0px 0px 15px;
+	border-radius: 5px;
+	font-size:x-small;
+}
+
+.invited_member { /* write_schedule.jsp : 일정을 함께하는 친구 리스트 */
+	display: inline-block;
+	min-height:20px;
+	line-height:20px;
+	background:pink;
+	padding:5px;
+	margin:15px 0px 0px 15px;
+	border-radius: 50px;
+	font-size:small;
+}
+
+.delete_member { /* write_schedule.jsp : 일정을 함께하는 친구 리스트 제거버튼블럭 */
+	display: inline-block;
+	width:10px;
+	margin-left:5px;
+	margin-top:-4px;
+	height:10px;
+	background-image: url(img/XIcon.png);
+	background-size:100%;
+	vertical-align: middle;
+	
+>>>>>>> origin/K5-Branch
+}
+
+.updateBtn{
+	position:absolute;
+	background-color:transparent;
+	border-radius: 0.5rem!important;
+	border: solid 1px pink;
+	font-size: bold 20px black; 
+	left:20px;
+	bottom:20px;
+	cursor:pointer;
 }
 
 .date-control { /* write_schedule.jsp 날짜입력 input css */

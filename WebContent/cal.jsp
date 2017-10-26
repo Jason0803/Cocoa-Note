@@ -7,7 +7,7 @@
 	
 </script>
 <div class="row" style="height: 900px;">
-	<div class="col-9">
+	<div class="col-10">
 		<div class="card rounded-content" style="width: 100%; height: 90%;">
 			<div class="card-body">
 				<h4 class="card-title">Calendar</h4>
@@ -41,7 +41,7 @@
 											<div>${day.date.date}일 노트</div>
 											<ul>
 											<c:forEach var="note" items="${day.notes}">
-												<li class="cal_note_item" onclick="noteView('${note.no}')">${note.title}</li><br />
+												<li class="cal_note_item" onclick="noteView('${note.no}')">${note.title}</li>
 											</c:forEach>
 											</ul>
 										</div>
@@ -62,14 +62,14 @@
 		</div>
 	</div>
 	<!-- event(schedule)을 달력에 그리는 기능 -->
-	<c:forEach var="day" items="${monthlyDiary}">
-		<c:forEach var="schedule" items="${day.schedules}">
-			<script type="text/javascript">
-				drawEvent('${schedule.title}', ${schedule.startDate.date}, ${schedule.endDate.date})
-			</script>
+	<script type="text/javascript">
+		<c:forEach var="day" items="${monthlyDiary}">
+			<c:forEach var="schedule" items="${day.schedules}">
+				drawEvent('${schedule.title}', ${schedule.startDate.date}, ${schedule.endDate.date}, ${today.lastDate});
+			</c:forEach>
 		</c:forEach>
-	</c:forEach>
-	<div class="col-3">
+	</script>
+	<div class="col-2">
 		<div class="card rounded-content" style="width: 100%; height: 90%;">
 			<div class="card-body">
 				<h4 class="card-title">Upcoming events</h4>

@@ -33,7 +33,7 @@ public class DeleteDiaryController implements Controller {
 				break;
 			}
 			case Diary.NOTE : {
-				path = "DispatcherServlet?command=noteView&year="+today.getYear()+"&month="+today.getMonth()+"&day="+today.getDate()+"&isCurr=true";
+				path = "DispatcherServlet?command=cal&year="+today.getYear()+"&month="+today.getMonth();
 				break;
 			}
 		}
