@@ -35,19 +35,7 @@
 <body>
 	<div class="container">
 		<div class="row ">
-
-			 
-			
-			 
-			 
 			 <div class="col"> <br/><br/><h2>cocoaNOTE</h2></div>
-			 
-			 
-			 
-			
-			
-			
-
 		</div>
 		<div class="dropdown-divider"></div>
 		<div class="row ">
