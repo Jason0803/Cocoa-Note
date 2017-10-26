@@ -128,21 +128,36 @@ public class MemberDAO {
 		return  rs.next();
 	}
 	
-	public boolean checkPasswordValidation(String id, String password, Connection conn) throws SQLException, RecordNotFoundException{
-		PreparedStatement ps = 
-				conn.prepareStatement(StringQuery.CHECK_VALIDATION);
-		ps.setString(1, id);
-		ResultSet rs = ps.executeQuery();
-		
-		if(rs.next() ) {
-			if(password.equals(rs.getString("password") )) {
-				// When input and internal password matching
-				return true;
-			} else return false; // Password NOT matching
-		}else {
-			// input id does not exist in DB
-			throw new RecordNotFoundException("[MemberDAO]@checkPasswordValidation : No Such User Found !");
+	public boolean checkPasswordValidation(String id, String password) throws SQLException, RecordNotFoundException{
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		boolean result = false;
+		try{
+			conn = connection();
+			ps = conn.prepareStatement(StringQuery.CHECK_VALIDATION);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+
+			if(rs.next() ) {
+				if(password.equals(rs.getString("password") )) {
+					// When input and internal password matching
+					result = true;
+				} else result = false; // Password NOT matching
+			}else {
+				// input id does not exist in DB
+				throw new RecordNotFoundException("[MemberDAO]@checkPasswordValidation : No Such User Found !");
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try{
+				closeAll(ps,conn,rs);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
+		return result;
 	}
 	// ---------------------------------- for UPDATE ---------------------------------- //
 	public Member updateMember(Member member, String password) throws SQLException, DuplicateIdException {
@@ -152,7 +167,7 @@ public class MemberDAO {
 				
 		try {
 			conn = connection();
-			if(checkPasswordValidation(member.getId(), member.getPassword(), conn)) {
+			if(checkPasswordValidation(member.getId(), member.getPassword())) {
 				// #00035 : Check validation (password)
 				ps = conn.prepareStatement(StringQuery.UPDATE_MEMBER);
 				ps.setString(1, password);
@@ -187,7 +202,7 @@ public class MemberDAO {
 		
 		try {
 			conn = connection();
-			if(checkPasswordValidation(id, password, conn)) {
+			if(checkPasswordValidation(id, password)) {
 				ps = conn.prepareStatement(StringQuery.FIND_MEMBER_BY_ID);
 				ps.setString(1, id);
 				rs = ps.executeQuery();
