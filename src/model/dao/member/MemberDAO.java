@@ -145,7 +145,7 @@ public class MemberDAO {
 		}
 	}
 	// ---------------------------------- for UPDATE ---------------------------------- //
-	public Member updateMember(Member member, String password) throws SQLException, DuplicateIdException {
+	public Member updateMember(Member member, String password, int theme) throws SQLException, DuplicateIdException {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
