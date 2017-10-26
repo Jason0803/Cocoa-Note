@@ -3,6 +3,14 @@
 <jsp:include page="head.jsp"></jsp:include>
 <title>코코아노트</title>
 <script>
+function defaultTheme(){
+	if(${memberVO.theme}==1){
+		document.getElementById('cocoaTheme').click();
+	}else if(${memberVO.theme}==2){
+		document.getElementById('peachTheme').click();
+	}else{
+	}
+}
 function chgTheme(radioBtn){
 	if(radioBtn.value=="코코아"){
 		/* alert(); */
@@ -10,13 +18,13 @@ function chgTheme(radioBtn){
 		document.getElementById("img2").src = 'img/2.JPG';
 		document.getElementById("img3").src = 'img/3.JPG';
 		document.getElementById("peachTheme").className ='chgThemeBtn lastBtn';
-		document.getElementById("cocoaTheme").className ='chgThemeBtn cocoaTheme';
+		radioBtn.className ='chgThemeBtn cocoaTheme';
 		}else if(radioBtn.value=="피치"){
 		document.getElementById("img1").src = 'img/blue.png';
 		document.getElementById("img2").src = 'img/pink.png';
 		document.getElementById("img3").src = 'img/green.png';
 		document.getElementById("cocoaTheme").className ='chgThemeBtn';
-		document.getElementById("peachTheme").className ='chgThemeBtn lastBtn peachTheme';
+		radioBtn.className ='chgThemeBtn lastBtn peachTheme';
 		}
 }
 </script>
@@ -72,6 +80,9 @@ function chgTheme(radioBtn){
 			</a> <a class="carousel-control-next" href="#carouselExampleIndicators"
 				role="button" data-slide="next"> <span class="sr-only">Next</span>
 			</a>
+			<script type="text/javascript">
+				defaultTheme();
+			</script>
 		</div>
 	</div>	
 </div>
