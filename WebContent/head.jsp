@@ -46,10 +46,10 @@
 			
 			<div class="dropdown show ml-auto">
 				<button type="button"
-					class="btn bg-white dropdown-toggle dropdown show rounded-bar"
+					class="btn bg-transwhite dropdown-toggle dropdown show rounded-bar"
 					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					${memberVO.name }</button>
-				<div class="dropdown-menu">
+				<div class="dropdown-menu rounded-bar" style="left: -40%;">
 					<a class="dropdown-item" href="updateMember.jsp">설정</a> 
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="DispatcherServlet?command=logout">로그아웃</a>
