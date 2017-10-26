@@ -111,9 +111,9 @@
 	background:#523738;
 }
 
-.bg-white {
+.bg-transwhite {
 	color: black;
-	background : ghostwhite;
+	background-color: rgba(255, 255, 255, 0.31)!important;
 }
 .bg-ghostwhite{
 	background-color:ghostwhite;
