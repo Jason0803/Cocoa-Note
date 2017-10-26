@@ -76,6 +76,6 @@ public interface StringQuery {
 
 	
 	String GET_CURR_NOTE_NO = 
-			"SELECT note_no FROM note WHERE curr_date = (SELECT MAX(curr_date) FROM note) AND id=?";
+			"SELECT note_no FROM note WHERE curr_date = (SELECT MAX(curr_date) FROM note WHERE id=?)";
 	
 }
