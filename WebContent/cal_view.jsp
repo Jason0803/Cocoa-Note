@@ -24,7 +24,7 @@
 						<div class="groupMembers" id="gms_${schedule.no}">
 							<c:forEach var="groupMember" items="${friend.value}">
 							<c:if test="${groupMember.name!=null}">
-								<span class="groupMember">${groupMember.name}</span>
+								<span class="groupMember">${groupMember.name}<span class="groupMemberId" style="display:none">${groupMember.id}</span></span>
 							</c:if>
 							</c:forEach>
 						</div>
