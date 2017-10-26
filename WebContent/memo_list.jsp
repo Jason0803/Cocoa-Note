@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="head.jsp"></jsp:include>
-
+<title>코코아노트</title>
 <c:forEach var="memo" items="${memos}">
 	<div class="memo card rounded-content">
 	<div class="memoWrtDate">${memo.writeDate}</div>
