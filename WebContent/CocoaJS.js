@@ -1,15 +1,42 @@
 /**
  * 
  */
-function drawEvent(title, startDate, endDate, lastDate){ // 달력에 이벤트를 뿌려주는 함수
+function setDate(dateQuery) {
+	var year = dateQuery.substring(0,4);
+	var month = dateQuery.substring(4,6);
+	var date = dateQuery.substring(6,8);
+	var hour = dateQuery.substring(8,10);
+	var minute = dateQuery.substring(10);
+	var rdate = new Date();
+	rdate.setYear(year);
+	rdate.setMonth(month-1);
+	rdate.setDate(date);
+	return rdate;
+}
+
+function drawEvent(title, startQuery, endQuery, nowYear, nowMonth){ // 달력에 이벤트를 뿌려주는 함수
 	var findId = "";
 	var drawCol;
 	var spanCount;
-	if(startDate>endDate) endDate = lastDate;
-	for(findDate=startDate;findDate<=endDate;findDate++){
+	var startDate = setDate(startQuery);
+	var endDate = setDate(endQuery);
+	var firstDate = new Date();
+	var lastDate = new Date();
+	firstDate.setYear(nowYear);
+	firstDate.setMonth(nowMonth-1);
+	firstDate.setDate(1);
+	lastDate.setYear(nowYear);
+	lastDate.setMonth(firstDate.getMonth()+1);
+	lastDate.setDate(firstDate.getDate()-1);
+	
+	if(startDate.getTime() < firstDate.getTime())
+		startDate = firstDate;
+	if(lastDate.getTime() < endDate.getTime())
+		endDate = lastDate;
+	for(findDate=startDate.getDate();findDate<=endDate.getDate();findDate++){
 		drawCol = document.getElementById("date_"+findDate);
 		var drawItem = document.createElement('SPAN');
-		if(findDate==startDate) {
+		if(findDate==startDate.getDate()) {
 			/*spanCount = drawCol.getElementsByClassName('cal_schedule_item').length+1;*/
 			if(drawCol.getElementsByClassName('csi_1').length==0) spanCount=1;
 			else if(drawCol.getElementsByClassName('csi_2').length==0) spanCount=2;
