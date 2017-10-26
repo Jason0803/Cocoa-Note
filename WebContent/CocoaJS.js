@@ -33,6 +33,7 @@ function drawEvent(title, startQuery, endQuery, nowYear, nowMonth){ // 달력에
 		startDate = firstDate;
 	if(lastDate.getTime() < endDate.getTime())
 		endDate = lastDate;
+	spanCount=0;
 	for(findDate=startDate.getDate();findDate<=endDate.getDate();findDate++){
 		drawCol = document.getElementById("date_"+findDate);
 		var drawItem = document.createElement('SPAN');
@@ -96,24 +97,36 @@ function nextMonth(year, month) {
 }
 // ---------------------------------------------------------------------------
 var group_member = new Array();
-function addGroupMember(jsValue) {
-	var group_memberFrm = document.scheduleFrm.schedule_group.value;
-	group_member.push(group_memberFrm);
+function addGroupMember(jsValue, js) {
+	
 	
 	var node = document.createElement("span"); // Create a <li> node
 		node.setAttribute('class', 'invited_member');
-	var textnode = document.createTextNode(group_memberFrm);         // Create a text node
+	var textnode;         // Create a text node
+	var idNode = document.createElement('span');
+	idNode.setAttribute('style', 'display:none');
+	idNode.setAttribute('class', 'hiddenId');
 	var deleteNode = document.createElement("span");
 	deleteNode.setAttribute('class', 'delete_member');
 	deleteNode.setAttribute('onclick', 'javascript:deleteGroupMember(this)');
-	if(jsValue!=null) textnode = document.createTextNode(jsValue);
+	if(jsValue!=null) {
+		textnode = document.createTextNode(jsValue);
+		group_member.push(js);
+		idNode.innerText = js;
+	} else {
+		var group_memberFrm = document.scheduleFrm.schedule_group.value;
+		textnode = document.createTextNode(group_memberFrm);
+		group_member.push(group_memberFrm);
+		idNode.innerText = group_memberFrm;
+	}
 	node.appendChild(textnode);                              // Append the text to <li>
 	node.appendChild(deleteNode);
+	node.appendChild(idNode);
 	document.getElementById("shcedule_group_container").appendChild(node);     // Append <li> to <ul> with id="myList"
 	document.scheduleFrm.schedule_group.value = "";
 } // 추가 버튼을 누르면 schedule_group_container에 해당 아이디를 추가하고 텍스트박스를 초기화함
 function deleteGroupMember(m){
-	var deleted_member = m.parentNode.firstChild.textContent;
+	var deleted_member = m.parentNode.getElementsByClassName('hiddenId')[0].textContent;
 	var index = group_member.indexOf(deleted_member);
 	if(index>=0) group_member.splice(index, 1);
 	m.parentNode.remove();
@@ -203,7 +216,7 @@ function updateSchedule(diaryNo, schedule){
 	
 	var groupMembers = document.getElementById('gms_'+diaryNo).children;
 	for(i=0;i<groupMembers.length;i++){
-		addGroupMember(groupMembers[i].innerHTML);
+		addGroupMember(groupMembers[i].innerText, groupMembers[i].children[0].innerHTML);
 	}
 	
 	

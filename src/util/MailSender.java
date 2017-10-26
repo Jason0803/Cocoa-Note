@@ -28,13 +28,11 @@ public class MailSender {
 	public static MailSender getInstance() {
 		return ms;
 	}
-	public static void sendTemporaryPassword(String id) {
+	public static void sendMail(String id, String command, String schedule_name) {
 		Session session = null;
 		MimeMessage msg = null;
-		String tempPassword = null;
 		
 		try {
-			if(MemberDAO.getInstance().doesExist(id)){
 				Properties props = new Properties();
 				// SSL 사용하는 경우
 				props.put("mail.smtp.host", "smtp.gmail.com"); //SMTP Host
@@ -64,16 +62,29 @@ public class MailSender {
 
 				msg.setFrom(new InternetAddress(MAIL_ID));
 				msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(id, false));
+				String body = null;
 				
-				// tempPassword Logic
-				tempPassword = ""+(int)(Math.random()*100000 +1);
+				switch(command) {
+					case "forgotPasword": {
+						System.out.println();
+						// tempPassword Logic
+						String tempPassword = null;
+						tempPassword = id+(int)(Math.random()*1000000 +1);
+						// set tempPassword
+						body = "Your Temporary Password for " +id + " : " + tempPassword;
 
+						MemberDAO.getInstance().updateMember(MemberDAO.getInstance().findMemberById(id), tempPassword);
+						msg.setSubject("[CocoaNote] : " +id +", Temporary Password !", "UTF-8");
+						break;
+					}
+					case "share_added" : {
+						body = "You've been added to a schedule :" + schedule_name;
+						msg.setSubject("[CocoaNote] : " + id +", check your new schedule !", "UTF-8");
+						break;
+					}
+				}
 
-				// set tempPassword
-				String body = "Your Temporary Password for " +id + " : " + tempPassword;
-
-				MemberDAO.getInstance().updateMember(MemberDAO.getInstance().findMemberById(id), tempPassword);
-				msg.setSubject("[CocoaNote] : " +id +", Temporary Password !", "UTF-8");
+				
 				msg.setText(body, "UTF-8");
 				msg.setSentDate(new Date());
 
@@ -86,9 +97,6 @@ public class MailSender {
 				transport.close();   
 
 				System.out.println("[MailSender] : Email Sent Successfully!!");
-		    } else {
-		    	System.out.println("[MailSender] : No Such User Found !");
-		    }
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
