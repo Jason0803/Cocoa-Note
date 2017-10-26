@@ -9,7 +9,7 @@
 		
 	<!-- Find Schedule card -->
 	
-		<div class="card rounded-content" style="width: 100%; min-height: 10%; margin-bottom:20px;">
+		<div class="card rounded-content animated-card-1" style="width: 100%; min-height: 10%; margin-bottom:20px;">
 			<div class="card-body">
 				<h4 class="card-title">Find Schedule</h4>				
 				<p class="card-text">
@@ -27,7 +27,7 @@
 		
 		<!-- Find Note card -->
 		
-		<div class="card rounded-content" style="width: 100%; min-height: 10%; margin-bottom:20px;">
+		<div class="card rounded-content animated-card-2" style="width: 100%; min-height: 10%; margin-bottom:20px;">
 			<div class="card-body">
 				<h4 class="card-title">Find Note</h4>				
 				<p class="card-text">
@@ -42,7 +42,7 @@
 		
 		<!-- Find Memo card -->
 		
-		<div class="card rounded-content" style="width: 100%; min-height: 10%; margin-bottom:20px;">
+		<div class="card rounded-content animated-card-3" style="width: 100%; min-height: 10%; margin-bottom:20px;">
 			<div class="card-body">
 				<h4 class="card-title">Find Memo</h4>				
 				<p class="card-text">
