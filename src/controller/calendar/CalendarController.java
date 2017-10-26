@@ -26,8 +26,8 @@ public class CalendarController implements Controller {
 		int month = Integer.parseInt(request.getParameter("month"));
 		System.out.println(year);
 		CocoaDate date = new CocoaDate(year, month, 1);
-		//Vector<Diary> schedules = DiaryDAO.getInstance().getAllDiary(id, "schedule");
-		Vector<Schedule> schedules = DiaryDAO.getInstance().getAllSchedule(id);
+		Vector<Diary> schedules = DiaryDAO.getInstance().getAllDiary(id, "schedule");
+		//Vector<Schedule> schedules = DiaryDAO.getInstance().getAllSchedule(id);
 		//Collections.reverse(schedules);
 		
 		
