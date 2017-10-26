@@ -127,17 +127,16 @@ td {
 	
 }
 
-<<<<<<< HEAD
 .updateBtn{
-	position:absolute;
 	background-color:transparent;
 	border-radius: 0.5rem!important;
-	border: solid 1px pink;
+	border: solid 1px #ced4da;
+	padding:12px;
+	width: 358px;
 	font-size: bold 20px black; 
-	left:20px;
-	bottom:20px;
 	cursor:pointer;
-=======
+}
+
 .date-control { /* write_schedule.jsp 날짜입력 input css */
 	display: inline-block;
 	width:100%;
@@ -152,7 +151,6 @@ td {
 .scheduleTitle { /* cal_view.jsp 스케쥴 제목 css */
 	font-weight: bold;
 	margin-left:20px;
->>>>>>> origin/K5-Branch
 }
 
 .scheduleDate { /* cal_view.jsp 스케쥴 날짜 css */
@@ -194,6 +192,7 @@ td {
 table {
 	width:70%;
 }
+
 td {
 	text-align:center;
 	 border: 1px solid #e9ecef;
@@ -474,4 +473,37 @@ figure.deleteBtn:hover img {
 	padding:4px 8px;
 	background-color:#17a2b8;
 	color:white;
+}
+
+
+
+
+.chgThemeBtn{
+	width:49%;
+	height:38px;
+	border:solid 1px lightgray;
+	margin-right:2px;
+	margin:0px;
+	background-color:transparent;
+	border-radius: 0.25rem;
+}
+
+.lastBtn {
+	float:right;
+}
+
+.chgThemeBtn:focus{
+	outline:none;
+}
+
+.cocoaTheme{
+	background-color: #523738;
+	color: white;
+	border:none;
+}
+
+.peachTheme{
+	background-color: #F72765;
+	color: white;
+	border:none;
 }
