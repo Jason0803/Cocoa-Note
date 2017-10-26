@@ -831,7 +831,7 @@ public class DiaryDAO {
              closeAll(rs, ps, conn);
          }
          // #00133
-         return currNo-1;
+         return currNo;
 	}
 	// ------------------------------------------------ getSharingMembers  ------------------------------------------------ //
 	public Vector<Member> findSharingMembers(int no) throws SQLException {
