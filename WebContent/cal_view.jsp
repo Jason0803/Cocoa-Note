@@ -17,12 +17,16 @@
 					<span class="scheduleTitle">${schedule.title}</span>
 					<span class="scheduleDate">${schedule.startDate.year}.${schedule.startDate.month}.${schedule.startDate.date} ${schedule.startDate.hour}:${schedule.startDate.minute}
 								~${schedule.endDate.year}.${schedule.endDate.month}.${schedule.endDate.date} ${schedule.endDate.hour}:${schedule.endDate.minute}</span>
-					<p class="scheduleContent">- ${schedule.content}</p>
+					<br/><span class="scheduleContent">- ${schedule.content}</span>
 					<c:forEach var="friend" items="${group_member}">
 						<c:if test="${friend.key eq schedule.no}">
+						<div class="groupMembers" id="gms_${schedule.no}">
 							<c:forEach var="groupMember" items="${friend.value}">
-								${groupMember.name}
+							<c:if test="${groupMember.name!=null}">
+								<span class="groupMember">${groupMember.name}</span>
+							</c:if>
 							</c:forEach>
+						</div>
 						</c:if>
 					</c:forEach>
 					<div class="scheduleBtn">

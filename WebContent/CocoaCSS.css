@@ -8,199 +8,20 @@ td {
 	vertical-align:top;
 	height:100px;
 }
-.date {
-	width:100%;
-	border-radius: 1.5rem!important;
-	background:pink;
-	display:inline-block;
-	color:white;
-	cursor:pointer;
-}
 
-.span-note {
-	display:inline-block;
-}
-
-.sam {
-	position: fixed;
-	bottom: 0;
-}
-
-.hidden_form { 
-	display:none;
-}
-
-.nav-menu {
-	float:left;
-	width:200px;
-	border:1px black solid;
-}
-
-.nav {
-	width:100%;
-	display:inline-block;
-}
-
-.memo {
-	background-size:100%;
-	background-color:transparent;
-	width:235px;
-	height:170px;
-	display:inline-block;
-	margin: 0 15px 30px 15px;
-	text-align: center;
-	overflow:hidden;
+.newNoteBtn {
+	width:30px;
+	height:30px;
+	right:20px;
+	top:40px;
+	position:absolute;
+	border-radius: 50%;
+	background:#F72765;
 	border:none;
-	padding-top: 5px;
-	padding-left: 12px;
-	padding-right: 12px;
-	box-shadow: -5px 5px 5px 0px lightgray;
-}
-
-.memo1{
-	background-image:url("img/blue.png");
-}
-
-.memo2{
-	background-image:url("img/green.png");
-}
-
-.memo3{
-	background-image:url("img/purple.png");
-}
-
-.memo4{
-	background-image:url("img/yellow.png");
-}
-
-.memo5{
-	background-image:url("img/pink.png");
-}
-
-.memoWrtDate{
-	margin-bottom: 10px;
-	position:absolute;
-	right:10px;
-	bottom:1px;
-	font-size: 13px;
-	color:gray;
-}
-
-.memoContent{
-	position:relative;
-	top:45px;
-	font-size: 15px;
-}
-
-.deleteBtn{
-	background-image: url("img/XIcon.png");
-	padding:0px;
-	width:10px;
-	height:10px;
-	border:0px;
-	background-color: transparent;
-	background-size: 100%;
-	cursor:pointer;
-	position:absolute;
-	top:10px;
-	right:10px;
-}
-
-.invited_member { /* write_schedule.jsp : 일정을 함께하는 친구 리스트 */
-	display: inline-block;
-	min-height:25px;
-	line-height:30px;
-	background:pink;
-	padding:5px;
-	margin:15px 0px 0px 15px;
-	border-radius: 5px;
-}
-
-.delete_member { /* write_schedule.jsp : 일정을 함께하는 친구 리스트 제거버튼블럭 */
-	display: inline-block;
-	width:20px;
-	margin-left:5px;
-	margin-top:-6px;
-	height:20px;
-	background:red;
-	vertical-align: middle;
-	
-}
-
-<<<<<<< HEAD
-.updateBtn{
-	position:absolute;
-	background-color:transparent;
-	border-radius: 0.5rem!important;
-	border: solid 1px pink;
-	font-size: bold 20px black; 
-	left:20px;
-	bottom:20px;
-	cursor:pointer;
-=======
-.date-control { /* write_schedule.jsp 날짜입력 input css */
-	display: inline-block;
-	width:100%;
-}
-
-.shcedule_group { /* write_schedule.jsp group_member css */
-	display: inline-block;
-	width:100%;
-}
-
-
-.scheduleTitle { /* cal_view.jsp 스케쥴 제목 css */
 	font-weight: bold;
-	margin-left:20px;
->>>>>>> origin/K5-Branch
-}
-
-.scheduleDate { /* cal_view.jsp 스케쥴 날짜 css */
-	font-size: small;
-	color:#999;
-}
-
-.scheduleContent { /* cal_view.jsp 스케쥴 내용 css */
-	margin-left:30px;
-}
-
-.scheduleItem { /* cal_view.jsp 스케쥴 item css */
-	position:relative;
-}
-
-.scheduleBtn { /* cal_view.jsp 스케쥴 수정, 삭제버튼 box css */
-	position:absolute;
-	top:10px;
-	right:10px;
-	display:none;
-}
-
-.scheduleBtn input[type=button] {
-	border-radius: 40%;
-	border:0;
-	font-size:x-small;
-	padding:4px 8px;
-	background-color:#17a2b8;
 	color:white;
 }
-.cal_schedule_item {
-	display:inline-block;
-	width:calc(100%+26px);
-	background-color:orange;
-	margin-left:-13px;
-}
 
-
-table {
-	width:70%;
-}
-td {
-	text-align:center;
-	 border: 1px solid #e9ecef;
-	width:14.28%;
-	vertical-align:top;
-	height:100px;
-}
 .date {
 	width:35px;
 	/* background:pink; */
@@ -218,7 +39,7 @@ td {
 
 .date_td {
 	position:relative;
-	
+	padding: 0;
 }
 
 .date_td:hover {
@@ -321,8 +142,6 @@ td {
 .sam {
 	position: fixed;
 	bottom: 0;
-	
-	
 }
 
 .hidden_form { 
@@ -405,30 +224,54 @@ td {
 	right:10px;
 }
 
-figure.deleteBtn:hover img {
-  -webkit-transform: scale(1.5);
-  transform: scale(1.5);
+.groupMembers { /* write_schedule.jsp ; 일정목록(scheduleItem) 친구리스트 박스 */
+	margin-left:15px;
+	margin-bottom:20px;
+}
+
+.groupMember { /* write_schedule.jsp ; 일정목록(scheduleItem) 친구리스트 */
+	display: inline-block;
+	min-height:15px;
+	line-height:15px;
+	background:pink;
+	padding:2px;
+	margin:0px 0px 0px 15px;
+	border-radius: 5px;
+	font-size:x-small;
 }
 
 .invited_member { /* write_schedule.jsp : 일정을 함께하는 친구 리스트 */
 	display: inline-block;
-	min-height:25px;
-	line-height:30px;
+	min-height:20px;
+	line-height:20px;
 	background:pink;
 	padding:5px;
 	margin:15px 0px 0px 15px;
-	border-radius: 5px;
+	border-radius: 50px;
+	font-size:small;
 }
 
 .delete_member { /* write_schedule.jsp : 일정을 함께하는 친구 리스트 제거버튼블럭 */
 	display: inline-block;
-	width:20px;
+	width:10px;
 	margin-left:5px;
-	margin-top:-6px;
-	height:20px;
-	background:red;
+	margin-top:-4px;
+	height:10px;
+	background-image: url(img/XIcon.png);
+	background-size:100%;
 	vertical-align: middle;
 	
+}
+
+.updateBtn{
+	position:absolute;
+	background-color:transparent;
+	border-radius: 0.5rem!important;
+	border: solid 1px pink;
+	font-size: bold 20px black; 
+	left:20px;
+	bottom:20px;
+	cursor:pointer;
 }
 
 .date-control { /* write_schedule.jsp 날짜입력 input css */

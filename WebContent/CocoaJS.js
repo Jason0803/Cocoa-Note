@@ -9,11 +9,18 @@ function drawEvent(title, startDate, endDate){ // 달력에 이벤트를 뿌려�
 		drawCol = document.getElementById("date_"+findDate);
 		var drawItem = document.createElement('SPAN');
 		if(findDate==startDate) {
-			spanCount = drawCol.getElementsByClassName('cal_schedule_item').length+1;
+			/*spanCount = drawCol.getElementsByClassName('cal_schedule_item').length+1;*/
+			if(drawCol.getElementsByClassName('csi_1').length==0) spanCount=1;
+			else if(drawCol.getElementsByClassName('csi_2').length==0) spanCount=2;
+			else if(drawCol.getElementsByClassName('csi_3').length==0) spanCount=3;
+			else if(drawCol.getElementsByClassName('csi_4').length==0) spanCount=4;
+			else spanCount=5;
 			drawItem.appendChild(document.createTextNode(title));
 		}
-		drawItem.className += ("cal_schedule_item csi_"+spanCount);
-		if(spanCount<=4) drawCol.appendChild(drawItem);
+		if(spanCount<=4) {
+			drawItem.className += ("cal_schedule_item csi_"+spanCount);
+			drawCol.appendChild(drawItem);
+		}
 	}
 }
 
@@ -60,7 +67,7 @@ function nextMonth(year, month) {
 }
 // ---------------------------------------------------------------------------
 var group_member = new Array();
-function addGroupMember() {
+function addGroupMember(jsValue) {
 	var group_memberFrm = document.scheduleFrm.schedule_group.value;
 	group_member.push(group_memberFrm);
 	
@@ -70,6 +77,7 @@ function addGroupMember() {
 	var deleteNode = document.createElement("span");
 	deleteNode.setAttribute('class', 'delete_member');
 	deleteNode.setAttribute('onclick', 'javascript:deleteGroupMember(this)');
+	if(jsValue!=null) textnode = document.createTextNode(jsValue);
 	node.appendChild(textnode);                              // Append the text to <li>
 	node.appendChild(deleteNode);
 	document.getElementById("shcedule_group_container").appendChild(node);     // Append <li> to <ul> with id="myList"
@@ -146,6 +154,7 @@ function deleteDiary(scheduleNo,year, month, date){
 
 function updateSchedule(diaryNo, schedule){
 	group_member = [];
+	document.getElementById('shcedule_group_container').innerHTML = "";
 	var scheduleToStringArray = schedule.split(',');
 	var tempStr = scheduleToStringArray[0].split('=');
 	var title = tempStr[1];
@@ -157,6 +166,11 @@ function updateSchedule(diaryNo, schedule){
 	tempStr = scheduleToStringArray[5].split('=');
 	var endDate = tempStr[1];
 	var endTime = scheduleToStringArray[6].substring(0,scheduleToStringArray[6].length-1);
+	var groupMembers = document.getElementById('gms_'+diaryNo).children;
+	for(i=0;i<groupMembers.length;i++){
+		addGroupMember(groupMembers[i].innerHTML);
+	}
+	
 	
 	startDate = startDate.replace('/', '-');
 	startDate = startDate.replace('/', '-');
