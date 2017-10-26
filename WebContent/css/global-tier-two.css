@@ -80,13 +80,12 @@
 	margin-right:730px;
 }
 
-/* profile-position is Deprecated. ->d-flex ml-auto 
-.profile-position {
+.profile {
 	width: 3rem;
 	height: 3rem;
 	margin-left: 58%;
 	
-} */
+}
 
 .rounded-bar {
     border-radius: 1rem!important;
