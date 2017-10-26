@@ -51,7 +51,6 @@ public class WriteScheduleController implements Controller {
 		 
 		System.out.println("[WriteScheduleController] : New Schedule instance created !" + schedule);
 
-		System.out.println("[WriteScheduleController] : New Schedule passwed to session");
 		schedule = DiaryDAO.getInstance().writeDiary(schedule);
 		System.out.println("[WriteScheduleController] : writeDiary Logic passed !");
 		

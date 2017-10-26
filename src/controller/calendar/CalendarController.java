@@ -11,6 +11,7 @@ import controller.ModelAndView;
 import model.dao.diary.DiaryDAO;
 import model.vo.day.Day;
 import model.vo.diary.Diary;
+import model.vo.diary.Schedule;
 import model.vo.member.Member;
 import util.CocoaDate;
 
@@ -25,7 +26,8 @@ public class CalendarController implements Controller {
 		int month = Integer.parseInt(request.getParameter("month"));
 		System.out.println(year);
 		CocoaDate date = new CocoaDate(year, month, 1);
-		Vector<Diary> schedules = DiaryDAO.getInstance().getAllDiary(id, "schedule");
+		//Vector<Diary> schedules = DiaryDAO.getInstance().getAllDiary(id, "schedule");
+		Vector<Schedule> schedules = DiaryDAO.getInstance().getAllSchedule(id);
 		//Collections.reverse(schedules);
 		
 		
