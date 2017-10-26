@@ -271,10 +271,10 @@ td {
    position:absolute;
    background-color:transparent;
    border-radius: 0.5rem!important;
-   border: solid 1px pink;
+   border: solid 1px lightgray;
    font-size: bold 20px black; 
-   left:20px;
-   bottom:20px;
+   padding:12px;
+   width: 358px;
    cursor:pointer;
 }
 
