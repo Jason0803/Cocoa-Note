@@ -19,8 +19,7 @@ public class UpdateScheduleController implements Controller {
 	@Override
 	public ModelAndView handle(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// Member mvo = (Member) request.getSession().getAttribute("memberVO");									// Jason : NOT Required ?
-		
-		
+		CocoaDate today = new CocoaDate();
 		
 		Schedule schedule = 
 				DiaryDAO.getInstance().updateSchedule(Integer.parseInt(request.getParameter("diaryNo")), 		// no
@@ -32,7 +31,9 @@ public class UpdateScheduleController implements Controller {
 		request.setAttribute("schedule", schedule);
 		
 		// calView로 변경
-		return new ModelAndView("update_schedule.jsp");
+		return new ModelAndView("DispatcherServlet?command=calView&year="+today.getYear() 
+																+"&month="+today.getMonth()
+																+"&day="+today.getDate());
 	}
 
 }
