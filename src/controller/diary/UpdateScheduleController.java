@@ -31,9 +31,10 @@ public class UpdateScheduleController implements Controller {
 		request.setAttribute("schedule", schedule);
 		
 		// calView로 변경
-		return new ModelAndView("DispatcherServlet?command=calView&year="+today.getYear() 
-																+"&month="+today.getMonth()
-																+"&day="+today.getDate());
+		return new ModelAndView("DispatcherServlet?command=calView&"
+								+"year=" + new CocoaDate(request.getParameter("start_date")).getYear()
+								+"&month="+ new CocoaDate(request.getParameter("start_date")).getMonth()
+								+"&date="+ new CocoaDate(request.getParameter("start_date")).getDate());
 	}
 
 }
