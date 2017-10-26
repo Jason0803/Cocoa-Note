@@ -1,509 +1,357 @@
-table {
-	width:70%;
+body {
+	color:#333;
 }
-td {
-	text-align:center;
-	 border: 1px solid #e9ecef;
-	width:14.28%;
-	vertical-align:top;
-	height:100px;
-}
-.date {
-	width:100%;
-	border-radius: 1.5rem!important;
-	background:pink;
-	display:inline-block;
-	color:white;
-	cursor:pointer;
-}
-
-.span-note {
-	display:inline-block;
-}
-
-.sam {
-	position: fixed;
-	bottom: 0;
-}
-
-.hidden_form { 
-	display:none;
-}
-
-.nav-menu {
-	float:left;
-	width:200px;
-	border:1px black solid;
-}
-
-.nav {
-	width:100%;
-	display:inline-block;
-}
-
-.memo {
-	background-size:100%;
-	background-color:transparent;
-	width:235px;
-	height:170px;
-	display:inline-block;
-	margin: 0 15px 30px 15px;
-	text-align: center;
-	overflow:hidden;
-	border:none;
-	padding-top: 5px;
-	padding-left: 12px;
-	padding-right: 12px;
-	box-shadow: -5px 5px 5px 0px lightgray;
-}
-
-.memo1{
-	background-image:url("img/blue.png");
-}
-
-.memo2{
-	background-image:url("img/green.png");
-}
-
-.memo3{
-	background-image:url("img/purple.png");
-}
-
-.memo4{
-	background-image:url("img/yellow.png");
-}
-
-.memo5{
-	background-image:url("img/pink.png");
-}
-
-.memoWrtDate{
-	margin-bottom: 10px;
-	position:absolute;
-	right:10px;
-	bottom:1px;
-	font-size: 13px;
-	color:gray;
-}
-
-.memoContent{
-	position:relative;
-	top:45px;
-	font-size: 15px;
-}
-
-.deleteBtn{
-	background-image: url("img/XIcon.png");
-	padding:0px;
-	width:10px;
-	height:10px;
-	border:0px;
-	background-color: transparent;
-	background-size: 100%;
-	cursor:pointer;
-	position:absolute;
-	top:10px;
-	right:10px;
-}
-
-.invited_member { /* write_schedule.jsp : 일정을 함께하는 친구 리스트 */
-	display: inline-block;
-	min-height:25px;
-	line-height:30px;
-	background:pink;
-	padding:5px;
-	margin:15px 0px 0px 15px;
-	border-radius: 5px;
-}
-
-.delete_member { /* write_schedule.jsp : 일정을 함께하는 친구 리스트 제거버튼블럭 */
-	display: inline-block;
-	width:20px;
-	margin-left:5px;
-	margin-top:-6px;
-	height:20px;
-	background:red;
-	vertical-align: middle;
-	
-}
-
-.updateBtn{
-	background-color:transparent;
-	border-radius: 0.5rem!important;
-	border: solid 1px #ced4da;
-	padding:12px;
-	width: 358px;
-	font-size: bold 20px black; 
-	cursor:pointer;
-}
-
-.date-control { /* write_schedule.jsp 날짜입력 input css */
-	display: inline-block;
-	width:100%;
-}
-
-.shcedule_group { /* write_schedule.jsp group_member css */
-	display: inline-block;
-	width:100%;
-}
-
-
-.scheduleTitle { /* cal_view.jsp 스케쥴 제목 css */
-	font-weight: bold;
-	margin-left:20px;
-}
-
-.scheduleDate { /* cal_view.jsp 스케쥴 날짜 css */
-	font-size: small;
-	color:#999;
-}
-
-.scheduleContent { /* cal_view.jsp 스케쥴 내용 css */
-	margin-left:30px;
-}
-
-.scheduleItem { /* cal_view.jsp 스케쥴 item css */
-	position:relative;
-}
-
-.scheduleBtn { /* cal_view.jsp 스케쥴 수정, 삭제버튼 box css */
-	position:absolute;
-	top:10px;
-	right:10px;
-	display:none;
-}
-
-.scheduleBtn input[type=button] {
-	border-radius: 40%;
-	border:0;
-	font-size:x-small;
-	padding:4px 8px;
-	background-color:#17a2b8;
-	color:white;
-}
-.cal_schedule_item {
-	display:inline-block;
-	width:calc(100%+26px);
-	background-color:orange;
-	margin-left:-13px;
-}
-
 
 table {
-	width:70%;
+   width:70%;
+}
+td {
+   text-align:center;
+    border: 1px solid #e9ecef;
+   width:14.28%;
+   vertical-align:top;
+   height:100px;
 }
 
-td {
-	text-align:center;
-	 border: 1px solid #e9ecef;
-	width:14.28%;
-	vertical-align:top;
-	height:100px;
+.newNoteBtn {
+   width:30px;
+   height:30px;
+   right:20px;
+   top:40px;
+   position:absolute;
+   border-radius: 50%;
+   background:#F72765;
+   border:none;
+   font-weight: bold;
+   color:white;
 }
+
 .date {
-	width:35px;
-	/* background:pink; */
-	display:inline-block;
-	position:absolute;
-	height:28px;
-	left:0px;
-	top:0px;
-	color:black;
-	cursor:pointer;
-	text-align: center;
-	border-bottom:1px solid #eee;
-	border-radius: 0px 0px 7px 0px;
+   width:35px;
+   /* background:pink; */
+   display:inline-block;
+   position:absolute;
+   height:28px;
+   left:0px;
+   top:0px;
+   color:black;
+   cursor:pointer;
+   text-align: center;
+   border-bottom:1px solid #eee;
+   border-radius: 0px 0px 7px 0px;
 }
 
 .date_td {
-	position:relative;
-	
+   position:relative;
+   padding: 0;
 }
 
 .date_td:hover {
-	position:relative;
-	background:#fff2f4;
-	
+   position:relative;
+   background:#fff2f4;
+   
 }
 
 .cal_schedule_item {
-	position:absolute;
-	overflow:hidden;
-	left:0;
-	width: 100%;
-	height:16px;
-	font-size:x-small;
+   position:absolute;
+   overflow:hidden;
+   left:0;
+   width: 100%;
+   height:16px;
+   font-size:x-small;
 }
 .csi_1 {
-	top:30px;
-	background-color:orange;
+   top:30px;
+   background-color:orange;
 }
 .csi_2 {
-	top:47px;
-	background-color:cyan;
+   top:47px;
+   background-color:cyan;
 }
 .csi_3 {
-	top:64px;
-	background-color:lime;
+   top:64px;
+   background-color:lime;
 }
 .csi_4 {
-	top:81px;
-	background-color:navy;
-	color:white;
+   top:81px;
+   background-color:navy;
+   color:white;
 }
 
 .cal_note_viewBtn{
-	position:absolute;
-	right:4px;
-	top:4px;
-	cursor: pointer;
-	font-size: x-small;
-	background:red;
-	border-radius: 3px;
-	color:white;
-	width:20px;
-	height:17px;
-	padding-top:1px;
-	font-weight: bold;
+   position:absolute;
+   right:4px;
+   top:4px;
+   cursor: pointer;
+   font-size: x-small;
+   background:red;
+   border-radius: 3px;
+   color:white;
+   width:20px;
+   height:17px;
+   padding-top:1px;
+   font-weight: bold;
 }
 
 .cal_note_closeBtn{
-	background-image: url(img/XIcon.png);
-	background-size:100%;
-	width:12px;
-	height:12px;
-	cursor: pointer;
-	position:absolute;
-	right:5px;
-	top:5px;
+   background-image: url(img/XIcon.png);
+   background-size:100%;
+   width:12px;
+   height:12px;
+   cursor: pointer;
+   position:absolute;
+   right:5px;
+   top:5px;
 }
 
 .cal_note_list {
-	position:absolute;
-	background: rgba(255,255,255,0.8);
-	border:2px solid red;
-	border-radius: 5px 5px 5px 0px;
-	width:150px;
-	z-index:999;
-	bottom:0px;
-	left:18px;
-	min-height:100px;
+   position:absolute;
+   background: rgba(255,255,255,0.8);
+   border:2px solid red;
+   border-radius: 5px 5px 5px 0px;
+   width:150px;
+   z-index:999;
+   bottom:0px;
+   left:18px;
+   min-height:100px;
 }
 
 .cal_note_list div{
-	margin:0;
-	text-align:center;
-	font-size:small;
-	width:100%;
-	background: red;
-	height:20px;
+   margin:0;
+   text-align:center;
+   font-size:small;
+   width:100%;
+   background: red;
+   height:20px;
 }
 
 .cal_note_list ul{
-	margin-top:5px;
-	margin-left:-30px;
+   margin-top:5px;
+   margin-left:-30px;
 }
 
 .cal_note_item {
-	color:black;
-	cursor: pointer;
-	font-weight: normal;
-	list-style: square;
-	margin-left:15px;
-	text-align:left;
+   color:black;
+   cursor: pointer;
+   font-weight: normal;
+   list-style: square;
+   margin-left:15px;
+   text-align:left;
 }
 
 .span-note {
-	display:inline-block;
+   display:inline-block;
 }
 
 .sam {
-	position: fixed;
-	bottom: 0;
-	
-	
+   position: fixed;
+   bottom: 0;
 }
 
 .hidden_form { 
-	display:none;
+   display:none;
 }
 
 .nav-menu {
-	float:left;
-	width:200px;
-	border:1px black solid;
+   float:left;
+   width:200px;
+   border:1px black solid;
 }
 
 .nav {
-	width:100%;
-	display:inline-block;
+   width:100%;
+   display:inline-block;
 }
 
 .memo {
-	background-size:100%;
-	background-color:transparent;
-	width:235px;
-	height:170px;
-	display:inline-block;
-	margin: 0 15px 30px 15px;
-	text-align: center;
-	overflow:hidden;
-	border:none;
-	padding-top: 5px;
-	padding-left: 12px;
-	padding-right: 12px;
-	box-shadow: -5px 5px 5px 0px lightgray;
+   background-size:100%;
+   background-color:transparent;
+   width:235px;
+   height:170px;
+   display:inline-block;
+   margin: 0 15px 30px 15px;
+   text-align: center;
+   overflow:hidden;
+   border:none;
+   padding-top: 5px;
+   padding-left: 12px;
+   padding-right: 12px;
+   box-shadow: -5px 5px 5px 0px lightgray;
 }
 
 .memo1{
-	background-image:url("img/blue.png");
+   background-image:url("img/blue.png");
 }
 
 .memo2{
-	background-image:url("img/green.png");
+   background-image:url("img/green.png");
 }
 
 .memo3{
-	background-image:url("img/purple.png");
+   background-image:url("img/purple.png");
 }
 
 .memo4{
-	background-image:url("img/yellow.png");
+   background-image:url("img/yellow.png");
 }
 
 .memo5{
-	background-image:url("img/pink.png");
+   background-image:url("img/pink.png");
 }
 
 .memoWrtDate{
-	margin-bottom: 10px;
-	position:absolute;
-	right:10px;
-	bottom:1px;
-	font-size: 13px;
-	color:gray;
+   margin-bottom: 10px;
+   position:absolute;
+   right:10px;
+   bottom:1px;
+   font-size: 13px;
+   color:gray;
 }
 
 .memoContent{
-	position:relative;
-	top:45px;
-	font-size: 15px;
+   position:relative;
+   top:45px;
+   font-weight: bold;
 }
 
 .deleteBtn{
-	background-image: url("img/XIcon.png");
-	padding:0px;
-	width:10px;
-	height:10px;
-	border:0px;
-	background-color: transparent;
-	background-size: 100%;
-	cursor:pointer;
-	position:absolute;
-	top:10px;
-	right:10px;
+   background-image: url("img/XIcon.png");
+   padding:0px;
+   width:10px;
+   height:10px;
+   border:0px;
+   background-color: transparent;
+   background-size: 100%;
+   cursor:pointer;
+   position:absolute;
+   top:10px;
+   right:10px;
 }
 
-figure.deleteBtn:hover img {
-  -webkit-transform: scale(1.5);
-  transform: scale(1.5);
+.groupMembers { /* write_schedule.jsp ; 일정목록(scheduleItem) 친구리스트 박스 */
+   margin-left:15px;
+   margin-bottom:20px;
+}
+
+.groupMember { /* write_schedule.jsp ; 일정목록(scheduleItem) 친구리스트 */
+   display: inline-block;
+   min-height:15px;
+   line-height:15px;
+   background:pink;
+   padding:2px;
+   margin:0px 0px 0px 15px;
+   border-radius: 5px;
+   font-size:x-small;
 }
 
 .invited_member { /* write_schedule.jsp : 일정을 함께하는 친구 리스트 */
-	display: inline-block;
-	min-height:25px;
-	line-height:30px;
-	background:pink;
-	padding:5px;
-	margin:15px 0px 0px 15px;
-	border-radius: 5px;
+   display: inline-block;
+   min-height:20px;
+   line-height:20px;
+   background:pink;
+   padding:5px;
+   margin:15px 0px 0px 15px;
+   border-radius: 50px;
+   font-size:small;
 }
 
 .delete_member { /* write_schedule.jsp : 일정을 함께하는 친구 리스트 제거버튼블럭 */
-	display: inline-block;
-	width:20px;
-	margin-left:5px;
-	margin-top:-6px;
-	height:20px;
-	background:red;
-	vertical-align: middle;
-	
+   display: inline-block;
+   width:10px;
+   margin-left:5px;
+   margin-top:-4px;
+   height:10px;
+   background-image: url(img/XIcon.png);
+   background-size:100%;
+   vertical-align: middle;
+   
+}
+
+.updateBtn{
+   position:absolute;
+   background-color:transparent;
+   border-radius: 0.5rem!important;
+   border: solid 1px pink;
+   font-size: bold 20px black; 
+   left:20px;
+   bottom:20px;
+   cursor:pointer;
 }
 
 .date-control { /* write_schedule.jsp 날짜입력 input css */
-	display: inline-block;
-	width:100%;
+   display: inline-block;
+   width:100%;
 }
 
 .shcedule_group { /* write_schedule.jsp group_member css */
-	display: inline-block;
-	width:100%;
+   display: inline-block;
+   width:100%;
 }
 
 
 .scheduleTitle { /* cal_view.jsp 스케쥴 제목 css */
-	font-weight: bold;
-	margin-left:20px;
+   font-weight: bold;
+   margin-left:20px;
 }
 
 .scheduleDate { /* cal_view.jsp 스케쥴 날짜 css */
-	font-size: small;
-	color:#999;
+   font-size: small;
+   color:#999;
 }
 
 .scheduleContent { /* cal_view.jsp 스케쥴 내용 css */
-	margin-left:30px;
+   margin-left:30px;
 }
 
 .scheduleItem { /* cal_view.jsp 스케쥴 item css */
-	position:relative;
+   position:relative;
 }
 
 .scheduleBtn { /* cal_view.jsp 스케쥴 수정, 삭제버튼 box css */
-	position:absolute;
-	top:10px;
-	right:10px;
-	display:none;
+   position:absolute;
+   top:10px;
+   right:10px;
+   display:none;
 }
 
 .scheduleBtn input[type=button] {
-	border-radius: 40%;
-	border:0;
-	font-size:x-small;
-	padding:4px 8px;
-	background-color:#17a2b8;
-	color:white;
+   border-radius: 40%;
+   border:0;
+   font-size:x-small;
+   padding:4px 8px;
+   background-color:#17a2b8;
+   color:white;
 }
 
 
 
 
 .chgThemeBtn{
-	width:49%;
-	height:38px;
-	border:solid 1px lightgray;
-	margin-right:2px;
-	margin:0px;
-	background-color:transparent;
-	border-radius: 0.25rem;
+   width:49%;
+   height:38px;
+   border:solid 1px lightgray;
+   margin-right:2px;
+   margin:0px;
+   background-color:transparent;
+   border-radius: 0.25rem;
 }
 
 .lastBtn {
-	float:right;
+   float:right;
 }
 
 .chgThemeBtn:focus{
-	outline:none;
+   outline:none;
 }
 
 .cocoaTheme{
-	background-color: #523738;
-	color: white;
-	border:none;
+   background-color: #523738;
+   color: white;
+   border:none;
 }
 
 .peachTheme{
-	background-color: #F72765;
-	color: white;
-	border:none;
+   background-color: #F72765;
+   color: white;
+   border:none;
 }
