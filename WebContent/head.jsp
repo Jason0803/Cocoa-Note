@@ -25,13 +25,8 @@
 <body class="bg-ghostwhite">
 <div class="bg-ghostwhite" style="margin-top: 50px"></div>
 	<div class="container">
-<<<<<<< HEAD
 		<nav class="navbar navbar-light bg-grad-pink rounded-bar d-flex justify-content-start" style="margin-bottom:30px;">
 			<a href="DispatcherServlet?command=cal&year=${today.year}&month=${today.month}"><span class="navbar-brand mb-0 h1">cocoaNOTE</span></a>
-=======
-		<nav class="navbar navbar-light bg-grad-pink rounded-bar" style="margin-bottom:30px;">
-			<span class="navbar-brand mb-0 h1">cocoaNOTE</span>
->>>>>>> master
 			<!-- change icon color depending theme -->
 			<div class="d-flex" style="width: 900px;">
 			<c:if test = "${memberVO.theme eq '1' }">
