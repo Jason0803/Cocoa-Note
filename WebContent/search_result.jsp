@@ -14,7 +14,12 @@
 				<h4 class="card-title">Find Schedule</h4>				
 				<p class="card-text">
 	<c:forEach var="schedule" items="${schedules}">
+
 		<span class="text-bold"><strong>${schedule.value.title}</strong></span> ${schedule.value.content}<br />
+
+		${schedule.value}<br />
+		<div class="dropdown-divider"></div>
+
 	</c:forEach>
 				</p>
 			</div>
@@ -27,7 +32,9 @@
 				<h4 class="card-title">Find Note</h4>				
 				<p class="card-text">
 	<c:forEach var="note" items="${notes}">
-		<span class="text-bold"><strong>${note.value.title}</strong></span> ${note.value.content}<br />
+		<span class="text-bold"><strong>${note.value.title}</strong></span><br/> 
+		${note.value.content}<br />
+		<div class="dropdown-divider"></div>
 	</c:forEach>
 				</p>
 			</div>
@@ -41,6 +48,7 @@
 				<p class="card-text">
 	<c:forEach var="memo" items="${memos}">
 		${memo.value.content}<br />
+		<div class="dropdown-divider"></div>
 	</c:forEach>
 				</p>
 			</div>

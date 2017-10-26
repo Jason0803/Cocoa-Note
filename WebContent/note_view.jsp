@@ -14,16 +14,16 @@ function deleteNote(no) {
 
 <div class="row" style="height: 1000px;">
    <div class="col-8">
-      <div class="card rounded-content" style="width: 100%; min-height: 75%;">
+      <div class="card rounded-content" style="width: 100%; min-height: 80%;">
          <div class="card-body">
          <div class="row">
-            &nbsp;&nbsp;&nbsp;&nbsp;<h4 class="card-title">New Note</h4>
+            &nbsp;&nbsp;&nbsp;&nbsp;<h4 class="card-title">Note</h4>
             <input class="btn bg-pink rounded-bar" style="position:absolute; right:3%;" type="button" value="새 노트 작성" onclick="javascript:write_note();">
             </div>
             
             <form class="hidden_form" name="writeFrm" method="post"
                action="DispatcherServlet">
-               <input type="text" name="title" value="제목 없음" />
+               <input type="text" name="title" value="제목없음" />
                <textarea name="content">-</textarea>
                <input type="hidden" name="command" value="writeNote" /> 
                <input type="hidden" name="isCurr" value="true" />
@@ -64,7 +64,7 @@ function deleteNote(no) {
       </div>
    
    <div class="col-4">
-      <div class="card rounded-content" style="width: 100%; min-height: 75%;">
+      <div class="card rounded-content" style="width: 100%; min-height: 80%;">
          <div class="card-body">
             <h4 class="card-title">Note list</h4>
             <h6 class="card-subtitle mb-2 text-muted"></h6>
