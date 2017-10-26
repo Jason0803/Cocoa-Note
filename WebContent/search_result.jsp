@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="head.jsp"></jsp:include>
-
+<title>코코아노트</title>
 <div class="row d-flex justify-content-center" style=" min-height: 1000px;">
 	<div class="col-8">
 	<!-- No search result -->

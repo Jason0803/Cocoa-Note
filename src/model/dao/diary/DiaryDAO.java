@@ -599,6 +599,11 @@ public class DiaryDAO {
 				// 스케줄이 맞음 -> 메세지 출력 & 해당 값 반환 하면서 형변화
 				// diary = (Schedule)삭제된스케쥴;
 				System.out.println("[DiaryDAO]@deleteDiary(int no) :" +no+ "번호의 스케줄이 삭제되었습니다.");
+				
+				ps = conn.prepareStatement(StringQuery.DELETE_SCHEDULE_GROUP);
+				ps.setInt(1, no);
+				queryResult = ps.executeUpdate();
+				
 				return Diary.SCHEDULE;
 				
 			} else {

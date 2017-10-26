@@ -62,13 +62,13 @@
 		</div>
 	</div>
 	<!-- event(schedule)을 달력에 그리는 기능 -->
-	<c:forEach var="day" items="${monthlyDiary}">
-		<c:forEach var="schedule" items="${day.schedules}">
-			<script type="text/javascript">
-				drawEvent('${schedule.title}', ${schedule.startDate.date}, ${schedule.endDate.date})
-			</script>
+	<script type="text/javascript">
+		<c:forEach var="day" items="${monthlyDiary}">
+			<c:forEach var="schedule" items="${day.schedules}">
+				drawEvent('${schedule.title}', ${schedule.startDate.date}, ${schedule.endDate.date}, ${today.lastDate});
+			</c:forEach>
 		</c:forEach>
-	</c:forEach>
+	</script>
 	<div class="col-2">
 		<div class="card rounded-content" style="width: 100%; height: 90%;">
 			<div class="card-body">

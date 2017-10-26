@@ -28,15 +28,12 @@ function deleteNote(no) {
                <div>
                <form action="DispatcherServlet" name="updateFrm" method="post">
                  <input class="form-invisible note-title" type="text" value="${note.title}" name="title"> 
-                  <span class="text-muted" style="padding-left:10px">${note.writeDate.year}/${note.writeDate.month}/${note.writeDate.date} ${note.writeDate.hour}:${note.writeDate.minute} 작성
-                                            <c:if test="${note.writeDate ne note.currentDate}">
-                                            	, ${note.currentDate.year}/${note.currentDate.month}/${note.currentDate.date} ${note.currentDate.hour}:${note.currentDate.minute} 수정</span>
-                                            </c:if>
+                  <span class="text-muted" style="padding-left:10px; font-style: italic;">최종 수정 ${note.currentDate.year}/${note.currentDate.month}/${note.currentDate.date} ${note.currentDate.hour}:${note.currentDate.minute}</span>
                   <div class="dropdown-divider"></div>
                   <textarea class="form-invisible note-content" name="content" rows="19">${note.content}</textarea><br/>
                      <div class="d-flex justify-content-end">
                         <input  class="button btn bg-pink rounded-bar" type="submit" value="저장" />&nbsp;
-                        <input class="btn bg-pink rounded-bar" type="button" value="노트삭제" onclick="deleteNote(${note.no})" /> 
+                        <input class="btn bg-pink rounded-bar" type="button" value="삭제" onclick="deleteNote(${note.no})" /> 
                      </div>   
                      <input  type="hidden" name="command" value="updateNote" /> 
                      <input  type="hidden" name="isCurr" value="false" /> 
