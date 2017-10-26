@@ -769,8 +769,9 @@ public class DiaryDAO {
 			ps.executeUpdate();
 			
 			// 3. Set new sharing table
-			ps = conn.prepareStatement(StringQuery.SET_SHARING_USERS);
 			for(String sharedMemberId : groupMember) {
+				System.out.println("[DiaryDAO]@updateSchedule : setting NEW sharing user : " + sharedMemberId);
+				ps = conn.prepareStatement(StringQuery.SET_SHARING_USERS);
 				ps.setInt(1, no);
 				ps.setString(2, sharedMemberId);
 				ps.executeUpdate();
