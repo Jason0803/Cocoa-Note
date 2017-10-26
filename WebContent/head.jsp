@@ -40,9 +40,9 @@
 			</c:if>
 			
 			<c:if test = "${memberVO.theme eq '2' }">
-			<a href="DispatcherServlet?command=cal&year=${today.year}&month=${today.month}"><img class="icon"  src="icon/calendar-cocoa.svg" width="40px" height="40px"></a> 
-			<a href="DispatcherServlet?command=noteView&isCurr=true"><img class="icon" src="icon/notebook-cocoa.png" width="41px" height="41px"></a>
-			<a href="DispatcherServlet?command=memoList"><img class="icon " src="icon/memo-cocoa.svg" width="40px" height="40px"></a>
+			<a href="DispatcherServlet?command=cal&year=${today.year}&month=${today.month}"><img class="icon"  src="icon/calendar-peach.svg" width="40px" height="40px"></a> 
+			<a href="DispatcherServlet?command=noteView&isCurr=true"><img class="icon" src="icon/notebook-peach.png" width="41px" height="41px"></a>
+			<a href="DispatcherServlet?command=memoList"><img class="icon " src="icon/memo-peach.svg" width="40px" height="40px"></a>
 			</c:if>
 			
 			<div class="dropdown show ml-auto">
