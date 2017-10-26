@@ -2,12 +2,21 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="head.jsp"></jsp:include>
 <script>
-function window.onload(){
-	if('${selected}'== $("#cocoaTheme").attr("value")){
-		$("#cocoaTheme").prop("checked", true);
-	}else if('${selected}' == $("#peachTheme").attr("value")){
-		$("#peachTheme").prop("checked", true);
-	}
+function chgTheme(radioBtn){
+	if(radioBtn.value=="코코아"){
+		/* alert(); */
+		document.getElementById("img1").src = 'img/1.JPG';
+		document.getElementById("img2").src = 'img/2.JPG';
+		document.getElementById("img3").src = 'img/3.JPG';
+		document.getElementById("peachTheme").className ='chgThemeBtn lastBtn';
+		document.getElementById("cocoaTheme").className ='chgThemeBtn cocoaTheme';
+		}else if(radioBtn.value=="피치"){
+		document.getElementById("img1").src = 'img/blue.png';
+		document.getElementById("img2").src = 'img/pink.png';
+		document.getElementById("img3").src = 'img/green.png';
+		document.getElementById("cocoaTheme").className ='chgThemeBtn';
+		document.getElementById("peachTheme").className ='chgThemeBtn lastBtn peachTheme';
+		}
 }
 </script>
 <title>회원정보 수정</title>
@@ -23,18 +32,18 @@ function window.onload(){
 					<input class="form-control" type="password" name="new_password"	placeholder="변경할 비밀번호" /><br /> 
 					<input class="form-control" type="text" name="name" placeholder="이름" required="required" value="${memberVO.name}" /><br /> 
 					<span>
-					테마 <input type="radio" name="theme" id=cocoaTheme value="1">코코아 
-						<input type="radio" name="theme" id=peachTheme value="2">피치
+					 	<input type="button" name="theme" class="chgThemeBtn" id="cocoaTheme" value="코코아" onclick="chgTheme(this)" checked="checked" >
+						<input type="button" name="theme" class="chgThemeBtn lastBtn" id="peachTheme" value="피치" onclick="chgTheme(this)">
 					</span>
+					<br/>
 					<br/>
 						<input type="submit" class="updateBtn" value="저장" />
 						<input type="hidden" name="command" value="updateMember" />
-						
 				</form>
 			</div>
 		</div>
 	</div>
-	<div class="col-6 d-flex justify-content-start" >
+	<div class="col-6 d-flex justify-content-start">
 		<div id="carouselExampleIndicators" class="carousel slide"
 			data-ride="carousel">
 			<ol class="carousel-indicators">
@@ -45,15 +54,15 @@ function window.onload(){
 			</ol>
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<img class="d-block rounded" src="img/1.JPG" width="400"
+					<img class="d-block rounded" id="img1" src="img/1.JPG" width="400"
 						height="480" alt="First slide">
 				</div>
 				<div class="carousel-item">
-					<img class="d-block rounded" src="img/2.JPG" width="400"
+					<img class="d-block rounded" id="img2" src="img/2.JPG" width="400"
 						height="480" alt="Second slide">
 				</div>
 				<div class="carousel-item">
-					<img class="d-block rounded" src="img/3.JPG" width="400"
+					<img class="d-block rounded" id="img3" src="img/3.JPG" width="400"
 						height="480" alt="Third slide">
 				</div>
 			</div>
@@ -63,6 +72,8 @@ function window.onload(){
 				role="button" data-slide="next"> <span class="sr-only">Next</span>
 			</a>
 		</div>
-	</div>
+	</div>	
 </div>
+
+
 <jsp:include page="foot.jsp"></jsp:include>

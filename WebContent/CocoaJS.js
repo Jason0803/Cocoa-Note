@@ -45,6 +45,7 @@ function getD_Day(upcomings){
 		else if(count==0) upcomings[i].innerHTML = "D-DAY";
 		else if(count<0) upcomings[i].parentNode.parentNode.style.display='none';
 	}
+	
 }
 //----------------------------------------------------------------------------
 function prevMonth(year, month) {

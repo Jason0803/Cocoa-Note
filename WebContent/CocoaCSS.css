@@ -318,3 +318,36 @@ td {
 	background-color:#17a2b8;
 	color:white;
 }
+
+
+
+
+.chgThemeBtn{
+	width:49%;
+	height:38px;
+	border:solid 1px lightgray;
+	margin-right:2px;
+	margin:0px;
+	background-color:transparent;
+	border-radius: 0.25rem;
+}
+
+.lastBtn {
+	float:right;
+}
+
+.chgThemeBtn:focus{
+	outline:none;
+}
+
+.cocoaTheme{
+	background-color: #523738;
+	color: white;
+	border:none;
+}
+
+.peachTheme{
+	background-color: #F72765;
+	color: white;
+	border:none;
+}
