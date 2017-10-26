@@ -25,13 +25,14 @@
 <body class="bg-ghostwhite">
 <div class="bg-ghostwhite" style="margin-top: 50px"></div>
 	<div class="container">
-		<nav class="navbar navbar-light bg-grad-pink rounded-bar d-flex justify-content-start" style="margin-bottom:30px;">
+		<nav class="navbar navbar-light bg-grad-pink rounded-bar" style="margin-bottom:30px;">
 			<span class="navbar-brand mb-0 h1">cocoaNOTE</span>
 			<!-- change icon color depending theme -->
+			<div class="d-flex" style="width: 900px;">
 			<c:if test = "${memberVO.theme eq '1' }">
 			<a href="DispatcherServlet?command=cal&year=${today.year}&month=${today.month}"><img class="icon"  src="icon/calendar-cocoa.svg" width="40px" height="40px"></a> 
 			<a href="DispatcherServlet?command=noteView&isCurr=true"><img class="icon" src="icon/notebook-cocoa.png" width="41px" height="41px"></a>
-			<a href="DispatcherServlet?command=memoList"><img class="icon " src="icon/memo-cocoa.svg" width="40px" height="40px"></a>
+			<a href="DispatcherServlet?command=memoList"><img class="icon" src="icon/memo-cocoa.svg" width="40px" height="40px"></a>
 			</c:if>
 			
 			<c:if test = "${memberVO.theme eq '2' }">
@@ -39,9 +40,10 @@
 			<a href="DispatcherServlet?command=noteView&isCurr=true"><img class="icon" src="icon/notebook-cocoa.png" width="41px" height="41px"></a>
 			<a href="DispatcherServlet?command=memoList"><img class="icon " src="icon/memo-cocoa.svg" width="40px" height="40px"></a>
 			</c:if>
-			<div class="dropdown show profile-position">
+			
+			<div class="dropdown show ml-auto">
 				<button type="button"
-					class="btn bg-white dropdown-toggle rounded-bar"
+					class="btn bg-white dropdown-toggle dropdown show rounded-bar"
 					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					${memberVO.name }</button>
 				<div class="dropdown-menu">
@@ -49,6 +51,7 @@
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="DispatcherServlet?command=logout">로그아웃</a>
 				</div>
+			</div>
 			</div>
 		</nav>
 	
