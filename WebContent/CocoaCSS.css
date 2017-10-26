@@ -1,29 +1,26 @@
-body {
-	color:#333;
-}
 
 table {
-   width:70%;
+	width:70%;
 }
 td {
-   text-align:center;
-    border: 1px solid #e9ecef;
-   width:14.28%;
-   vertical-align:top;
-   height:100px;
+	text-align:center;
+	 border: 1px solid #e9ecef;
+	width:14.28%;
+	vertical-align:top;
+	height:100px;
 }
 
 .newNoteBtn {
-   width:30px;
-   height:30px;
-   right:20px;
-   top:40px;
-   position:absolute;
-   border-radius: 50%;
-   background:#F72765;
-   border:none;
-   font-weight: bold;
-   color:white;
+	width:30px;
+	height:30px;
+	right:20px;
+	top:40px;
+	position:absolute;
+	border-radius: 50%;
+	background:#F72765;
+	border:none;
+	font-weight: bold;
+	color:white;
 }
 
 .date {
@@ -226,6 +223,11 @@ td {
    position:absolute;
    top:10px;
    right:10px;
+   transition-duration: 1s;
+}
+
+.deleteBtn:hover{
+	transform: rotate(180deg);
 }
 
 .groupMembers { /* write_schedule.jsp ; 일정목록(scheduleItem) 친구리스트 박스 */
@@ -323,9 +325,6 @@ td {
    color:white;
 }
 
-
-
-
 .chgThemeBtn{
    width:49%;
    height:38px;
@@ -354,4 +353,28 @@ td {
    background-color: #F72765;
    color: white;
    border:none;
+}
+
+
+.intLink {
+	cursor: pointer;
+}
+
+img.intLink {
+	border: 0;
+}
+
+#toolBar1 select {
+	font-size: 10px;
+}
+
+#textBox #sourceText {
+	padding: 0;
+	margin: 0;
+	min-width: 498px;
+	min-height: 200px;
+}
+
+#editMode label {
+	cursor: pointer;
 }

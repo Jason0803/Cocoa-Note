@@ -3,92 +3,125 @@
 <jsp:include page="head.jsp"></jsp:include>
 <script type="text/javascript">
 function write_note() {
-   document.writeFrm.submit();
+	if(validateMode()){
+		
+		
+		document.writeFrm.submit();
+		return true;
+	}
+	return false;
+}
+
+function update_note() {
+	document.updateFrm.content.value=oDoc.innerHTML;
+	document.updateFrm.submit();
 }
 
 function deleteNote(no) {
    location.href="DispatcherServlet?command=deleteDiary&no="+no;
 }
+
+var oDoc, sDefTxt;
+function initDoc() {
+	oDoc = document.getElementById("textBox");
+	<c:if test="${note.content!=null}">
+		oDoc.innerHTML = '${note.content}';
+	</c:if>
+	sDefTxt = oDoc.innerHTML;
+}
+function formatDoc(sCmd, sValue) {
+	if (validateMode()) { document.execCommand(sCmd, false, sValue); oDoc.focus(); }
+}
+	
+function validateMode() {
+	return true;
+}
+	
 </script>
-<title>코코아노트</title>
 
 <div class="row" style="height: 1000px;">
    <div class="col-8">
-      <div class="card rounded-content" style="width: 100%; min-height: 80%;">
+      <div class="card rounded-content" style="width: 100%; min-height: 75%;">
          <div class="card-body">
-         <div class="row">
-            &nbsp;&nbsp;&nbsp;&nbsp;<h4 class="card-title">Note</h4>
-            <input class="btn bg-pink rounded-bar" style="position:absolute; right:3%;" type="button" value="새 노트 작성" onclick="javascript:write_note();">
+         	<div class="row">
+            	<input class="newNoteBtn" type="button" value="+" onclick="write_note();" />
             </div>
-            
-            <form class="hidden_form" name="writeFrm" method="post"
-               action="DispatcherServlet">
-               <input type="text" name="title" value="제목없음" />
-               <textarea name="content">-</textarea>
+            <form class="hidden_form" name="writeFrm" method="post" action="DispatcherServlet">
+               <input type="text" name="title" value="새 노트" />
+               <textarea name="content">여기에 입력하세요.</textarea>
                <input type="hidden" name="command" value="writeNote" /> 
                <input type="hidden" name="isCurr" value="true" />
             </form>
-            
-               
-               
-               <div>
-                 
-               <form action="DispatcherServlet" name="updateFrm" method="post">
-                 <input class="form-invisible note-title" type="text" value="${note.title}" name="title"> 
-                  <span class="text-muted">  &nbsp;&nbsp;&nbsp;${note.writeDate.year}/${note.writeDate.month}/${note.writeDate.date}작성
-                                             &nbsp;&nbsp;&nbsp;<c:if test="${(note.writeDate.date != note.currentDate.date) or (note.writeDate.month != note.currentDate.month) or (note.writeDate.year != note.currentDate.year)}">
-                                             ${note.currentDate.year}/${note.currentDate.month}/${note.currentDate.date}수정</span>
-                                             </c:if>
-                  <div class="dropdown-divider"></div>
-                  <c:if test="${note.content eq '-'}">
-  	                <textarea class="form-invisible note-content" name="content" placeholder = "여기에 입력하세요"rows="19"></textarea><br/>
-                  </c:if>
-                  <c:if test="${note.content != '-'}">
-                  <textarea class="form-invisible note-content" name="content" rows="19">${note.content}</textarea><br/>
-                  </c:if>
-                     <div class="d-flex justify-content-end">
-                        <input  class="button btn bg-pink rounded-bar" type="submit" value="저장" />&nbsp;
-                        <input class="btn bg-pink rounded-bar" type="button" value="노트삭제" onclick="deleteNote(${note.no})" /> 
-                     </div>   
-                     <input  type="hidden" name="command" value="updateNote" /> 
-                     <input  type="hidden" name="isCurr" value="false" /> 
-                     <input  type="hidden" name="diaryNo" value="${note.no}" />
-               </form>
-            </div>
-            </div>
-            
-
-            
-
-         </div>
-      </div>
-   
-   <div class="col-4">
-      <div class="card rounded-content" style="width: 100%; min-height: 80%;">
-         <div class="card-body">
-            <h4 class="card-title">Note list</h4>
-            <h6 class="card-subtitle mb-2 text-muted"></h6>
-            <div class="card-body">
-            <c:forEach var="noteitem" items="${notes}">
-               
-                  
-                     <a href="DispatcherServlet?command=noteView&diaryNo=${noteitem.no}&isCurr=false">${noteitem.title}</a>
-                  
-               <div class="dropdown-divider"></div>
-               
-            </c:forEach>
-            </div>
-
-
-
-
-         </div>
-      </div>
-   </div>
+			
+			<form action="DispatcherServlet" name="updateFrm" method="post">
+				<input class="form-invisible note-title" type="text" value="${note.title}" name="title"> 
+				<span class="text-muted" style="padding-left:10px; font-style: italic;">최종 수정 ${note.currentDate.year}/${note.currentDate.month}/${note.currentDate.date} ${note.currentDate.hour}:${note.currentDate.minute}</span>
+				<div class="dropdown-divider"></div>
+				<div id="toolBar1">
+					<select onchange="formatDoc('fontname',this[this.selectedIndex].value);this.selectedIndex=0;">
+						<option class="heading" selected>- font -</option>
+						<option>Arial</option>
+						<option>Arial Black</option>
+						<option>Courier New</option>
+						<option>Times New Roman</option>
+					</select>
+					<select onchange="formatDoc('fontsize',this[this.selectedIndex].value);this.selectedIndex=0;">
+						<option class="heading" selected>- size -</option>
+						<option value="1">Very small</option>
+						<option value="2">A bit small</option>
+						<option value="3">Normal</option>
+						<option value="4">Medium-large</option>
+						<option value="5">Big</option>
+						<option value="6">Very big</option>
+						<option value="7">Maximum</option>
+					</select>
+					<select onchange="formatDoc('forecolor',this[this.selectedIndex].value);this.selectedIndex=0;">
+						<option class="heading" selected>- color -</option>
+						<option value="red">Red</option>
+						<option value="blue">Blue</option>
+						<option value="green">Green</option>
+						<option value="black">Black</option>
+					</select>
+				</div>
+				<div id="toolBar2">
+					<img class="intLink" title="Bold" onclick="formatDoc('bold');" src="data:image/gif;base64,R0lGODlhFgAWAID/AMDAwAAAACH5BAEAAAAALAAAAAAWABYAQAInhI+pa+H9mJy0LhdgtrxzDG5WGFVk6aXqyk6Y9kXvKKNuLbb6zgMFADs=" />
+					<img class="intLink" title="Italic" onclick="formatDoc('italic');" src="data:image/gif;base64,R0lGODlhFgAWAKEDAAAAAF9vj5WIbf///yH5BAEAAAMALAAAAAAWABYAAAIjnI+py+0Po5x0gXvruEKHrF2BB1YiCWgbMFIYpsbyTNd2UwAAOw==" />
+					<img class="intLink" title="Underline" onclick="formatDoc('underline');" src="data:image/gif;base64,R0lGODlhFgAWAKECAAAAAF9vj////////yH5BAEAAAIALAAAAAAWABYAAAIrlI+py+0Po5zUgAsEzvEeL4Ea15EiJJ5PSqJmuwKBEKgxVuXWtun+DwxCCgA7" />
+					<img class="intLink" title="Left align" onclick="formatDoc('justifyleft');" src="data:image/gif;base64,R0lGODlhFgAWAID/AMDAwAAAACH5BAEAAAAALAAAAAAWABYAQAIghI+py+0Po5y02ouz3jL4D4JMGELkGYxo+qzl4nKyXAAAOw==" />
+					<img class="intLink" title="Center align" onclick="formatDoc('justifycenter');" src="data:image/gif;base64,R0lGODlhFgAWAID/AMDAwAAAACH5BAEAAAAALAAAAAAWABYAQAIfhI+py+0Po5y02ouz3jL4D4JOGI7kaZ5Bqn4sycVbAQA7" />
+					<img class="intLink" title="Right align" onclick="formatDoc('justifyright');" src="data:image/gif;base64,R0lGODlhFgAWAID/AMDAwAAAACH5BAEAAAAALAAAAAAWABYAQAIghI+py+0Po5y02ouz3jL4D4JQGDLkGYxouqzl43JyVgAAOw==" />
+					<img class="intLink" title="Add indentation" onclick="formatDoc('outdent');" src="data:image/gif;base64,R0lGODlhFgAWAMIHAAAAADljwliE35GjuaezxtDV3NHa7P///yH5BAEAAAcALAAAAAAWABYAAAM2eLrc/jDKCQG9F2i7u8agQgyK1z2EIBil+TWqEMxhMczsYVJ3e4ahk+sFnAgtxSQDqWw6n5cEADs=" />
+					<img class="intLink" title="Delete indentation" onclick="formatDoc('indent');" src="data:image/gif;base64,R0lGODlhFgAWAOMIAAAAADljwl9vj1iE35GjuaezxtDV3NHa7P///////////////////////////////yH5BAEAAAgALAAAAAAWABYAAAQ7EMlJq704650B/x8gemMpgugwHJNZXodKsO5oqUOgo5KhBwWESyMQsCRDHu9VOyk5TM9zSpFSr9gsJwIAOw==" />
+				</div>
+				<div id="textBox" class="form-invisible note-content" contenteditable="true"><p>${note.content}</p></div>
+                <input type="hidden" name="content" /><br/>
+                <div class="d-flex justify-content-end">
+                	<input class="button btn bg-pink rounded-bar" type="button" value="저장" onclick="update_note()" />&nbsp;
+                	<input class="btn bg-pink rounded-bar" type="button" value="삭제" onclick="deleteNote(${note.no})" /> 
+                </div>   
+                <input  type="hidden" name="command" value="updateNote" /> 
+                <input  type="hidden" name="isCurr" value="false" /> 
+                <input  type="hidden" name="diaryNo" value="${note.no}" />
+			</form>
+			</div>
+		</div>
+	</div>
+	<div class="col-4">
+		<div class="card rounded-content" style="width: 100%; min-height: 75%;">
+			<div class="card-body">
+				<h4 class="card-title">Note list</h4>
+				<h6 class="card-subtitle mb-2 text-muted"></h6>
+				<div class="card-body">
+					<c:forEach var="noteitem" items="${notes}">
+						<a href="DispatcherServlet?command=noteView&diaryNo=${noteitem.no}&isCurr=false">${noteitem.title}</a>
+						<div class="dropdown-divider"></div>
+					</c:forEach>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-
-
-
-
-
+<script type="text/javascript">
+	initDoc();
+</script>
 <jsp:include page="foot.jsp"></jsp:include>

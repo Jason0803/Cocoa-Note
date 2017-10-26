@@ -827,19 +827,10 @@ public class DiaryDAO {
 			if( notes == null && schedules == null) {
 				System.out.println("[DiaryDAO]@getDay : No Notes Found for Member id : " + id);
 			} else {
-				for(Note note : notes) {
-					if(searchDate.compareDate(note.getWriteDate())) {
-						day.getNotes().add(note);
-					}
-				}
+				for(Note note : notes) if(searchDate.compareDate(note.getWriteDate())) day.getNotes().add(note);
 
-				for(Schedule schedule : schedules) {
-					System.out.println("[DiaryDAO]@getDay : Found Schedule.. ending in : " + schedule.getStartDate());
-					if(searchDate.compareDate(schedule.getStartDate(), schedule.getEndDate())) {
-						System.out.println("[DiaryDAO]@getDay : Adding Schedule.. ending in : " + schedule.getStartDate());
-						day.getSchedules().add(schedule);
-					}
-				}
+				for(Schedule schedule : schedules) 
+					if(searchDate.compareDate(schedule.getStartDate(), schedule.getEndDate())) day.getSchedules().add(schedule);
 			}
 			
 		} catch(SQLException e) {
