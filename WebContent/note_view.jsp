@@ -63,7 +63,7 @@ function deleteNote(no) {
       </div>
    
    <div class="col-4">
-      <div class="card rounded-content" style="width: 100%; height: 75%;">
+      <div class="card rounded-content" style="width: 100%; min-height: 75%;">
          <div class="card-body">
             <h4 class="card-title">Note list</h4>
             <h6 class="card-subtitle mb-2 text-muted"></h6>
