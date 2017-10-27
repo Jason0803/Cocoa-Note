@@ -24,6 +24,9 @@ public interface StringQuery {
 			"SELECT * FROM memo WHERE id = ? ORDER BY wrt_date DESC";
 	String GET_ALL_SCHEDULE =
 			"SELECT * FROM schedule WHERE id = ? ORDER BY start_date DESC";
+	String GET_ALL_SHARED_SCHEDULE = 
+			"SELECT * FROM schedule WHERE schedule_no IN (SELECT schedule_no FROM schedule_group WHERE group_member_id = 'chltndud308@gmail.com')";
+	
 	String GET_ALL_NOTE =
 			"SELECT * FROM note WHERE id = ? ORDER BY curr_date DESC";
 

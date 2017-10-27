@@ -183,7 +183,8 @@ public class DiaryDAO {
 			ps = conn.prepareStatement(StringQuery.GET_ALL_SCHEDULE);
 			ps.setString(1, id);
 			rs = ps.executeQuery();
-			
+
+
 			while(rs.next()) {
 				members = findSharingMembers(rs.getInt("schedule_no"));
 				group_members = new Vector<String>();
@@ -200,6 +201,9 @@ public class DiaryDAO {
 						new CocoaDate(new Date(rs.getTimestamp("start_date").getTime())),		// startDate
 						new CocoaDate(new Date(rs.getTimestamp("end_date").getTime()))));		// endDate
 			}
+			System.out.println("[DiaryDAO]@cgetAllSchedule(String id) : getAllSchdule... !");
+			// TBD : sc.addAll(getAllSharedSchedule(conn));
+			
 			System.out.println("[DiaryDAO]@cgetAllSchedule(String id) : getAllSchdule Done !");
 		}catch(Exception e) {
 			System.out.println("ERROR : [DiaryDAO]@getAllSchedule : SQLException Caught !");
@@ -208,6 +212,44 @@ public class DiaryDAO {
 			closeAll(rs, ps, conn);
 			System.out.println("[DiaryDAO]@getAllSchedule : Arrived finally clause");
 		}
+		return sc;
+	}
+	// ------------------------------------------------ getAllSharedSchedule ------------------------------------------------ //
+	// ------------------------------------------------ TBD ------------------------------------------------ //
+	public Vector<Schedule> getAllSharedSchedule(Connection conn) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Vector<String> group_members = null;
+		Vector<Member> members = null;
+		Vector<Schedule> sc = null;
+		
+		if(conn == null) {
+			try {
+				conn = getConnection();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	
+		try {
+			ps = conn.prepareStatement(StringQuery.GET_ALL_SHARED_SCHEDULE);
+			rs = ps.executeQuery();
+			sc = new Vector<Schedule>();
+			
+			while (rs.next()) {
+				sc.add(new Schedule(rs.getInt("schedule_no"), 									// no
+						rs.getString("id"), 													// id
+						rs.getString("title"), 													// title
+						rs.getString("content"),												// content
+						null,																	// group
+						new CocoaDate(new Date(rs.getTimestamp("start_date").getTime())),		// startDate
+						new CocoaDate(new Date(rs.getTimestamp("end_date").getTime()))));		// endDate
+			}
+		} catch (SQLException e) {
+			System.out.println("ERROR : [DiaryDAO]@getAllSharedSchedule : SQLException Caught !");
+		}
+		
 		return sc;
 	}
 	// ------------------------------------------------ getAllMemo ------------------------------------------------ //
@@ -834,6 +876,7 @@ public class DiaryDAO {
 
 				for(Schedule schedule : schedules) 
 					if(searchDate.compareDate(schedule.getStartDate(), schedule.getEndDate())) day.getSchedules().add(schedule);
+
 			}
 			
 		} catch(SQLException e) {

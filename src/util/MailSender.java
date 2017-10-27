@@ -67,74 +67,18 @@ public class MailSender {
 			String body = null;
 
 			switch(command) {
-			case "forgotPasword": {
-				System.out.println();
-				// tempPassword Logic
-				String tempPassword = null;
-				tempPassword = id+(int)(Math.random()*1000000 +1);
-				// set tempPassword
-				body = "Your Temporary Password for " +id + " : " + tempPassword;
-
-				MemberDAO.getInstance().updateMember(MemberDAO.getInstance().findMemberById(id), tempPassword);
-				msg.setSubject("[CocoaNote] : " +id +", Temporary Password !", "UTF-8");
-				break;
-			}
-
-			case "" : { 
-				// 회원이 가입했을때, ?
-
-
-
-
-
-
-
-
-			}
-			case "" : { 
-				// 회원이 가입했을때, ?
-
-
-
-
-
-
-
-
-			}
-			case "" : { 
-				// 회원이 가입했을때, ?
-
-
-
-
-
-
-
-
-			}
-			case "" : { 
-				// 회원이 가입했을때, ?
-
-
-
-
-
-
-
-
-			}
-			case "" : { 
-				// 회원이 가입했을때, ?
-
-
-
-
-
-
-
-
-			}
+				case "forgotPasword": {
+					System.out.println();
+					// tempPassword Logic
+					String tempPassword = null;
+					tempPassword = id+(int)(Math.random()*1000000 +1);
+					// set tempPassword
+					body = "Your Temporary Password for " +id + " : " + tempPassword;
+	
+					MemberDAO.getInstance().updateMember(MemberDAO.getInstance().findMemberById(id), tempPassword);
+					msg.setSubject("[CocoaNote] : " +id +", Temporary Password !", "UTF-8");
+					break;
+				}
 			}
 
 
@@ -154,8 +98,6 @@ public class MailSender {
 			e.printStackTrace();
 		}
 	}
-	
-	
 	
 	
 	public static void sendMail(String id, String command, String schedule_name) {
@@ -200,61 +142,6 @@ public class MailSender {
 						body = "You've been added to a schedule :" + schedule_name;
 						msg.setSubject("[CocoaNote] : " + id +", check your new schedule !", "UTF-8");
 						break;
-					}
-					case "" : { 
-						// 회원이 가입했을때, ?
-						
-						
-						
-						
-						
-						
-						
-						
-					}
-					case "" : { 
-						// 회원이 가입했을때, ?
-						
-						
-						
-						
-						
-						
-						
-						
-					}
-					case "" : { 
-						// 회원이 가입했을때, ?
-						
-						
-						
-						
-						
-						
-						
-						
-					}
-					case "" : { 
-						// 회원이 가입했을때, ?
-						
-						
-						
-						
-						
-						
-						
-						
-					}
-					case "" : { 
-						// 회원이 가입했을때, ?
-						
-						
-						
-						
-						
-						
-						
-						
 					}
 				}
 
