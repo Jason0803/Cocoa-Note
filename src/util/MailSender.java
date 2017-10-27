@@ -82,6 +82,61 @@ public class MailSender {
 						msg.setSubject("[CocoaNote] : " + id +", check your new schedule !", "UTF-8");
 						break;
 					}
+					case "" : { 
+						// 회원이 가입했을때, ?
+						
+						
+						
+						
+						
+						
+						
+						
+					}
+					case "" : { 
+						// 회원이 가입했을때, ?
+						
+						
+						
+						
+						
+						
+						
+						
+					}
+					case "" : { 
+						// 회원이 가입했을때, ?
+						
+						
+						
+						
+						
+						
+						
+						
+					}
+					case "" : { 
+						// 회원이 가입했을때, ?
+						
+						
+						
+						
+						
+						
+						
+						
+					}
+					case "" : { 
+						// 회원이 가입했을때, ?
+						
+						
+						
+						
+						
+						
+						
+						
+					}
 				}
 
 				
