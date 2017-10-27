@@ -33,9 +33,7 @@ public class DeleteDiaryController implements Controller {
 				break;
 			}
 			case Diary.NOTE : {
-				path = "DispatcherServlet?command=noteView&year="+request.getParameter("year")
-																+"&month="+request.getParameter("month")
-																+"&date="+request.getParameter("date");
+				path = "DispatcherServlet?command=noteView&diaryNo=" + no + "&isCurr=false";
 				break;
 			}
 		}
