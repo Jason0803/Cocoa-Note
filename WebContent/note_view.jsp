@@ -42,9 +42,11 @@ function update_note() {
 }
 
 function deleteNote(no) {
+	if(no != '0'){
 	if(confirm("정말 삭제할까요?")){
    location.href="DispatcherServlet?command=deleteDiary&no="+no;
 	}else{}
+}else{alert("삭제할 노트가 없습니다.");}
 }
 
 var oDoc, sDefTxt;
