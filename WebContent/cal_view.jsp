@@ -24,6 +24,7 @@
 							<c:forEach var="groupMember" items="${friend.value}">
 							<c:if test="${groupMember.name!=null}">
 								<span class="groupMember">${groupMember.name}<span class="groupMemberId" style="display:none">${groupMember.id}</span></span>
+								<!-- #00237 -->
 							</c:if>
 							</c:forEach>
 						</div>
