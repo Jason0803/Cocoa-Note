@@ -33,7 +33,7 @@ public class DeleteDiaryController implements Controller {
 				break;
 			}
 			case Diary.NOTE : {
-				path = "DispatcherServlet?command=noteView&diaryNo=" + no + "&isCurr=false";
+				path = "DispatcherServlet?command=noteView&&isCurr=true";
 				break;
 			}
 		}
