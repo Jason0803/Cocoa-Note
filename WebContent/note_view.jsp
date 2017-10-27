@@ -2,11 +2,22 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="head.jsp"></jsp:include>
 <script type="text/javascript">
+
 function write_note() {
 	if(validateMode()){
 		
+		/* var myWindow = window.open("", "myWindow", "width=13000, height=10000,");
+	    myWindow.document.write("<p>잠시만 기다려주세요'</p>");
+	    setTimeout(function(){ myWindow.close() }, 1000);
+	    setTimeout(function(){ document.writeFrm.submit() }, 1001); */
+	     
+	  /*   myWindow.opener.document.write("<p>This is the source window!</p>") */;
+	  $('.crud').one('click',function(){
+	    	document.writeFrm.submit()
+	    	
+	    })
 		
-		document.writeFrm.submit();
+		
 		return true;
 	}
 	return false;
@@ -14,11 +25,26 @@ function write_note() {
 
 function update_note() {
 	document.updateFrm.content.value=oDoc.innerHTML;
-	document.updateFrm.submit();
+/* 	var myWindow = window.open("", "myWindow", "width=13000, height=10000,");
+    myWindow.document.write("<p>잠시만 기다려주세요.'</p>");
+    setTimeout(function(){ myWindow.close() }, 1000);
+    setTimeout(function(){ document.updateFrm.submit() }, 1001);
+  
+    document.updateFrm.submit() */
+    
+    $('.crud').one('click',function(){
+    	document.updateFrm.submit()
+    	
+    })
+	
+	
+	
 }
 
 function deleteNote(no) {
+	if(confirm("정말 삭제할까요?")){
    location.href="DispatcherServlet?command=deleteDiary&no="+no;
+	}else{}
 }
 
 var oDoc, sDefTxt;
@@ -34,6 +60,7 @@ function formatDoc(sCmd, sValue) {
 }
 	
 function validateMode() {
+	
 	return true;
 }
 	
@@ -44,7 +71,7 @@ function validateMode() {
       <div class="card rounded-content" style="width: 100%; min-height: 75%;">
          <div class="card-body">
          	<div class="row">
-            	<input class="newNoteBtn" type="button" value="+" onclick="write_note();" />
+            	<input class="newNoteBtn crud" type="button" value="+" onclick="write_note();" />
             </div>
             <form class="hidden_form" name="writeFrm" method="post" action="DispatcherServlet">
                <input type="text" name="title" value="새 노트" />
@@ -55,7 +82,7 @@ function validateMode() {
 			
 			<form action="DispatcherServlet" name="updateFrm" method="post">
 				<input class="form-invisible note-title" type="text" value="${note.title}" name="title"> 
-				<span class="text-muted" style="padding-left:10px; font-style: italic;">최종 수정 ${note.currentDate.year}/${note.currentDate.month}/${note.currentDate.date} ${note.currentDate.hour}:${note.currentDate.minute}</span>
+				<span class="text-muted" style="padding-left:10px;">최종 수정 ${note.currentDate.year}/${note.currentDate.month}/${note.currentDate.date} ${note.currentDate.hour}:${note.currentDate.minute}</span>
 				<div class="dropdown-divider"></div>
 				<div id="toolBar1">
 					<select onchange="formatDoc('fontname',this[this.selectedIndex].value);this.selectedIndex=0;">
@@ -96,7 +123,7 @@ function validateMode() {
 				<div id="textBox" class="form-invisible note-content" contenteditable="true"><p>${note.content}</p></div>
                 <input type="hidden" name="content" /><br/>
                 <div class="d-flex justify-content-end">
-                	<input class="button btn bg-pink rounded-bar" type="button" value="저장" onclick="update_note()" />&nbsp;
+                	<input class="button btn bg-pink rounded-bar crud" type="button" value="저장" onclick="update_note()" />&nbsp;
                 	<input class="btn bg-pink rounded-bar" type="button" value="삭제" onclick="deleteNote(${note.no})" /> 
                 </div>   
                 <input  type="hidden" name="command" value="updateNote" /> 
