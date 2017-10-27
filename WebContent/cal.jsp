@@ -19,13 +19,13 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th scope="col">일</th>
-							<th scope="col">월</th>
-							<th scope="col">화</th>
-							<th scope="col">수</th>
-							<th scope="col">목</th>
-							<th scope="col">금</th>
-							<th scope="col">토</th>
+							<th scope="col" class="text-wrapper">일</th>
+							<th scope="col" class="text-wrapper">월</th>
+							<th scope="col" class="text-wrapper">화</th>
+							<th scope="col" class="text-wrapper">수</th>
+							<th scope="col" class="text-wrapper">목</th>
+							<th scope="col" class="text-wrapper">금</th>
+							<th scope="col" class="text-wrapper">토</th>
 						</tr>
 					</thead>
 					<tbody>
