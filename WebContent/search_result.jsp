@@ -8,25 +8,23 @@
 
 		
 	<!-- Find Schedule card -->
-	
+	<c:if test="${schedules  != '{}'}">
 		<div class="card rounded-content animated-card-1" style="width: 100%; min-height: 10%; margin-bottom:20px;">
 			<div class="card-body">
 				<h4 class="card-title">Find Schedule</h4>				
-				<p class="card-text">
+				<p class="card-text"> 
 	<c:forEach var="schedule" items="${schedules}">
-
 		<span class="text-bold"><strong>${schedule.value.title}</strong></span> ${schedule.value.content}<br />
-
-		${schedule.value}<br />
 		<div class="dropdown-divider"></div>
 
 	</c:forEach>
 				</p>
 			</div>
 		</div>
+		</c:if>
 		
 		<!-- Find Note card -->
-		
+		<c:if test="${notes  != '{}'}">
 		<div class="card rounded-content animated-card-2" style="width: 100%; min-height: 10%; margin-bottom:20px;">
 			<div class="card-body">
 				<h4 class="card-title">Find Note</h4>				
@@ -39,9 +37,10 @@
 				</p>
 			</div>
 		</div>
+		</c:if>
 		
 		<!-- Find Memo card -->
-		
+		<c:if test="${memos  != '{}'}">
 		<div class="card rounded-content animated-card-3" style="width: 100%; min-height: 10%; margin-bottom:20px;">
 			<div class="card-body">
 				<h4 class="card-title">Find Memo</h4>				
@@ -53,8 +52,15 @@
 				</p>
 			</div>
 		</div>
+		</c:if>
+		<!-- there is no result -->
+		<c:if test="${(schedules eq '{}') and (notes eq'{}') and (memos eq '{}')}">
+		<div class="d-flex justify-content-center" style="margin-top:10%;"><h1 style="color: indianred;">검색~끝! 찾으시는 내용이 없네요</h1></div>
+		</c:if>
+		
 	</div>
 </div>
+
 
 
 

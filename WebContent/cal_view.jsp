@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="head.jsp"></jsp:include>
-<title>코코아노트</title>
 <div class="row">
-<div class="col-7">
+<div class="col-8">
 	<div class="card rounded-content">
 		<div class="card-body">
 			<h4 class="card-title">${dayInfo.date.year}년 ${dayInfo.date.month}월 ${dayInfo.date.date}일</h4>
 			<input class="newNoteBtn" type="button" value="+" onclick="javascript:location.reload()" style="top:20px" />
-			<hr>
+			
 			<h5>일정</h5>
 			<c:if test="${empty dayInfo.schedules}">
 				- 등록된 일정이 없습니다.
@@ -49,12 +48,12 @@
 		</div>
 	</div>
 </div>
-<div class="col-5">
+<div class="col-4">
 	<div class="card rounded-content">
 		<div class="card-body">
-			<h4 class="card-title" id="scheduleFrmTitle">새로운 일정</h4>
+			<h4 class="card-title" id="scheduleFrmTitle">New event</h4>
 			<p class="card-text"></p>
-			<hr>
+			
 			<form action="DispatcherServlet" name="scheduleFrm" method="post" onsubmit="return valueCheck()">
 				<input type="text" class="form-control rounded-bar" name="title" required="required" placeholder="일정 제목"/><br>
 				<input type="datetime-local" class="form-control rounded-bar date-control" name="startDate" required="required" />
@@ -67,11 +66,11 @@
 						<input type="text" class="form-control rounded-bar shcedule_group" name="schedule_group" placeholder="함께하는 사람"/>
 					</div>
 					<div class="col-3" style="padding-left:0px"> 
-						<input style="width:100%" type="button" class="btn btn-primary" value="추가" onclick="addGroupMember()"/><br />
+						<input style="width:100%" type="button" class="btn bg-pink rounded-bar" value="추가" onclick="addGroupMember()"/><br />
 					</div>
 					<div id="shcedule_group_container"></div><br /><br />
 				</div>
-				<input name="scheduleFrmSubmit" id="btn-long-pink" style="width:100%; margin-top:20px;" type="submit" class="btn btn-primary" value="일정 등록" />
+				<input name="scheduleFrmSubmit" id="btn-long-pink" style="width:100%; margin-top:20px;" type="submit" class="btn rounded-bar" value="일정 등록" />
 				<input type="hidden" name="command" value="writeSchedule" />
 				<input type="hidden" name="start_date" />
 				<input type="hidden" name="end_date" />
