@@ -72,6 +72,4 @@ public class Member {
 		return "Member [id=" + id + ", password=" + password + ", name=" + name + ", accountPlan=" + accountPlan
 				+ ", theme=" + theme + "]";
 	}
-	
-	
 }

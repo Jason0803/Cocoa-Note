@@ -20,7 +20,7 @@ public class ForgotPasswordController implements Controller {
 		String path = "login.jsp";
 		Member vo = MemberDAO.getInstance().findMemberById(id);
 		if(vo != null) {
-			MailSender.sendMail(id, "forgotPassword", null);
+			MailSender.sendMail(id, "forgotPassword");
 			System.out.println("[ForgotPasswordController] : SendMailSuccess !");
 		}
 		
