@@ -23,6 +23,11 @@
 		location.href="login.jsp";
 	</script>
 </c:if>
+<script>
+function myFunction() {
+    return "Write something clever here...";
+}
+</script>
 </head>
 <body class="bg-ghostwhite">
 <div class="bg-ghostwhite" style="margin-top: 50px"></div>
