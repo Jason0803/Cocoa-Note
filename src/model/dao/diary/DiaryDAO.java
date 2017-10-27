@@ -13,6 +13,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 
+import database.DataSourceManager;
+import database.StringQuery;
 import javafx.scene.chart.PieChart.Data;
 import jdbc.exception.RecordNotFoundException;
 import model.dao.member.MemberDAO;
@@ -22,8 +24,6 @@ import model.vo.diary.Memo;
 import model.vo.diary.Note;
 import model.vo.diary.Schedule;
 import model.vo.member.Member;
-import sql.DataSourceManager;
-import sql.StringQuery;
 import util.CocoaDate;
 import util.IntegerRange;
 import util.MailSender;
@@ -771,7 +771,7 @@ public class DiaryDAO {
 			if(note == null) throw new RecordNotFoundException("[DiaryDAO]@updateNote : No Such Note Found !");
 			else System.out.println("[DiaryDAO]@updateNote : Found note with no : " + no);
 			
-			// 2. Excute query (sql.StringQuery.UPDATE_NOTE)
+			// 2. Excute query (database.StringQuery.UPDATE_NOTE)
 			ps = conn.prepareStatement(StringQuery.UPDATE_NOTE);
 			ps.setString(1, title);
 			ps.setString(2, content);
@@ -821,7 +821,7 @@ public class DiaryDAO {
 				MailSender.sendMail(sharedMemberId, "share_added", title);
 			}
 			
-			// 4. Execute query (sql.StringQuery.UPDATE_SCHEDULE)
+			// 4. Execute query (database.StringQuery.UPDATE_SCHEDULE)
 			ps = conn.prepareStatement(StringQuery.UPDATE_SCHEDULE);
 			ps.setString(1, title);
 			ps.setString(2, content);
