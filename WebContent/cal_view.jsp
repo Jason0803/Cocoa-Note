@@ -58,7 +58,7 @@
 			<form action="DispatcherServlet" name="scheduleFrm" method="post" onsubmit="return valueCheck()">
 				<input type="text" class="form-control rounded-bar" name="title" required="required" placeholder="일정 제목"/><br>
 				<input type="datetime-local" class="form-control rounded-bar date-control" name="startDate" required="required" />
-				<p align="center">~</p>
+				<p align="center" style="margin-bottom:3px;"><img src="icon/arrow-down.svg" width=20px height=20px"/></p>
 				<input type="datetime-local" class="form-control rounded-bar date-control" name="endDate" required="required"/><br>
 				<br/>
 				<input type="text" class="form-control rounded-bar" name="content" required="required" placeholder="일정 내용"/><br>
