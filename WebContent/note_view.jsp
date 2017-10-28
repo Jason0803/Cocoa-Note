@@ -12,10 +12,11 @@ function write_note() {
 	    setTimeout(function(){ document.writeFrm.submit() }, 1001); */
 	     
 	  /*   myWindow.opener.document.write("<p>This is the source window!</p>") */;
-	  $('.crud').one('click',function(){
+	/*   $('.crud').one('click',function(){
 	    	document.writeFrm.submit()
 	    	
-	    })
+	    }) */
+	    setTimeout(function(){ document.writeFrm.submit() }, 1000);
 		
 		
 		return true;
@@ -32,10 +33,11 @@ function update_note() {
   
     document.updateFrm.submit() */
     
-    $('.crud').one('click',function(){
+    /* $('.crud').one('click',function(){
     	document.updateFrm.submit()
     	
-    })
+    }) */
+	setTimeout(function(){ document.updateFrm.submit() }, 1000);
 	
 	
 	
