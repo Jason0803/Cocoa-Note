@@ -31,7 +31,7 @@ public interface StringQuery {
 			"SELECT * FROM note WHERE id = ? ORDER BY curr_date DESC";
 
 	String SEARCH_NOTE_BY_KEYWORD = 
-			"SELECT * FROM note WHERE id = ? AND (LOWER(title) LIKE LOWER('%'||?||'%') OR LOWER(content) LIKE (LOWER'%'||?||'%'))";
+			"SELECT * FROM note WHERE id = ? AND (LOWER(title) LIKE LOWER('%'||?||'%') OR LOWER(content) LIKE LOWER('%'||?||'%'))";
 	String SEARCH_MEMO_BY_KEYWORD =
 			"SELECT * FROM memo WHERE id=? AND LOWER(content) LIKE LOWER('%'||?||'%')";
 	String SEARCH_SCHEDULE_BY_KEYWORD = 
