@@ -31,11 +31,11 @@ public interface StringQuery {
 			"SELECT * FROM note WHERE id = ? ORDER BY curr_date DESC";
 
 	String SEARCH_NOTE_BY_KEYWORD = 
-			"SELECT * FROM note WHERE id = ? AND (title LIKE '%'||?||'%' OR content LIKE '%'||?||'%')";
+			"SELECT * FROM note WHERE id = ? AND (LOWER(title) LIKE LOWER('%'||?||'%') OR LOWER(content) LIKE (LOWER'%'||?||'%'))";
 	String SEARCH_MEMO_BY_KEYWORD =
-			"SELECT * FROM memo WHERE id=? AND content LIKE '%'||?||'%'";
+			"SELECT * FROM memo WHERE id=? AND LOWER(content) LIKE LOWER('%'||?||'%')";
 	String SEARCH_SCHEDULE_BY_KEYWORD = 
-	         "SELECT * FROM SCHEDULE WHERE id=? AND (TITLE like '%'||?||'%' OR CONTENT like '%'||?||'%')";
+	         "SELECT * FROM SCHEDULE WHERE id=? AND (LOWER(TITLE) like LOWER('%'||?||'%') OR LOWER(CONTENT) like LOWER('%'||?||'%'))";
 
 	String GET_CURR_DIARYNO =
 			 "SELECT last_number FROM user_sequences WHERE sequence_name='SEQ_DIARY_NO'";
