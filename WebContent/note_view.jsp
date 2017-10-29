@@ -16,6 +16,11 @@ function write_note() {
 	    	document.writeFrm.submit()
 	    	
 	    }) */
+	    if(${memberVO.theme == 1}){
+	        $('.navbar').toggleClass("animateCocoaProcess");
+	        }else{
+	        	$('.navbar').toggleClass("animatePeachProcess");
+	        }
 	    setTimeout(function(){ document.writeFrm.submit() }, 1000);
 		
 		
@@ -37,6 +42,11 @@ function update_note() {
     	document.updateFrm.submit()
     	
     }) */
+    if(${memberVO.theme == 1}){
+    $('.navbar').toggleClass("animateCocoaProcess");
+    }else{
+    	$('.navbar').toggleClass("animatePeachProcess");
+    }
 	setTimeout(function(){ document.updateFrm.submit() }, 1000);
 	
 	
@@ -75,7 +85,7 @@ function validateMode() {
       <div class="card rounded-content" style="width: 100%; min-height: 75%;">
          <div class="card-body">
          	<div class="row">
-            	<input class="newNoteBtn crud" type="button" value="+" onclick="write_note();" />
+            	<input class="newNoteBtn" id="writeBtn" type="button" value="+" onclick="write_note();" />
             </div>
             <form class="hidden_form" name="writeFrm" method="post" action="DispatcherServlet">
                <input type="text" name="title" value="새 노트" />
@@ -127,8 +137,8 @@ function validateMode() {
 				<div id="textBox" class="form-invisible note-content" contenteditable="true"><p>${note.content}</p></div>
                 <input type="hidden" name="content" /><br/>
                 <div class="d-flex justify-content-end">
-                	<input class="button btn bg-pink rounded-bar crud" type="button" value="저장" onclick="update_note()" />&nbsp;
-                	<input class="btn bg-pink rounded-bar" type="button" value="삭제" onclick="deleteNote(${note.no})" /> 
+                	<input class="button btn bg-pink rounded-bar"   type="button" value="저장" onclick="update_note()" />&nbsp;
+                	<input class="btn bg-pink rounded-bar"  type="button" value="삭제" onclick="deleteNote(${note.no})" /> 
                 </div>   
                 <input  type="hidden" name="command" value="updateNote" /> 
                 <input  type="hidden" name="isCurr" value="false" /> 
