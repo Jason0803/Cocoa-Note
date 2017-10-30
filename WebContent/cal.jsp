@@ -66,7 +66,7 @@
 			<div class="card-body">
 				<h4 class="card-title">Upcoming events</h4>
 				<h6 class="card-subtitle mb-2 text-muted"></h6>
-				<c:forEach var="scheduleItem" items="${scheduleList}" begin="1" end="5" varStatus="status">
+				<c:forEach var="scheduleItem" items="${scheduleList}" begin="0" end="5" varStatus="status">
 					<div class="card rounded-notification bg-pink">
 						<div class="card-body"  style="padding:15px;">
 							<h4 class="card-title" name="d-day">${scheduleItem.startDate}</h4>
