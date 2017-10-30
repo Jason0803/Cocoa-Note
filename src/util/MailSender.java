@@ -67,7 +67,7 @@ public class MailSender {
 			String body = null;
 
 			switch(command) {
-				case "forgotPasword": {
+				case "forgotPassword": {
 					System.out.println();
 					// tempPassword Logic
 					String tempPassword = null;

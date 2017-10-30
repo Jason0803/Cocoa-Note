@@ -18,7 +18,7 @@
 	<div class="card rounded-content">
 		<div class="card-body">
 			<h4 class="card-title">${dayInfo.date.year}년 ${dayInfo.date.month}월 ${dayInfo.date.date}일</h4>
-			<input class="newNoteBtn" type="button" value="+" onclick="reload()" style="top:20px" />
+			<input class="newNoteBtn" type="button" value="+" onclick="reload()" accesskey="n" style="top:20px" />
 			
 			<h5>일정</h5>
 			<c:if test="${empty dayInfo.schedules}">
@@ -79,11 +79,11 @@
 						<input type="text" class="form-control rounded-bar shcedule_group" name="schedule_group" placeholder="함께하는 사람"/>
 					</div>
 					<div class="col-3" style="padding-left:0px"> 
-						<input style="width:100%" type="button" class="btn bg-pink rounded-bar" value="추가" onclick="addGroupMember()"/><br />
+						<input style="width:100%" type="button" class="btn bg-pink rounded-bar" value="추가" accesskey="a" onclick="addGroupMember()"/><br />
 					</div>
 					<div id="shcedule_group_container"></div><br /><br />
 				</div>
-				<input name="scheduleFrmSubmit" id="btn-long-pink" style="width:100%; margin-top:20px;" type="submit" class="btn rounded-bar" value="일정 등록" />
+				<input name="scheduleFrmSubmit" id="btn-long-pink" style="width:100%; margin-top:20px;" type="submit" class="btn rounded-bar" value="일정 등록" accesskey="q"/>
 				<input type="hidden" name="command" value="writeSchedule" />
 				<input type="hidden" name="start_date" />
 				<input type="hidden" name="end_date" />

@@ -98,8 +98,6 @@ function nextMonth(year, month) {
 // ---------------------------------------------------------------------------
 var group_member = new Array();
 function addGroupMember(jsValue, js) {
-	
-	
 	var node = document.createElement("span"); // Create a <li> node
 		node.setAttribute('class', 'invited_member');
 	var textnode;         // Create a text node
@@ -119,10 +117,12 @@ function addGroupMember(jsValue, js) {
 		group_member.push(group_memberFrm);
 		idNode.innerText = group_memberFrm;
 	}
-	node.appendChild(textnode);                              // Append the text to <li>
-	node.appendChild(deleteNode);
-	node.appendChild(idNode);
-	document.getElementById("shcedule_group_container").appendChild(node);     // Append <li> to <ul> with id="myList"
+	if(group_memberFrm!=""){
+		node.appendChild(textnode);                              // Append the text to <li>
+		node.appendChild(deleteNode);
+		node.appendChild(idNode);
+		document.getElementById("shcedule_group_container").appendChild(node);     // Append <li> to <ul> with id="myList"
+	}
 	document.scheduleFrm.schedule_group.value = "";
 } // 추가 버튼을 누르면 schedule_group_container에 해당 아이디를 추가하고 텍스트박스를 초기화함
 function deleteGroupMember(m){

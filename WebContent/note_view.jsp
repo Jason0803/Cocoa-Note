@@ -2,10 +2,11 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="head.jsp"></jsp:include>
 <script type="text/javascript">
-
+var pass = false;
+var originCont = "";
+var latestCont = "";
 function write_note() {
 	if(validateMode()){
-		
 		/* var myWindow = window.open("", "myWindow", "width=13000, height=10000,");
 	    myWindow.document.write("<p>잠시만 기다려주세요'</p>");
 	    setTimeout(function(){ myWindow.close() }, 1000);
@@ -14,7 +15,6 @@ function write_note() {
 	  /*   myWindow.opener.document.write("<p>This is the source window!</p>") */;
 	/*   $('.crud').one('click',function(){
 	    	document.writeFrm.submit()
-	    	
 	    }) */
 	    if(${memberVO.theme == 1}){
 	        $('.navbar').toggleClass("animateCocoaProcess");
@@ -47,7 +47,9 @@ function update_note() {
     }else{
     	$('.navbar').toggleClass("animatePeachProcess");
     }
-	setTimeout(function(){ document.updateFrm.submit() }, 1000);
+	setTimeout(function(){ 
+		pass=true;
+		document.updateFrm.submit() }, 1000);
 	
 	
 	
@@ -67,6 +69,9 @@ function initDoc() {
 	<c:if test="${note.content!=null}">
 		oDoc.innerHTML = '${note.content}';
 	</c:if>
+	originCont += document.updateFrm.title.value;
+
+	originCont += oDoc.innerHTML;
 	sDefTxt = oDoc.innerHTML;
 }
 function formatDoc(sCmd, sValue) {
@@ -80,12 +85,12 @@ function validateMode() {
 	
 </script>
 
-<div class="row" style="height: 1000px;">
+<div class="row" style="min-height:650px">
    <div class="col-8">
       <div class="card rounded-content" style="width: 100%; min-height: 75%;">
          <div class="card-body">
          	<div class="row">
-            	<input class="newNoteBtn" id="writeBtn" type="button" value="+" onclick="write_note();" />
+            	<input class="newNoteBtn" id="writeBtn" type="button" value="+" onclick="write_note();" accesskey="n"/>
             </div>
             <form class="hidden_form" name="writeFrm" method="post" action="DispatcherServlet">
                <input type="text" name="title" value="새 노트" />
@@ -134,11 +139,11 @@ function validateMode() {
 					<img class="intLink" title="Add indentation" onclick="formatDoc('outdent');" src="data:image/gif;base64,R0lGODlhFgAWAMIHAAAAADljwliE35GjuaezxtDV3NHa7P///yH5BAEAAAcALAAAAAAWABYAAAM2eLrc/jDKCQG9F2i7u8agQgyK1z2EIBil+TWqEMxhMczsYVJ3e4ahk+sFnAgtxSQDqWw6n5cEADs=" />
 					<img class="intLink" title="Delete indentation" onclick="formatDoc('indent');" src="data:image/gif;base64,R0lGODlhFgAWAOMIAAAAADljwl9vj1iE35GjuaezxtDV3NHa7P///////////////////////////////yH5BAEAAAgALAAAAAAWABYAAAQ7EMlJq704650B/x8gemMpgugwHJNZXodKsO5oqUOgo5KhBwWESyMQsCRDHu9VOyk5TM9zSpFSr9gsJwIAOw==" />
 				</div>
-				<div id="textBox" class="form-invisible note-content" contenteditable="true"><p>${note.content}</p></div>
+				<div id="textBox" class="form-invisible note-content" style="min-height:200px" contenteditable="true"><p>${note.content}</p></div>
                 <input type="hidden" name="content" /><br/>
                 <div class="d-flex justify-content-end">
-                	<input class="button btn bg-pink rounded-bar"   type="button" value="저장" onclick="update_note()" />&nbsp;
-                	<input class="btn bg-pink rounded-bar"  type="button" value="삭제" onclick="deleteNote(${note.no})" /> 
+                	<input class="button btn bg-pink rounded-bar"   type="button" value="저장" onclick="update_note()" accesskey="a"/>&nbsp;
+                	<input class="btn bg-pink rounded-bar"  type="button" value="삭제" onclick="deleteNote(${note.no})" accesskey="s"/> 
                 </div>   
                 <input  type="hidden" name="command" value="updateNote" /> 
                 <input  type="hidden" name="isCurr" value="false" /> 
@@ -164,5 +169,10 @@ function validateMode() {
 </div>
 <script type="text/javascript">
 	initDoc();
+	window.onbeforeunload = function() {
+		latestCont += document.updateFrm.title.value;
+		latestCont += oDoc.innerHTML;
+		if(originCont!==latestCont&&pass==false) return "변경";
+	}
 </script>
 <jsp:include page="foot.jsp"></jsp:include>
