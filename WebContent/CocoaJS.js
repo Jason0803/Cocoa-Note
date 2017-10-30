@@ -271,11 +271,13 @@ function updateSchedule(diaryNo, schedule){
 	startDate = startDate+"T"+startTime+":00.000";
 	endDate = endDate+"T"+endTime+":00.000";
 
-	var inputNode = document.createElement('input');
-	inputNode.setAttribute('type', 'hidden');
-	inputNode.setAttribute('name', 'diaryNo');
-	inputNode.setAttribute('value', diaryNo);
-	document.scheduleFrm.appendChild(inputNode);
+	if(typeof document.scheduleFrm.diaryNo == 'undefined'){
+		var inputNode = document.createElement('input');
+		inputNode.setAttribute('type', 'hidden');
+		inputNode.setAttribute('name', 'diaryNo');
+		inputNode.setAttribute('value', diaryNo);
+		document.scheduleFrm.appendChild(inputNode);
+	} else document.scheduleFrm.diaryNo.value = diaryNo;
 	document.scheduleFrm.command.value = 'updateSchedule';
 	document.scheduleFrm.title.value = title;
 	document.scheduleFrm.title.value = title;
