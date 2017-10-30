@@ -59,8 +59,23 @@ function registerCheck() {
 
 		
 	<div class="row" style="margin-bottom:100px;">
-	
-			<div class="col-12 d-flex justify-content-center " style="margin-top: 30px;">
+				<div class="col-6  text-wrapper  " style="border-right: 0px solid gray;">
+			<div><br/><br/><br/></div>
+				<div class="animated-words d-flex justify-content-start" style="margin-left:100px;" >
+					<br> <br><span>일정, 노트, 메모를<br> 한 곳에서 모두
+						기록하세요.
+					</span> <span>설정 없이,<br> 모든 기기와 연동됩니다.
+					</span> <span>일정을 <br>친구와 공유해 보세요.
+					</span> <span>당신의<br>하루를 담아보세요.
+					</span>
+				</div>
+				<div class="animated-words-last d-flex justify-content-center">
+					<span>자, 이제<br>시작해 보세요.
+					</span>
+				</div>
+			</div>
+			
+			<div class="col-6	 d-flex justify-content-end" style="margin-top: 30px; margin-bottom:100px;	">
 				<div><br/><br/><br/></div>
 				 
 				
