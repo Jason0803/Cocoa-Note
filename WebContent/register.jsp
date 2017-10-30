@@ -58,9 +58,24 @@ function registerCheck() {
 
 
 		
-	<div class="row">
-	
-			<div class="col-6 d-flex justify-content-end " style="margin-top: 30px;">
+	<div class="row" style="margin-bottom:100px;">
+				<div class="col-6  text-wrapper  " style="border-right: 0px solid gray;">
+			<div><br/><br/><br/></div>
+				<div class="animated-words d-flex justify-content-start" style="margin-left:100px;" >
+					<br> <br><span>일정, 노트, 메모를<br> 한 곳에서 모두
+						기록하세요.
+					</span> <span>설정 없이,<br> 모든 기기와 연동됩니다.
+					</span> <span>일정을 <br>친구와 공유해 보세요.
+					</span> <span>당신의<br>하루를 담아보세요.
+					</span>
+				</div>
+				<div class="animated-words-last d-flex justify-content-center">
+					<span>자, 이제<br>시작해 보세요.
+					</span>
+				</div>
+			</div>
+			
+			<div class="col-6	 d-flex justify-content-end" style="margin-top: 30px; margin-bottom:100px;	">
 				<div><br/><br/><br/></div>
 				 
 				
@@ -92,34 +107,7 @@ function registerCheck() {
 			
 			
 			</div>
-			<div  class="col-6 d-flex justify-content-start " style="margin-top: 30px;">
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block rounded" src="img/1.JPG" width="400" height="480" alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block rounded" src="img/2.JPG" width="400" height="480" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block rounded" src="img/3.JPG" width="400" height="480" alt="Third slide">
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-			</div>
+
 </div>
 </div>
 </body>
