@@ -30,7 +30,6 @@
 					</thead>
 					<tbody>
 					<tr>
-					<c:set value="1" var="rowCount"></c:set>
 					<c:forEach var="day" items="${monthlyDiary}" varStatus="column">
 						<td class="date_td" id="date_${day.date.date}" style="position:relative;">
 							<c:if test="${day.date.date!=null}">
@@ -50,7 +49,6 @@
 							</c:if>
 						</td>
 						<c:if test="${column.count%7==0}">
-							<c:set value="${rowCount+1}" var="rowCount"></c:set>
 							</tr>
 							<tr>
 						</c:if>
