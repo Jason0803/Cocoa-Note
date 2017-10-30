@@ -80,7 +80,7 @@ function validateMode() {
 	
 </script>
 
-<div class="row" style="height: 1000px;">
+<div class="row" style="min-height:650px">
    <div class="col-8">
       <div class="card rounded-content" style="width: 100%; min-height: 75%;">
          <div class="card-body">
@@ -134,7 +134,7 @@ function validateMode() {
 					<img class="intLink" title="Add indentation" onclick="formatDoc('outdent');" src="data:image/gif;base64,R0lGODlhFgAWAMIHAAAAADljwliE35GjuaezxtDV3NHa7P///yH5BAEAAAcALAAAAAAWABYAAAM2eLrc/jDKCQG9F2i7u8agQgyK1z2EIBil+TWqEMxhMczsYVJ3e4ahk+sFnAgtxSQDqWw6n5cEADs=" />
 					<img class="intLink" title="Delete indentation" onclick="formatDoc('indent');" src="data:image/gif;base64,R0lGODlhFgAWAOMIAAAAADljwl9vj1iE35GjuaezxtDV3NHa7P///////////////////////////////yH5BAEAAAgALAAAAAAWABYAAAQ7EMlJq704650B/x8gemMpgugwHJNZXodKsO5oqUOgo5KhBwWESyMQsCRDHu9VOyk5TM9zSpFSr9gsJwIAOw==" />
 				</div>
-				<div id="textBox" class="form-invisible note-content" contenteditable="true"><p>${note.content}</p></div>
+				<div id="textBox" class="form-invisible note-content" style="min-height:200px" contenteditable="true"><p>${note.content}</p></div>
                 <input type="hidden" name="content" /><br/>
                 <div class="d-flex justify-content-end">
                 	<input class="button btn bg-pink rounded-bar"   type="button" value="저장" onclick="update_note()" />&nbsp;
