@@ -11,10 +11,12 @@ td {
 }
 
 .non-responsive-container {
-	width: 1100px;
+	width: 1110px;
 	overflow: hidden;
 	margin-left: auto;
 	margin-right: auto;
+	padding-right: 30px;
+	padding-left: 30px;
 }
 
 .newNoteBtn {
@@ -237,12 +239,12 @@ td {
 	transform: rotate(180deg);
 }
 
-.groupMembers { /* write_schedule.jsp ; 일정목록(scheduleItem) 친구리스트 박스 */
+.groupMembers { /* write_schedule.jsp ; �씪�젙紐⑸줉(scheduleItem) 移쒓뎄由ъ뒪�듃 諛뺤뒪 */
    margin-left:15px;
    margin-bottom:20px;
 }
 
-.groupMember { /* write_schedule.jsp ; 일정목록(scheduleItem) 친구리스트 */
+.groupMember { /* write_schedule.jsp ; �씪�젙紐⑸줉(scheduleItem) 移쒓뎄由ъ뒪�듃 */
    display: inline-block;
    min-height:15px;
    line-height:15px;
@@ -253,7 +255,7 @@ td {
    font-size:x-small;
 }
 
-.invited_member { /* write_schedule.jsp : 일정을 함께하는 친구 리스트 */
+.invited_member { /* write_schedule.jsp : �씪�젙�쓣 �븿猿섑븯�뒗 移쒓뎄 由ъ뒪�듃 */
    display: inline-block;
    min-height:20px;
    line-height:20px;
@@ -264,7 +266,7 @@ td {
    font-size:small;
 }
 
-.delete_member { /* write_schedule.jsp : 일정을 함께하는 친구 리스트 제거버튼블럭 */
+.delete_member { /* write_schedule.jsp : �씪�젙�쓣 �븿猿섑븯�뒗 移쒓뎄 由ъ뒪�듃 �젣嫄곕쾭�듉釉붾윮 */
    display: inline-block;
    width:10px;
    margin-left:5px;
@@ -287,7 +289,7 @@ td {
    cursor:pointer;
 }
 
-.date-control { /* write_schedule.jsp 날짜입력 input css */
+.date-control { /* write_schedule.jsp �궇吏쒖엯�젰 input css */
    display: inline-block;
    width:100%;
 }
@@ -298,25 +300,25 @@ td {
 }
 
 
-.scheduleTitle { /* cal_view.jsp 스케쥴 제목 css */
+.scheduleTitle { /* cal_view.jsp �뒪耳�伊� �젣紐� css */
    font-weight: bold;
    margin-left:20px;
 }
 
-.scheduleDate { /* cal_view.jsp 스케쥴 날짜 css */
+.scheduleDate { /* cal_view.jsp �뒪耳�伊� �궇吏� css */
    font-size: small;
    color:#999;
 }
 
-.scheduleContent { /* cal_view.jsp 스케쥴 내용 css */
+.scheduleContent { /* cal_view.jsp �뒪耳�伊� �궡�슜 css */
    margin-left:30px;
 }
 
-.scheduleItem { /* cal_view.jsp 스케쥴 item css */
+.scheduleItem { /* cal_view.jsp �뒪耳�伊� item css */
    position:relative;
 }
 
-.scheduleBtn { /* cal_view.jsp 스케쥴 수정, 삭제버튼 box css */
+.scheduleBtn { /* cal_view.jsp �뒪耳�伊� �닔�젙, �궘�젣踰꾪듉 box css */
    position:absolute;
    top:10px;
    right:10px;
