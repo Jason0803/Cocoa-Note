@@ -31,7 +31,7 @@ function myFunction() {
 </head>
 <body class="bg-ghostwhite">
 <div class="bg-ghostwhite" style="margin-top: 50px"></div>
-	<div class="container">
+	<div class="non-responsive-container">
 		<nav class="navbar  navbar-expand bg-grad-pink rounded-bar" style="margin-bottom:30px;">
 
 			<a href="DispatcherServlet?command=cal&year=${today.year}&month=${today.month}"><span class="navbar-brand mb-0 h1">cocoaNOTE</span></a>
