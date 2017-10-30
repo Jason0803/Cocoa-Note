@@ -25,7 +25,7 @@ function chgTheme(radioBtn){
 }
 </script>
 <title>회원정보 수정</title>
-<div class="row">
+<div class="row" style="margin-bottom:30px;">
 	<div class="col-6 d-flex justify-content-end" >
 		<div class="card rounded-content textcenter" style="width: 25rem; height: 30rem;">
 			<div class="card-body" >
@@ -49,6 +49,56 @@ function chgTheme(radioBtn){
 			</div>
 		</div>
 	</div>
+
+	<div class="col-6">
+		<div class="card rounded-content textcenter" style="width: 25rem; height: 30rem;">
+			<div class="card-body" >
+				<h4 class="card-title" style="text-align:center;">Theme Preview</h4>
+				</div>
+				</div>
+				
+	</div>
+
+</div>
+
+<div class="row " style="margin-bottom:100px;">
+<div class="col-12 d-flex justify-content-center">
+<div class="card rounded-content textcenter"
+			style="width:830px; height: 400px;">
+			<div class="card-body">
+				<h4 class="card-title" style="text-align: center;">Keyboard Shortcuts</h4>
+				<br/><br/>
+				<div class="row">
+				<div class="col-4">
+				<h6><Strong>ALT + A</Strong></h6>
+				<h6><Strong>ALT + Q</Strong></h6>
+				<h6><Strong>ALT + N</Strong></h6>
+				<hr>
+				<h6><Strong>ALT + N</Strong></h6>
+				<h6><Strong>ALT + S</Strong></h6>
+				<h6><Strong>ALT + D</Strong></h6>
+				<hr>
+				<h6><Strong>ALT + Z</Strong></h6>
+				<h6><Strong>ALT + X</Strong></h6>
+				</div>
+				<div class="col-8">
+				 <h6>함께할 친구 추가</h6>
+				 <h6>일정 등록</h6>
+				 <h6>새 일정</h6>
+				 <hr>
+				 <h6>새 노트</h6>
+				 <h6>노트 저장</h6>
+				 <h6>노트 삭제</h6>
+				 <hr>
+				 <h6>검색</h6>
+				 <h6>빠른 메모</h6>
+				</div>
+				</div>
+				
+			</div>
+		</div>
+		</div>
+</div>
 	
 			<script type="text/javascript">
 				defaultTheme();

@@ -1,5 +1,33 @@
 @charset "EUC-KR";
 /* change text animation start*/
+.animateCocoaProcess {
+	overflow: hidden;
+    background: linear-gradient(90deg, #523738, #af977c, #523738, #af977c);
+    background-size: 400% 400%;
+    animation-name: process;
+    -webkit-animation-duration: 2s;
+    animation-delay: 0s;
+    animation-timing-function: ease;
+}
+
+.animatePeachProcess {
+	overflow: hidden;
+    background: linear-gradient(90deg, #ffcbcb, #c5f0fb, #ffcbcb, #c5f0fb);
+    background-size: 400% 400%;
+    animation-name: process;
+    -webkit-animation-duration: 2s;
+    animation-delay: 0s;
+    animation-timing-function: ease;
+}	
+
+
+@-webkit-keyframes process {
+	from{
+	background-position:100%;}
+	to{
+	background-position:0%;}
+}
+
 .animated-words {
     display: inline-block;
 }
@@ -100,6 +128,8 @@
 
 
 /*change text animation end*/
+
+
 @-webkit-keyframes cardUp {
     from {
     -webkit-transform: translateY(3000px) rotate(30deg);

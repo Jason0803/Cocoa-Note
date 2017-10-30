@@ -14,7 +14,7 @@
 				<h4 class="card-title">Find Schedule</h4>				
 				<p class="card-text"> 
 	<c:forEach var="schedule" items="${schedules}">
-		<span class="text-bold"><strong>${schedule.value.title}</strong></span> ${schedule.value.content}<br />
+		<span class="text-bold"><strong>${schedule.value.title}</strong></span><br/><span>${schedule.value.content}</span><br/><span class="scheduleDate">${schedule.value.startDate}~${schedule.value.endDate}</span> <br/>
 		<div class="dropdown-divider"></div>
 
 	</c:forEach>

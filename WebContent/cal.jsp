@@ -6,9 +6,9 @@
 <script type="text/javascript">
 	
 </script>
-<div class="row" style="height: 900px;">
+<div class="row" style="min-height: 900px;">
 	<div class="col-10">
-		<div class="card rounded-content" style="width: 100%; height: 90%;">
+		<div class="card rounded-content" style="min-width: 100%; min-height: 90%;">
 			<div class="card-body">
 				<h4 class="card-title">Calendar</h4>
 				<h6 class="card-subtitle mb-2 ">
@@ -62,11 +62,11 @@
 		</div>
 	</div>
 	<div class="col-2">
-		<div class="card rounded-content" style="width: 100%; height: 90%;">
+		<div class="card rounded-content" style="min-width: 100%; min-height: 90%;">
 			<div class="card-body">
 				<h4 class="card-title">Upcoming events</h4>
 				<h6 class="card-subtitle mb-2 text-muted"></h6>
-				<c:forEach var="scheduleItem" items="${scheduleList}">
+				<c:forEach var="scheduleItem" items="${scheduleList}" begin="0" end="5" varStatus="status">
 					<div class="card rounded-notification bg-pink">
 						<div class="card-body"  style="padding:15px;">
 							<h4 class="card-title" name="d-day">${scheduleItem.startDate}</h4>

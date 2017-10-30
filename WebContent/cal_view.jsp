@@ -1,12 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="head.jsp"></jsp:include>
+<title>코코아노트</title>
+<script>
+	function reload(){
+		 if(${memberVO.theme == 1}){
+		        $('.navbar').toggleClass("animateCocoaProcess");
+		        }else{
+		        	$('.navbar').toggleClass("animatePeachProcess");
+		        }
+		setTimeout(function(){ location.reload() }, 1000);
+	}
+	
+</script>
 <div class="row">
 <div class="col-8">
 	<div class="card rounded-content">
 		<div class="card-body">
 			<h4 class="card-title">${dayInfo.date.year}년 ${dayInfo.date.month}월 ${dayInfo.date.date}일</h4>
-			<input class="newNoteBtn" type="button" value="+" onclick="javascript:location.reload()" style="top:20px" />
+			<input class="newNoteBtn" type="button" value="+" onclick="reload()" style="top:20px" />
 			
 			<h5>일정</h5>
 			<c:if test="${empty dayInfo.schedules}">
@@ -58,7 +70,7 @@
 			<form action="DispatcherServlet" name="scheduleFrm" method="post" onsubmit="return valueCheck()">
 				<input type="text" class="form-control rounded-bar" name="title" required="required" placeholder="일정 제목"/><br>
 				<input type="datetime-local" class="form-control rounded-bar date-control" name="startDate" required="required" />
-				<p align="center">~</p>
+				<p align="center" style="margin-bottom:3px;"><img src="icon/arrow-down.svg" width=20px height=20px"/></p>
 				<input type="datetime-local" class="form-control rounded-bar date-control" name="endDate" required="required"/><br>
 				<br/>
 				<input type="text" class="form-control rounded-bar" name="content" required="required" placeholder="일정 내용"/><br>

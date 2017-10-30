@@ -298,16 +298,14 @@ public class DiaryDAO {
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				if(rs.getString("title").toLowerCase().contains((keyword.toLowerCase())) || rs.getString("content").toLowerCase().contains(keyword.toLowerCase())) {
-					if(!result.containsKey(rs.getInt("note_no")) ){			
-						Note n = new Note(rs.getInt("note_no"),
-											rs.getString("id"),
-											new CocoaDate(new Date(rs.getTimestamp("wrt_date").getTime())),
-											rs.getString("content"),
-											new CocoaDate(new Date(rs.getTimestamp("curr_date").getTime())),
-											rs.getString("title"));
-						result.put(rs.getInt("note_no"), n);
-					}
+				if(!result.containsKey(rs.getInt("note_no")) ){			
+					Note n = new Note(rs.getInt("note_no"),
+							rs.getString("id"),
+							new CocoaDate(new Date(rs.getTimestamp("wrt_date").getTime())),
+							rs.getString("content"),
+							new CocoaDate(new Date(rs.getTimestamp("curr_date").getTime())),
+							rs.getString("title"));
+					result.put(rs.getInt("note_no"), n);
 				}
 			}
 		} catch (SQLException e) {
@@ -338,7 +336,6 @@ public class DiaryDAO {
 			rs=ps.executeQuery();
 			
 			while(rs.next()) {
-				if(rs.getString("content").toLowerCase().contains(keyword.toLowerCase())) {
 					if(!memo.containsKey(rs.getInt("memo_no"))){
 					Memo m = new Memo(rs.getInt("memo_no"),
 											id,
@@ -346,7 +343,6 @@ public class DiaryDAO {
 											rs.getString("content"));
 						memo.put(rs.getInt("memo_no"), m);
 					}
-				}
 			}
 		}catch(Exception e){
 			e.printStackTrace();
@@ -374,22 +370,22 @@ public class DiaryDAO {
            rs = ps.executeQuery();
            
            while(rs.next()) {
-              if(rs.getString("title").equalsIgnoreCase(keyword) || rs.getString("content").equalsIgnoreCase(keyword)) {
-          if(!sc.containsKey(rs.getInt("schedule_no"))){
-        	  Vector<String> group_members = new Vector<String>();
-        	  for(Member member : findSharingMembers(rs.getInt("schedule_no"))) {
-        		  group_members.add(member.getId());
-        	  }
-        	  Schedule s = new Schedule(rs.getInt("schedule_no"),
-        			  rs.getString("id"),                  										// id
-        			  rs.getString("title"),                      								// title
-        			  rs.getString("content"),                  								// content
-        			  group_members,                              								// group
-        			  new CocoaDate(new Date(rs.getTimestamp("start_date").getTime())),     	// startDate
-        			  new CocoaDate(new Date(rs.getTimestamp("end_date").getTime())));  		// endDate
-        	  sc.put(rs.getInt("schedule_no"), s);
-          }}}
-           
+        	   if(!sc.containsKey(rs.getInt("schedule_no"))){
+        		   Vector<String> group_members = new Vector<String>();
+        		   for(Member member : findSharingMembers(rs.getInt("schedule_no"))) {
+        			   group_members.add(member.getId());
+        		   }
+        		   Schedule s = new Schedule(rs.getInt("schedule_no"),
+        				   rs.getString("id"),                  										// id
+        				   rs.getString("title"),                      								// title
+        				   rs.getString("content"),                  								// content
+        				   group_members,                              								// group
+        				   new CocoaDate(new Date(rs.getTimestamp("start_date").getTime())),     	// startDate
+        				   new CocoaDate(new Date(rs.getTimestamp("end_date").getTime())));  		// endDate
+        		   sc.put(rs.getInt("schedule_no"), s);
+        	   }
+           }
+
         }catch(Exception e) {
            e.printStackTrace();
         }finally {
