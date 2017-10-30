@@ -2,10 +2,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="head.jsp"></jsp:include>
 <script type="text/javascript">
-
+var originCont = "";
+var latestCont = "";
 function write_note() {
 	if(validateMode()){
-		
 		/* var myWindow = window.open("", "myWindow", "width=13000, height=10000,");
 	    myWindow.document.write("<p>잠시만 기다려주세요'</p>");
 	    setTimeout(function(){ myWindow.close() }, 1000);
@@ -14,7 +14,6 @@ function write_note() {
 	  /*   myWindow.opener.document.write("<p>This is the source window!</p>") */;
 	/*   $('.crud').one('click',function(){
 	    	document.writeFrm.submit()
-	    	
 	    }) */
 	    if(${memberVO.theme == 1}){
 	        $('.navbar').toggleClass("animateCocoaProcess");
@@ -67,6 +66,9 @@ function initDoc() {
 	<c:if test="${note.content!=null}">
 		oDoc.innerHTML = '${note.content}';
 	</c:if>
+	originCont += document.updateFrm.title.value;
+
+	originCont += oDoc.innerHTML;
 	sDefTxt = oDoc.innerHTML;
 }
 function formatDoc(sCmd, sValue) {
@@ -164,5 +166,10 @@ function validateMode() {
 </div>
 <script type="text/javascript">
 	initDoc();
+	window.onbeforeunload = function() {
+		latestCont += document.updateFrm.title.value;
+		latestCont += oDoc.innerHTML;
+		if(originCont!==latestCont) return "변경";
+	}
 </script>
 <jsp:include page="foot.jsp"></jsp:include>
