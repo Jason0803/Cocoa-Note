@@ -70,9 +70,9 @@ public class DiaryDAO {
 					while(rs.next()) {
 						Note m = new Note(rs.getInt("note_no"), 								// no
 								rs.getString("id"),												// id
-								new CocoaDate(new Date(rs.getDate("wrt_date").getTime())), 		// writeDate
+								new CocoaDate(new Date(rs.getTimestamp("wrt_date").getTime())), 		// writeDate
 								rs.getString("content"),										// content
-								new CocoaDate(new Date(rs.getDate("curr_date").getTime())),		// currentDate
+								new CocoaDate(new Date(rs.getTimestamp("curr_date").getTime())),		// currentDate
 								rs.getString("title"));											// title
 						
 						diary.add(m);
@@ -150,9 +150,9 @@ public class DiaryDAO {
 			while(rs.next()) {
 				Note m = new Note(rs.getInt("note_no"), 								// no
 						rs.getString("id"),												// id
-						new CocoaDate(new Date(rs.getDate("wrt_date").getTime())), 		// writeDate
+						new CocoaDate(new Date(rs.getTimestamp("wrt_date").getTime())), 		// writeDate
 						rs.getString("content"),										// content
-						new CocoaDate(new Date(rs.getDate("curr_date").getTime())),		// currentDate
+						new CocoaDate(new Date(rs.getTimestamp("curr_date").getTime())),		// currentDate
 						rs.getString("title"));											// title
 				
 				n.add(m);
@@ -656,9 +656,9 @@ public class DiaryDAO {
 			while(rs.next()) {
 				Note m = new Note(rs.getInt("note_no"), 								// no
 						rs.getString("id"),												// id
-						new CocoaDate(new Date(rs.getDate("wrt_date").getTime())), 		// writeDate
+						new CocoaDate(new Date(rs.getTimestamp("wrt_date").getTime())), 		// writeDate
 						rs.getString("content"),										// content
-						new CocoaDate(new Date(rs.getDate("curr_date").getTime())),		// currentDate
+						new CocoaDate(new Date(rs.getTimestamp("curr_date").getTime())),		// currentDate
 						rs.getString("title"));											// title
 				
 				n.add(m);
@@ -690,9 +690,9 @@ public class DiaryDAO {
 			if(rs.next()) {
 				note = new Note(rs.getInt("note_no"), 									// no
 						rs.getString("id"),												// id
-						new CocoaDate(new Date(rs.getDate("wrt_date").getTime())), 		// writeDate
+						new CocoaDate(new Date(rs.getTimestamp("wrt_date").getTime())), 		// writeDate
 						rs.getString("content"),										// content
-						new CocoaDate(new Date(rs.getDate("curr_date").getTime())),		// currentDate
+						new CocoaDate(new Date(rs.getTimestamp("curr_date").getTime())),		// currentDate
 						rs.getString("title"));											// title
 				
 			}
