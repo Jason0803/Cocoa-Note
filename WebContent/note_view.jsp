@@ -2,6 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="head.jsp"></jsp:include>
 <script type="text/javascript">
+var pass = false;
 var originCont = "";
 var latestCont = "";
 function write_note() {
@@ -46,7 +47,9 @@ function update_note() {
     }else{
     	$('.navbar').toggleClass("animatePeachProcess");
     }
-	setTimeout(function(){ document.updateFrm.submit() }, 1000);
+	setTimeout(function(){ 
+		pass=true;
+		document.updateFrm.submit() }, 1000);
 	
 	
 	
@@ -169,7 +172,7 @@ function validateMode() {
 	window.onbeforeunload = function() {
 		latestCont += document.updateFrm.title.value;
 		latestCont += oDoc.innerHTML;
-		if(originCont!==latestCont) return "변경";
+		if(originCont!==latestCont&&pass==false) return "변경";
 	}
 </script>
 <jsp:include page="foot.jsp"></jsp:include>
