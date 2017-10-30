@@ -66,11 +66,12 @@
 			<div class="card-body">
 				<h4 class="card-title">Upcoming events</h4>
 				<h6 class="card-subtitle mb-2 text-muted"></h6>
-				<c:forEach var="scheduleItem" items="${scheduleList}" begin="1" end="5" varStatus="status">
+				<c:set var="scd_length" value="${fn:length(scheduleList)}"></c:set>
+				<c:forEach var="scheduleItem" items="${scheduleList}" begin="1" end="6" varStatus="status">
 					<div class="card rounded-notification bg-pink">
 						<div class="card-body"  style="padding:15px;">
-							<h4 class="card-title" name="d-day">${scheduleItem.startDate}</h4>
-							<h6 class="card-subtitle ">${scheduleItem.title}</h6>
+							<h4 class="card-title" name="d-day">${scheduleList[scd_length-status.count].startDate}</h4>
+							<h6 class="card-subtitle ">${scheduleList[scd_length-status.count].title}</h6>
 						</div>
 					</div>
 				</c:forEach>
