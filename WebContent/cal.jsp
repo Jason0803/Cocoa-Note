@@ -65,7 +65,7 @@
 				<h4 class="card-title">Upcoming events</h4>
 				<h6 class="card-subtitle mb-2 text-muted"></h6>
 				<c:set var="scd_length" value="${fn:length(scheduleList)}"></c:set>
-				<c:forEach var="scheduleItem" items="${scheduleList}" begin="1" end="6" varStatus="status">
+				<c:forEach var="scheduleItem" items="${scheduleList}" varStatus="status">
 					<div class="card rounded-notification bg-pink">
 						<div class="card-body"  style="padding:15px;">
 							<h4 class="card-title" name="d-day">${scheduleList[scd_length-status.count].startDate}</h4>
