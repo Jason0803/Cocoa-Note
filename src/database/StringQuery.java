@@ -1,4 +1,4 @@
-package sql;
+package database;
 
 public interface StringQuery {
 	/*
@@ -24,15 +24,18 @@ public interface StringQuery {
 			"SELECT * FROM memo WHERE id = ? ORDER BY wrt_date DESC";
 	String GET_ALL_SCHEDULE =
 			"SELECT * FROM schedule WHERE id = ? ORDER BY start_date DESC";
+	String GET_ALL_SHARED_SCHEDULE = 
+			"SELECT * FROM schedule WHERE schedule_no IN (SELECT schedule_no FROM schedule_group WHERE group_member_id = 'chltndud308@gmail.com')";
+	
 	String GET_ALL_NOTE =
 			"SELECT * FROM note WHERE id = ? ORDER BY curr_date DESC";
 
 	String SEARCH_NOTE_BY_KEYWORD = 
-			"SELECT * FROM note WHERE id = ? AND (title LIKE '%'||?||'%' OR content LIKE '%'||?||'%')";
+			"SELECT * FROM note WHERE id = ? AND (LOWER(title) LIKE LOWER('%'||?||'%') OR LOWER(content) LIKE LOWER('%'||?||'%'))";
 	String SEARCH_MEMO_BY_KEYWORD =
-			"SELECT * FROM memo WHERE id=? AND content LIKE '%'||?||'%'";
+			"SELECT * FROM memo WHERE id=? AND LOWER(content) LIKE LOWER('%'||?||'%')";
 	String SEARCH_SCHEDULE_BY_KEYWORD = 
-	         "SELECT * FROM SCHEDULE WHERE id=? AND (TITLE like '%'||?||'%' OR CONTENT like '%'||?||'%')";
+	         "SELECT * FROM SCHEDULE WHERE id=? AND (LOWER(TITLE) like LOWER('%'||?||'%') OR LOWER(CONTENT) like LOWER('%'||?||'%'))";
 
 	String GET_CURR_DIARYNO =
 			 "SELECT last_number FROM user_sequences WHERE sequence_name='SEQ_DIARY_NO'";
@@ -76,6 +79,7 @@ public interface StringQuery {
 
 	
 	String GET_CURR_NOTE_NO = 
-			"SELECT note_no FROM note WHERE curr_date = (SELECT MAX(curr_date) FROM note) AND id=?";
-	
+			"SELECT note_no FROM note WHERE curr_date = (SELECT MAX(curr_date) FROM note WHERE id=?)";
+	String DELETE_SCHEDULE_GROUP = 
+			"delete schedule_group where schedule_no=?";
 }

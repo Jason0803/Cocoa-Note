@@ -62,7 +62,11 @@ public class CocoaDate {
 	
 	// #00047 : Constructor for DATE type --> CocoaDate
 	public CocoaDate(Date date) {
-		this(new SimpleDateFormat("YYYYMddHHmm").format(date));
+		this(new SimpleDateFormat("YYYYMMddHHmm").format(date));
+	}
+	
+	public Date toDate() {
+		return new Date(this.year, this.month, this.date);
 	}
 	
 	private void setDefault(int year, int month, int date, int hour, int minute) {
@@ -178,11 +182,18 @@ public class CocoaDate {
 				&& this.month == pDate.getMonth() 
 				&& this.date == pDate.getDate();
 	}
+	/*
+	 * 2017 / 04 / 02
+	 * 2017 / 07 / 03
+	 * 2017 / 03 / 02
+	 */
 	public boolean compareDate(CocoaDate srcDate, CocoaDate destDate) {
-		// sychoi : check if THIS CocoaDate instance INCLUSIVELY in between srcDate & destDate
-		return IntegerRange.betweenInclusive(this.getYear(), srcDate.getYear(), destDate.getYear())
-				&& IntegerRange.betweenInclusive(this.getMonth(), srcDate.getMonth(), destDate.getMonth())
-				&& IntegerRange.betweenInclusive(this.getDate(), srcDate.getDate(), destDate.getDate());
+		System.out.println("[CocoaDate] : Current Date : " + this.toString());
+		Date currentDate = this.toDate();
+		Date start_date = srcDate.toDate();
+		Date end_date = destDate.toDate();
+		
+		return (currentDate.compareTo(start_date) >= 0 && currentDate.compareTo(end_date) <= 0);
 	}
 	
 	@Override

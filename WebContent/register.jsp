@@ -72,7 +72,7 @@ function registerCheck() {
 					<div class="card-body">
 						<form action="DispatcherServlet" method="post" name="registerFrm"
 							onsubmit="return registerCheck();">
-							<input class="form-control" type="text" name="id" placeholder="아이디(email)" required="required" /><br /> 
+							<input class="form-control" type="email" name="id" placeholder="아이디(email)" required="required" /><br /> 
 							<input class="form-control" type="password" name="password" placeholder="비밀번호" required="required" /><br />
 							<input class="form-control" type="password" name="password_chk" 	placeholder="비밀번호 확인" required="required" /><br /> 
 							<input class="form-control" type="text" name="name" placeholder="이름" required="required" /><br />

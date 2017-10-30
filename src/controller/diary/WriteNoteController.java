@@ -25,7 +25,7 @@ public class WriteNoteController implements Controller {
 		
 		
 		// #10006 NoteView 플로우 관련 #12
-		return new ModelAndView("DispatcherServlet?command=noteView&diaryNo=" + note.getNo() + "&isCurr=false");
+		return new ModelAndView("DispatcherServlet?command=noteView&diaryNo=" + note.getNo());
 	}
 
 }

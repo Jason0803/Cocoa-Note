@@ -10,10 +10,10 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import database.StringQuery;
 import jdbc.exception.DuplicateIdException;
 import jdbc.exception.RecordNotFoundException;
 import model.vo.member.Member;
-import sql.StringQuery;
 
 
 public class MemberDAO {
@@ -145,6 +145,38 @@ public class MemberDAO {
 		}
 	}
 	// ---------------------------------- for UPDATE ---------------------------------- //
+	public Member updateMember(Member member, String password, int theme) throws SQLException, DuplicateIdException {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+				
+		try {
+			conn = connection();
+			if(checkPasswordValidation(member.getId(), member.getPassword(), conn)) {
+				// #00035 : Check validation (password)
+				ps = conn.prepareStatement(StringQuery.UPDATE_MEMBER);
+				ps.setString(1, password);
+				ps.setString(2, member.getName());
+				ps.setInt(3, member.getAccountPlan());
+				ps.setInt(4, theme);
+				ps.setString(5, member.getId());
+				
+				ps.executeUpdate();
+				
+				System.out.println("[MemberDAO]@updateMember : updating member done");
+			}else {
+				System.out.println("Incorrect Password !");
+				return null;
+			}
+		} catch (RecordNotFoundException e) {
+			e.printStackTrace();
+		}
+		finally {
+			closeAll(ps, conn, rs);
+		}
+		
+		return member;
+	}
 	public Member updateMember(Member member, String password) throws SQLException, DuplicateIdException {
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -161,7 +193,7 @@ public class MemberDAO {
 				ps.setInt(4, member.getTheme());
 				ps.setString(5, member.getId());
 				
-				int result = ps.executeUpdate();
+				ps.executeUpdate();
 				
 				System.out.println("[MemberDAO]@updateMember : updating member done");
 			}else {
@@ -177,7 +209,6 @@ public class MemberDAO {
 		
 		return member;
 	}
-	
 	// ---------------------------------- for Login ---------------------------------- //
 	public Member login(String id, String password) throws SQLException{
 		Member member = null;

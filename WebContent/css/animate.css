@@ -1,11 +1,64 @@
 @charset "EUC-KR";
 /* change text animation start*/
+.animateCocoaProcess {
+	overflow: hidden;
+    background: linear-gradient(90deg, #523738, #af977c, #523738, #af977c);
+    background-size: 400% 400%;
+    animation-name: process;
+    -webkit-animation-duration: 2s;
+    animation-delay: 0s;
+    animation-timing-function: ease;
+}
+
+.animatePeachProcess {
+	overflow: hidden;
+    background: linear-gradient(90deg, #ffcbcb, #c5f0fb, #ffcbcb, #c5f0fb);
+    background-size: 400% 400%;
+    animation-name: process;
+    -webkit-animation-duration: 2s;
+    animation-delay: 0s;
+    animation-timing-function: ease;
+}	
+
+
+@-webkit-keyframes process {
+	from{
+	background-position:100%;}
+	to{
+	background-position:0%;}
+}
+
 .animated-words {
     display: inline-block;
 }
 
 .animated-words-last{
     display: inline-block;
+}
+
+.animated-card-1 { 
+	overflow: hidden;
+    animation-name: cardUp;
+    -webkit-animation-duration: 0.5s;
+    animation-delay: 0s;
+    animation-timing-function: ease;
+    
+}
+
+.animated-card-2 { 
+	overflow: hidden;
+    animation-name: cardUp;
+    -webkit-animation-duration: 0.65s;
+    animation-delay: 0s;
+    animation-timing-function: ease;
+}
+
+.animated-card-3 { 
+	overflow: hidden;
+    animation-name: cardUp;
+    -webkit-animation-duration: 0.75s;
+    animation-delay: 0s;
+    animation-timing-function: ease;
 }
 
 .animated-words span:nth-child(3) { 
@@ -75,6 +128,16 @@
 
 
 /*change text animation end*/
+
+
+@-webkit-keyframes cardUp {
+    from {
+    -webkit-transform: translateY(3000px) rotate(30deg);
+    }
+    to{
+    -webkit-transform: translateY(0px);
+    }
+}
 
 @-webkit-keyframes animateWord {
     0% { opacity: 0; }

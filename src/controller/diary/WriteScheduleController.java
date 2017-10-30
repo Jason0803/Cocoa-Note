@@ -27,9 +27,11 @@ public class WriteScheduleController implements Controller {
 		String input = ((String)request.getParameter("group_member"));
 		String[] inputMemberIds = new String[1];
 		Vector<String> sharedMembers = new Vector<String>();
-		Schedule schedule = null;
 		
+		Schedule schedule = null;
+		System.out.println("=============== INPUT : " + input + " ===============");
 		// To check whether the given id exists.
+		
 		if(input.contains(",")) {
 			System.out.println("[WriteScheduleController] : Multiple user input !");
 
@@ -42,23 +44,16 @@ public class WriteScheduleController implements Controller {
 			System.out.println("[WriteScheduleController] : Single user input : " + input);
 				sharedMembers.add(input);
 		}
-		
-		//sharedMembers.copyInto(inputMemberIds);
-		
+			
 		schedule = new Schedule(0, id, title, content, sharedMembers, new CocoaDate(start_date), new CocoaDate(end_date));
 		System.out.println("[WriteScheduleController] : Filtered Member ids : " + sharedMembers);
-		
-		 
+
 		System.out.println("[WriteScheduleController] : New Schedule instance created !" + schedule);
-		request.getSession().setAttribute("writtenSchedule", schedule);
-		System.out.println("[WriteScheduleController] : New Schedule passwed to session");
+
 		schedule = DiaryDAO.getInstance().writeDiary(schedule);
 		System.out.println("[WriteScheduleController] : writeDiary Logic passed !");
 		
-
 		DiaryDAO.getInstance().setSharingMembers(schedule.getNo(), sharedMembers);
-				
-		
 		
 		return new ModelAndView("DispatcherServlet?command=calView&"
 								+"year=" + new CocoaDate(start_date).getYear()

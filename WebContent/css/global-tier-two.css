@@ -4,6 +4,7 @@
 	text-align: center;
 } */
 
+/*  For peach theme */
 
 <style type="text/css">
 
@@ -26,7 +27,7 @@
 #btn-longer-pink {
     color: #fff;
     background-color:#F72765;
-    width: 360px;
+    width: 100%;
     height : 50px;
     border-color: #F72765;
     
@@ -42,6 +43,7 @@
 
 .navbar-brand {
 	margin-right:50px;
+	color: black!important;
 }
 
 .note-title {
@@ -82,7 +84,7 @@
 .profile {
 	width: 3rem;
 	height: 3rem;
-	margin-left: 60%;
+	margin-left: 58%;
 	
 }
 
@@ -108,9 +110,9 @@
 	background:#F72765;
 }
 
-.bg-white {
+.bg-transwhite {
 	color: black;
-	background : ghostwhite;
+	background-color: rgba(255, 255, 255, 0.31)!important;
 }
 .bg-ghostwhite{
 	background-color:ghostwhite;
