@@ -12,6 +12,13 @@
 		setTimeout(function(){ location.reload() }, 1000);
 	}
 	
+ function ani(){
+	    if(${memberVO.theme == 1}){
+	        $('.navbar').toggleClass("animateCocoaProcess");
+	        }else{
+	        	$('.navbar').toggleClass("animatePeachProcess");
+	        }
+ }	
 </script>
 <div class="row">
 <div class="col-8">
@@ -83,7 +90,7 @@
 					</div>
 					<div id="shcedule_group_container"></div><br /><br />
 				</div>
-				<input name="scheduleFrmSubmit" id="btn-long-pink" style="width:100%; margin-top:20px;" type="submit" class="btn rounded-bar" value="일정 등록" accesskey="q"/>
+				<input name="scheduleFrmSubmit" id="btn-long-pink" style="width:100%; margin-top:20px;" type="submit" class="btn rounded-bar" value="일정 등록" onclick="ani()" accesskey="q"/>
 				<input type="hidden" name="command" value="writeSchedule" />
 				<input type="hidden" name="start_date" />
 				<input type="hidden" name="end_date" />
