@@ -134,7 +134,7 @@ function deleteGroupMember(m){
 function valueCheck() {
 	var start_dateFrm = document.scheduleFrm.startDate.value;
 	var end_dateFrm = document.scheduleFrm.endDate.value;
-	
+
 	if(start_dateFrm=="" || end_dateFrm=="") {
 		alert("유효한 날짜를 선택해주세요.");
 		return false;

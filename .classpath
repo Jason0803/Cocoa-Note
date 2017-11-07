@@ -9,7 +9,9 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/Inho/Documents/GitHub/activation.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Inho/Documents/GitHub/mail.jar"/>
+	<classpathentry kind="lib" path="C:/Users/inhoj/Documents/GitHub/activation.jar"/>
+	<classpathentry kind="lib" path="C:/Users/inhoj/Documents/GitHub/mail.jar"/>
+	<classpathentry kind="lib" path="D:/Code/jstl.jar"/>
+	<classpathentry kind="lib" path="D:/Code/standard.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
